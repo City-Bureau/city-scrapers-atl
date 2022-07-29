@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 scrapy = "*"
 scrapy-sentry = "*"
-city-scrapers-core = "*"
+city-scrapers-core = {extras = ["azure"], version = "*"}
 pypiwin32 = {version = "*", sys_platform = "== 'win32'"}
 scrapy-wayback-middleware = "*"
 

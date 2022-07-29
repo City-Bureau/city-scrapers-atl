@@ -3,22 +3,10 @@
 [![CI build status](https://github.com/City-Bureau/city-scrapers-template/workflows/CI/badge.svg)](https://github.com/City-Bureau/city-scrapers-template/actions?query=workflow%3ACI)
 [![Cron build status](https://github.com/City-Bureau/city-scrapers-template/workflows/Cron/badge.svg)](https://github.com/City-Bureau/city-scrapers-template/actions?query=workflow%3ACron)
 
-Template repo for creating a [City Scrapers](https://cityscrapers.org/) project in your area to scrape, standardize and share public meetings from local government websites. You can find more information on the [project homepage](https://cityscrapers.org/) or in the original City Scrapers repo for the Chicago area: [City-Bureau/city-scrapers](https://github.com/City-Bureau/city-scrapers).
+Repo for the [City Scrapers](https://cityscrapers.org) project in Detroit.
 
-## Setup
+See the [development documentation](https://cityscrapers.org/docs/development/) for info how to get started.
 
-In order to set up a City Scrapers project for your area you'll need a GitHub account as well as git, Python 3.6 or above and [Pipenv](https://pipenv.pypa.io/en/latest/) installed. If you want to make it easy to share access and onboard new contributors, [GitHub organizations](https://docs.github.com/en/github/setting-up-and-managing-organizations-and-teams) are a free and easy way of doing that.
-
-1. Create a new repo in your GitHub account or organization by [using this repo as a template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) or forking it.
-
-   - You should change the name to something specific to your area (i.e. `city-scrapers-il` for scrapers in Illinois)
-   - If you forked the repo, enable issues for your fork by going to Settings, and checking the box next to Issues in the Features section.
-
-2. Clone the repo you created (substituting your account and repo name) with:
-
-   ```shell
-   git clone https://github.com/{ACCOUNT}/city-scrapers-{AREA}.git
-   ```
 
 3. Update `LICENSE`, `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, and `README.md` with info on your group or organization so that people know what your project is and how they can contribute.
 

@@ -1,0 +1,47 @@
+name: Archive
+
+on:
+  schedule:
+    - cron: "7 11 * * *"
+  workflow_dispatch:
+
+env:
+  CI: true
+  PIPENV_VENV_IN_PROJECT: true
+  SCRAPY_SETTINGS_MODULE: city_scrapers.settings.archive
+  AUTOTHROTTLE_MAX_DELAY: 30.0
+  AUTOTHROTTLE_START_DELAY: 1.5
+  AUTOTHROTTLE_TARGET_CONCURRENCY: 3.0
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
+      - name: Install Pipenv
+        uses: dschep/install-pipenv-action@v1
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v1
+        with:
+          path: .venv
+          key: pip-3.8-${{ hashFiles('**/Pipfile.lock') }}
+          restore-keys: |
+            pip-3.8-
+            pip-
+
+      - name: Install dependencies
+        run: pipenv sync
+        env:
+          PIPENV_DEFAULT_PYTHON_VERSION: 3.8
+
+      - name: Run scrapers
+        run: |
+          export PYTHONPATH=$(pwd):$PYTHONPATH
+          ./.deploy.sh

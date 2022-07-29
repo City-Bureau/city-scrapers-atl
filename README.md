@@ -1,33 +1,12 @@
-# City Scrapers Template
+# City Scrapers Atlanta
 
-[![CI build status](https://github.com/City-Bureau/city-scrapers-template/workflows/CI/badge.svg)](https://github.com/City-Bureau/city-scrapers-template/actions?query=workflow%3ACI)
-[![Cron build status](https://github.com/City-Bureau/city-scrapers-template/workflows/Cron/badge.svg)](https://github.com/City-Bureau/city-scrapers-template/actions?query=workflow%3ACron)
+[![CI build status](https://github.com/City-Bureau/city-scrapers-atl/workflows/CI/badge.svg)](https://github.com/City-Bureau/city-scrapers-atl/actions?query=workflow%3ACI)
+[![Cron build status](https://github.com/City-Bureau/city-scrapers-atl/workflows/Cron/badge.svg)](https://github.com/City-Bureau/city-scrapers-atl/actions?query=workflow%3ACron)
 
-Repo for the [City Scrapers](https://cityscrapers.org) project in Detroit.
+Repo for the [City Scrapers](https://cityscrapers.org) project in Atlanta.
 
 See the [development documentation](https://cityscrapers.org/docs/development/) for info how to get started.
 
-
-3. Update `LICENSE`, `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, and `README.md` with info on your group or organization so that people know what your project is and how they can contribute.
-
-4. Create a Python 3.8 virtual environment and install development dependencies with:
-
-   ```shell
-   pipenv install --dev --python 3.8
-   ```
-
-   If you want to use a version other than 3.8 (3.6 and above are supported), you can change the version for the `--python` flag.
-
-5. Decide whether you want to output static files to AWS S3, Microsoft Azure Blob Storage, or Google Cloud Storage, and update the `city-scrapers-core` package with the necessary extras:
-
-   ```shell
-   # To use AWS S3
-   pipenv install 'city-scrapers-core[aws]'
-   # To use Microsoft Azure
-   pipenv install 'city-scrapers-core[azure]'
-   # To use Google Cloud Storage
-   pipenv install 'city-scrapers-core[gcs]'
-   ```
 
    Once you've updated `city-scrapers-core`, you'll need to update [`./city_scrapers/settings/prod.py`](./city_scrapers/settings/prod.py) by uncommenting the extension and storages related to your platform.
 

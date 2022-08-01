@@ -10,6 +10,7 @@ city-scrapers-core = {extras = ["azure"], version = "*"}
 pypiwin32 = {version = "*", sys_platform = "== 'win32'"}
 scrapy-wayback-middleware = "*"
 python-dateutil = "*"
+isort = "*"
 
 [dev-packages]
 freezegun = "*"

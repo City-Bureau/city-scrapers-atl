@@ -1,0 +1,21 @@
+default_language_version:
+    python: python3.8
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.5.0  # Use the ref you want to point at
+    hooks:
+      - id: check-merge-conflict
+      - id: debug-statements
+-   repo: https://github.com/pycqa/flake8
+    rev: 3.9.0
+    hooks:
+      - id: flake8
+-   repo: https://github.com/ambv/black
+    rev: 22.6.0
+    hooks:
+      - id: black
+- repo: https://github.com/pycqa/isort
+  rev: 5.10.1
+  hooks:
+    - id: isort
+      name: isort (python)

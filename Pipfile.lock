@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d0860aa10f6346d579d1eba9b0add6c5a4362f75b77c4af7604101113cbec63a"
+            "sha256": "8d26598d233539fecb5b7ab79534ffeb109e039d3b4f1fb84ba43a104c132b04"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -115,7 +115,6 @@
             "version": "==2.1.0"
         },
         "city-scrapers-core": {
-            "extras": [],
             "git": "https://github.com/City-Bureau/city-scrapers-core.git",
             "hashes": [
                 "sha256:142d8a119d1e62e398a5a248c8c8bb5c3e0ed820f29f6bf03d0ae46b928e8270",
@@ -188,6 +187,14 @@
             ],
             "markers": "python_version >= '3.5'",
             "version": "==3.3"
+        },
+        "importlib-resources": {
+            "hashes": [
+                "sha256:5481e97fb45af8dcf2f798952625591c58fe599d0735d86b10f54de086a61681",
+                "sha256:f78a8df21a79bcc30cfd400bdc38f314333de7c0fb619763f6b9dabab8268bb7"
+            ],
+            "index": "pypi",
+            "version": "==5.9.0"
         },
         "incremental": {
             "hashes": [

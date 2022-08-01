@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "8d26598d233539fecb5b7ab79534ffeb109e039d3b4f1fb84ba43a104c132b04"
+            "sha256": "776054248c2009e43777e72a833e96d9f45ed06796ab33d211f4e7c362bb4551"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -28,6 +28,22 @@
                 "sha256:b6feb6455337df834f6c9962d6ccf771515b7d939bca142b29c20c2376bc6111"
             ],
             "version": "==20.2.0"
+        },
+        "azure-core": {
+            "hashes": [
+                "sha256:0f3a20d245659bf81fb3670070a5410c8d4a43298d5a981e62dce393000a9084",
+                "sha256:a76856fa83efe1925a4fd917dc179c7daa15917dd71da2774833fa82a96f3dfa"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==1.24.2"
+        },
+        "azure-storage-blob": {
+            "hashes": [
+                "sha256:280a6ab032845bab9627582bee78a50497ca2f14772929b5c5ee8b4605af0cb3",
+                "sha256:53f0d4cd32970ac9ff9b9753f83dd2fb3f9ac30e1d01e71638c436c509bfd884"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==12.13.0"
         },
         "certifi": {
             "hashes": [
@@ -115,6 +131,9 @@
             "version": "==2.1.0"
         },
         "city-scrapers-core": {
+            "extras": [
+                "azure"
+            ],
             "git": "https://github.com/City-Bureau/city-scrapers-core.git",
             "hashes": [
                 "sha256:142d8a119d1e62e398a5a248c8c8bb5c3e0ed820f29f6bf03d0ae46b928e8270",
@@ -203,13 +222,12 @@
             ],
             "version": "==21.3.0"
         },
-        "isort": {
+        "isodate": {
             "hashes": [
-                "sha256:6f62d78e2f89b4500b080fe3a81690850cd254227f27f75c3a0c491a1f351ba7",
-                "sha256:e8443a5e7a020e9d7f97f1d7d9cd17c88bcb3bc7e218bf9cf5095fe550be2951"
+                "sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96",
+                "sha256:48c5881de7e8b0a0d648cb024c8062dc84e7b840ed81e864c7614fd3c127bde9"
             ],
-            "index": "pypi",
-            "version": "==5.10.1"
+            "version": "==0.6.1"
         },
         "itemadapter": {
             "hashes": [
@@ -318,6 +336,22 @@
             ],
             "markers": "platform_python_implementation == 'CPython'",
             "version": "==4.9.1"
+        },
+        "msrest": {
+            "hashes": [
+                "sha256:21120a810e1233e5e6cc7fe40b474eeb4ec6f757a15d7cf86702c369f9567c32",
+                "sha256:6e7661f46f3afd88b75667b7187a92829924446c7ea1d169be8c4bb7eeb788b9"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==0.7.1"
+        },
+        "oauthlib": {
+            "hashes": [
+                "sha256:23a8208d75b902797ea29fd31fa80a15ed9dc2c6c16fe73f5d346f83f6fa27a2",
+                "sha256:6db33440354787f9b7f3a6dbd4febf5d0f93758354060e802f6c06cb493022fe"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==3.2.0"
         },
         "parsel": {
             "hashes": [
@@ -464,7 +498,7 @@
                 "sha256:7c5599b102feddaa661c826c56ab4fee28bfd17f5abca1ebbe3e7f19d7c97983",
                 "sha256:8fefa2a1a1365bf5520aac41836fbee479da67864514bdb821f31ce07ce65349"
             ],
-            "markers": "python_version >= '3.7' and python_version < '4.0'",
+            "markers": "python_version >= '3.7' and python_version < '4'",
             "version": "==2.28.1"
         },
         "requests-file": {
@@ -473,6 +507,14 @@
                 "sha256:dfe5dae75c12481f68ba353183c53a65e6044c923e64c24b2209f6c7570ca953"
             ],
             "version": "==1.5.1"
+        },
+        "requests-oauthlib": {
+            "hashes": [
+                "sha256:2577c501a2fb8d05a304c09d090d6e47c306fef15809d102b327cf8364bddab5",
+                "sha256:75beac4a47881eeb94d5ea5d6ad31ef88856affe2332b9aafb52c6452ccf0d7a"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==1.3.1"
         },
         "scrapy": {
             "hashes": [
@@ -549,7 +591,7 @@
                 "sha256:c33ccba33c819596124764c23a97d25f32b28433ba0dedeb77d873a38722c9bc",
                 "sha256:ea6e8fb210b19d950fab93b60c9009226c63a28808bc8386e05301e25883ac0a"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5' and python_version < '4.0'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5' and python_version < '4'",
             "version": "==1.26.11"
         },
         "w3lib": {

@@ -6,11 +6,10 @@ name = "pypi"
 [packages]
 scrapy = "*"
 scrapy-sentry = "*"
-city-scrapers-core = {ref = "main", git = "https://github.com/City-Bureau/city-scrapers-core.git"}
+city-scrapers-core = {ref = "main", git = "https://github.com/City-Bureau/city-scrapers-core.git", extras=["azure"]}
 pypiwin32 = {version = "*", sys_platform = "== 'win32'"}
 scrapy-wayback-middleware = "*"
 python-dateutil = "*"
-isort = "*"
 importlib-resources = "*"
 
 [dev-packages]

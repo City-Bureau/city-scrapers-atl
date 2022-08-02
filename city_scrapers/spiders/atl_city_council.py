@@ -15,12 +15,11 @@ class AtlCityCouncilSpider(CityScrapersSpider):
 
     def parse(self, response):
         for item in response.css(".MeetingRow"):
-            # print(item.get())
             meeting = Meeting(
                 title=self._parse_title(item),
-                description="",
-                classification=self._parse_classification(item),
+                description=self._parse_description(item),
                 start=self._parse_start(item),
+                classification=NOT_CLASSIFIED,
                 end=None,
                 all_day=False,
                 time_notes="",
@@ -38,9 +37,8 @@ class AtlCityCouncilSpider(CityScrapersSpider):
         """Parse or generate meeting title."""
         return item.css(".RowDetails::text").get()
 
-    def _parse_classification(self, item):
-        """Parse or generate classification from allowed options."""
-        return NOT_CLASSIFIED
+    def _parse_description(self, item):
+        return item.css(".RowLink a").xpath("@title").get()
 
     def _parse_start(self, item):
         """Parse start datetime as a naive datetime object."""

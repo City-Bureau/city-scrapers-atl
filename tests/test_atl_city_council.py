@@ -24,6 +24,10 @@ def test_title():
     assert parsed_items[0]["title"] == "EXPECTED TITLE"
 
 
+def test_description():
+    assert parsed_items[0]["description"] == "EXPECTED TITLE"
+
+
 def test_start():
     assert parsed_items[0]["start"] == datetime(2019, 1, 1, 0, 0)
 

@@ -1,3 +1,5 @@
+import re
+
 import dateutil.parser
 from city_scrapers_core.constants import NOT_CLASSIFIED
 from city_scrapers_core.items import Meeting
@@ -7,6 +9,7 @@ from city_scrapers_core.spiders import CityScrapersSpider
 class AtlCityCouncilSpider(CityScrapersSpider):
     name = "atl_city_council"
     agency = "Atlanta City Council"
+    board_name = "Atlanta City Council"
     timezone = "America/New_York"
     start_urls = [
         "https://atlantacityga.iqm2.com/Citizens/Calendar.aspx?Frame=Yes"
@@ -15,6 +18,11 @@ class AtlCityCouncilSpider(CityScrapersSpider):
 
     def parse(self, response):
         for item in response.css(".MeetingRow"):
+            desc = self._parse_description(item)
+            board = re.findall(r"Board:\t(.*?)\r", desc)[0]
+            # print(board)
+            if board != self.board_name:
+                continue
             meeting = Meeting(
                 title=self._parse_title(item),
                 description=self._parse_description(item),

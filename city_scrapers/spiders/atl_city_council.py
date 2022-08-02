@@ -16,6 +16,18 @@ class AtlCityCouncilSpider(CityScrapersSpider):
         "&View=List&From=1/1/2021&To=12/31/2025"
     ]
 
+    """
+    Can scrape multiple boards w/ this, valid values for board name:
+        Atlanta City Council
+        City Utilities Committee
+        Committee on Council
+        Community Development/Human Services Committee
+        Finance/Executive Committee
+        Public Safety & Legal Administration Committee
+        Transportation Committee
+        Zoning Committee
+    """
+
     def parse(self, response):
         for item in response.css(".MeetingRow"):
             desc = self._parse_description(item)

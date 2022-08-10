@@ -1,7 +1,8 @@
+from datetime import datetime
+
 from city_scrapers_core.constants import NOT_CLASSIFIED
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
-from datetime import datetime
 
 
 class AtlCrbSpider(CityScrapersSpider):
@@ -60,7 +61,6 @@ class AtlCrbSpider(CityScrapersSpider):
 
     def _parse_location(self, item):
         """Parse or generate location."""
-        #address = ", ".join(item.css("::text").getall()[1].split(",")[1:]).strip()
         address = ",".join(item.css("::text").getall()[1].split(",")[1:]).strip()
         return {
             "address": address,

@@ -12,12 +12,6 @@ class AtlCrbSpider(CityScrapersSpider):
     start_urls = ["https://acrbgov.org/"]
 
     def parse(self, response):
-        """
-        `parse` should always `yield` Meeting items.
-
-        Change the `_parse_title`, `_parse_start`, etc methods to fit your scraping
-        needs.
-        """
         links = self._parse_links(response)
         for entry in response.css("div.entry"):
             description = self._parse_description(entry)

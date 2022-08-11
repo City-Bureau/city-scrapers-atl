@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from city_scrapers_core.constants import NOT_CLASSIFIED
+from city_scrapers_core.constants import ADVISORY_COMMITTEE
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
 
@@ -20,7 +20,7 @@ class AtlCrbSpider(CityScrapersSpider):
                 meeting = Meeting(
                     title=self._parse_title(item),
                     description=description,
-                    classification=NOT_CLASSIFIED,
+                    classification=ADVISORY_COMMITTEE,
                     start=self._parse_start(item),
                     end=None,
                     all_day=False,

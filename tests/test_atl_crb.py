@@ -2,7 +2,7 @@ from datetime import datetime
 from os.path import dirname, join
 
 import pytest
-from city_scrapers_core.constants import NOT_CLASSIFIED
+from city_scrapers_core.constants import ADVISORY_COMMITTEE
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
@@ -65,4 +65,4 @@ def test_links(item):
 
 @pytest.mark.parametrize("item", parsed_items)
 def test_classification(item):
-    assert item["classification"] == NOT_CLASSIFIED
+    assert item["classification"] == ADVISORY_COMMITTEE

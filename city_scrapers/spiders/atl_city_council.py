@@ -74,7 +74,7 @@ class AtlCityCouncilSpider(CityScrapersSpider):
 
     def _parse_links(self, item):
         links = []
-        for link in item.css(".RowLink a"):
+        for link in item.xpath(".//a[contains(@href, 'FileOpen')]"):
             href = "https://atlantacityga.iqm2.com/" + link.xpath("@href").get()
             title = link.css("::text").get()
             if href:

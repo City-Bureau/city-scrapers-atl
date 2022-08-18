@@ -49,12 +49,21 @@ def test_start():
 def test_links():
     assert parsed_items[0]["links"] == [
         {
-            "href": (
-                "https://atlantacityga.iqm2.com//Citizens/"
-                "Detail_Meeting.aspx?ID=3370"
-            ),
-            "title": "Jan 3, 2022 1:00 PM ",
-        }
+            "href": "https://atlantacityga.iqm2.com/FileOpen.aspx?Type=14&ID=3126&Inline=True",  # noqa
+            "title": "Agenda",
+        },
+        {
+            "href": "https://atlantacityga.iqm2.com/FileOpen.aspx?Type=1&ID=3126&Inline=True",  # noqa
+            "title": "Agenda Packet",
+        },
+        {
+            "href": "https://atlantacityga.iqm2.com/FileOpen.aspx?Type=15&ID=3322&Inline=True",  # noqa
+            "title": "Minutes",
+        },
+        {
+            "href": "https://atlantacityga.iqm2.com/FileOpen.aspx?Type=12&ID=3322&Inline=True",  # noqa
+            "title": "Minutes Packet",
+        },
     ]
 
 

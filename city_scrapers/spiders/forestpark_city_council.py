@@ -7,7 +7,7 @@ BASE_URL = "https://www.forestparkga.gov"
 
 
 class ForestparkCityCouncilSpider(CityScrapersSpider):
-    name = "forestpark_city_council"
+    name = "atl_forestpark_city_council"
     agency = "Forest Park City Council"
     timezone = "America/New_York"
     start_urls = [

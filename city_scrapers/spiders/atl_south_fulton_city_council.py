@@ -29,7 +29,7 @@ class AtlSouthFultonCityCouncilSpider(CityScrapersSpider):
                 continue
             date = date.css("::text").get() + " 4:00pm"
             meeting = Meeting(
-                title=meeting_type.css("::text").get(),
+                title=meeting_type.css(".mobile-table-td-div::text").get().strip(),
                 description="",
                 classification=self._parse_classification(item),
                 start=dateutil.parser.parse(date),

@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9 lt-ie10" lang="en"><![endif]-->
+<!--[if IE 9]><html class="no-js lt-ie10" lang="en"><![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head id="ctl00_Head1"><link rel="stylesheet" type="text/css" href="/WorkArea/FrameworkUI/css/ektron.stylesheet.ashx?id=-1759591071" /><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><title>
+	MARTA
+</title><meta name="description" content="marta" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="google-site-verification" content="yQRqrgHaLijRcd9aXJXqkrCIWl9ak7eK1h2LMiPUh5A" />
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" /><link rel="stylesheet" type="text/css" media="screen" href="styles/browser-detection.css" />
+<script type="text/javascript" src="scripts/browser-detection.js">
+
+</script>
+<link rel="stylesheet" href="styles/main.css" />
+<script src="scripts/vendor/modernizr-2.8.3.min.js"></script>
+<script src="https://use.typekit.net/kil2gpl.js"></script>
+<script>try { Typekit.load({ async: true }); } catch (e) { }</script>
+<!-- Home Page Calendar Picker -->
+<link href="CalendarControl.css" rel="stylesheet" type="text/css" />
+<script src="CalendarControl1.js" type="text/javascript"></script>
+    
+
+
+<!-- Facebook Pixel Code -->
+<script>
+    !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '357508378164300');
+    fbq('track', 'PageView');
+</script>
+<noscript>
+<img height="1" width="1" 
+src="https://www.facebook.com/tr?id=357508378164300&ev=PageView
+&noscript=1"/>
+</noscript>
+
+<!-- End Facebook Pixel Code -->
+
+<!-- Web Chat -->
+<style>
+	/*
+		Styles will apply when device(view port) width is >768px
+	*/
+	@media (min-device-width : 768px) {
+		.desktop_bubble_chat {
+			height: 410px;
+			max-height: 410px;
+			width: 312px;
+			position: fixed;
+			bottom: 1em;
+			right: 1em;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+			z-index: 999;
+			overflow: hidden;
+			padding: 0;
+		}
+	}
+
+	/*
+		Styles will apply when device(view port) width is <=768px
+	*/
+	@media (max-device-width: 768px) {
+		.desktop_bubble_chat {
+			height: 80%;
+			max-height: 100%;
+			width: 100%;
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+			z-index: 9999;
+			overflow: hidden;
+			padding: 0;
+		}
+	}
+
+	/*
+		Styles will apply when available width on window resize is >768px
+	*/
+	@media (min-width : 768px) {
+		.desktop_bubble_chat {
+			height: 410px;
+			max-height: 410px;
+			width: 312px;
+			position: fixed;
+			bottom: 1em;
+			right: 1em;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+			z-index: 999;
+			overflow: hidden;
+			padding: 0;
+		}
+	}
+
+	/*
+		Styles will apply when available width on window resize is <=768px
+	*/
+	@media (max-width: 768px) {
+		.desktop_bubble_chat {
+			height: 100%;
+			max-height: 100%;
+			width: 100%;
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			border: none;
+			outline: none;
+			box-sizing: border-box;
+			z-index: 999;
+			overflow: hidden;
+			padding: 0;
+		}
+	}
+
+	/*
+		Styles will apply when isMobile function returns true
+	*/
+	.mobile_bubble_chat {
+		height: 100%;
+		max-height: 100%;
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		border: none;
+		outline: none;
+		box-sizing: border-box;
+		z-index: 999;
+		overflow: hidden;
+		padding: 0;
+	}
+
+	/*
+		Style will apply when chat is minimized
+	*/
+	.minimized_chat {
+		height: 56px;
+	}
+
+    .kc_fab_main_btn{
+  
+  width:70px;
+  height:70px;
+  border-radius:100%;
+ background:black;
+  border:none;
+  outline:none;
+  color:#FFF;
+  font-size:12px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition:.3s;  
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  position: fixed;
+	bottom: 10px;
+	right: 10px;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	z-index: 999;
+	overflow: hidden;
+	padding: 0;
+}
+.kc_fab_main_btn:focus {
+  transform:scale(1.1);
+  transform:rotate(45deg);
+  -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+
+}
+</style>
+<script type="application/javascript">
+    // To detect if the chat is being launched on mobile device
+    function isMobile() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        return /(android|bb\d+|meego).+mobile|bada\/|blackberry|iemobile|ip(hone|od)|lge |mobile.+firefox|opera m(ob|in)i|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(userAgent);
+    }
+
+    var ciscoBubbleChat = (function () {
+        var smHost = 'hqpatronccp.itsmarta.com';
+        var widgetId = '3';
+        // Modify this flag to false, To disable the chat download transcript option
+        var enableTranscriptDownload = true;
+		
+        //Please change below accesibility messages for your language if reqiured.
+        var accesibilityMessageForCloseButton = 'close';
+        var accesibilityMessageForMinimizeButton = 'minimize';
+        var accesibilityMessageForRestoreButton = 'restore';
+        var accesibilityMessageToIndicateAgentTyping = 'Agent is typing';
+        var accesibilityMessageToIndicateMessageFromAgent = 'message from';
+        var accesibilityMessageToIndicateCustomerSentMessage = 'Sent message from';
+        var accesibilityMessageToSelectRating = 'Please press 1 to 5 key with 1 being lowest and 5 being highest';
+		
+        var msgWaitingForSecureConnectivity = 'Waiting for secure connectivity...';
+        var msgCloseButtonLabel = 'Close';
+
+        var appId = 'cisco_bubble_chat';
+        var appClass = isMobile() ? 'mobile_bubble_chat' : 'desktop_bubble_chat';
+        var appMargin = 15;
+        var scheme = 'https://';
+        var appUrl = scheme + smHost + '/ccp/ui/BubbleChat.html?host=' + smHost + '&wid=' + widgetId;
+        var connectivityCheckUrlSecure = scheme + smHost + '/ccp/ui/ConnectivityCheck.html';
+        var secureConnectivityCheckTimeout = 2000;
+        var logPrefix = 'CISCO_BUBBLE_CHAT: ';
+        var addNoCacheQueryParam;
+
+        var injectedAccessibilityConfigMessages = {
+            'minimizeButtonText': accesibilityMessageForMinimizeButton,
+            'closeButtonText': accesibilityMessageForCloseButton,
+            'restoreButtonText': accesibilityMessageForRestoreButton,
+            'agentTypingText': accesibilityMessageToIndicateAgentTyping,
+            'agentSentMessageText': accesibilityMessageToIndicateMessageFromAgent,
+            'customerSentMessageText': accesibilityMessageToIndicateCustomerSentMessage,
+            'feedbackRatingIndicationText': accesibilityMessageToSelectRating
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+            ciscoBubbleChat.checkChatInProgress();
+        });
+        return {
+            checkChatInProgress: function () {
+                if (typeof (Storage) !== 'undefined') {
+                    if (sessionStorage.chatInProgress && JSON.parse(sessionStorage.chatInProgress)) {
+                        console.log(logPrefix + 'Chat conversation in progress detected. Trying to resume.');
+                        ciscoBubbleChat.showChatWindow();
+                    } else {
+                        console.log(logPrefix + 'There is no chat conversation in progress currently');
+                    }
+                }
+            },
+            showChatWindow: function (injectedData) {
+			//var col=document. getElementById('ciscochat');
+                document.getElementById("ciscochat").style.zIndex = "0";
+                var messageEventListener;
+                if (document.getElementById(appId)) {
+                    console.log(logPrefix + 'Not loading BubbleChat as it is already loaded');
+                    return;
+                }
+
+                var validateInjectedData = function(data,dataLength) {
+                    // browser compatible way to check whether it is an object with 10 fields and all the values are strings
+                    var result = true;
+                    if (data && typeof data === 'object' && data.constructor === Object){
+                        var counter = 0;
+                        for (var key in data) {
+                            if (!(typeof data[key] === 'string' || data[key] instanceof String)) {
+                                result = false;
+                                break;
+                            }
+                            counter++;
+                            if (counter > dataLength) {
+                                result = false;
+                                break;
+                            }
+                        }
+                    } else {
+                        result = false;
+                    }
+                    return result;
+                };
+				
+                if (injectedData) {
+                    if (validateInjectedData(injectedData.formData,10)) {
+                        appUrl += '&injectedFormData=' + encodeURIComponent(JSON.stringify(injectedData.formData));
+                    } else {
+                        if (typeof injectedData.validationErrorCallback === 'function') {
+                            injectedData.validationErrorCallback();
+                        } else {
+                            console.log(logPrefix + 'Could not invoke validationErrorCallback as it is not a function');
+                        }
+                    }
+                    if (injectedData.authorFieldName) {
+                        appUrl += '&authorFieldName=' + encodeURIComponent(injectedData.authorFieldName);
+                        console.log(logPrefix + 'Form field overriden for author inference = ' + injectedData.authorFieldName);
+                    }
+                }
+                appUrl += '&enableTranscriptDownload=' + enableTranscriptDownload;
+
+                var iframe = document.createElement('iframe');
+                iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-popups');
+                iframe.setAttribute('id', appId);
+                iframe.setAttribute('class', appClass);
+                document.body.appendChild(iframe);
+                var frameWindow = iframe.contentWindow ? iframe.contentWindow : iframe;
+                var frameDoc = frameWindow.document;
+
+                // Trigger a page load for iframe inline content loading to work in Firefox
+                frameDoc.open();
+                frameDoc.close();
+				
+                if(isMobile()) {
+                    frameDoc.body.style = 'margin:0;padding:0;';
+                } else {
+                    frameDoc.body.style = 'margin:0;padding:4;box-sizing:border-box;';
+                }
+				
+                frameDoc.body.innerHTML = '<div id="secure_connectivity_check_container" style="width: 100%; height: 100%;' +
+                        'font-family: Helvetica; font-size: 14px; color: #4F5051;text-align:center;' +
+                        'box-shadow: 0 0 3px #000; background: #fff; display: flex; flex-direction: column;justify-content:space-around;">' +
+                        '<div style="height:100%;display:flex;flex-direction:column">' +
+                            '<div style="height:50%;display:flex;align-items:center;">' +
+                                '<div style="width:100%;text-align:center;">' + msgWaitingForSecureConnectivity + '</div>' +
+                            '</div>' +
+                        '<div style="height:50%;display:flex;align-items:center;">' +
+                            '<a href="#" onclick="window.parent.postMessage({messageType: \'unmount\'}, \'*\'); return void(0);" style="width:100%;text-align:center;">' +
+                                msgCloseButtonLabel +
+                            '</a>' +
+                        '</div>' +
+                    '</div>';
+                '</div>';
+
+                if (!addNoCacheQueryParam) {
+                    addNoCacheQueryParam = function (url) {
+                        return url + (url.indexOf("?") === -1 ? '?' : '&') + 'nocache=' + new Date().getTime();
+                    }
+                }
+
+                if (!messageEventListener) {
+                    messageEventListener = function (event) {
+                        console.log(logPrefix + 'Received event from origin: ' + event.origin);
+                        console.log(logPrefix + 'Received event data: ' + JSON.stringify(event.data));
+                        switch (event.data.messageType) {
+                            case 'resize':
+                                var styleData = event.data.styles;
+                                if(typeof styleData === 'object' && Object.keys(styleData).length > 0) {
+                                    var widgetStyles = '';
+                                    for(var style in styleData) {
+                                        widgetStyles = widgetStyles + style + ':' + styleData[style] + ';';
+                                    }
+                                    document.getElementById(appId).style = widgetStyles;
+                                }
+                                break;
+                            case 'unmount':
+                                document.body.removeChild(document.getElementById(appId));
+                                window.removeEventListener('message', messageEventListener);
+                                console.log(logPrefix + 'Successfully unmounted BubbleChat and removed event listener for message');
+                                break;
+                            case 'bubblechat-cert-accepted':
+                                iframe.contentWindow.location.replace(addNoCacheQueryParam(appUrl));
+                                console.log(logPrefix + 'Successfully validated certificate acceptance and loaded BubbleChat');
+                                break;
+                            case 'set-chat-in-progress':
+                                if (typeof (Storage) !== 'undefined') {
+                                    sessionStorage.chatInProgress = JSON.stringify(true);
+                                    console.log(logPrefix + 'chatInProgress flag set in parent window');
+                                }
+                                break;
+                            case 'clear-chat-in-progress':
+                                if (typeof (Storage) !== 'undefined') {
+                                    sessionStorage.removeItem("chatInProgress");
+                                    console.log(logPrefix + 'chatInProgress flag cleared in parent window');
+                                }
+                                break;
+                            case 'minimize':
+                                document.getElementById(appId).classList.add('minimized_chat');
+                                break;
+                            case 'download-transcript' : 
+                                const blob = new Blob([event.data.data], {type: 'text/html'});
+                                const fileName = constructTranscriptFileName(event.data.customerName);
+                                const blobUrl = window.URL.createObjectURL(blob);
+                                const link = document.createElement('a');
+                                link.href = blobUrl;
+                                link.download = fileName;
+                                document.body.appendChild(link);
+                                link.click();
+                                // For Firefox it is necessary to delay revoking the ObjectURL
+                                setTimeout(function () {
+                                    document.body.removeChild(link);
+                                    window.URL.revokeObjectURL(blobUrl);
+                                }, 100);
+                                break;
+                            case 'restore':
+                                document.getElementById(appId).classList.remove('minimized_chat');
+                                break;
+                            case 'requestToSendAccessibilityMessage':
+                                if(injectedAccessibilityConfigMessages && validateInjectedData(injectedAccessibilityConfigMessages,7)) {
+                                    frameWindow.postMessage({ messageType: 'accessibilityMessages', injectedAccessibilityConfigMessages: injectedAccessibilityConfigMessages }, '*');
+                                    console.log(logPrefix + 'Successfully sent accessibility config messages to BubbleChat');
+                                } else {
+                                    console.log(logPrefix + 'Error in validating accessibility config messages, will not be passed to BubbleChat');
+                                }
+                                break;
+                            default:
+                                console.log(logPrefix + 'Unknown message type');
+                        }
+                    };
+                }
+
+                window.addEventListener('message', messageEventListener);
+                console.log(logPrefix + 'Event listener for message added');
+
+                function constructTranscriptFileName (customerName) {
+                    const dateTime = new Date().toLocaleString();
+                    const dtTransformed = dateTime.replace(/ +/g, '').replace(/\W+/g, '_').replace(/^_/g, '');
+                    const userName = customerName.replace(/ +/g, '_');
+                    const fileName = 'ChatTranscript_' + userName + '-' + dtTransformed + '.html';
+                    return fileName;
+                }
+				
+                var obtainSecureConnectivity = function () {
+                    window.open(addNoCacheQueryParam(connectivityCheckUrlSecure), 'SM_CERT_PAGE');
+                };
+				
+                var xhrSecureConnectivityCheck = new XMLHttpRequest();
+                xhrSecureConnectivityCheck.onreadystatechange = function () {
+                    if (this.readyState === 4) {
+                        console.log(logPrefix + 'Secure connectivity check status: ' + this.status);
+                        switch (this.status) {
+                            case 200:
+                                iframe.contentWindow.location.replace(addNoCacheQueryParam(appUrl));
+                                break;
+                            default:
+                                obtainSecureConnectivity();
+                        }
+                    }
+                }
+                console.log(logPrefix + 'Checking secure connectivity to: ' + connectivityCheckUrlSecure);
+                xhrSecureConnectivityCheck.open('HEAD', addNoCacheQueryParam(connectivityCheckUrlSecure), true);
+                xhrSecureConnectivityCheck.timeout = secureConnectivityCheckTimeout;
+                xhrSecureConnectivityCheck.ontimeout = function () { console.log(logPrefix + 'Secure Connectivity check timed out'); }
+                xhrSecureConnectivityCheck.send();
+            }
+        };
+    })();
+</script>
+<!-- Web Chat End -->
+</head>
+<body>
+<form method="post" action="/meeting-schedule.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="EktronClientManager" id="EktronClientManager" value="-1759591071" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTYxMTE2NDY5OQ9kFgJmD2QWAgIDEGRkFgQCCw8WAh4JaW5uZXJodG1sBZdSPGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2l0ZW1zJz4NCiAgICAgICAgICAgICAgICA8ZGl2IHRhYmluZGV4PScwJyBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2l0ZW0nPg0KICAgICAgICAgICAgICAgICAgPGEgdGFiaW5kZXg9Jy0xJyBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX3RyaWdnZXInIGhyZWY9J3NlcnZpY2UtdXBkYXRlcy5hc3B4Jz48c3BhbiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0LW51bWJlcic+ODwvc3Bhbj48c3BhbiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX3RyaWdnZXItbGFiZWwgbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX3RyaWdnZXItbGFiZWwtLWJ1cyc+QnVzIEFsZXJ0czwvc3Bhbj48L2E+PGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2NvbnRlbnQnPg0KICAgICAgICAgICAgICAgICAgICA8dWwgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydHMnPiA8bGkgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydCc+DQogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQtbmFtZSc+OTUgTWV0cm9wb2xpdGFuIFBrd3kvSGFwZXZpbGxlPGJyLz5Sb3V0ZSA5NTogTkIgdHJpcHMgZnJvbSBLaW5nIEFybm9sZCBTdCAmIENsYWlyZSBEci4gYXJlIGNhbmNlbGVkIGF0ICA4OjAzUE0sIDk6MjNQTSwgYW5kIDEwOjQzUE0uICAgCgpSb3V0ZSA5NTogU0IgdHJpcHMgZnJvbSBXZXN0IEVuZCBhcmUgY2FuY2VsZWQgYXQgODo0MFBNLCAxMDowMFBNLCBhbmQgMTE6MjBQTS48L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydC1kZXNjcmlwdGlvbic+RXhwaXJlIGF0OiAwOC8yMC8yMDIyIDExOjU2IFBNPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgPC9saT4gPGxpIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQnPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0LW5hbWUnPjE5NiBDaHVyY2gvVXBwZXIgUml2ZXJkYWxlL010Llppb248YnIvPkNpdHkgb2YgUml2ZXJkYWxlIFNwZWNpYWwgRXZlbnRzIHdpbGwgYmUgaG9zdGluZyBhIEdyZWVrIEdhdGhlcmluZyBvZiBTb3Jvcml0aWVzICYgRnJhdGVybml0aWVzIG9uIENodXJjaCBTdHJlZXQgYmV0d2VlbiBXaWxzb24gUm9hZCBhbmQgQmV0aHNhaWRhIFJkIFN0YXJ0aW5nIG9uIFNhdHVyZGF5LCBBdWd1c3QgMjAgdGhydSBTdW5kYXksIEF1Z3VzdCAyMSwgMjAyMiwgZnJvbSA4OjAwIGEubS4gdW50aWwgMjowMCBhLm0uPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQtZGVzY3JpcHRpb24nPkV4cGlyZSBhdDogMDgvMjEvMjAyMiAwMjowMCBBTTwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgIDwvbGk+IDxsaSBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0Jz4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydC1uYW1lJz41MCBEb25hbGQgRSBIb2xsb3dlbGwgUGt3eS48YnIvPkR1ZSB0bzogIEF0bGFudGEncyBGaW5lc3QgNUsKUm91dGUgIyA1MCwgZHVlIHRvIHdhbGssIHRyYXZlbGluZyBvbiBNYXJpZXR0YSBTdC4gYmV0d2VlbiBDZW50ZW5uaWFsIE9seW1waWMgYW5kIFRlY2guIFN0YXJ0aW5nIG9uIFNhdHVyZGF5LCBBdWd1c3QgMjAsIDIwMjIsIGZyb20gNzozMCBhLm0uIOKAkyB0byA5OjAwIGEubS4gRGVsYXlzIGFyZSBleHBlY3RlZC48L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydC1kZXNjcmlwdGlvbic+RXhwaXJlIGF0OiAwOC8yMS8yMDIyIDA5OjMwIEFNPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgPC9saT4gPGxpIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQnPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0LW5hbWUnPjE5OCBTb3V0aGxha2UgUGFya3dheTxici8+Q2l0eSBvZiBSaXZlcmRhbGUgU3BlY2lhbCBFdmVudHMgd2lsbCBiZSBob3N0aW5nIGEgR3JlZWsgR2F0aGVyaW5nIG9mIFNvcm9yaXRpZXMgJiBGcmF0ZXJuaXRpZXMgb24gQ2h1cmNoIFN0cmVldCBiZXR3ZWVuIFdpbHNvbiBSb2FkIGFuZCBCZXRoc2FpZGEgUmQgU3RhcnRpbmcgb24gU2F0dXJkYXksIEF1Z3VzdCAyMCB0aHJ1IFN1bmRheSwgQXVndXN0IDIxLCAyMDIyLCBmcm9tIDg6MDAgYS5tLiB1bnRpbCAyOjAwIGEubS48L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydC1kZXNjcmlwdGlvbic+RXhwaXJlIGF0OiAwOC8yMS8yMDIyIDAyOjAwIEFNPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgPC9saT4gPGxpIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQnPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0LW5hbWUnPjg5IEZsYXQgU2hvYWxzIFJvYWQvU2NvZmllbGQgUmFvZDxici8+Q2l0eSBvZiBSaXZlcmRhbGUgU3BlY2lhbCBFdmVudHMgd2lsbCBiZSBob3N0aW5nIGEgR3JlZWsgR2F0aGVyaW5nIG9mIFNvcm9yaXRpZXMgJiBGcmF0ZXJuaXRpZXMgb24gQ2h1cmNoIFN0cmVldCBiZXR3ZWVuIFdpbHNvbiBSb2FkIGFuZCBCZXRoc2FpZGEgUmQgU3RhcnRpbmcgb24gU2F0dXJkYXksIEF1Z3VzdCAyMCB0aHJ1IFN1bmRheSwgQXVndXN0IDIxLCAyMDIyLCBmcm9tIDg6MDAgYS5tLiB1bnRpbCAyOjAwIGEubS48L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydC1kZXNjcmlwdGlvbic+RXhwaXJlIGF0OiAwOC8yMS8yMDIyIDAyOjAwIEFNPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgPC9saT4gPGxpIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQnPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0LW5hbWUnPjE5NyBCYXR0bGUgQ3JlZWsgUm9hZDxici8+Q2l0eSBvZiBSaXZlcmRhbGUgU3BlY2lhbCBFdmVudHMgd2lsbCBiZSBob3N0aW5nIGEgR3JlZWsgR2F0aGVyaW5nIG9mIFNvcm9yaXRpZXMgJiBGcmF0ZXJuaXRpZXMgb24gQ2h1cmNoIFN0cmVldCBiZXR3ZWVuIFdpbHNvbiBSb2FkIGFuZCBCZXRoc2FpZGEgUmQgU3RhcnRpbmcgb24gU2F0dXJkYXksIEF1Z3VzdCAyMCB0aHJ1IFN1bmRheSwgQXVndXN0IDIxLCAyMDIyLCBmcm9tIDg6MDAgYS5tLiB1bnRpbCAyOjAwIGEubS48L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydC1kZXNjcmlwdGlvbic+RXhwaXJlIGF0OiAwOC8yMS8yMDIyIDAyOjAwIEFNPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgPC9saT4gPGxpIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQnPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0LW5hbWUnPjgxMyBBdGxhbnRhIFN0dWRlbnQgTW92ZW1lbnQgQm91bGV2YXJkPGJyLz5SZXJvdXRlIHJldmlzZWQgZHVlIHRvIHRoZSBjb25zdHJ1Y3Rpb24gc2hpZnQgbG9jYXRlZCBhdCAxMTM3IEZhaXIgU3QuIFNXLiBiZXR3ZWVuIDFzdCBTdC4gU1cgYW5kIFJvc3NlciBTdC4gU1cgc3RhcnRpbmcgb24gV2VkbmVzZGF5LCBBdWcgMTAsIDIwMjIsIHRocnUgT2N0b2JlciAxNCwgMjAyMiwgTW9uZGF5IC0gRnJpZGF5IDA5OjAwIGFtIHRvIDQ6MDAgcG0uPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQtZGVzY3JpcHRpb24nPkV4cGlyZSBhdDogMTAvMTQvMjAyMiAwNDowMCBQTTwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgIDwvbGk+IDxsaSBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0Jz4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydC1uYW1lJz4xMTUgQ292aW5ndG9uIEhpZ2h3YXkvU291dGggSGFpcnN0b24gUmQuPGJyLz5Sb3V0ZSAxMTU6IEVCIHRyaXAgZnJvbSBLZW5zaW5ndG9uIGlzIGNhbmNlbGVkIGF0ICAyOjMwIFBNLiAgIAoKUm91dGUgMTE1OiBXQiB0cmlwIGZyb20gQ292aW5ndG9uIEh3eSAmIENodXBwIFJkIGlzIGNhbmNlbGVkIGF0IDM6MDEgUE0uPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQtZGVzY3JpcHRpb24nPkV4cGlyZSBhdDogMDgvMjMvMjAyMiAwMzoxMSBQTTwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgIDwvbGk+DQogICAgICAgICAgICAgICAgICAgIDwvdWw+DQogICAgICAgICAgICAgICAgICAgIDxhIGhyZWY9J3NlcnZpY2UtdXBkYXRlcy5hc3B4JyB0YWJpbmRleD0nMCc+U2VlIGFsbCBzZXJ2aWNlIGFsZXJ0czwvYT4NCiAgICAgICAgICAgICAgICAgIDwvZGl2Pg0KICAgICAgICAgICAgICAgIDwvZGl2PjxkaXYgdGFiaW5kZXg9JzAnIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19faXRlbSc+DQogICAgICAgICAgICAgICAgICA8YSB0YWJpbmRleD0nLTEnIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fdHJpZ2dlcicgaHJlZj0nc2VydmljZS11cGRhdGVzLmFzcHgnPjxzcGFuIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQtbnVtYmVyJz41PC9zcGFuPjxzcGFuIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fdHJpZ2dlci1sYWJlbCBtaW5pLXNlcnZpY2UtdXBkYXRlc19fdHJpZ2dlci1sYWJlbC0tdHJhaW4nPlRyYWluIEFsZXJ0czwvc3Bhbj48L2E+PGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2NvbnRlbnQnPg0KICAgICAgICAgICAgICAgICAgICA8dWwgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydHMnPiA8bGkgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydCc+DQogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQtZGVzY3JpcHRpb24nPjxici8+R3JlZW4gbGluZSBzZXJ2aWNpbmcgZnJvbSBCYW5raGVhZCB0byBBc2hieSAoV0IgcGxhdGZvcm0gb25seSkuPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQtZGVzY3JpcHRpb24nPkV4cGlyZSBhdDogMDgvMjEvMjAyMiAwMjowMCBBTTwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgIDwvbGk+IDxsaSBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0Jz4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydC1kZXNjcmlwdGlvbic+PGJyLz5SZWQgbGluZSBzZXJ2aWNpbmcgZnJvbSBOb3J0aCBTcHJpbmdzIHRvIExpbmRiZXJnaCBDZW50ZXIuIEN1c3RvbWVycyBtYXkgdHJhbnNmZXIgYXQgTGluZGJlcmdoIENlbnRlciBmb3IgYWxsIFJlZCBsaW5lIGRlc3RpbmF0aW9ucy48L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydC1kZXNjcmlwdGlvbic+RXhwaXJlIGF0OiAwOC8yMS8yMDIyIDAyOjAwIEFNPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgPC9saT4gPGxpIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQnPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0LWRlc2NyaXB0aW9uJz48YnIvPlNpbmdsZSB0cmFja2luZyBpbiBlZmZlY3Qgb24gdGhlIEUvVyBsaW5lOiBBc2hieSBhbmQgVmluZSBDaXR5OyBFQiBwbGF0Zm9ybSBjbG9zZWQgKGFsbCB0cmFpbnMgd2lsbCBib2FyZCBmcm9tIHRoZSBXQiBwbGF0Zm9ybSkuPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQtZGVzY3JpcHRpb24nPkV4cGlyZSBhdDogMDgvMjEvMjAyMiAwMjowMCBBTTwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgIDwvbGk+IDxsaSBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0Jz4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydC1kZXNjcmlwdGlvbic+PGJyLz5TaW5nbGUgdHJhY2tpbmcgb24gdGhlIE4vUyBsaW5lOiBBcnRzIENlbnRlcjsgTkIgcGxhdGZvcm0gc2lkZSBjbG9zZWQgKGFsbCB0cmFpbnMgd2lsbCBib2FyZCBmcm9tIHRoZSBTQiBwbGF0Zm9ybSBzaWRlKS48L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydC1kZXNjcmlwdGlvbic+RXhwaXJlIGF0OiAwOC8yMS8yMDIyIDAyOjAwIEFNPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgPC9saT4gPGxpIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQnPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0LWRlc2NyaXB0aW9uJz48YnIvPlNlbGVjdCB0cmFpbiB0cmlwcyBtYXkgYmUgY2FuY2VsZWQsIGJlY2F1c2Ugb2Ygc3RhZmZpbmcgc2hvcnRhZ2VzLiBQbGVhc2UgYWxsb3cgZXh0cmEgdGltZSBmb3IgeW91ciB0cmF2ZWwuIFBhdHJvbnMgbWF5IHJlZ2lzdGVyIGZvciBzZXJ2aWNlIGFsZXJ0cyB0byBiZSBpbmZvcm1lZCBvZiBmdXR1cmUgdHJhaW4gY2FuY2VsbGF0aW9ucy4gaXRzbWFydGEuY29tL3NlcnZpY2UtdXBkYXRlczwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0LWRlc2NyaXB0aW9uJz5FeHBpcmUgYXQ6IDA4LzIxLzIwMjIgMDY6MDAgQU08L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICA8L2xpPg0KICAgICAgICAgICAgICAgICAgICA8L3VsPg0KICAgICAgICAgICAgICAgICAgICA8YSBocmVmPSdzZXJ2aWNlLXVwZGF0ZXMuYXNweCcgdGFiaW5kZXg9JzAnID5TZWUgYWxsIHNlcnZpY2UgYWxlcnRzPC9hPg0KICAgICAgICAgICAgICAgICAgPC9kaXY+DQogICAgICAgICAgICAgICAgPC9kaXY+PGRpdiB0YWJpbmRleD0nMCcgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19pdGVtJz4NCiAgICAgICAgICAgICAgICAgIDxhIHRhYmluZGV4PSctMScgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX190cmlnZ2VyJyBocmVmPSdzZXJ2aWNlLXVwZGF0ZXMuYXNweCc+PHNwYW4gY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX190cmlnZ2VyLWxhYmVsIG1pbmktc2VydmljZS11cGRhdGVzX190cmlnZ2VyLWxhYmVsLS1zdHJlZXRjYXInPlN0cmVldGNhciBBbGVydHM8L3NwYW4+PC9hPjxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19jb250ZW50Jz4NCiAgICAgICAgICAgICAgICAgICAgPHVsIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnRzJz4gPGxpIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQnPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0LWRlc2NyaXB0aW9uJz48YnIvPk5vIHNlcnZpY2UgYWR2aXNvcmllcyBhdCB0aGlzIHRpbWU8L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydC1kZXNjcmlwdGlvbic+PC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgPC9saT4NCiAgICAgICAgICAgICAgICAgICAgPC91bD4NCiAgICAgICAgICAgICAgICAgICAgPGEgaHJlZj0nc2VydmljZS11cGRhdGVzLmFzcHgnIHRhYmluZGV4PScwJyA+U2VlIGFsbCBzZXJ2aWNlIGFsZXJ0czwvYT4NCiAgICAgICAgICAgICAgICAgIDwvZGl2Pg0KICAgICAgICAgICAgICAgIDwvZGl2PjxkaXYgdGFiaW5kZXg9JzAnIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19faXRlbSc+DQogICAgICAgICAgICAgICAgICA8YSB0YWJpbmRleD0nLTEnIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fdHJpZ2dlcicgaHJlZj0nc2VydmljZS11cGRhdGVzLmFzcHgnPjxzcGFuIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQtbnVtYmVyJz4yPC9zcGFuPjxzcGFuIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fdHJpZ2dlci1sYWJlbCBtaW5pLXNlcnZpY2UtdXBkYXRlc19fdHJpZ2dlci1sYWJlbC0tZXNjZWxlJz5Fc2NhbGF0b3IgRWxldmF0b3I8L3NwYW4+PC9hPjxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19jb250ZW50Jz4NCiAgICAgICAgICAgICAgICAgICAgPHVsIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnRzJz4gPGxpIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQnPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0LWRlc2NyaXB0aW9uJz48YnIvPktlbnNpbmd0b24sIEVsZXZhdG9yIDEgKGNvbmNvdXJzZSB0byBwbGF0Zm9ybSkgaXMgb3V0IG9mIHNlcnZpY2UgZm9yIHJlbm92YXRpb24uIE1vYmlsaXR5IHNodXR0bGUgc2VydmljZSBwcm92aWRlZCBmcm9tIEtlbnNpbmd0b24gdG8gSW5kaWFuIENyZWVrLjwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0LWRlc2NyaXB0aW9uJz5FeHBpcmUgYXQ6IDA4LzIxLzIwMjIgMDY6MDAgQU08L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICA8L2xpPiA8bGkgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydCc+DQogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQtZGVzY3JpcHRpb24nPjxici8+UGVhY2h0cmVlIENlbnRlciwgRWxldmF0b3IgMyAobm9ydGggZW5kIG9mIHBsYXRmb3JtIHRvIG5vcnRoIGNvbmNvdXJzZSkgaXMgb3V0IG9mIHNlcnZpY2UgZm9yIHJlbm92YXRpb24uIFVzZSBlbGV2YXRvciBvbiBzb3V0aCBlbmQgb2YgcGxhdGZvcm0uPC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQtZGVzY3JpcHRpb24nPkV4cGlyZSBhdDogMDgvMjEvMjAyMiAwNjowMCBBTTwvZGl2Pg0KICAgICAgICAgICAgICAgICAgICAgIDwvbGk+DQogICAgICAgICAgICAgICAgICAgIDwvdWw+DQogICAgICAgICAgICAgICAgICAgIDxhIGhyZWY9J3NlcnZpY2UtdXBkYXRlcy5hc3B4JyB0YWJpbmRleD0nMCcgPlNlZSBhbGwgc2VydmljZSBhbGVydHM8L2E+DQogICAgICAgICAgICAgICAgICA8L2Rpdj4NCiAgICAgICAgICAgICAgICA8L2Rpdj48ZGl2IHRhYmluZGV4PScwJyBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2l0ZW0nPg0KICAgICAgICAgICAgICAgICAgPGEgdGFiaW5kZXg9Jy0xJyBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX3RyaWdnZXInIGhyZWY9J3NlcnZpY2UtdXBkYXRlcy5hc3B4Jz48c3BhbiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX3RyaWdnZXItbGFiZWwgbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX3RyaWdnZXItbGFiZWwtLXJlc3Ryb29tJz5SZXN0cm9vbSBBbGVydHM8L3NwYW4+PC9hPjxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19jb250ZW50Jz4NCiAgICAgICAgICAgICAgICAgICAgPHVsIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnRzJz4gPGxpIGNsYXNzPSdtaW5pLXNlcnZpY2UtdXBkYXRlc19fYWxlcnQnPg0KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0nbWluaS1zZXJ2aWNlLXVwZGF0ZXNfX2FsZXJ0LWRlc2NyaXB0aW9uJz48YnIvPk5vIHNlcnZpY2UgYWR2aXNvcmllcyBhdCB0aGlzIHRpbWU8L2Rpdj4NCiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9J21pbmktc2VydmljZS11cGRhdGVzX19hbGVydC1kZXNjcmlwdGlvbic+PC9kaXY+DQogICAgICAgICAgICAgICAgICAgICAgPC9saT4NCiAgICAgICAgICAgICAgICAgICAgPC91bD4NCiAgICAgICAgICAgICAgICAgICAgPGEgaHJlZj0nc2VydmljZS11cGRhdGVzLmFzcHgnIHRhYmluZGV4PScwJyA+U2VlIGFsbCBzZXJ2aWNlIGFsZXJ0czwvYT4NCiAgICAgICAgICAgICAgICAgIDwvZGl2Pg0KICAgICAgICAgICAgICAgIDwvZGl2PjwvZGl2PmQCDQ9kFgICAw8PFgYeCV9kYXRhSXRlbTLtQwABAAAA/////wEAAAAAAAAADAIAAABcRWt0cm9uLkNtcy5GcmFtZXdvcmsuVUksIFZlcnNpb249OS4xLjAuMTg0LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTU1OWEyYzRmYTIxZTYzYmUFAQAAAChFa3Ryb24uQ21zLkZyYW1ld29yay5VSS5Nb2RlbHMuTWVudU1vZGVsBQAAABM8SWQ+a19fQmFja2luZ0ZpZWxkGTxNZW51TGlzdD5rX19CYWNraW5nRmllbGQWPEl0ZW1zPmtfX0JhY2tpbmdGaWVsZBY8RXJyb3I+a19fQmFja2luZ0ZpZWxkGDxDYW5FZGl0PmtfX0JhY2tpbmdGaWVsZAADBAEACaQBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tFa3Ryb24uQ21zLk9yZ2FuaXphdGlvbi5NZW51QmFzZURhdGEsIEVrdHJvbi5DbXMuQ29udHJhY3RzLCBWZXJzaW9uPTkuMS4wLjE4NCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj01NTlhMmM0ZmEyMWU2M2JlXV0vRWt0cm9uLkNtcy5GcmFtZXdvcmsuVUkuVHJlZS5UcmVlTm9kZUNvbGxlY3Rpb24CAAAAAQIAAAAjAAAAAAAAAAkDAAAACQQAAAAKAAwFAAAAWUVrdHJvbi5DbXMuQ29udHJhY3RzLCBWZXJzaW9uPTkuMS4wLjE4NCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj01NTlhMmM0ZmEyMWU2M2JlBAMAAACkAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbRWt0cm9uLkNtcy5Pcmdhbml6YXRpb24uTWVudUJhc2VEYXRhLCBFa3Ryb24uQ21zLkNvbnRyYWN0cywgVmVyc2lvbj05LjEuMC4xODQsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49NTU5YTJjNGZhMjFlNjNiZV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAmRWt0cm9uLkNtcy5Pcmdhbml6YXRpb24uTWVudUJhc2VEYXRhW10FAAAACAgJBgAAAAEAAAABAAAABQQAAAAvRWt0cm9uLkNtcy5GcmFtZXdvcmsuVUkuVHJlZS5UcmVlTm9kZUNvbGxlY3Rpb24DAAAADUxpc3RgMStfaXRlbXMMTGlzdGAxK19zaXplD0xpc3RgMStfdmVyc2lvbgQAAChFa3Ryb24uQ21zLkZyYW1ld29yay5VSS5UcmVlLklUcmVlTm9kZVtdAgAAAAgIAgAAAAkHAAAABAAAAAQAAAAHBgAAAAABAAAABAAAAAQkRWt0cm9uLkNtcy5Pcmdhbml6YXRpb24uTWVudUJhc2VEYXRhBQAAAAkIAAAADQMHBwAAAAABAAAABAAAAAQmRWt0cm9uLkNtcy5GcmFtZXdvcmsuVUkuVHJlZS5JVHJlZU5vZGUCAAAACQkAAAAJCgAAAAkLAAAACQwAAAAMDQAAAFZFa3Ryb24uQ21zLkNvbW1vbiwgVmVyc2lvbj05LjEuMC4xODQsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49NTU5YTJjNGZhMjFlNjNiZQUIAAAAI0VrdHJvbi5DbXMuT3JnYW5pemF0aW9uLlN1Yk1lbnVEYXRhEwAAABc8SXRlbUlkPmtfX0JhY2tpbmdGaWVsZBk8UGFyZW50SWQ+a19fQmFja2luZ0ZpZWxkIk1lbnVEYXRhKzxUZW1wbGF0ZT5rX19CYWNraW5nRmllbGQiTWVudURhdGErPEZvbGRlcklkPmtfX0JhY2tpbmdGaWVsZCtNZW51RGF0YSs8QXNzb2NpYXRlZEZvbGRlcnM+a19fQmFja2luZ0ZpZWxkLU1lbnVEYXRhKzxBc3NvY2lhdGVkVGVtcGxhdGVzPmtfX0JhY2tpbmdGaWVsZCNNZW51RGF0YSs8SW1hZ2VQYXRoPmtfX0JhY2tpbmdGaWVsZCdNZW51RGF0YSs8SW1hZ2VPdmVycmlkZT5rX19CYWNraW5nRmllbGQiTWVudUJhc2VEYXRhKzxUZXh0PmtfX0JhY2tpbmdGaWVsZCJNZW51QmFzZURhdGErPFR5cGU+a19fQmFja2luZ0ZpZWxkIk1lbnVCYXNlRGF0YSs8SHJlZj5rX19CYWNraW5nRmllbGQkTWVudUJhc2VEYXRhKzxUYXJnZXQ+a19fQmFja2luZ0ZpZWxkKE1lbnVCYXNlRGF0YSs8QW5jZXN0b3JJZD5rX19CYWNraW5nRmllbGQpTWVudUJhc2VEYXRhKzxEZXNjcmlwdGlvbj5rX19CYWNraW5nRmllbGQlTWVudUJhc2VEYXRhKzxPcmRpbmFsPmtfX0JhY2tpbmdGaWVsZCNNZW51QmFzZURhdGErPEl0ZW1zPmtfX0JhY2tpbmdGaWVsZCdNZW51QmFzZURhdGErPEltYWdlUGF0aD5rX19CYWNraW5nRmllbGQrTWVudUJhc2VEYXRhKzxJbWFnZU92ZXJyaWRlPmtfX0JhY2tpbmdGaWVsZB1DbXNEYXRhYDErPElkPmtfX0JhY2tpbmdGaWVsZAAAAQADAwEAAQQBAQABAAMBAAAJCQl+U3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tTeXN0ZW0uSW50NjQsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1df1N5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0BLEVrdHJvbi5DbXMuQ29tbW9uLkVrRW51bWVyYXRpb24rTWVudUl0ZW1UeXBlDQAAAAkIpQFTeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW0VrdHJvbi5DbXMuT3JnYW5pemF0aW9uLklNZW51SXRlbURhdGEsIEVrdHJvbi5DbXMuQ29udHJhY3RzLCBWZXJzaW9uPTkuMS4wLjE4NCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj01NTlhMmM0ZmEyMWU2M2JlXV0BCQUAAAAjAAAAAAAAAAsAAAAAAAAABg4AAAAAAAAAAAAAAAAJDwAAAAkQAAAACQ4AAAABBhIAAAASQm9hcmQgb2YgRGlyZWN0b3JzBe3///8sRWt0cm9uLkNtcy5Db21tb24uRWtFbnVtZXJhdGlvbitNZW51SXRlbVR5cGUBAAAAB3ZhbHVlX18ACA0AAAAEAAAABhQAAAASL2JvZC1vdmVydmlldy5hc3B4BhUAAAAFX3NlbGYGAAAAAAAAAAkOAAAAAgAAAAkXAAAACgAjAAAAAAAAAAwYAAAAbkVrdHJvbi5DbXMuRnJhbWV3b3JrLlVJLkNvbnRyb2xzLkVrdHJvblVJLCBWZXJzaW9uPTkuMS4wLjE4NCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj01NTlhMmM0ZmEyMWU2M2JlBQkAAAA2RWt0cm9uLkNtcy5GcmFtZXdvcmsuVUkuQ29udHJvbHMuRWt0cm9uVUkuTWVudVRyZWVOb2RlKAAAABw8RGVzY3JpcHRpb24+a19fQmFja2luZ0ZpZWxkHjxJbWFnZU92ZXJyaWRlPmtfX0JhY2tpbmdGaWVsZBo8SW1hZ2VQYXRoPmtfX0JhY2tpbmdGaWVsZBg8T3JkaW5hbD5rX19CYWNraW5nRmllbGQXPFRhcmdldD5rX19CYWNraW5nRmllbGQXPEl0ZW1JZD5rX19CYWNraW5nRmllbGQZPFRlbXBsYXRlPmtfX0JhY2tpbmdGaWVsZCI8QXNzb2NpYXRlZEZvbGRlcnM+a19fQmFja2luZ0ZpZWxkJDxBc3NvY2lhdGVkVGVtcGxhdGVzPmtfX0JhY2tpbmdGaWVsZBk8Rm9sZGVySWQ+a19fQmFja2luZ0ZpZWxkHDxDb250ZW50VHlwZT5rX19CYWNraW5nRmllbGQZPExpbmtUeXBlPmtfX0JhY2tpbmdGaWVsZBJUcmVlTm9kZStfY2hpbGRyZW4VVHJlZU5vZGUrX2hhc0NoaWxkcmVuG1RyZWVOb2RlK19jaGlsZHJlbk5vdExvYWRlZBxUcmVlTm9kZSs8SWQ+a19fQmFja2luZ0ZpZWxkIlRyZWVOb2RlKzxQYXJlbnRJZD5rX19CYWNraW5nRmllbGQgVHJlZU5vZGUrPFJvb3RJZD5rX19CYWNraW5nRmllbGQeVHJlZU5vZGUrPFBhdGg+a19fQmFja2luZ0ZpZWxkH1RyZWVOb2RlKzxMZXZlbD5rX19CYWNraW5nRmllbGQeVHJlZU5vZGUrPFJhbms+a19fQmFja2luZ0ZpZWxkKVRyZWVOb2RlKzxDYW5IYXZlQ2hpbGRyZW4+a19fQmFja2luZ0ZpZWxkHlRyZWVOb2RlKzxUZXh0PmtfX0JhY2tpbmdGaWVsZB5UcmVlTm9kZSs8VHlwZT5rX19CYWNraW5nRmllbGQhVHJlZU5vZGUrPFN1YlR5cGU+a19fQmFja2luZ0ZpZWxkIFRyZWVOb2RlKzxBY3Rpb24+a19fQmFja2luZ0ZpZWxkIVRyZWVOb2RlKzxFbmFibGVkPmtfX0JhY2tpbmdGaWVsZCFUcmVlTm9kZSs8VmlzaWJsZT5rX19CYWNraW5nRmllbGQiVHJlZU5vZGUrPFNlbGVjdGVkPmtfX0JhY2tpbmdGaWVsZB5UcmVlTm9kZSs8TW9yZT5rX19CYWNraW5nRmllbGQoVHJlZU5vZGUrPE5leHRQYWdlTnVtYmVyPmtfX0JhY2tpbmdGaWVsZCJUcmVlTm9kZSs8RXhwYW5kZWQ+a19fQmFja2luZ0ZpZWxkJVRyZWVOb2RlKzxDb21tYW5kTmFtZT5rX19CYWNraW5nRmllbGQpVHJlZU5vZGUrPENvbW1hbmRBcmd1bWVudD5rX19CYWNraW5nRmllbGQnVHJlZU5vZGUrPFNlbGVjdGlvbk1vZGU+a19fQmFja2luZ0ZpZWxkJVRyZWVOb2RlKzxOYXZpZ2F0ZVVybD5rX19CYWNraW5nRmllbGQnVHJlZU5vZGUrPE9uQ2xpZW50Q2xpY2s+a19fQmFja2luZ0ZpZWxkLVRyZWVOb2RlKzxDbGlja0NhdXNlc1Bvc3RiYWNrPmtfX0JhY2tpbmdGaWVsZCBUcmVlTm9kZSs8Q3VzdG9tPmtfX0JhY2tpbmdGaWVsZCJUcmVlTm9kZSs8VG9wTGV2ZWw+a19fQmFja2luZ0ZpZWxkAQABAAEBAQMDAAEBBAAAAQEBAQAAAAEBAQEAAAAAAAABAQQBAQADAAEIflN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbU3lzdGVtLkludDY0LCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldXX9TeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW1N5c3RlbS5TdHJpbmcsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dCS9Fa3Ryb24uQ21zLkZyYW1ld29yay5VSS5UcmVlLlRyZWVOb2RlQ29sbGVjdGlvbgIAAAABAQgJAQEBAQEIAS5Fa3Ryb24uQ21zLkZyYW1ld29yay5VSS5UcmVlLlRyZWVTZWxlY3Rpb25Nb2RlAgAAAAEcU3lzdGVtLkNvbGxlY3Rpb25zLkhhc2h0YWJsZQEYAAAACQ4AAAAACQ4AAAABAAAACRUAAAAGGwAAAAEwCgoKAAAAAAAAAAAKCgkcAAAAAAAGHQAAAAU4NnwzNQYeAAAAAjM1Bh8AAAACMzUGIAAAAAUzNV44NgEAAAACAAAAAAAAAAAGIQAAAAhPdmVydmlldwYiAAAABExpbmsKCgEBAAAAAAAAAAoKBd3///8uRWt0cm9uLkNtcy5GcmFtZXdvcmsuVUkuVHJlZS5UcmVlU2VsZWN0aW9uTW9kZQEAAAAHdmFsdWVfXwAIAgAAAAAAAAAGJAAAABIvYm9kLW92ZXJ2aWV3LmFzcHgKAAoAAQoAAAAJAAAACQ4AAAAACQ4AAAACAAAACRUAAAAGJwAAAAMzNDMKCgoAAAAAAAAAAAYoAAAAB0NvbnRlbnQGKQAAAAlRdWlja0xpbmsJKgAAAAAABisAAAAGMjM2fDM1BiwAAAACMzUJHwAAAAYuAAAABjM1XjIzNgEAAAADAAAAAAAAAAAGLwAAABZCb2FyZCBNZWV0aW5nIFNjaGVkdWxlBjAAAAAHQ29udGVudAoKAQEBAAAAAAABCgoBz////93///8AAAAABjIAAAAWL21lZXRpbmctc2NoZWR1bGUuYXNweAoACgABCwAAAAkAAAAJDgAAAAAJDgAAAAMAAAAJFQAAAAY1AAAAATAKCgoAAAAAAAAAAAoKCTYAAAAAAAY3AAAABjMxOHwzNQY4AAAAAjM1CR8AAAAGOgAAAAYzNV4zMTgBAAAABAAAAAAAAAAABjsAAAAPQm9hcmQgRG9jdW1lbnRzCSIAAAAKCgEBAAAAAAAAAAoKAcP////d////AAAAAAY+AAAAFS9ib2FyZC1kb2N1bWVudHMuYXNweAoACgABDAAAAAkAAAAJDgAAAAAJDgAAAAQAAAAJFQAAAAZBAAAAATAKCgoAAAAAAAAAAAoKCUIAAAAAAAZDAAAABjI1M3wzNQZEAAAAAjM1CR8AAAAGRgAAAAYzNV4yNTMBAAAABQAAAAAAAAAABkcAAAAYQm9hcmQgRG9jdW1lbnRzIEFyY2hpdmVzCSIAAAAKCgEBAAAAAAAAAAoKAbf////d////AAAAAAZKAAAAHi9ib2FyZC1kb2N1bWVudHMtYXJjaGl2ZXMuYXNweAoACgAEDwAAAH5TeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW1N5c3RlbS5JbnQ2NCwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0DAAAABl9pdGVtcwVfc2l6ZQhfdmVyc2lvbgcAAAkICAlLAAAAAAAAAAAAAAAEEAAAAH9TeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0YDFbW1N5c3RlbS5TdHJpbmcsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24GAAAICAlMAAAAAAAAAAAAAAAEFwAAAKUBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tFa3Ryb24uQ21zLk9yZ2FuaXphdGlvbi5JTWVudUl0ZW1EYXRhLCBFa3Ryb24uQ21zLkNvbnRyYWN0cywgVmVyc2lvbj05LjEuMC4xODQsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49NTU5YTJjNGZhMjFlNjNiZV1dAwAAAAZfaXRlbXMFX3NpemUIX3ZlcnNpb24EAAAnRWt0cm9uLkNtcy5Pcmdhbml6YXRpb24uSU1lbnVJdGVtRGF0YVtdBQAAAAgICU0AAAAEAAAABAAAAAEcAAAABAAAAAlOAAAAAAAAAAAAAAABKgAAAAQAAAAJTgAAAAAAAAAAAAAAATYAAAAEAAAACU4AAAAAAAAAAAAAAAFCAAAABAAAAAlOAAAAAAAAAAAAAAAPSwAAAAAAAAAJEUwAAAAAAAAAB00AAAAAAQAAAAQAAAAEJUVrdHJvbi5DbXMuT3JnYW5pemF0aW9uLklNZW51SXRlbURhdGEFAAAACU8AAAAJUAAAAAlRAAAACVIAAAAHTgAAAAABAAAAAAAAAAQmRWt0cm9uLkNtcy5GcmFtZXdvcmsuVUkuVHJlZS5JVHJlZU5vZGUCAAAABU8AAAAoRWt0cm9uLkNtcy5Pcmdhbml6YXRpb24uTGlua01lbnVJdGVtRGF0YQ0AAAAkTWVudUl0ZW1EYXRhKzxJdGVtSWQ+a19fQmFja2luZ0ZpZWxkJk1lbnVJdGVtRGF0YSs8UGFyZW50SWQ+a19fQmFja2luZ0ZpZWxkIk1lbnVCYXNlRGF0YSs8VGV4dD5rX19CYWNraW5nRmllbGQiTWVudUJhc2VEYXRhKzxUeXBlPmtfX0JhY2tpbmdGaWVsZCJNZW51QmFzZURhdGErPEhyZWY+a19fQmFja2luZ0ZpZWxkJE1lbnVCYXNlRGF0YSs8VGFyZ2V0PmtfX0JhY2tpbmdGaWVsZChNZW51QmFzZURhdGErPEFuY2VzdG9ySWQ+a19fQmFja2luZ0ZpZWxkKU1lbnVCYXNlRGF0YSs8RGVzY3JpcHRpb24+a19fQmFja2luZ0ZpZWxkJU1lbnVCYXNlRGF0YSs8T3JkaW5hbD5rX19CYWNraW5nRmllbGQjTWVudUJhc2VEYXRhKzxJdGVtcz5rX19CYWNraW5nRmllbGQnTWVudUJhc2VEYXRhKzxJbWFnZVBhdGg+a19fQmFja2luZ0ZpZWxkK01lbnVCYXNlRGF0YSs8SW1hZ2VPdmVycmlkZT5rX19CYWNraW5nRmllbGQdQ21zRGF0YWAxKzxJZD5rX19CYWNraW5nRmllbGQAAAEEAQEAAQADAQAACQksRWt0cm9uLkNtcy5Db21tb24uRWtFbnVtZXJhdGlvbitNZW51SXRlbVR5cGUNAAAACQilAVN5c3RlbS5Db2xsZWN0aW9ucy5HZW5lcmljLkxpc3RgMVtbRWt0cm9uLkNtcy5Pcmdhbml6YXRpb24uSU1lbnVJdGVtRGF0YSwgRWt0cm9uLkNtcy5Db250cmFjdHMsIFZlcnNpb249OS4xLjAuMTg0LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTU1OWEyYzRmYTIxZTYzYmVdXQEJBQAAAAAAAAAAAAAAIwAAAAAAAAAJIQAAAAGs////7f///wUAAAAGVQAAABFib2Qtb3ZlcnZpZXcuYXNweAkVAAAABgAAAAAAAAAJDgAAAAEAAAAJWAAAAAkOAAAAAFYAAAAAAAAABVAAAAArRWt0cm9uLkNtcy5Pcmdhbml6YXRpb24uQ29udGVudE1lbnVJdGVtRGF0YQ8AAAAZPExpbmtUeXBlPmtfX0JhY2tpbmdGaWVsZB48Q29udGVudFR5cGVJZD5rX19CYWNraW5nRmllbGQkTWVudUl0ZW1EYXRhKzxJdGVtSWQ+a19fQmFja2luZ0ZpZWxkJk1lbnVJdGVtRGF0YSs8UGFyZW50SWQ+a19fQmFja2luZ0ZpZWxkIk1lbnVCYXNlRGF0YSs8VGV4dD5rX19CYWNraW5nRmllbGQiTWVudUJhc2VEYXRhKzxUeXBlPmtfX0JhY2tpbmdGaWVsZCJNZW51QmFzZURhdGErPEhyZWY+a19fQmFja2luZ0ZpZWxkJE1lbnVCYXNlRGF0YSs8VGFyZ2V0PmtfX0JhY2tpbmdGaWVsZChNZW51QmFzZURhdGErPEFuY2VzdG9ySWQ+a19fQmFja2luZ0ZpZWxkKU1lbnVCYXNlRGF0YSs8RGVzY3JpcHRpb24+a19fQmFja2luZ0ZpZWxkJU1lbnVCYXNlRGF0YSs8T3JkaW5hbD5rX19CYWNraW5nRmllbGQjTWVudUJhc2VEYXRhKzxJdGVtcz5rX19CYWNraW5nRmllbGQnTWVudUJhc2VEYXRhKzxJbWFnZVBhdGg+a19fQmFja2luZ0ZpZWxkK01lbnVCYXNlRGF0YSs8SW1hZ2VPdmVycmlkZT5rX19CYWNraW5nRmllbGQdQ21zRGF0YWAxKzxJZD5rX19CYWNraW5nRmllbGQEAAAAAQQBAQABAAMBAAAwRWt0cm9uLkNtcy5Db21tb24uRWtFbnVtZXJhdGlvbitNZW51SXRlbUxpbmtUeXBlDQAAAAgJCSxFa3Ryb24uQ21zLkNvbW1vbi5Fa0VudW1lcmF0aW9uK01lbnVJdGVtVHlwZQ0AAAAJCKUBU3lzdGVtLkNvbGxlY3Rpb25zLkdlbmVyaWMuTGlzdGAxW1tFa3Ryb24uQ21zLk9yZ2FuaXphdGlvbi5JTWVudUl0ZW1EYXRhLCBFa3Ryb24uQ21zLkNvbnRyYWN0cywgVmVyc2lvbj05LjEuMC4xODQsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49NTU5YTJjNGZhMjFlNjNiZV1dAQkFAAAABab///8wRWt0cm9uLkNtcy5Db21tb24uRWtFbnVtZXJhdGlvbitNZW51SXRlbUxpbmtUeXBlAQAAAAd2YWx1ZV9fAAgNAAAAAAAAAAEAAABXAQAAAAAAACMAAAAAAAAACS8AAAABpP///+3///8BAAAACTIAAAAJFQAAAAYAAAAAAAAACQ4AAAACAAAACWAAAAAJDgAAAADsAAAAAAAAAAFRAAAATwAAAAAAAAAAAAAAIwAAAAAAAAAJOwAAAAGd////7f///wUAAAAGZAAAABRib2FyZC1kb2N1bWVudHMuYXNweAkVAAAABgAAAAAAAAAJDgAAAAMAAAAJZwAAAAkOAAAAAD4BAAAAAAAAAVIAAABPAAAAAAAAAAAAAAAjAAAAAAAAAAlHAAAAAZb////t////BQAAAAZrAAAAHWJvYXJkLWRvY3VtZW50cy1hcmNoaXZlcy5hc3B4CRUAAAAGAAAAAAAAAAkOAAAABAAAAAluAAAACQ4AAAAA/QAAAAAAAAABWAAAABcAAAAJcAAAAAAAAAAAAAAAAWAAAAAXAAAACXAAAAAAAAAAAAAAAAFnAAAAFwAAAAlwAAAAAAAAAAAAAAABbgAAABcAAAAJcAAAAAAAAAAAAAAAB3AAAAAAAQAAAAAAAAAEJUVrdHJvbi5DbXMuT3JnYW5pemF0aW9uLklNZW51SXRlbURhdGEFAAAACx4LXyFEYXRhQm91bmRnHgtfIUl0ZW1Db3VudAIEZBYCZg9kFgICAQ9kFgICAQ9kFghmD2QWBGYPFQEJIGNsYXNzPSIiZAIBDw8WCB4EVGV4dAUIT3ZlcnZpZXceC05hdmlnYXRlVXJsBRIvYm9kLW92ZXJ2aWV3LmFzcHgeCENzc0NsYXNzZR4EXyFTQgICFgQeDWFyaWEtZXhwYW5kZWRlHgVjbGFzc2VkAgEPZBYEZg8VAQkgY2xhc3M9IiJkAgEPDxYIHwQFFkJvYXJkIE1lZXRpbmcgU2NoZWR1bGUfBQUWL21lZXRpbmctc2NoZWR1bGUuYXNweB8GZR8HAgIWBB8IZR8JBQppcy1jdXJyZW50ZAICD2QWBGYPFQEJIGNsYXNzPSIiZAIBDw8WCB8EBQ9Cb2FyZCBEb2N1bWVudHMfBQUVL2JvYXJkLWRvY3VtZW50cy5hc3B4HwZlHwcCAhYEHwhlHwllZAIDD2QWBGYPFQEJIGNsYXNzPSIiZAIBDw8WCB8EBRhCb2FyZCBEb2N1bWVudHMgQXJjaGl2ZXMfBQUeL2JvYXJkLWRvY3VtZW50cy1hcmNoaXZlcy5hc3B4HwZlHwcCAhYEHwhlHwllZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAQUNY3RsMDAkQnV0dG9uMfu/u/ssViX877nwK12QWxO7o+QQ//hoZgALcooApwwD" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+
+<script src="/WebResource.axd?d=Ib0ODi_Og04MNSp0dsnMc1Bo_fHzuJTsmP9AyW4JgnlYsnZl4G1pY6ICZK7tjf3nq92ADw6EVSDWBvoJhDkqqd6P12aogBmvZhbV0VYgEVY1&amp;t=637811549229275428" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="53E8EA46" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAOYYZldvree5YerGK4umVt9U7uouiInfnrxZOBMWZZMm59UXI7RwI+ukRHnd+AlDZ4zzzYcWbI/VYGr+x4sq3MeHWCjUz12/KSFCz7RoKC9Fw==" />
+</div>
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+  <script>
+      (function (b, o, i, l, e, r) {
+          b.GoogleAnalyticsObject = l; b[l] || (b[l] =
+          function () { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date;
+          e = o.createElement(i); r = o.getElementsByTagName(i)[0];
+          e.src = '//www.google-analytics.com/analytics.js';
+          r.parentNode.insertBefore(e, r)
+      }(window, document, 'script', 'ga'));
+      ga('create', 'UA-2986671-4'); ga('send', 'pageview');
+    </script>
+  <header class="site-header">
+    <!--Service interuptor for temporary outage -->
+    <div id="ctl00_ContentBlock1">
+	<style>
+    .cool {
+        color: white
+    }
+</style>
+<div class="interrupt" style="text-align: center;"><strong>Rider Alert:</strong>                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                      
+    <br/>                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                     
+                                                                
+    <!--single tracking --><span class="interrupt__title">Saturday &amp; Sunday, August 20 &amp; 21: Gold/Red
+lines operate on special 20-minute schedules. <br/>Blue/Green lines operate on
+special 24-minute schedules<b></b>. 
+
+   | <a title="Learn More more about single tracking" target="_self" href="special-rail-schedules.aspx">Learn more</a>
+    
+      <hr/>The real-time bus tracking feature on the MARTA On the Go app will be temporarily unavailable on Saturday, August 20,<br/> from 2 am to 4 pm, due to a system upgrade. We apologize for this inconvenience. 
+       
+ 
+ 
+                                                                                                                
+        
+        
+        
+             
+              
+    
+        
+        
+         
+    
+    
+    
+    
+    
+    
+    <!-- streetcar --><!--<span class="interrupt__title">Thu.
+8/11: Streetcar service remains suspended due to a downed power line. <br/>Shuttle
+vans are providing service to each Streetcar stop<b></b>. --><!-- Holiday schedule --><!--Mon. July 4: Buses and the Streetcar operate on Saturday schedules. All rail lines operate on special schedules with 4 a.m. start times. 
+    <br/>Several buses will be detoured during the Peachtree Road Race & City of Decatur Fireworks. Learn more:  
+    <a title="Learn More more"  target="_self"                                               href="july4th.aspx" data-ektron-url="july4th.aspx"                                                                                         >July 4th Events</a> | 
+    <a title="Learn More more"  target="_self"                                               href="july-4th-bus-reroutes.aspx" data-ektron-url="july-4th-bus-reroutes.aspx"                                                                                         >July 4th Bus Reroutes</a> --><!-- Service changes --><!--<span class="interrupt__title"><b> </b>Bus service changes are in effect as of Apr. 23. | <a title="Learn More more about single tracking" target="_self"                                                                                           href="servicechanges.aspx" data-ektron-url="servicechanges.aspx"                                                                                                                                                                                   >Learn more</a></span>  --><!-- Holiday schedule --><!-- <hr/>                <span class="interrupt__title">Monday, May 30: Buses, trains, and the Streetcar operate on Sunday schedules in observance of Memorial Day. |  <a title="Learn More more about Holiday schedules" target="_self"                                                                         href="holiday-operating-schedule.aspx" data-ektron-url="holiday-operating-schedule.aspx"                                                                                                                                               >Learn more</a></span>                                                                                               
+                                                         --><br/>                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                            
+    
+    
+    <!--trip planner outage notice--><!--<span class="interrupt__title">
+   <p>MARTA Trip planner feature is temporarily unavailable due to technical issues. We apologize for this temporary outage </p></span>                                                                                                                                                                                                                                                                                                          
+                                            
+    --><br/>    </span>
+</div>
+</div>
+	
+    <!--Service interuptor for major outage -->
+    <div id="ctl00_ContentBlock3">
+	
+</div>
+    <div class="container">
+      <div class="site-header__primary">
+        <div class="row">
+          <div class="col-xs-12 col-md-4 col-lg-3">
+            <div class="brand">
+              <h1><a class="brand__link" href="Default.aspx" tabindex="0">MARTA</a></h1>
+            </div>
+            <a class="main-nav__trigger js-main-nav__trigger" href="#">Menu</a> </div>
+          <div class="col-xs-12 col-md-8 col-lg-9">
+            <div class="main-nav js-main-nav">
+              <ul class="main-nav__nav">
+                <li class="main-nav__level1"> <a tabindex="0" href="planatrip.aspx">Plan a Trip</a>
+                <li class="main-nav__level1" tabindex="0">
+                  <div class="main-nav__dropdown-trigger"><span class="main-nav__label-with-arrow">Get to Know MARTA</span> </div>
+                  <div class="main-nav__dropdown">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="main-nav__dropdown-highlight">
+                          <div class="main-nav__schedule">
+                            <div class="main-nav__schedule-heading">Train Hours</div>
+                            <ul class="main-nav__schedule-list">
+                              <li>Weekday: 4:45 AM - 1 AM</li>
+                              <li>Weekend: 6 AM - 1 AM</li>
+                            </ul>
+                          </div>
+                          <div class="main-nav__schedule">
+                            <div class="main-nav__schedule-heading">Train Frequency</div>
+                            <ul class="main-nav__schedule-list">
+
+                              <li>Weekdays 6am-7pm: 15 min.</li>
+                              <li>All other times: 20 min.</li>
+
+                              <!--<li>Rush Hours: 10 min<br>
+                                <i>(6-9AM & 3-7PM)</i></li>
+                              <li>Non-Rush Hour: 15 min</li>
+                              <li>Nights &amp; Weekends: 20 min</li>-->
+                            </ul>
+                          </div>
+                          <div class="main-nav__schedule">
+                            <div class="main-nav__schedule-heading">Bus Hours</div>
+                            <ul class="main-nav__schedule-list">
+                              <li>Weekday: 5 AM - 1 AM</li>
+                              <li>Weekend: 5 AM - 12:30 AM</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">System Information</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="train-stations-and-schedules.aspx"  target="_self">Train Stations &amp; Schedules</a> </li>
+                             
+
+ <li> <a tabindex="0" href="railline-schedules.aspx"  target="_self">Train Lines &amp; Schedules</a> </li>
+
+
+<li> <a tabindex="0" href="Atlanta-Street-Car-Info.aspx"  target="_self">Atlanta Streetcar Route Information</a> </li> 
+                            <li> <a tabindex="0" href="bus-schedules.aspx"  target="_self">Bus Routes &amp; Schedules</a> </li>
+
+ <li> <a tabindex="0" href="interactive-system-map.aspx"  target="_self">Interactive System Map</a> </li>
+                            <li> <a tabindex="0" title="Accessible Services"  href="marta-mobility.aspx"  target="_self">Accessible Services</a> <br/>
+                            </li>
+                            <li> <a tabindex="0" href="holiday-operating-schedule.aspx"  target="_self">Holiday Operating Schedule</a> </li>
+                            <li> <a tabindex="0" href="regional-connections.aspx"  target="_self">Regional Connections/Maps</a> </li>
+                            <li> <a tabindex="0" href="special-rail-schedules.aspx"  target="_self">Special Rail Schedules & Weekend Service</a> </li>
+<li> <a tabindex="0" href="bus-reroutes.aspx"  target="_self">Service Updates - Bus Reroutes</a> </li>
+<li> <a tabindex="0" href="https://member.everbridge.net/index/509765373395034"  target="_blank">Sign-up for MARTA Alerts</a> </li>
+<li> <a tabindex="0" href="elevator-and-escalators.aspx"  target="_self">Elevator & Escalator Updates</a> </li>
+ <li> <a tabindex="0" href="getting-to-airport.aspx"  target="_self">Getting to &amp; from the Airport</a> </li>
+
+                          </ul>
+                        </div>
+                        
+ 
+
+                        
+                      </div>
+                      <div class="col-xs-12 col-sm-3">
+                        
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Mobile Apps</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="marta-on-the-go.aspx"  target="_self">MARTA On the Go</a> </li>
+<li> <a tabindex="0" href="marta-see-say.aspx"  target="_self">MARTA See & Say</a> </li>
+                            <li> <a tabindex="0" href="app-developer-resources.aspx"  target="_self">App Developer Resources</a> </li>
+                          </ul>
+                        </div>
+						  <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Why MARTA?</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="benefits-public-transit.aspx"  target="_self">Benefits of Public Transit</a> </li>
+<!--<li><a href="moremarta.aspx"  target="_self">More MARTA</a></li> -->
+                          </ul>
+                        </div>
+						  <div class="main-nav__category">
+                          <div class="main-nav__category-heading">MARTA's Art Program</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="artbound1.aspx"  target="_self">Artbound</a> </li>
+<li><a href="Public_Art_Collection_Program.aspx"  target="_self">Station Art Collection</a></li>
+                          </ul>
+                        </div>
+						  <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Latest Videos</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" title="MARTA Youtube Channel"  href="https://www.youtube.com/user/itsmartanews?feature=mhum"  target="_blank">MARTA Youtube Channel</a> </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">How To Ride</div>
+                          <ul class="main-nav__category-list">
+<li> <a tabindex="0" title="How to Ride Guide"  href="MARTA-I-85-Reference-Guide.aspx"  target="_self">Reference Guide for New Customers</a> </li>
+<li> <a tabindex="0" title="How to Ride Guide"  href="uploadedfiles\Ride Guide March update - guide 2021.pdf"  target="_blank">How to Ride Guide</a> </li>
+
+                            <li> <a tabindex="0" title="Take Your bike for a Ride"  href="bring-your-bike.aspx"  target="_self">Take Your Bike For A Ride</a> </li>
+                            <li> <a tabindex="0" href="common-questions.aspx"  target="_self">Common Questions</a> </li>
+                           
+                            <li> <a tabindex="0" href="lost-and-found.aspx"  target="_self">Lost &amp; Found Items</a> </li>
+                            
+                            <li> <a tabindex="0" href="ride-with-respect.aspx"  target="_self">Ride with Respect</a> </li>
+                            <li> <a tabindex="0" href="safety-and-security.aspx"  target="_self">Safety &amp; Security</a> </li>
+                            <li> <a tabindex="0" href="traveling-with-kids-pets.aspx"  target="_self">Riding with Kids and Pets</a> </li>
+                          </ul>
+                        </div>
+						  <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Trip Ideas</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="food-bar-crawl.aspx"  target="_self">Food &amp; Bar Crawl</a> </li>
+                            <li> <a tabindex="0" href="history-tour.aspx"  target="_self">History Tour</a> </li>
+                            <li> <a tabindex="0" href="music-venues.aspx"  target="_self">Music Venues</a> </li>
+                            <li> <a tabindex="0" href="outdoor-escapes.aspx"  target="_self">Outdoor Escapes</a> </li>
+                            <!--<li>                                                                                 
+                                        <a tabindex="0" href="scavenger-hunt.aspx"  target="_self">Scavenger Hunt</a>                                    </li> -->
+                            <li> <a tabindex="0" href="sights-worth-seeing.aspx"  target="_self">Sights Worth Seeing</a> </li>
+<li> <a tabindex="0" href="marta-market.aspx"  target="_self">MARTA Markets</a> </li>
+<li> <a tabindex="0" href="station-soccer.aspx"  target="_self">StationSoccer</a> </li>
+<li> <a tabindex="0" href="EventCalendar.aspx"  target="_self">Calendar of Events</a> </li> 
+                            <!--<li> <a tabindex="0" href="spring-festival-guide.aspx"  target="_self">Spring Festival Guide</a> </li> -->
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="main-nav__level1" tabindex="0">
+                  <div class="main-nav__dropdown-trigger"><span class="main-nav__label-with-arrow">Fares &amp; Reload</span> </div>
+                  <div class="main-nav__dropdown">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Breeze Cards</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="how-to-guide.aspx"  target="_self">Using Your Breeze Card</a> </li>
+                            <li> <a tabindex="0" href="where-to-buy.aspx"  target="_self">Where to Buy</a> </li>
+                            <li> <a tabindex="0" href="manage-your-cards.aspx"  target="_self">Managing Your Cards and Balances</a> </li>
+                            <li> <a tabindex="0" href="place-group-order.aspx"  target="_self">Place Group Orders</a> </li>
+                          </ul>
+                          <div class="main-nav__category">
+                            <div class="main-nav__category-heading"> <br/>
+                              Breeze Tickets</div>
+                            <ul class="main-nav__category-list">
+                              <li> <a href="breeze-tickets.aspx"  target="_self">Breeze Tickets Information</a> </li>
+ <li> <a href="http://www.breezecard.com/"  target="_blank">Breezecard.com</a> </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Fare Programs</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="fare-programs.aspx"  target="_self">Overview</a> <br/>
+                              <a tabindex="0" href="fare-programs.aspx#standard"></a> </li>
+                            <li> <a tabindex="0" href="reduced-fare-program.aspx"  target="_self">Reduced Fare Program</a> </li>
+                            <li> <a tabindex="0" href="mobility-fares.aspx"  target="_self">Mobility Fares</a> </li>
+                            <li> <a tabindex="0" href="passpartnership.aspx"  target="_self">Partnership Program</a> </li>
+                            <li> <a tabindex="0" href="university-program.aspx"  target="_self">University Program</a> </li>
+                            <li> <a tabindex="0" href="student-program.aspx"  target="_self">Student Program (K-12)</a> </li>
+                            <li> <a tabindex="0" href="group-discount.aspx"  target="_self">Group Discount</a> </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-2">
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Parking</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="parking-availability.aspx"  target="_self">Parking Availability</a> </li>
+                            <li> <a tabindex="0" href="parking-fees.aspx"  target="_self">Parking Fees</a> </li>
+<li> <a tabindex="0" href="parking.aspx"  target="_self">Key Parking Status</a> </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-4">
+                        <div class="main-nav__banner banner"> <img class="responsive-image"
+                                     alt="Banner"  src="images/breeze-cool1.jpg" /> </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="main-nav__level1" tabindex="0">
+                  <div class="main-nav__dropdown-trigger"><span class="main-nav__label-with-arrow">More</span> </div>
+                  <div class="main-nav__dropdown">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">About MARTA</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="marta-leadership.aspx"  target="_self">Leadership</a> </li>
+                            <li> <a tabindex="0" title="History &amp; Vision"  href="marta-history-vision.aspx"  target="_self">History & Vision</a> </li>
+                            <li> <a tabindex="0" href="MARTA-at-a-Glance.aspx"  target="_self">MARTA at a Glance</a> </li>
+<li> <a tabindex="0" href="uploadedfiles/FY22_ServiceStandards_Final_reduced.pdf"  target="_blank">MARTA Service Standards</a> </li>
+                            <li> <a tabindex="0" href="kpihome.aspx"  target="_self">Key Performance Indicators</a> </li>
+                            <li> <a tabindex="0" href="marta-in-your-community.aspx"  target="_self">MARTA in Your Community</a> </li>
+                            <li> <a tabindex="0" href="marta-Sustainability.aspx"  target="_self">MARTA Sustainability</a> </li>
+<li> <a tabindex="0" href="marta-ems.aspx"  target="_self">MARTA EMS</a> </li>
+                            <li> <a tabindex="0" href="News-Press.aspx"  target="_self"> News &amp;  Press</a> </li>
+<li> <a tabindex="0" href="photography-and-film.aspx"  target="_self">Photography &amp; Film Policy</a> </li>
+                            <li> <a tabindex="0" href="reports-and-publications.aspx"  target="_self">Reports &amp; Publications</a> </li>
+
+<li> <a tabindex="0" href="other-marta-documents.aspx"  target="_self">MARTA Legal Documents</a> </li>
+
+
+
+
+<li> <a tabindex="0" href="public-hearings-meetings.aspx"  target="_self">Public Hearings and Meetings</a> </li>
+<!--<li> <a tabindex="0" href="riders-advisory.aspx"  target="_self">Riders' Advisory Council</a> </li> -->
+                          </ul>
+                        </div>
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Board of Directors</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="bod-overview.aspx"  target="_self">Board Leadership and Overview</a> </li>
+                            <li> <a tabindex="0" title="Board Documents"  href="board-documents.aspx"  target="_self">Board Documents</a> </li>
+                          </ul>
+                        </div>
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Projects</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="current-projects.aspx"  target="_self">Projects Overview</a> </li>
+
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Careers at MARTA</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="how-to-apply.aspx"  target="_self">How to Apply</a> </li>
+                            <li> <a tabindex="0" title="Current Job Openings"  href="current-job-openings.aspx"  target="_self">Current Job Openings</a> </li>
+                            <li> <a tabindex="0" href="marta-internship-program.aspx"  target="_self">MARTA Internship Program</a> </li>
+                            <li> <a tabindex="0" href="benefits.aspx"  target="_self">Benefits</a> </li>
+                            <li> <a tabindex="0" href="culture.aspx"  target="_self">Culture</a> </li>
+                          </ul>
+                        </div>
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Diversity &amp; Inclusion</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" title="Overview"  href="deo-overview.aspx"  target="_self">Overview</a> </li>
+                            <li> <a tabindex="0" href="affirmative-action-plan.aspx"  target="_self">Affirmative Action Plan</a> </li>
+                            <li> <a tabindex="0" href="dbe-program.aspx"  target="_self">Disadvantaged Business Enterprises (DBE) Program</a> </li>
+                            <li> <a tabindex="0" href="marta-accessibility-committee.aspx"  target="_self">MARTA Accessibility Committee</a> </li>
+                          </ul>
+                        </div>
+
+<div class="main-nav__category">
+                          <div class="main-nav__category-heading">MARTA Customer Experience</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" title="Overview"  href="marta-rac.aspx"  target="_self">Riders’ Advisory Council</a> </li>
+                            <li> <a tabindex="0" title="Overview"  href="marta-hope-program.aspx"  target="_self">MARTA HOPE Program</a> </li>
+                          <li> <a tabindex="0" title="Overview"  href="tsp_home.aspx"  target="_self">MARTA's Transportation Assistance Program for the Homeless</a> </li>
+ 
+
+</ul>
+                        </div>
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Employee Links</div>
+                          <ul class="main-nav__category-list">
+<li> <a tabindex="0" href="employee-portal.aspx"  target="_self">Employee Portal</a> </li>
+                            <li> <a tabindex="0" href="marta-pension-information.aspx"  target="_self">Pension Information</a> </li>
+                            
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">MARTA Police</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="police-overview.aspx"  target="_self">Overview</a> </li>
+                            <li> <a tabindex="0" href="police-mission.aspx"  target="_self">Our Mission</a> </li>
+                            <li> <a tabindex="0" href="chief-of-police.aspx"  target="_self">Chief of Police</a> </li>
+                            <li>
+                            <li> <a tabindex="0" href="mpd-operations.aspx"  target="_self">Police Operations</a> </li>
+                            <li>
+                            <li> <a tabindex="0" href="mpd-administration2.aspx"  target="_self">Police Administration</a> </li>
+                            <li>
+                            <li>
+                            <li> <a tabindex="0" href="crimestats.aspx"  target="_self">Crime Analysis</a> </li>
+                            <li> <a tabindex="0" href="join-the-force.aspx"  target="_self">Join the Force</a> </li>
+                            <li> <a tabindex="0" href="awards-and-recognition.aspx"  target="_self">Awards &amp; Recognition</a> </li>
+                            <li> <a tabindex="0" href="office-professional-standards.aspx"  target="_self">Office of Professional Standards</a> </li>
+                            <li> <a tabindex="0" href="police-community-outreach.aspx"  target="_self">Community Outreach</a> </li>
+                            <li> <a tabindex="0" href="police-FAQs.aspx"  target="_self">FAQs</a> </li>
+                          </ul>
+                        </div>
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Transit Oriented Development</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="tod.aspx"  target="_self">TOD</a> </li>
+ <li> <a tabindex="0" title="Real Estate"  href="real-estate.aspx"  target="_self">Real Estate</a> </li>
+<li> <a tabindex="0" href="artbound1.aspx"  target="_self">Artbound</a> </li>
+ <li> <a tabindex="0" href="tod-staff.aspx"  target="_self">Contacts</a> </li>
+
+                            
+                           
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-3">
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Procurement</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="https://martabid.marta.net/Default.aspx"  target="_blank">Overview</a> </li>
+                            <li> <a tabindex="0" href="https://martabid.marta.net/CurrentOpportunities.aspx"  target="_blank">Current Opportunities</a> </li>
+                            <li> <a tabindex="0" href="https://martabid.marta.net/BidResults.aspx"  target="_blank">Bid Results</a> </li>
+                            <li> <a tabindex="0" href="https://martabid.marta.net/RecentlyAwarded.aspx"  target="_blank">Recently Awarded</a> </li>
+                            <li> <a tabindex="0" href="https://martabid.marta.net/CONTRACTCANCELLED.aspx"  target="_blank">Cancelled Opportunities</a> </li>
+                            <li> <a tabindex="0" href="https://martabid.marta.net/AnticipatedProcurement.aspx"  target="_blank">Anticipated Procurement</a> </li>
+                            <li> <a tabindex="0" title="iSupplier Registration"  href="https://martabid.marta.net/iSupplierRegistration.aspx"  target="_blank">iSupplier Registration</a> </li>
+                            <li> <a tabindex="0" href="https://martabid.marta.net/iSupplierLogin.aspx" target="_blank">iSupplier Login</a> </li>
+                          </ul>
+                        </div>
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Advertising</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="advertising-on-marta.aspx"  target="_self">Advertising on MARTA</a> </li>
+                          </ul>
+                        </div>
+                        <div class="main-nav__category">
+                          <div class="main-nav__category-heading">Contact</div>
+                          <ul class="main-nav__category-list">
+                            <li> <a tabindex="0" href="helpful-numbers.aspx"  target="_self">Helpful Phone #s &amp; Emails</a> </li>
+                            <li> <a tabindex="0" href="mailing-address.aspx"  target="_self">Mailing Addresses</a> </li>
+                            <li> <a tabindex="0" href="https://www.itsmarta.com/ht_login.aspx"  target="_self">Comments &amp; Suggestions</a> </li>
+                            <li> <a tabindex="0" href="know-your-rights.aspx"  target="_self">Know Your Rights</a></li>
+                            <li> <a tabindex="0" href="lost-found.aspx"  target="_self">Lost Item Inquiry Form</a> </li>
+<li> <a tabindex="0" href="hq.aspx"  target="_self">MARTA Headquarters</a> </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="main-nav__level1" tabindex="0">
+                  <div class="main-nav__dropdown-trigger main-nav__dropdown-trigger--search"><span class="main-nav__search-trigger-label">Search</span> </div>
+                  <div class="main-nav__dropdown">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="main-nav__search-form form">
+                          <div class="js-validate-form">
+                            <div class="form__field">
+                              <label class="sr-only" for="siteSearch">Search</label>
+                              <input name="ctl00$siteSearch" type="text" id="ctl00_siteSearch" placeholder="Search" />
+                              <span id="ctl00_RequiredFieldValidator1" style="display:none;">Please enter search text</span>
+                              <input onclick="if (typeof(Page_ClientValidate) == 'function') Page_ClientValidate('SearchGroup'); " name="ctl00$Button1" type="image" id="ctl00_Button1" alt="Submit" class="SearchImage" tabindex="0" ValidationGroup="SearchGroup" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="site-header__secondary">
+          <div class="mini-service-updates">
+            <div class="mini-service-updates__label"><a href='service-updates.aspx' style="color:white !important;">Service Alerts</a></div>
+            <div id="ctl00_lblServiceAlerts"><div class='mini-service-updates__items'>
+                <div tabindex='0' class='mini-service-updates__item'>
+                  <a tabindex='-1' class='mini-service-updates__trigger' href='service-updates.aspx'><span class='mini-service-updates__alert-number'>8</span><span class='mini-service-updates__trigger-label mini-service-updates__trigger-label--bus'>Bus Alerts</span></a><div class='mini-service-updates__content'>
+                    <ul class='mini-service-updates__alerts'> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-name'>95 Metropolitan Pkwy/Hapeville<br/>Route 95: NB trips from King Arnold St & Claire Dr. are canceled at  8:03PM, 9:23PM, and 10:43PM.   
+
+Route 95: SB trips from West End are canceled at 8:40PM, 10:00PM, and 11:20PM.</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/20/2022 11:56 PM</div>
+                      </li> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-name'>196 Church/Upper Riverdale/Mt.Zion<br/>City of Riverdale Special Events will be hosting a Greek Gathering of Sororities & Fraternities on Church Street between Wilson Road and Bethsaida Rd Starting on Saturday, August 20 thru Sunday, August 21, 2022, from 8:00 a.m. until 2:00 a.m.</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/21/2022 02:00 AM</div>
+                      </li> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-name'>50 Donald E Hollowell Pkwy.<br/>Due to:  Atlanta's Finest 5K
+Route # 50, due to walk, traveling on Marietta St. between Centennial Olympic and Tech. Starting on Saturday, August 20, 2022, from 7:30 a.m. – to 9:00 a.m. Delays are expected.</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/21/2022 09:30 AM</div>
+                      </li> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-name'>198 Southlake Parkway<br/>City of Riverdale Special Events will be hosting a Greek Gathering of Sororities & Fraternities on Church Street between Wilson Road and Bethsaida Rd Starting on Saturday, August 20 thru Sunday, August 21, 2022, from 8:00 a.m. until 2:00 a.m.</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/21/2022 02:00 AM</div>
+                      </li> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-name'>89 Flat Shoals Road/Scofield Raod<br/>City of Riverdale Special Events will be hosting a Greek Gathering of Sororities & Fraternities on Church Street between Wilson Road and Bethsaida Rd Starting on Saturday, August 20 thru Sunday, August 21, 2022, from 8:00 a.m. until 2:00 a.m.</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/21/2022 02:00 AM</div>
+                      </li> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-name'>197 Battle Creek Road<br/>City of Riverdale Special Events will be hosting a Greek Gathering of Sororities & Fraternities on Church Street between Wilson Road and Bethsaida Rd Starting on Saturday, August 20 thru Sunday, August 21, 2022, from 8:00 a.m. until 2:00 a.m.</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/21/2022 02:00 AM</div>
+                      </li> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-name'>813 Atlanta Student Movement Boulevard<br/>Reroute revised due to the construction shift located at 1137 Fair St. SW. between 1st St. SW and Rosser St. SW starting on Wednesday, Aug 10, 2022, thru October 14, 2022, Monday - Friday 09:00 am to 4:00 pm.</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 10/14/2022 04:00 PM</div>
+                      </li> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-name'>115 Covington Highway/South Hairston Rd.<br/>Route 115: EB trip from Kensington is canceled at  2:30 PM.   
+
+Route 115: WB trip from Covington Hwy & Chupp Rd is canceled at 3:01 PM.</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/23/2022 03:11 PM</div>
+                      </li>
+                    </ul>
+                    <a href='service-updates.aspx' tabindex='0'>See all service alerts</a>
+                  </div>
+                </div><div tabindex='0' class='mini-service-updates__item'>
+                  <a tabindex='-1' class='mini-service-updates__trigger' href='service-updates.aspx'><span class='mini-service-updates__alert-number'>5</span><span class='mini-service-updates__trigger-label mini-service-updates__trigger-label--train'>Train Alerts</span></a><div class='mini-service-updates__content'>
+                    <ul class='mini-service-updates__alerts'> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-description'><br/>Green line servicing from Bankhead to Ashby (WB platform only).</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/21/2022 02:00 AM</div>
+                      </li> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-description'><br/>Red line servicing from North Springs to Lindbergh Center. Customers may transfer at Lindbergh Center for all Red line destinations.</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/21/2022 02:00 AM</div>
+                      </li> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-description'><br/>Single tracking in effect on the E/W line: Ashby and Vine City; EB platform closed (all trains will board from the WB platform).</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/21/2022 02:00 AM</div>
+                      </li> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-description'><br/>Single tracking on the N/S line: Arts Center; NB platform side closed (all trains will board from the SB platform side).</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/21/2022 02:00 AM</div>
+                      </li> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-description'><br/>Select train trips may be canceled, because of staffing shortages. Please allow extra time for your travel. Patrons may register for service alerts to be informed of future train cancellations. itsmarta.com/service-updates</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/21/2022 06:00 AM</div>
+                      </li>
+                    </ul>
+                    <a href='service-updates.aspx' tabindex='0' >See all service alerts</a>
+                  </div>
+                </div><div tabindex='0' class='mini-service-updates__item'>
+                  <a tabindex='-1' class='mini-service-updates__trigger' href='service-updates.aspx'><span class='mini-service-updates__trigger-label mini-service-updates__trigger-label--streetcar'>Streetcar Alerts</span></a><div class='mini-service-updates__content'>
+                    <ul class='mini-service-updates__alerts'> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-description'><br/>No service advisories at this time</div>
+                        <div class='mini-service-updates__alert-description'></div>
+                      </li>
+                    </ul>
+                    <a href='service-updates.aspx' tabindex='0' >See all service alerts</a>
+                  </div>
+                </div><div tabindex='0' class='mini-service-updates__item'>
+                  <a tabindex='-1' class='mini-service-updates__trigger' href='service-updates.aspx'><span class='mini-service-updates__alert-number'>2</span><span class='mini-service-updates__trigger-label mini-service-updates__trigger-label--escele'>Escalator Elevator</span></a><div class='mini-service-updates__content'>
+                    <ul class='mini-service-updates__alerts'> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-description'><br/>Kensington, Elevator 1 (concourse to platform) is out of service for renovation. Mobility shuttle service provided from Kensington to Indian Creek.</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/21/2022 06:00 AM</div>
+                      </li> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-description'><br/>Peachtree Center, Elevator 3 (north end of platform to north concourse) is out of service for renovation. Use elevator on south end of platform.</div>
+                        <div class='mini-service-updates__alert-description'>Expire at: 08/21/2022 06:00 AM</div>
+                      </li>
+                    </ul>
+                    <a href='service-updates.aspx' tabindex='0' >See all service alerts</a>
+                  </div>
+                </div><div tabindex='0' class='mini-service-updates__item'>
+                  <a tabindex='-1' class='mini-service-updates__trigger' href='service-updates.aspx'><span class='mini-service-updates__trigger-label mini-service-updates__trigger-label--restroom'>Restroom Alerts</span></a><div class='mini-service-updates__content'>
+                    <ul class='mini-service-updates__alerts'> <li class='mini-service-updates__alert'>
+                        <div class='mini-service-updates__alert-description'><br/>No service advisories at this time</div>
+                        <div class='mini-service-updates__alert-description'></div>
+                      </li>
+                    </ul>
+                    <a href='service-updates.aspx' tabindex='0' >See all service alerts</a>
+                  </div>
+                </div></div></div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div>
+  <!-- <button class="kc_fab_main_btn">   -->         
+	<!--<i class="far fa-comment-dots"></i>-->
+	  <!--<a id="ciscochat" onclick="ciscoBubbleChat.showChatWindow(); return false;" href="#">
+<img src="uploadedimages/chat-icon.png"/></a> -->
+	<!-- </button> -->
+    
+<div class="l-page">
+  <div class="mantle mantle--board-of-directors">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12"><br>
+<br>
+          <h2 class="mantle__heading">
+            <div class="mantle__heading-slash mantle__heading-slash--yellow"></div>
+            <div class="mantle__heading-text">Board of <br>Directors</div>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="l-page-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-lg-3">
+          <div class="l-sidebar">
+            <div class="subnav">
+              <nav>
+              
+                
+                <div class="subnav__list hidden-xs">
+                    
+                            <ul id="ctl00_ContentPlaceHolder1_uxMainMenu_menunav" class="subnav__primary">
+                                
+                            <li  class="">
+                                <a id="ctl00_ContentPlaceHolder1_uxMainMenu_nodeLink_0" aria-expanded="" class="" href="/bod-overview.aspx">Overview</a>
+                                <div class="js-expando__content" aria-expanded="true" style="display: none;">
+                                    <ul id="ctl00_ContentPlaceHolder1_uxMainMenu_menunav_0" class="subnav__secondary">
+                                
+                                        </ul>
+                                </div>
+                            </li>
+                        
+                            <li  class="">
+                                <a id="ctl00_ContentPlaceHolder1_uxMainMenu_nodeLink_0" aria-expanded="" class="is-current" href="/meeting-schedule.aspx">Board Meeting Schedule</a>
+                                <div class="js-expando__content" aria-expanded="true" style="display: none;">
+                                    <ul id="ctl00_ContentPlaceHolder1_uxMainMenu_menunav_0" class="subnav__secondary">
+                                
+                                        </ul>
+                                </div>
+                            </li>
+                        
+                            <li  class="">
+                                <a id="ctl00_ContentPlaceHolder1_uxMainMenu_nodeLink_0" aria-expanded="" class="" href="/board-documents.aspx">Board Documents</a>
+                                <div class="js-expando__content" aria-expanded="true" style="display: none;">
+                                    <ul id="ctl00_ContentPlaceHolder1_uxMainMenu_menunav_0" class="subnav__secondary">
+                                
+                                        </ul>
+                                </div>
+                            </li>
+                        
+                            <li  class="">
+                                <a id="ctl00_ContentPlaceHolder1_uxMainMenu_nodeLink_0" aria-expanded="" class="" href="/board-documents-archives.aspx">Board Documents Archives</a>
+                                <div class="js-expando__content" aria-expanded="true" style="display: none;">
+                                    <ul id="ctl00_ContentPlaceHolder1_uxMainMenu_menunav_0" class="subnav__secondary">
+                                
+                                        </ul>
+                                </div>
+                            </li>
+                        
+                            </ul>
+                        
+                </div>
+            </nav>
+            </div>
+          </div>
+        </div>
+  
+
+
+<div>
+              <div id="ctl00_ContentPlaceHolder1_cntpolice">
+	<div class="col-xs-12 col-sm-8 col-md-offset-1 col-md-7 col-lg-6">                                                                 
+    <div class="l-main">                                                                                           
+        <div class="introduction">                                                                                                                                              
+            <h1>Board Meeting Schedule</h1>                                                                                                       
+            <div class="introduction__content content">                                                                                                                                                                        
+                <br/> 
+                <!--<p style="margin: 0px;"><strong>Location</strong>                                                                                                                               
+                    <br/>All meetings are held in the MARTA Board Room</p>                                                                                    
+                <p style="margin: 0px;">6th Floor, MARTA Headquarters | 2424 Piedmont Road NE, with the exception of Audit Committee meetings, which are held in the Board Lounge on the 6th Floor.</p>                                                                                    
+                <p style="margin: 0px;">(Dates and times are subject to change)</p>-->                                 
+                <p>All meetings are held through remote access.                                          
+                    <br/>(Dates and times are subject to change)                                          
+                    <br/>                                         
+                    <a href="https://bit.ly/MARTAPublicMeeting" title="https://bit.ly/MARTAPublicMeeting" target="_blank">https://bit.ly/MARTAPublicMeeting</a>                </p>                                                                                                                                                                                                     
+                                                                 
+                <h2>2022 Board Meeting Schedule</h2>                                                                                                                                                        
+                <ul><li>January 13, 2022, at Noon — Board Working Session </li><li>January 13, 2022, at 1:30 p.m — Board Meeting</li><li>February 10, 2022, at Noon — Board Working Session </li><li>February 10, 2022, at 1:30 p.m. — Board Meeting</li><li>March 3, 2022, at Noon — Board Working Session </li><li>March 3, 2022, at 1:30 p.m. — Board Meeting</li><li>April 14<b style="text-decoration: line-through;"></b>, 2022, at Noon — Board Working Session </li><li>April 14, 2022, at 1:30 a.m. — Board Meeting</li><li>May 12, 2022, Noon — Board Working Session</li><li>May 12, 2022, at 1:30 p.m. — Board Meeting  </li><li>June 9, 2022, at Noon — Board Working Session </li><li>June 9, 2022, at 1:30 p.m. — Board Meeting</li><li>July 14, 2022, at Noon — Board Working Session</li><li>July 14, 2022, at 1:30 p.m. — Board Meeting </li><li>August 11, 2022, at Noon — Board Working Session </li><li>August 11, 2022 at 1:30 p.m. — Board Meeting</li><li>September 8, 2022, at Noon — Board Working Session </li><li>September 8, 2022, at 1:30 p.m. — Board Meeting</li><li>October 13, 2022, at Noon — Board Working Session </li><li>October 13, 2022, at 1:30 p.m. — Board Meeting</li><li>November 10, 2022, at Noon — Board Working Session </li><li>November 10, 2022, at 1:30 p.m. — Board Meeting</li><li>December 8, 2022, at Noon — Board Working Session </li><li>December 8, 2022, at 1:30 p.m. — Board Meeting </li></ul>                                                                                                                                                                                        
+                                                                                                  
+                <hr/>                                                                                                                                                                                                                                          
+                <h2>Committee Meetings 
+              </h2>                                                                                                                                                        
+                <p><b>Planning &amp; Capital Programs Committee</b>                                                                                                                                                                                              
+                    <br/> 2022 Meeting  Schedule: </p>                                                                                                                                                        
+                <ul><li>January 27, 2022, at 9:30 a.m.</li><li>February 24, 2022, at 9:30 a.m.</li><li>March 31, 2022, at 9:30 a.m.</li><li>April 28<b></b>, 2022, at 9:30 a.m.</li><li>May 26, 2022, at 9:30 a.m.</li><li>June 30, 2022, at 9:30 a.m.</li><li>July 28, 2022, at 9:30 a.m.  </li><li>August 25, 2022, at 9:30 a.m.</li><li>September 29, 2022, at 9:30 a.m.</li><li>October 27, 2022, at 9:30 a.m.</li><li>November 17, 2022, at 9:30 a.m.</li><li>December - No Meeting<br/></li></ul>                                                                                                                                       
+                <ul></ul>                                                                                                                                                        
+                <p>                </p>                                                                                                                                       
+                <hr/>                                                                                                                                                                                                                                            
+                <p><b>Operations &amp; Safety Committee<br/></b>2022 Meeting Schedule: </p>                                                  
+                <ul><li>January 27, 2022, at 9:30 a.m.</li><li>February 24, 2022, at 9:30 a.m.</li><li>March 31, 2022, at 9:30 a.m.</li><li>April 28<b></b>, 2022, at 9:30 a.m.</li><li>May 26, 2022, at 9:30 a.m.</li><li>June 30, 2022, at 9:30 a.m. </li><li>July 28, 2022, at 9:30 a.m.  </li><li>August 25, 2022, at 9:30 a.m.</li><li>September 29, 2022, at 9:30 a.m.</li><li>October 27, 2022, at 9:30 a.m.</li><li>November 17, 2022, at 9:30 a.m.</li><li>December - No Meeting</li></ul>                                                  
+                <hr/>                                                                                                                                                        
+                <p><b>Business Management Committee</b>                                                              
+                    <br/>2022 Meeting Schedule: </p>                                                  
+                <ul><li>January 27, 2022, at 9:30 a.m.</li><li>February 24, 2022, at 9:30 a.m.</li><li>March 31, 2022, at 9:30 a.m.</li><li>April 28<b></b>, 2022, at 9:30 a.m.</li><li>May 26, 2022, at 9:30 a.m.</li><li>June 30, 2022, at 9:30 a.m. </li><li>July 28, 2022, at 9:30 a.m.  </li><li>August 25, 2022, at 9:30 a.m.</li><li>September 29, 2022, at 9:30 a.m.</li><li>October 27, 2022, at 9:30 a.m.</li><li>November 17, 2022, at 9:30 a.m.</li><li>December - No Meeting</li></ul>                                                  
+                <h3><b></b></h3>                                                  
+                <hr/>                                                  
+                <p><b>External Relations Committee<br/></b>2022 Meeting Schedule:</p>                                                  
+                <ul><li>January 20, 2022, at 10:00 a.m.</li><li>February 17, 2022, at 10:00 a.m.</li><li>March 24, 2022,  at 10:00 a.m. </li><li>May 19, 2022, at 10:00 a.m.</li><li>July 21, 2022, at 10:00 a.m.                                                                           
+                        <br/></li><li>November 18, 2022, at 10:00 a.m. (Friday)</li></ul>                                                                                                                                       
+                <ul></ul>                                                                                                                                                        
+                <hr/>                                                                                                                                                                                                                                           
+                <p><b>Audit 
+<br/>
+ </b>2022 Meeting Schedule: </p>                                                                                                                                                        
+                <ul><li>March 24, 2022, at 10:00 a.m.</li><li>May 19, 2022, at 10:00 a.m. </li><li>July 21, 2022, at 10:00 a.m.</li><li>November 18, 2022, at 10:00 a.m. (Friday)</li></ul>                                                  
+                <p>*The Board’s Vice Chair serves as a member of every Standing Committee                                                                                                                                                                        
+                    <br/>**Serves as a Representative of the Board to this autonomous Committee </p>                                                                                            </div>        </div>    </div>
+</div>
+<!--- back to top -->
+<a class="back-to-top js-back-to-top" href="#">                                                    
+    <div class="back-to-top__text">Back to top</div>
+</a>
+</div>
+         
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+  <!-- Footer Begining -->
+  <footer class="site-footer">
+    <div class="site-footer__primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-8">
+            <div class="row">
+              <div class="col-xs-12 col-md-6">
+                <div class="site-footer__mission">
+                  <h4 class="site-footer__heading">Our Mission</h4>
+                  <p>To advocate and provide safe, multi-modal transit services that advance prosperity, connectivity and equity for a more livable region.</p><br>
+                    
+<!--<img src="uploadedimages/MARTA40thAnniversarywhitecolorlogo-small.png" alt="MARTA 40th anniversary logo"/> -->
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <div class="site-footer__quick-links">
+                  <h4 class="site-footer__heading">Quick Links</h4>
+                  <ul>
+                    <li> <a href="marta-leadership.aspx" tabindex="0">About MARTA</a> </li>
+                    <li> <a href="employee-portal.aspx" tabindex="0">Employee Links</a> </li>
+                    <li> <a href="how-to-apply.aspx" tabindex="0">Careers</a> </li>
+                    <li> <a href="deo-overview.aspx" tabindex="0">Diversity & Inclusion</a> </li>
+<li> <a href="marta-mobility.aspx" tabindex="0">Accessibility Services</a> </li>
+                    <li> <a href="police-overview.aspx" tabindex="0">MARTA Police</a> </li>
+                    <li> <a href="tod.aspx" tabindex="0">Transit Oriented Development</a> </li>
+                    <li> <a href="https://martabid.marta.net/Default.aspx" tabindex="0">Procurement</a> </li>
+<li> <a tabindex="0" href="lost-found.aspx"  target="_self">Lost Item Inquiry Form</a> </li>
+              <li> <a tabindex="0" href="ht_login.aspx"  target="_self">Comments &amp; Suggestions</a> </li> 
+<li> <a tabindex="0" href="covid-19-public-info.aspx"  target="_self">COVID-19 Personnel & Ridership Impacts</a> </li>   
+<li> <a tabindex="0" href="marta-mobility.aspx" target="_self">Application for Mobility Eligibility</a> </li>  
+			   
+</ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="site-footer__contact">
+                  <h4 class="site-footer__heading">Contact</h4>
+                  <ul>
+                    <li tabindex="0">
+                      <div class="site-footer__contact-label">Route & Schedule Info</div>
+                      <div class="site-footer__contact-number">404-848-5000 </div>
+                    </li><br>
+                    <li tabindex="0">
+                      <div class="site-footer__contact-label">Customer Service</div>
+                      <div class="site-footer__contact-number">404-848-5000 </div>
+                    </li><br>
+                     <li tabindex="0">
+                      <div class="site-footer__contact-label">MARTA Police <br><i>(Non-Emergency)</i></div>
+                      <div class="site-footer__contact-number">404-848-4900</div>
+                    </li><br>
+
+<li tabindex="0">
+                      <div class="site-footer__contact-label">MARTA Police <br><i>(Emergency)</i></div>
+                      <div class="site-footer__contact-number">404-848-4911</div>
+                    </li><br>
+
+<li tabindex="0">
+                      <div class="site-footer__contact-label">MARTA Mobility</div>
+                      <div class="site-footer__contact-number">404-848-5826</div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="social-links">
+                  <ul class="social-links__items">
+                    <li class="social-links__item"> <a class="social-links__item-link social-links__item-link--tw"
+                                         href="https://twitter.com/MARTAtransit" title=”MARTA Transit” target="_blank" tabindex="0">MARTA Transit</a> </li>
+
+ <li class="social-links__item"> <a class="social-links__item-link social-links__item-link--tw"
+                                         href="https://twitter.com/MARTASERVICE" title=”MARTA Service” target="_blank" tabindex="0">MARTA Service</a> </li>
+                    
+                    <li class="social-links__item"> <a class="social-links__item-link social-links__item-link--fb"
+                                         href="https://www.facebook.com/MARTAtransit"  title=”Facebook page”  target="_blank" tabindex="0">Facebook</a> </li>
+                    <li class="social-links__item"> <a class="social-links__item-link social-links__item-link--ig"
+                                         href="https://www.instagram.com/marta_explorers"  title=”Instagram page”  target="_blank" tabindex="0">Instagram</a> </li>
+                    <li class="social-links__item"> <a class="social-links__item-link social-links__item-link--li"
+                                         href="https://www.linkedin.com/company/metropolitan-atlanta-rapid-transit-authority"  title=”LinkedIN page”  target="_blank" tabindex="0">LinkedIn</a> </li>
+                    <li class="social-links__item"> <a class="social-links__item-link social-links__item-link--pt"
+                                         href="https://www.pinterest.com/MARTATRANSIT/"  title=”Pinterest page”  target="_blank" tabindex="0">Pinterest</a> </li>
+                    <li class="social-links__item"> <a class="social-links__item-link social-links__item-link--yt"
+                                         href="https://www.youtube.com/user/itsmartanews?feature=mhum" title=”YouTube page”  target="_blank" tabindex="0">YouTube</a> </li>
+                  </ul>
+<div id="ctl00_ContentBlock5">
+	<!--<table width="80%"  border="0"  align="center"  cellpadding="4"  cellspacing="0"  dropzone="copy">                                
+    <tbody>                                                          
+        <tr>                                                                                    
+            <td colspan="6"  style="cursor: default;"  align="center">Select a Language:</td>    </tr>                                                          
+        <tr>                                                                                    
+            <td width="36"  bordercolor="#333333"  style="cursor: default;">                                                                                                     
+                <a tabindex="0"  href="http://translate.google.com/translate?u=http://www.itsmarta.com&hl=en&ie=UTF-8&sl=en&tl=es"  title="Spanish"  draggable="false">                                                                                                                             
+                    <img alt="Spanish"  border="0"  height="11"  hspace="2"  src="uploadedimages/es.gif"  width="20"  draggable="false" />                </a>            </td>                                                                                    
+            <td width="36"  bordercolor="#333333"  style="cursor: default;">                                                                                                     
+                <a tabindex="0"  href="http://translate.google.com/translate?u=http://www.itsmarta.com&hl=en&ie=UTF-8&sl=en&tl=fr"  title="French"  draggable="false">                                                                                                                             
+                    <img alt="French"  border="0"  height="11"  hspace="2"  src="uploadedimages/fr.gif"  width="20"  draggable="false" />                </a>            </td>                                                                                    
+            <td width="36"  bordercolor="#333333">                                                                                                     
+                <a tabindex="0"  href="http://translate.google.com/translate?u=http://www.itsmarta.com&hl=en&ie=UTF-8&sl=en&tl=ja"  title="Japanese"  draggable="false">                                                                                                                             
+                    <img alt="Japanese"  border="0"  height="11"  hspace="2"  src="uploadedimages/ja.gif"  width="20"  draggable="false" />                </a>            </td>                                                                                    
+            <td width="36"  bordercolor="#333333"  style="cursor: default;">                                                                                                     
+                <a tabindex="0"  href="http://translate.google.com/translate?u=http://www.itsmarta.com&hl=en&ie=UTF-8&sl=en&tl=zh"  title="Chinese"  draggable="false">                                                                                                                             
+                    <img alt="Chinese"  border="0"  height="11"  hspace="2"  src="uploadedimages/zh.gif"  width="20"  draggable="false" />                </a>            </td>                                                                                    
+            <td width="36"  bordercolor="#333333"  style="cursor: default;">                                                                                                     
+                <a tabindex="0"  href="http://translate.google.com/translate?u=http://www.itsmarta.com&hl=en&ie=UTF-8&sl=en&tl=ko"  title="Korean"  draggable="false">                                                                                                                             
+                    <img alt="Korean"  border="0"  height="11"  hspace="2"  src="uploadedimages/ko.gif"  width="20"  draggable="false" />                </a>            </td>                                                                                    
+            <td width="47"  bordercolor="#333333">                                                                                                     
+                <a tabindex="0"  href="http://translate.google.com/translate?u=http://www.itsmarta.com&hl=en&ie=UTF-8&sl=en&tl=de"  title="German"  draggable="false">                                                                                                                             
+                    <img alt="German"  border="0"  height="11"  hspace="2"  src="uploadedimages/de.gif"  width="20"  draggable="false" />                </a>            </td>    </tr>                       </tbody>
+</table>
+
+-->
+<h4 class="site-footer__heading">Select a Language:</h4>
+            <div id="google_translate_element"></div>
+            <script  type="text/javascript">              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'de,en,es,fr,ja,ko,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+              }
+            </script>
+            <script  type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="site-footer__secondary">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="site-footer__secondary-nav">
+              <ul>
+                <li> <a href="privacy-and-legal.aspx" tabindex="0">Privacy and Legal</a> </li>
+              </ul>
+
+
+
+
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer Ending -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="scripts/vendor/jquery-1.11.1.min.js"></' + 'script>')</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script>window.jQuery || document.write('<script src="scripts/vendor/jquery-ui-1.11.4.min.js"><\/script>')</script>
+  <script src="scripts/vendor.js"></script>
+  <script src="scripts/includes.js"></script>
+  <script>
+      Modernizr.load([
+        {
+            test: window.matchMedia,
+            nope: ['scripts/vendor/matchMedia.min.js', 'scripts/vendor/matchMedia.addListener.min.js', 'scripts/vendor/respond.min.js']
+        },
+        'scripts/vendor/enquire.min.js',
+        'scripts/main.js'
+      ]);
+    </script>
+    <script>
+        var chat = Quiq({
+            contactPoint: 'main',
+            initialMessage: "I have a question.",
+            height: '500px',
+            colors: {
+                primary: '#00bbe5'
+            },
+            styles: {
+                AgentMessageBubble: {
+                    borderColor: 'red'
+                }
+            }
+        });
+    </script>
+  <!--Trip planner scripts -->
+  <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.4/jquery.xdomainrequest.min.js"></script>
+    <![endif]-->
+  <!-- Home Page TimePicker Begin-->
+  <link rel="stylesheet" href="timepicker/include/ui-1.10.0/ui-lightness/jquery-ui-1.10.0.custom.min.css" type="text/css" />
+  <link rel="stylesheet" href="timepicker/jquery.ui.timepicker.css?v=0.3.3" type="text/css" />
+  <script type="text/javascript" src="timepicker/jquery.ui.timepicker.js?v=0.3.3"></script>
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#timepicker_6').timepicker({
+              showPeriod: true,
+              showLeadingZero: true
+          });
+
+
+      });
+
+
+        </script>
+  <!-- Home Page TimePicker End-->
+  <!-- Mobile Version of left navigation-->
+  <script>
+      // DOM ready
+      $(function () {
+
+          // Create the dropdown base
+          $("<select />").appendTo("nav");
+
+          // Create default option "Go to..."
+          $("<option />", {
+              "selected": "selected",
+              "value": "",
+              "text": "Go to..."
+          }).appendTo("nav select");
+
+          // Populate dropdown with menu items
+          $("nav a").each(function () {
+              var el = $(this);
+              $("<option />", {
+                  "value": el.attr("href"),
+                  "text": el.text()
+              }).appendTo("nav select");
+          });
+
+          // To make dropdown actually work
+          // To make more unobtrusive: http://css-tricks.com/4064-unobtrusive-page-changer/
+          $("nav select").change(function () {
+              window.location = $(this).find("option:selected").val();
+          });
+
+      });
+	</script>
+  <!-- Station name link to station detail page David change-->
+  <script>
+      $('a.stations__item-name').click(function (e) {
+          var stationName = $(e.target).text();
+          switch (stationName) {
+              case 'Brookhaven / Oglethorpe':
+                  stationName = 'Brookhaven';
+                  break;
+              case 'Dome / Congress Center / Philips Arena / CNN':
+                  stationName = 'Omni';
+                  break;
+
+              case 'Dome / GWCC / Philips Arena / CNN Center':
+                  stationName = 'Omni';
+                  break;
+
+              case 'Edgewood / Candler Park':
+                  stationName = 'Edgewood-Candler Park';
+                  break;
+
+              case 'Inman Park / Reynoldstown':
+                  stationName = 'Inman Park';
+                  break;
+
+              case 'Lakewood / Ft. McPherson':
+                  stationName = 'Lakewood';
+                  break;
+              case 'Lindbergh Center':
+                  stationName = 'Lindbergh';
+                  break;
+          }
+          //var stationUrl = "station-detail.aspx?station=" + stationName;
+          //$(e.target).attr("href", stationUrl);
+      });
+
+    </script>
+  <script src="scripts/jquerycookie.js"></script>
+    <!-- DateTime Calendar Begining -->   
+    <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+   
+<!-- DateTime Calendar End -->
+
+<script type="text/javascript">
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("ctl00_RequiredFieldValidator1"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_RequiredFieldValidator1 = document.all ? document.all["ctl00_RequiredFieldValidator1"] : document.getElementById("ctl00_RequiredFieldValidator1");
+ctl00_RequiredFieldValidator1.controltovalidate = "ctl00_siteSearch";
+ctl00_RequiredFieldValidator1.errormessage = "Please enter search text";
+ctl00_RequiredFieldValidator1.display = "Dynamic";
+ctl00_RequiredFieldValidator1.validationGroup = "SearchGroup";
+ctl00_RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_RequiredFieldValidator1.initialvalue = "";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+</script>
+</form>
+</body>
+</html>

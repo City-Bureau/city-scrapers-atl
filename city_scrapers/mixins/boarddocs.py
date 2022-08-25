@@ -7,6 +7,23 @@ from scrapy.http import Request
 
 
 class BoardDocsMixin:
+    """
+    Usage:
+
+    For a page like https://go.boarddocs.com/ga/fcss/Board.nsf/Public
+
+    Set boarddocs_slug = "fcss" (part of URL after /ga/)
+    Set boarddocs_committee_id = "AA6H9Z477333"
+    (obtained via inspecting POST in browser while selecting meetings tab)
+
+    Then override:
+        augment_meeting(self, meeting, item)
+
+    Which can add any extra data to 'meeting' (boarddocs only guarantee name and date).
+
+    See Example: atl_gwinett_education.py
+    """
+
     def start_requests(self):
         return [
             Request(
@@ -28,7 +45,7 @@ class BoardDocsMixin:
                 start=datetime.datetime.strptime(item["numberdate"], "%Y%m%d"),
                 end=None,
                 all_day=False,
-                time_notes="Sign-in is between 5:30 - 6:00 p.m",
+                time_notes="",
                 location={},
                 links=[],
                 source="https://go.boarddocs.com/ga/{self.boarddocs_slug}/Board.nsf/Public",  # noqa
@@ -38,3 +55,7 @@ class BoardDocsMixin:
 
         def augment_meeting(self, meeting, item):
             pass
+
+    # TODO:
+    # second URL: https://go.boarddocs.com/ga/investatlanta/Board.nsf/BD-GetMeeting?open
+    # body  id=CHBMGU58DB89 current_committee_id=AA6HBZ47C3A4

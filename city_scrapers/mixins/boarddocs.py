@@ -48,7 +48,7 @@ class BoardDocsMixin:
                 time_notes="",
                 location={},
                 links=[],
-                source="https://go.boarddocs.com/ga/{self.boarddocs_slug}/Board.nsf/Public",  # noqa
+                source=f"https://go.boarddocs.com/ga/{self.boarddocs_slug}/Board.nsf/Public",  # noqa
             )
             self.augment_meeting(meeting, item)
             yield meeting

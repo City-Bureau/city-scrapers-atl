@@ -17,8 +17,7 @@ NEWSPIDER_MODULE = "city_scrapers.spiders"
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = "City Scrapers [development mode]. Learn more and say hello at https://www.citybureau.org/city-scrapers/"  # noqa
 
-# Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Disable cookies (enabled by default)
 COOKIES_ENABLED = False

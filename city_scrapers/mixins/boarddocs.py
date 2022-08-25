@@ -34,15 +34,23 @@ class BoardDocsMixin:
         ]
 
     def parse(self, response):
+        current_year = datetime.date.today().year
         for item in response.json():
-            # blank items do occur
+
+            # blank items occur in the feed sometimes
             if not item:
                 continue
+
+            # once we're before the current year, we can stop
+            start = datetime.datetime.strptime(item["numberdate"], "%Y%m%d")
+            if start.year < current_year:
+                break
+
             meeting = Meeting(
                 title=item["name"],
                 description="",
                 classification=NOT_CLASSIFIED,
-                start=datetime.datetime.strptime(item["numberdate"], "%Y%m%d"),
+                start=start,
                 end=None,
                 all_day=False,
                 time_notes="",

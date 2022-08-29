@@ -118,6 +118,8 @@ class AtlBoeSpider(CityScrapersSpider):
         date_str = item.css(".sw-calendar-block-date::text").get()
         if date_str.lower() in self.weekdays:
             return self._get_next_weekday_date(date_str.lower())
+        elif date_str.lower() == "today":
+            return datetime.today()
         else:
             return datetime.strptime(date_str, "%B %d, %Y")
 
@@ -131,4 +133,5 @@ class AtlBoeSpider(CityScrapersSpider):
         today = datetime.today()
         today_weekday = today.weekday()
         weekday_num = self.weekdays.index(weekday)
-        return today + timedelta(days=(today_weekday - weekday_num) % 7 - 1)
+        delta = (weekday_num - today_weekday) % 7 or 7
+        return today + timedelta(days=delta)

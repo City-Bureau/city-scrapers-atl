@@ -2,15 +2,14 @@ from city_scrapers_core.spiders import CityScrapersSpider
 
 from ..mixins.iqm2 import IQM2Mixin
 
-ATL_IQM2_URL = "https://atlantacityga.iqm2.com/Citizens/Calendar.aspx?Frame=Yes&View=List&From=1/1/2021&To=12/31/2025"  # noqa
-
 
 class AtlCityCouncilSpider(IQM2Mixin, CityScrapersSpider):
     name = "atl_city_council"
     agency = "Atlanta City Council"
-    board_name = "Atlanta City Council"
     timezone = "America/New_York"
-    start_urls = [ATL_IQM2_URL]
+
+    iqm2_slug = "atlantacityga"
+    board_name = "Atlanta City Council"
 
 
 class AtlCityCouncilFinSpider(AtlCityCouncilSpider):

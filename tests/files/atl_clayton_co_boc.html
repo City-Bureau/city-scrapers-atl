@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="en" lang="en">
+<head id="HeadMain"><title>
+	Meeting Calendar - Clayton County, GA
+</title><meta http-equiv="X-UA-Compatible" content="IE=9" /><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"2fdd6b8d1a","applicationID":"142416098","transactionName":"YwdbYEZTVxYHABALW1pNeGdkHVoMEgoeB1pHTVpVWFdXAQcRSgNHRBo=","queueTime":0,"applicationTime":527,"agent":"","atts":"T0BYFg5JGwsUTRAQXUQrXRYOEHsnVyAlUgUDJgkNAwQPJ19BGR8="}</script><script type="text/javascript">(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:false},ajax:{deny_list:[]}};(window.NREUM||(NREUM={})).loader_config={xpid:"UQEHVFZACQcCUFBUBwgP",licenseKey:"2fdd6b8d1a",applicationID:"142416098"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var i,o=t("ee"),a=t(27),s={};try{i=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,i.indexOf("dev")!==-1&&(s.dev=!0),i.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&o.on("internal-error",function(t){r(t.stack)}),s.dev&&o.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{p?p-=1:i(s||new UncaughtException(t,e,n),!0)}catch(f){try{o("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function i(t,e){var n=e?null:c.now();o("err",[t,n])}var o=t("handle"),a=t(28),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError";if(!c.disabled){var p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(10),t(9),"addEventListener"in window&&t(6),c.xhrWrappable&&t(11),d=!0)}s.on("fn-start",function(t,e,n){d&&(p+=1)}),s.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,i(n))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){o("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(){var t=new PerformanceObserver(function(t,e){var n=t.getEntries();s(v,[n])});try{t.observe({entryTypes:["resource"]})}catch(e){}}function i(t){if(s(v,[window.performance.getEntriesByType(w)]),window.performance["c"+l])try{window.performance[h](m,i,!1)}catch(t){}else try{window.performance[h]("webkit"+m,i,!1)}catch(t){}}function o(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var a=t("ee"),s=t("handle"),c=t(10),f=t(9),u=t(5),d=t(19),l="learResourceTimings",p="addEventListener",h="removeEventListener",m="resourcetimingbufferfull",v="bstResource",w="resource",g="-start",y="-end",x="fn"+g,b="fn"+y,E="bstTimer",R="pushState",S=t("loader");if(!S.disabled){S.features.stn=!0,t(8),"addEventListener"in window&&t(6);var O=NREUM.o.EV;a.on(x,function(t,e){var n=t[0];n instanceof O&&(this.bstStart=S.now())}),a.on(b,function(t,e){var n=t[0];n instanceof O&&s("bst",[n,e,this.bstStart,S.now()])}),c.on(x,function(t,e,n){this.bstStart=S.now(),this.bstType=n}),c.on(b,function(t,e){s(E,[e,this.bstStart,S.now(),this.bstType])}),f.on(x,function(){this.bstStart=S.now()}),f.on(b,function(t,e){s(E,[e,this.bstStart,S.now(),"requestAnimationFrame"])}),a.on(R+g,function(t){this.time=S.now(),this.startPath=location.pathname+location.hash}),a.on(R+y,function(t){s("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),u()?(s(v,[window.performance.getEntriesByType("resource")]),r()):p in window.performance&&(window.performance["c"+l]?window.performance[p](m,i,d(!1)):window.performance[p]("webkit"+m,i,d(!1))),document[p]("scroll",o,d(!1)),document[p]("keypress",o,d(!1)),document[p]("click",o,d(!1))}}},{}],5:[function(t,e,n){e.exports=function(){return"PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&i(e)}function i(t){s.inPlace(t,[u,d],"-",o)}function o(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(i(window),i(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1];if(null!==n&&("function"==typeof n||"object"==typeof n)){var r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=o(arguments),e={};i.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return i.emit(n+"start",[t,a],s),s.then(function(t){return i.emit(n+"end",[null,t],s),t},function(t){throw i.emit(n+"end",[t],s),t})})}var i=t("ee").get("fetch"),o=t(28),a=t(27);e.exports=i;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(s,"fetch",c),i.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),i.emit(c+"done",[null,e],n)}else i.emit(c+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),i=t("wrap-function")(r);e.exports=r;var o=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;o&&o.pushState&&o.replaceState&&(a=o),i.inPlace(a,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){var r=t("ee").get("raf"),i=t("wrap-function")(r),o="equestAnimationFrame";e.exports=r,i.inPlace(window,["r"+o,"mozR"+o,"webkitR"+o,"msR"+o],"raf-"),r.on("raf-start",function(t){t[0]=i(t[0],"fn-")})},{}],10:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function i(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var o=t("ee").get("timer"),a=t("wrap-function")(o),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=o,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),o.on(c+u,r),o.on(s+u,i)},{}],11:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function i(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function o(t){x.push(t),m&&(E?E.then(a):w?w(a):(R=-R,S.data=R))}function a(){for(var t=0;t<x.length;t++)r([],x[t]);x.length&&(x=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=t(19),p=NREUM.o,h=p.XHR,m=p.MO,v=p.PR,w=p.SI,g="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],x=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new h(t);try{u.emit("new-xhr",[e],e),e.addEventListener(g,i,l(!1))}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(h,b),b.prototype=h.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),o(e)}),u.on("open-xhr-start",r),m){var E=v&&v.resolve();if(!w&&!v){var R=1,S=document.createTextNode(R);new m(a).observe(S,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===g||a()})},{}],12:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=p.generateSpanId(),m=p.generateTraceId(),v=Date.now(),w={spanId:h,traceId:m,timestamp:v};return(t.sameOrigin||c(t)&&l())&&(w.traceContextParentHeader=i(h,m),w.traceContextStateHeader=o(h,v,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(w.newrelicHeader=a(h,m,v,n,r,f)),w}function i(t,e){return"00-"+e+"-"+t+"-01"}function o(t,e,n,r,i){var o=0,a="",s=1,c="",f="";return i+"@nr="+o+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,i,o){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:i,id:t,tr:e,ti:n}};return o&&r!==o&&(s.d.tk=o),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var i=h(n.allowed_origins[r]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function l(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var p=t(24),h=t(14);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],13:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);return e.protocol&&"data"===e.protocol?void g("Ajax/DataUrl/Excluded"):void(e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):o(this,t),n.cbTime=this.cbTime,s("xhr",[e,n,this.startTime,this.endTime,"xhr"],this)))}}function i(t,e){var n=c(e),r=t.params;r.hostname=n.hostname,r.port=n.port,r.protocol=n.protocol,r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function o(t,e){t.params.status=e.status;var n=v(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(14),f=t(12).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(20),m=t(18),v=t(15),w=t(19),g=t(21).recordSupportability,y=NREUM.o.REQ,x=window.XMLHttpRequest;a.features.xhr=!0,t(11),t(7),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){o(e,t)},w(!1)),h&&(h>34||h<10)||t.addEventListener("progress",function(t){e.lastSize=t.loaded},w(!1))}),u.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],i=this;if(n&&r){var o=m(r);o&&(n.txSize=o)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||i.loadCaptureCalled||(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<l;s++)e.addEventListener(d[s],this.listener,w(!1))}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("xhr-resolved",function(){this.endTime=a.now()}),u.on("addEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof x&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var i=f(this.parsedOrigin);if(i&&(i.newrelicHeader||i.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var o={};for(var a in r)o[a]=r[a];o.headers=new Headers(r.headers||{}),e(o.headers,i)&&(this.dt=i),t.length>1?t[1]=o:t.push(o)}else t[0]&&t[0].headers&&e(t[0].headers,i)&&(this.dt=i)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),this.dt=e,t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},o=this.target;if("string"==typeof o?n=o:"object"==typeof o&&o instanceof y?n=o.url:window.URL&&"object"==typeof o&&o instanceof URL&&(n=o.href),i(this,n),"data"!==this.params.protocol){var s=(""+(o&&o instanceof y&&o.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}}),u.on("fetch-done",function(t,e){if(this.endTime=a.now(),this.params||(this.params={}),"data"===this.params.protocol)return void g("Ajax/DataUrl/Excluded");this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime,this.endTime,"fetch"],this)})}},{}],14:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];if(0===(t||"").indexOf("data:"))return{protocol:"data"};var e=document.createElement("a"),n=window.location,i={};e.href=t,i.port=e.port;var o=e.href.split("://");!i.port&&o[1]&&(i.port=o[1].split("/")[0].split("@").pop().split(":")[1]),i.port&&"0"!==i.port||(i.port="https"===o[0]?"443":"80"),i.hostname=e.hostname||n.hostname,i.pathname=e.pathname,i.protocol=o[0],"/"!==i.pathname.charAt(0)&&(i.pathname="/"+i.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return i.sameOrigin=a&&(!e.hostname||s),"/"===i.pathname&&(r[t]=i),i}},{}],15:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?i(t.response):"text"===n||""===n||void 0===n?i(t.responseText):void 0}var i=t(18);e.exports=r},{}],16:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return u.recordSupportability("API/"+e+"/called"),o(t+e,[f.now()].concat(s(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(27),s=t(28),c=t("ee").get("tracer"),f=t("loader"),u=t(21),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var l=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",h=p+"ixn-";a(l,function(t,e){d[e]=i(p,e,!0,"api")}),d.addPageAction=i(p,"addPageAction",!0),d.setCurrentRouteName=i(p,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(h+"tracer",[f.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[f.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(h,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),u.recordSupportability("API/noticeError/called"),o("err",[t,f.now(),!1,e])}},{}],17:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],20:[function(t,e,n){var r=0,i=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);i&&(r=+i[1]),e.exports=r},{}],21:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[s,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",s="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:s},recordSupportability:r,recordCustom:i}},{}],22:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,s=t(29);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],23:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?p("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&p("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(f&&f<r.startTime)return;var i=[r],o=a({});o&&i.push(o),p("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||p("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function s(t){if(t instanceof w&&!y){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=h.now()?n.fid=h.now()-e:e>h.offset&&e<=Date.now()?(e-=h.offset,n.fid=h.now()-e):e=h.now(),y=!0,p("timing",["fi",e,n])}}function c(t){"hidden"===t&&(f=h.now(),p("pageHide",[f]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,d,l,p=t("handle"),h=t("loader"),m=t(26),v=t(19),w=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){u=new PerformanceObserver(r);try{u.observe({entryTypes:["paint"]})}catch(g){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(g){}l=new PerformanceObserver(o);try{l.observe({type:"layout-shift",buffered:!0})}catch(g){}}if("addEventListener"in document){var y=!1,x=["click","keydown","mousedown","pointerdown","touchstart"];x.forEach(function(t){document.addEventListener(t,s,v(!1))})}m(c)}},{}],24:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var i,o="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<o.length;s++)i=o[s],"x"===i?a+=t().toString(16):"y"===i?(i=3&t()|8,a+=i.toString(16)):a+=i;return a}function i(){return a(16)}function o(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,i=window.crypto||window.msCrypto;i&&i.getRandomValues&&Uint8Array&&(n=i.getRandomValues(new Uint8Array(t)));for(var o=[],a=0;a<t;a++)o.push(e().toString(16));return o.join("")}e.exports={generateUuid:r,generateSpanId:i,generateTraceId:o}},{}],25:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],26:[function(t,e,n){function r(t){function e(){t(s&&document[s]?document[s]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(19);e.exports=r;var o,a,s;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",s="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",s="webkitVisibilityState")},{}],27:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],28:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],29:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!p.aborted||o){t&&a&&t(n,r,i);for(var s=e(i),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var l=d[y[n]];return l&&l.push([x,n,r,s]),s}}function o(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function v(t){return l[t]=l[t]||i(n)}function w(t,e){p.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:o,addEventListener:o,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:s,aborted:!1};return x}function o(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(p.aborted=!0,d=p.backlog={})}var c="nr@context",f=t("gos"),u=t(27),d={},l={},p=e.exports=i();e.exports.getOrSetContext=o,p.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!O++){var t=S.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+S.offset],null,"api"),s("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=p+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){s("mark",["domContent",a()+S.offset],null,"api")}var a=t(22),s=t("handle"),c=t(27),f=t("ee"),u=t(25),d=t(17),l=t(19),p=d.getConfiguration("ssl")===!1?"http":"https",h=window,m=h.document,v="addEventListener",w="attachEvent",g=h.XMLHttpRequest,y=g&&g.prototype,x=!1;NREUM.o={ST:setTimeout,SI:h.setImmediate,CT:clearTimeout,XHR:g,REQ:h.Request,EV:h.Event,PR:h.Promise,MO:h.MutationObserver};var b=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1216.min.js"},R=g&&y&&y[v]&&!/CriOS/.test(navigator.userAgent),S=e.exports={offset:a.getLastTimestamp(),now:a,origin:b,features:{},xhrWrappable:R,userAgent:u,disabled:x};if(!x){t(16),t(23),m[v]?(m[v]("DOMContentLoaded",o,l(!1)),h[v]("load",r,l(!1))):(m[w]("onreadystatechange",i),h[w]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var O=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var o,a,u,l;try{a=this,o=d(arguments),u="function"==typeof r?r(o,a):r||{}}catch(p){i([p,"",[o,a,c],u],t)}s(n+"start",[o,a,c],u,f);try{return l=e.apply(a,o)}catch(h){throw s(n+"err",[o,a,h],u,f),h}finally{s(n+"end",[o,a,l],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[l]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,i,c,o))}function s(n,r,o,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=l,n}function i(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)p.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[l])}function s(t,e){var n=e(t);return n[l]=t,o(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(28),l="nr@original",p=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,13,4,3]);</script>
+
+    <!-- this fixes a minor rendering issue with tables on the ipad -->
+    <meta content="width=device-width, initial-scale=1.0;" name="viewport" />
+
+    <!-- Agency specific meta tags -->
+    <meta name='google-site-verification' content='v8iNp5ToI5384_S9_Exw0F10KJ__b35Fs7jqvTvb0TY' />
+<meta name='msvalidate.01' content='8C654B10898A718CB62BCB19E52589CD' />
+
+
+    <!-- open search discovery -->
+    <link rel="search" type="application/opensearchdescription+xml" href="/Services/GetFederatedSearch.aspx" title="IQM2 search" />
+
+    <!-- Icon -->
+    <link href="/favicon.ico?v=2018" rel="icon" />
+
+    <!-- CSS Links -->
+    <link type="text/css" href="/App_Themes/Main.css?v=86" rel="Stylesheet" /><link type="text/css" href="/lib/jquery-ui.css" rel="stylesheet" />
+ 
+  <script>
+      !function () { var a, b, c, d = window, e = document, f = arguments, g = "script", h = ["config", "track", "trackForm", "trackClick", "identify", "visit", "push", "call"], i = function () { var a, b = this, c = function (a) { b[a] = function () { return b._e.push([a].concat(Array.prototype.slice.call(arguments, 0))), b } }; for (b._e = [], a = 0; a < h.length; a++) c(h[a]) }; for (d.__woo = d.__woo || {}, a = 0; a < f.length; a++) d.__woo[f[a]] = d[f[a]] = d[f[a]] || new i; b = e.createElement(g), b.async = 1, b.src = "//static.woopra.com/js/w.js", c = e.getElementsByTagName(g)[0], c.parentNode.insertBefore(b, c) }("woopra");
+
+      woopra.config({
+          domain: "iqm2.com",
+          cookie_name:"accelaTracker"
+      });
+      woopra.track("mp_pv", {
+          domain: window.location.hostname,
+          title: document.title,
+          url: window.location.href,
+          uri: window.location.pathname,
+          hash: window.location.hash,
+          error: null
+      });
+  </script>
+    <!-- IQM2 Scripts -->
+    <script type="text/javascript" src="/lib/jquery.js"></script>
+    <script type="text/javascript" language="javascript" src="/App_Themes/Global.js?v=8_10_48"></script>
+    <script type="text/javascript" src="/lib/MinuteTraq.PopupWindow.js"></script>
+    <script type="text/javascript" src="/lib/jquery-ui.js"></script>
+    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet" /><link href="/Scripts/videojs-live-dvr/videojs-dvrseekbar.css" rel="stylesheet" />
+    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+    <script src='https://unpkg.com/videojs-flash@2.1.0/dist/videojs-flash.min.js'></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+    <script src="/Scripts/videojs-live-dvr/videojs-dvrseekbar.min.js"></script>
+    <script type='text/javascript' src='/Scripts/player.js'></script>
+    <script type="text/javascript" src="/Scripts/js.cookie-2.0.3.min.js"></script>
+    <!-- RSS Feeds (Site) -->
+    
+
+    <!-- Generated CSS Link -->
+    
+  
+    <!-- External CSS / Script Links -->
+    <link type='text/css' href='/Lib/GetCustomCSS.ashx?timestamp=637761944190000000' rel='Stylesheet' /><link type='text/css' href='/Citizens/GetImage.aspx?ID=1006' rel='Stylesheet' /><script type='text/javascript' src='/Citizens/GetImage.aspx?ID=1007'></script>
+    
+   
+    <!--[if IE 7]>
+	   <style type="text/css">
+        .Section H2 { display:inline;}
+        .RowTop div { display:inline;}
+   </style>
+	
+	<![endif]-->
+    
+    <script type="text/javascript" src="/Lib/MinuteTraq.Search.js?v=8_10_66"></script>
+    
+    <script type="text/javascript">
+        
+        // configure tracker
+        
+        $(function () {
+            
+            
+            FixFooterPosition();
+            $(window).on('resize', FixFooterPosition);
+
+            var h = $("#Banner").height();
+            //  var w = $("body").width();
+
+            var sCoords = "0,0,5000," + h;
+
+            $("#lnkBanner").attr("coords", sCoords);
+            var hideTopBanner = Cookies.get('hideTopBanner');
+            var appStyles = {display:'block'};
+            if (hideTopBanner) {
+                appStyles.display = 'none';
+            }
+            $('#topbarAppBanner').css(appStyles);
+            $('.close-topbar-app-banner').bind('click', function () {
+                $('#topbarAppBanner').css('display', 'none');
+                Cookies.set('hideTopBanner', true);
+            });
+            $('.link-wrapper-banner').bind('click', function () {
+                woopra.track('portal-wegovern-banner', {
+                    agency: Cookies.get('AgencyName'),
+                    username: Cookies.get('WebUserName')
+                });
+                return true;
+            });
+        });
+
+        function FixFooterPosition() {
+            //hack for the footer, display at bottom of screen if page is short
+            if ($("form").height() < $(window).height() - 100) {
+                $("#Footer").css("position", "absolute");
+                $("#Footer").css("bottom", "0");
+            }
+            else {
+                $("#Footer").css("position", "");
+            }
+        }
+
+    </script>
+    <style type="text/css" media="screen">
+        #topbarAppBanner {
+            min-height: 40px;
+            z-index: 1000;
+        }
+        .top-banner-app-inner{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 40px;
+            border: 1px solid rgba(10,10,10,.5);
+            box-shadow: 0px 0px 16px 0px #303030;
+            background-color: #456ca7;
+        }
+        .close-topbar-app-banner {
+            position: absolute;
+            display: block;
+            top: 25px;
+            right: 5%;
+            font-size: 1em;
+            color: #e3e3e3
+        }
+        .app-link{
+            display: block;
+            margin: 0 auto;
+            width: 40%;
+        }
+        .wegovern-banner-logo {
+            left: 22px;
+            position: relative;
+            padding-top: 1px;
+        }
+
+        @media screen and (max-width: 981px ){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width: 1595px){
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (max-width: 1594px){
+            .inside-banner-link {
+                position: relative;
+                top: -30px;
+                left: 75px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+        @media screen and (min-width:1100px){
+            .app-link{
+                display: block;
+                margin: 0 auto;
+                width: 40%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+        }
+        @media screen and (max-width:1099px){
+            .app-link {
+                display: block;
+                margin: 0 auto;
+                width: 65%;
+            }
+            .close-topbar-app-banner {
+                right: 5%;
+            }
+            .inside-banner-link {
+                position: relative;
+                top: -15px;
+                left: 30px;
+                color: #e3e3e3;
+                white-space: nowrap;
+            }
+        }
+    </style>
+    
+
+    <!-- Page Level Header Stuff -->
+    
+
+    <link rel='stylesheet' type='text/css' href='/Lib/fullcalendar/fullcalendar.css' />
+    
+    
+    
+    <script type='text/javascript' src='/Lib/fullcalendar/fullcalendar.min.js'></script>
+
+    <script type="text/javascript">
+        $(function() {
+            if ($("#calendar").length == 0)
+                return;
+                
+            InitCalendar();
+        });
+
+        function GetFromDate() {
+
+            var sQueryDate = getParameterByName("From");
+
+            if (sQueryDate != undefined && sQueryDate.length > 0)
+                return new Date(sQueryDate);
+            else 
+                return new Date(new Date().getFullYear(), 0, 1);
+        }
+
+        function GetToDate() {
+
+            var sQueryDate = getParameterByName("To");
+
+            if (sQueryDate != undefined && sQueryDate.length > 0)
+                return new Date(sQueryDate);
+            else
+                return new Date(new Date().getFullYear(), 11, 31);                          
+        }
+        
+        function InitCalendar() {
+
+            var events = eval($("#ContentPlaceholder1_hfEventJSON").val());
+
+            var fIncludesWeekends = false;
+
+            for (var i = 0; i < events.length; i++) {
+                //safari does not support dashes in the date
+                var sDate = events[i].start.replace("-", "/").replace("-", "/").substring(0, events[i].start.indexOf(" "));
+                var eventDay = new Date(sDate).getDay(); 
+                if (eventDay == 6 || eventDay == 0) 
+                    fIncludesWeekends = true;                
+            }
+            
+            var dSelectedDate = new Date();
+
+            //if a different year was chosen, start with the date specified in the FROM
+            //otherwise default to the current date
+            
+            var dFromDate = GetFromDate();
+            var dToDate = GetToDate();
+                                 
+            //if today's date does not fall between the From and To, then default to the From date
+            if (dSelectedDate < dFromDate || dSelectedDate > dToDate)
+                dSelectedDate = dFromDate;
+
+            var sMonth = getParameterByName("Month");
+            if (sMonth != undefined && sMonth.length > 0)
+                dSelectedDate.setMonth(parseInt(sMonth) - 1, 1);
+                 
+			$('#calendar').fullCalendar(
+            {
+                header:
+                {
+                    left: 'title',
+                    center: '',
+                    right: 'prev,next today'
+                },
+                editable: false,
+                weekends: fIncludesWeekends,
+                events: events,
+                year: dSelectedDate.getFullYear(),
+                month: dSelectedDate.getMonth(),
+                eventRender: RenderEvent,
+                viewDisplay: UpdateCalendarNavButtons,
+                weekMode: "variable"
+            });
+
+            if(typeof FixFooterPosition == 'function')
+                FixFooterPosition();
+
+            // Trying to fix printing 
+            $(".fc-widget-header").each(function () {
+                $(this).css("width","14.28%");
+            });
+        }
+
+        function UpdateCalendarNavButtons(view) {
+
+            var dDisplayedDate = view.calendar.getDate();
+
+            var dFromDate = GetFromDate();
+            var dToDate = GetToDate();
+            var dToday = new Date();
+
+            var fIsBeginning = (dDisplayedDate.getMonth() == dFromDate.getMonth() && dDisplayedDate.getFullYear() == dFromDate.getFullYear());
+            var fIsEnd = (dDisplayedDate.getMonth() == dToDate.getMonth() && dDisplayedDate.getFullYear() == dToDate.getFullYear());
+            var fIsCurrentYear = (dToday >= dFromDate && dToday <= dToDate);
+
+            if (fIsBeginning)
+                $(".fc-button-prev").click(GotoPrevYear);
+            else
+                $(".fc-button-prev").unbind("click", GotoPrevYear);
+                
+            if (fIsEnd)
+                $(".fc-button-next").click(GotoNextYear);
+            else
+                $(".fc-button-next").unbind("click", GotoNextYear);
+
+
+            if (fIsCurrentYear)
+                $(".fc-button-today").css("display", "");
+            else
+                $(".fc-button-today").css("display", "none");
+
+        }
+
+        function GotoNextYear() { GotoNextPrevYear(true); }
+        function GotoPrevYear() { GotoNextPrevYear(false); }
+        
+        function GotoNextPrevYear(fNext) 
+        {
+            
+            if(fNext)
+            {
+                var dFrom = new Date(GetFromDate().getFullYear()+1, GetFromDate().getMonth(), GetFromDate().getDate());
+                var dTo = new Date(GetToDate().getFullYear() + 1, GetToDate().getMonth(), GetToDate().getDate());
+                var iStartMonth = 1;
+             }
+             else
+             {
+                 var dFrom = new Date(GetFromDate().getFullYear() - 1, GetFromDate().getMonth(), GetFromDate().getDate());
+                 var dTo = new Date(GetToDate().getFullYear() - 1, GetToDate().getMonth(), GetToDate().getDate());
+                 var iStartMonth = 12;
+             }
+             
+             var sFrom = (dFrom.getMonth()+1) + "/" + dFrom.getDate() + "/" + dFrom.getFullYear();
+             var sTo = (dTo.getMonth() + 1) + "/" + dTo.getDate() + "/" + dTo.getFullYear();
+
+             $('#calendar').html("<img src='/Lib/images/Loading_Snake_32x32.gif' alt='Please wait...'/>");
+             window.location = "Calendar.aspx?View=Calendar&From=" + sFrom + "&To=" + sTo + "&Month=" + iStartMonth;
+
+        }
+
+        var miNextID = 1
+
+        //thought we had this function somewhere else but i can't find it
+        //http://stackoverflow.com/questions/901115/get-query-string-values-in-javascript
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+            var regexS = "[\\?&]" + name + "=([^&#]*)";
+            var regex = new RegExp(regexS);
+            var results = regex.exec(window.location.search);
+            if (results == null)
+                return "";
+            else
+                return decodeURIComponent(results[1].replace(/\+/g, " "));
+        } 
+        
+        function RenderEvent(event, element) 
+        {
+            var iHour = event.start.getHours();
+            var sAMorPM = 'am';
+            if (iHour >= 12) sAMorPM = 'pm';
+
+            if (iHour > 12) 
+            {
+                iHour -= 12;
+            }
+            else if (iHour == 0) 
+            {
+                iHour = 12;
+            }
+
+            var sTime = iHour + ":" + pad(event.start.getMinutes(), 2) + sAMorPM;
+
+            var sDownloads = DecodeFromServer(unescape(event.downloads));
+            var sDownloadsBtn = "";
+
+            if (sDownloads.length > 0) 
+                sDownloadsBtn = "<br/><a id='lnkShowDownloads" + miNextID + "' href='javascript:ShowDownloads(" + miNextID + ");'>Show Downloads</a><div class='CalendarDownloads' id='divDownloads" + miNextID + "' style='display:none'>" + sDownloads + "</div>";                
+
+            miNextID++;
+
+            //bit of a hack, title looks better with each part on a new line
+            var sTitle = DecodeFromServer(event.title).replace(" - ", "<br/>");
+
+            var sVideo = "";
+
+            if (event.video != undefined)
+                sVideo = "<br/>" + DecodeFromServer(unescape(event.video));
+
+            var sCancelled = "";
+
+            if (event.cancelled == 'True')
+                sCancelled = '<div class="MeetingCancelled">Cancelled</div>';
+                
+            return "<div class='MeetingCalendarCell MainScreenText'>" + sCancelled + "<a href='" + event.url + "'>" + sTime + "</a><br/>" + sTitle + sVideo + sDownloadsBtn + "</div>"
+        }
+
+        function ShowDownloads(id) {
+
+            //in case there are other boxes in the same cell, we need to make sure their z-index is lowered so the new box
+            //will always be in front
+            for (var i = 0; i < miNextID; i++)
+                $("#divDownloads" + i).parent().css("z-index", 999);
+                        
+            if ($("#divDownloads" + id).css("display") == "none") {
+                $("#lnkShowDownloads" + id).html("Hide Downloads");
+                $("#divDownloads" + id).slideDown("fast");
+                $("#divDownloads" + id).parent().css("z-index", 1000);
+            }
+            else {
+                $("#lnkShowDownloads" + id).html("Show Downloads");
+                $("#divDownloads" + id).slideUp("fast");
+            }
+        }
+
+        function pad(num, size) {
+            var s = num + "";
+            while (s.length < size) s = "0" + s;
+            return s;
+        } 
+
+
+    </script>
+    
+    <style type="text/css">
+        .CalendarSettingsTable td
+        {
+        	padding-top:8px;
+        }
+    </style>
+    
+</head>
+
+<body id="MainLayout">
+    
+    <form method="post" action="./Calendar.aspx" id="aspnetForm" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="0u6FoS981UFb0HGTxencHFA7Z+uAPzctY8pz53l5hWd/VZq/Rsa7Ty4GcoVMoGTSQRZxrIeTiRFAmcd7QtmmQghmX6GUZ/AX6GmtPuflgHeFD8NlZe+ZNEWPO6iLdYaCb+mCBbkuh4CaBEm1JnBK4w==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6C54D0EC" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="qo3F6gKFFtKUeNpfom5dh0aELexDuLJhiynr67gvTMC6hifXV4BDIz70trtWlYLR/vSC1U/zE9ei6IHbohO86o8Uyog2nQSVGRgppKSz0FPpltrkrnO3QnaYZLnuDmslluNCwMXersOPupKNodMYNMKaTgQD/sZUX64/l0IGcTMIquOxFjsl1V/UyyZe9ov+3X9ZD/WWOIoqgFgkepg4g0eEIwnM0+qa6HzFAI2U3fbVuSItQ5yy28fYAcaTqUgXTVdnSzevfkSLoRo0wn+VJg3qy+etQOqp1qAfrnmaI+fh05dUS3VdVqkvWF8PwsdGFcHzXE8vREmvSY8k8jaM+4okbjiNFv5JEdzIGSXf3VMtwsf4cgaPnW2piEB8JSbAnDKZ4q08dlJbnOFpgkv/QfFosg7Jc5rkjSIM6BiSz/0GuQF0kXv7FrYC3jhPl7+PF0ICmT3LYcXqmmKzquEKrcn8giSzAKB2jZB2WvCLJ40QZXIsiSLs5YKT37foBT4CjMRAXDao/pm0JplJ0ncqAP8P8HWGkysgAVmHCj68ZU4r5Ze2F6WWBVNK1hjk4ZZHPmmLNBCr0RBOuK9MaG9evl1tGt2AMEEnNb5UoMOL2sNzS+YlNQ334Jl5GLCrbBCO1DYWWlgWCcIFrDbiurSsmK84MMXp79k+U6AsJmYi+VwZIVCoa9PAMRSjqT/OFT1zYGvCwUeMI9D/PEkKrk8QFpv5D+SHfUTvVW6ePZYwdi0=" />
+</div>
+        <div style="display: none">
+            <input type="submit" name="ctl00$btnRefreshPageAfterLogin" value="Button" id="btnRefreshPageAfterLogin" class="btnRefreshPage" />
+            <input name="ctl00$hfShowPopupOnLoad" type="hidden" id="hfShowPopupOnLoad" class="hfShowPopup" />
+        </div>
+        <span id="lblScript"></span>
+  
+    <div id="MainWindow">
+    
+            <div id="Banner" role="banner"  >
+                <img usemap="#bannerMap" src="/Citizens/GetImage.aspx?ID=1008&TimeStamp=637761944190000000" alt="IQM2 Meeting Portal" />
+                <map name="bannerMap">
+                    <area href="/Citizens/Default.aspx" id="lnkBanner" shape="rect" alt="Home" Target="_self" />
+                </map>
+
+                <div id="LogoHeaderTextHolder">
+                    
+                                                                       
+                </div>
+            </div>
+            
+            <div id="ToolStrip" role="navigation" aria-label="site">
+                <div id="Tabs">
+                    <div class="Shadow"></div>
+                    <a href="https://www.claytoncountyga.gov/government/board-of-commissioners" id="lnkMainSite" class="Tab LeftTab"><div><span>&laquo;Back to Main Site</span></div></a>
+                    <a href="/Citizens/default.aspx" class="Tab NormalTab"><div><span id="tabWelcome">Welcome</span></div></a>
+                    <a href="/Citizens/calendar.aspx" class="Tab NormalTab"><div><span id="tabMeetings">Meetings</span></div></a>                
+                    <a href="/Citizens/" style="display:none" class="Tab NormalTab"><div dropdown="Browse"><span>Browse</span></div></a>
+                                        
+                    <a href="/Citizens/Media.aspx" id="lnkMedia" class="Tab NormalTab"><div><span id="tabMedia">Media</span></div></a>                    
+                    <a href="/Citizens/LegalNotice.aspx" id="lnkNotices" class="Tab NormalTab"><div id="tabNotices"><span>Notices</span></div></a>                                        
+                    <a href="/Citizens/Board" class="Tab NormalTab"><div><span id="tabContactUs">Boards+</span></div></a>                                                        
+                </div>
+                <div id="TopExtraBoxTransparentBG"></div>
+                <div id="TopExtraBox">  
+                    <div id="TopLine">
+                        
+                     <a href="../MasterPages/#" id="lnkLogin" onclick="javascript:return PopupWindowShow(&#39;/Citizens/Login.aspx&#39;);">Log in</a><span id="spnThatOneStupidBar"> | </span><a href="mailto:support@accela.com" id="lnkHelp">Help</a> <span id="spnHelpBar">|</span> <a href="../MasterPages/#" id="lnkRegister" onclick="javascript:return PopupWindowShow(&#39;/Citizens/MyAccount.aspx&#39;);">Register</a>                                                
+                    </div> 
+                    <div id="BottomLine">                       
+                          
+                    </div>                            
+                   <input id="txtQuickSearch" type="text" value="Search" title="Search" />
+                   <img id="btnQuickSearch" style="cursor:pointer" alt="Search" src="/Lib/images/search.png" alt="search" />                   
+                </div>     
+            </div>
+                     
+            <table class="LayoutTable" role="presentation">
+                <tr>
+                    <td id="tdLeftPanel" class="LeftPanel">
+                        
+                        <div role="navigation" aria-label="Meeting Group">
+                            
+                        </div>
+                        
+                        <div class="DetailBox">
+                            <img src="/Citizens/images/Print.gif" border="0" alt="Print" />
+                            <a href="/Citizens/Calendar.aspx?Print=Yes" id="lnkPrint" class="PrintButton" target="_blank">Print This Page</a>                           
+                        </div>
+                        
+                        
+                                                
+                       <!-- <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 1" />
+                            <a href="#">Quick Link #1</a>
+                        </div>
+                        <div class="QuickLink">
+                            <img src="/Lib/buttonexample.png" alt="Quick Link 2"  />
+                            <a href="#">Quick Link #2</a>
+                        </div>     -->
+                                      
+                    </td>
+
+                    <td id="MainContentHolder">
+                        <div style="width:100%;height:100%;position:relative;margin:0;padding:0;border:0;">
+                            <div id="MainContentLeftShadow">                           
+                            </div>   
+                          
+                            <div class="MainContentPlaceholder" role="main">
+                                
+                                
+    
+    <div id="ContentPlaceholder1_NativeView">
+	
+    <div style="display:none">
+        <img src='/Lib/images/Loading_Snake_32x32.gif' alt='Please wait...'/>    
+    </div>
+        
+    <div id="ContentPlaceholder1_pnlStart" style="width:100%;">
+		
+        <table border="0" width="100%" id="table1" cellpadding="5" role="presentation">
+            <tr>
+		        <td class="PageHeading">Meeting Calendar</td>
+		        <td align="right"><a class="RSSInline" href="/Services/RSS.aspx?Feed=Calendar" title="RSS Calendar"><img src="images/RSS_60x20.png" alt="RSS Calendar" /></a></td>
+            </tr>
+            <tr>
+		        <td colspan="2" align="left" valign="top" width="100%" role="presentation">
+                    <table cellspacing="3" class="CalendarSettingsTable">
+                        <tr><td colspan="2" style="color:#777777; font-style:italic; padding-bottom: 6px;"><span id="ContentPlaceholder1_lblFilterSummary">Displaying 56 meetings from 1/1/2022 to 12/31/2022 for All Meeting Groups</span></td></tr>
+                        <tr><td valign="top" ><strong>Date:</strong></td><td><span id="ContentPlaceholder1_lblCalendarRange"><a href='/Citizens/Calendar.aspx?From=1/1/2022&To=12/31/2022'><strong>2022</strong><span class='hidden-date'>Selected</span></a>, <a href='/Citizens/Calendar.aspx?From=1/1/2021&To=12/31/2021'>2021</a>, <a href='/Citizens/Calendar.aspx?From=1/1/2020&To=12/31/2020'>2020</a>, <a href='/Citizens/Calendar.aspx?From=1/1/2019&To=12/31/2019'>2019</a>, <a href='/Citizens/Calendar.aspx?From=1/1/2018&To=12/31/2018'>2018</a>, <a href='/Citizens/Calendar.aspx?From=1/1/2017&To=12/31/2017'>2017</a>, <a href='/Citizens/Calendar.aspx?From=1/1/2016&To=12/31/2016'>2016</a>, <a href='/Citizens/Calendar.aspx?From=1/1/2015&To=12/31/2015'>2015</a>, <a href='/Citizens/Calendar.aspx?From=1/1/2014&To=12/31/2014'>2014</a>, <a href='/Citizens/Calendar.aspx?From=1/1/2013&To=12/31/2013'>2013</a>, <a href='/Citizens/Calendar.aspx?From=1/1/1900&To=12/31/9999'>All</a></span></td></tr>
+                        <tr><td valign="top" ><label for="ContentPlaceholder1_DepartmentID" style="font-weight: bold;">Group:</label></td><td><select name="ctl00$ContentPlaceholder1$DepartmentID" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceholder1$DepartmentID\&#39;,\&#39;\&#39;)&#39;, 0)" id="ContentPlaceholder1_DepartmentID" class="MeetingGroupDropdown">
+			<option selected="selected" value="0">All Meeting Groups</option>
+			<option value="1045">Airport South Community Improvement District Board</option>
+			<option value="1052">Animal Control Board</option>
+			<option value="1000">Board of Commissioners</option>
+			<option value="1046">Board of Health</option>
+			<option value="1060">Board of Zoning Appeals</option>
+			<option value="1053">Civil Service Board</option>
+			<option value="1061">Clayton County Board of Ethics</option>
+			<option value="1047">Clayton County Land Bank Board</option>
+			<option value="1054">Code Enforcement Board</option>
+			<option value="1062">Department of Behavioral Health and Developmental Disabilities Region 3 Advisory Council</option>
+			<option value="1044">Development Authority of Clayton County</option>
+			<option value="1055">Elections and Registration Board</option>
+			<option value="1063">Family and Children Services Board</option>
+			<option value="1048">Housing Authority Board</option>
+			<option value="1056">Library Board</option>
+			<option value="1064">Mental Health, Developmental Disabilities, and Addictive Diseases Community Service Board</option>
+			<option value="1049">Metropolitan Atlanta Rapid Transit Authority Board</option>
+			<option value="1057">Parks and Recreation Advisory Board</option>
+			<option value="1065">Solid Waste Management Authority</option>
+			<option value="1050">Tax Assessors Board</option>
+			<option value="1058">Tourism Authority Board</option>
+			<option value="1066">Veterans Advisory Board</option>
+			<option value="1051">Water Authority Board</option>
+			<option value="1059">Zoning Advisory Group</option>
+
+		</select></td></tr>
+                        <tr><td valign="top" ><strong>View:</strong></td><td><a href="/Citizens/Calendar.aspx?View=List" id="ContentPlaceholder1_lnkListView" style="font-weight:bold;">List<span class="hidden-date">Selected</span></a>&nbsp;|&nbsp;<a href="/Citizens/Calendar.aspx?View=Calendar" id="ContentPlaceholder1_lnkCalendarView" style="font-weight:;">Calendar</a></td></tr>
+                    </table>
+                    
+                    <br />
+                
+                    <div id="ContentPlaceholder1_pnlMeetings" class="Section">
+                                                
+                         
+
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_0" class="Row MonthHeader">January, 2022</div>
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JANUARY 4, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1342" title="TUESDAY, JANUARY 4, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Jan 4, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_0" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1303&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1303&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1302&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1302&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_0" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1342&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_0" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JANUARY 11, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1343" title="TUESDAY, JANUARY 11, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Jan 11, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_1" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1307&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1307&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1303&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1303&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_1" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1343&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_1" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="SATURDAY, JANUARY 15, 2022  9:00 AM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Retreat&#13;Status:&#09;Scheduled&#13;&#13;&#09;Atlanta Evergreen Marriott&#13;&#09;4021 Lake View Drive, Stone Mountain, GA  30083" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1392" title="SATURDAY, JANUARY 15, 2022  9:00 AM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Retreat&#13;Status:&#09;Scheduled&#13;&#13;&#09;Atlanta Evergreen Marriott&#13;&#09;4021 Lake View Drive, Stone Mountain, GA  30083" >Jan 15, 2022 9:00 AM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_2" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1310&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1310&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_2" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_2" class="MainScreenText RowDetails">Board of Commissioners - Retreat</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JANUARY 18, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1344" title="TUESDAY, JANUARY 18, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Jan 18, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_3" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1309&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1309&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1304&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_3" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1344&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_3" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow" style='border-bottom:0;'  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JANUARY 25, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1346" title="TUESDAY, JANUARY 25, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Jan 25, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_4" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1315&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1315&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1305&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1305&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_4" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1346&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_4" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_5" class="Row MonthHeader">February, 2022</div>
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, FEBRUARY 1, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1347" title="TUESDAY, FEBRUARY 1, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Feb 1, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_5" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1311&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1311&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1306&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1306&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_5" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1347&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_5" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, FEBRUARY 8, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1348" title="TUESDAY, FEBRUARY 8, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Feb 8, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_6" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1316&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1316&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1308&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1308&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_6" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1348&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_6" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, FEBRUARY 15, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1349" title="TUESDAY, FEBRUARY 15, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Feb 15, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_7" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1312&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1312&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1307&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1307&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_7" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1349&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_7" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow" style='border-bottom:0;'  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, FEBRUARY 22, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1350" title="TUESDAY, FEBRUARY 22, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Feb 22, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_8" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1317&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1317&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileView.aspx?Type=15&ID=1309' class='' target='_self'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileView.aspx?Type=12&ID=1309' class='' target='_self'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_8" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1350&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_8" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_9" class="Row MonthHeader">March, 2022</div>
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, MARCH 1, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1351" title="TUESDAY, MARCH 1, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Mar 1, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_9" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1313&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1313&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1310&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1310&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_9" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1351&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_9" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, MARCH 8, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1352" title="TUESDAY, MARCH 8, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Mar 8, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_10" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1318&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1318&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1312&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1312&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_10" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1352&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_10" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, MARCH 15, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1353" title="TUESDAY, MARCH 15, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Mar 15, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_11" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1314&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1314&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1311&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1311&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_11" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1353&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_11" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow" style='border-bottom:0;'  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, MARCH 22, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1354" title="TUESDAY, MARCH 22, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Mar 22, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_12" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1319&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1319&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1313&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1313&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_12" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1354&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_12" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_13" class="Row MonthHeader">April, 2022</div>
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, APRIL 5, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1355" title="TUESDAY, APRIL 5, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Apr 5, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_13" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1320&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1320&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1314&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1314&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_13" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1355&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_13" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, APRIL 12, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1356" title="TUESDAY, APRIL 12, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Apr 12, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_14" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1321&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1321&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_14" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1356&amp;Format=Agenda&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_14" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, APRIL 19, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1358" title="TUESDAY, APRIL 19, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Apr 19, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_15" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1322&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1322&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1315&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1315&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_15" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1358&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_15" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow" style='border-bottom:0;'  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, APRIL 26, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1359" title="TUESDAY, APRIL 26, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Apr 26, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_16" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1323&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1323&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_16" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1359&amp;Format=Agenda&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_16" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_17" class="Row MonthHeader">May, 2022</div>
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, MAY 3, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1360" title="TUESDAY, MAY 3, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >May 3, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_17" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1324&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1324&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1316&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1316&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_17" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1360&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_17" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, MAY 10, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1361" title="TUESDAY, MAY 10, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >May 10, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_18" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1325&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1325&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_18" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1361&amp;Format=Agenda&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_18" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, MAY 17, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Budget Hearing&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1395" title="TUESDAY, MAY 17, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Budget Hearing&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >May 17, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_19" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_19" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1395&amp;Format=None&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_19" class="MainScreenText RowDetails">Board of Commissioners - Budget Hearing</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, MAY 17, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1362" title="TUESDAY, MAY 17, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >May 17, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_20" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1326&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1326&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1317&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1317&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_20" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1362&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_20" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" style='border-bottom:0;' >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, MAY 24, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1363" title="TUESDAY, MAY 24, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >May 24, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_21" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1327&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1327&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_21" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1363&amp;Format=Agenda&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_21" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div> 
+        </div>
+     
+
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_22" class="Row MonthHeader">June, 2022</div>
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JUNE 7, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1364" title="TUESDAY, JUNE 7, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Jun 7, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_22" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1306&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1306&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1319&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1319&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_22" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1364&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_22" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JUNE 14, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1365" title="TUESDAY, JUNE 14, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Jun 14, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_23" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1328&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1328&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_23" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1365&amp;Format=Agenda&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_23" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JUNE 21, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1366" title="TUESDAY, JUNE 21, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Jun 21, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_24" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1329&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1329&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1320&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1320&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_24" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1366&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_24" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JUNE 28, 2022  5:00 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Special Called Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1396" title="TUESDAY, JUNE 28, 2022  5:00 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Special Called Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Jun 28, 2022 5:00 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_25" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1333&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1333&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1321&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1321&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_25" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1396&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_25" class="MainScreenText RowDetails">Board of Commissioners - Special Called Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow" style='border-bottom:0;'  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JUNE 28, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1367" title="TUESDAY, JUNE 28, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Jun 28, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_26" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1330&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1330&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_26" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1367&amp;Format=Agenda&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_26" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_27" class="Row MonthHeader">July, 2022</div>
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JULY 5, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1368" title="TUESDAY, JULY 5, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Jul 5, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_27" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1331&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1331&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1322&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1322&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_27" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1368&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_27" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JULY 12, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1369" title="TUESDAY, JULY 12, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Jul 12, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_28" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1332&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1332&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_28" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1369&amp;Format=Agenda&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_28" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JULY 19, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1370" title="TUESDAY, JULY 19, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Jul 19, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_29" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1334&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1334&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1323&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1323&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_29" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1370&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_29" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow" style='border-bottom:0;'  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, JULY 26, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1371" title="TUESDAY, JULY 26, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Jul 26, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_30" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1335&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1335&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_30" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1371&amp;Format=Agenda&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_30" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_31" class="Row MonthHeader">August, 2022</div>
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, AUGUST 2, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Pre-Agenda Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1398" title="TUESDAY, AUGUST 2, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Pre-Agenda Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Aug 2, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_31" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1338&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1338&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_31" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1398&amp;Format=Agenda&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_31" class="MainScreenText RowDetails">Board of Commissioners - Pre-Agenda Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, AUGUST 2, 2022  6:00 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Millage Rate Hearing&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1403" title="TUESDAY, AUGUST 2, 2022  6:00 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Millage Rate Hearing&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Aug 2, 2022 6:00 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_32" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_32" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1403&amp;Format=None&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_32" class="MainScreenText RowDetails">Board of Commissioners - Millage Rate Hearing</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, AUGUST 2, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1372" title="TUESDAY, AUGUST 2, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Aug 2, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_33" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1336&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1336&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1324&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1324&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_33" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1372&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_33" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, AUGUST 9, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1373" title="TUESDAY, AUGUST 9, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Aug 9, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_34" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1339&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1339&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_34" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1373&amp;Format=Agenda&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_34" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, AUGUST 16, 2022  11:00 AM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Millage Rate Hearing&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1404" title="TUESDAY, AUGUST 16, 2022  11:00 AM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Millage Rate Hearing&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Aug 16, 2022 11:00 AM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_35" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_35" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_35" class="MainScreenText RowDetails">Board of Commissioners - Millage Rate Hearing</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, AUGUST 16, 2022  6:00 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Millage Rate Hearing&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1405" title="TUESDAY, AUGUST 16, 2022  6:00 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Millage Rate Hearing&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Aug 16, 2022 6:00 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_36" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_36" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1405&amp;Format=None&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_36" class="MainScreenText RowDetails">Board of Commissioners - Millage Rate Hearing</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, AUGUST 16, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1374" title="TUESDAY, AUGUST 16, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Aug 16, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_37" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1337&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1337&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1325&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_37" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1374&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_37" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="WEDNESDAY, AUGUST 24, 2022  11:30 AM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Special Called Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1406" title="WEDNESDAY, AUGUST 24, 2022  11:30 AM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Special Called Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Aug 24, 2022 11:30 AM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_38" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1346&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1346&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=15&ID=1326&Inline=True' class='' target='_blank'>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=12&ID=1326&Inline=True' class='' target='_blank'>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="javascript:void(0)" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_38" onclick="javascript:OpenWindow(&quot;/Citizens/SplitView.aspx?Mode=Video&amp;MeetingID=1406&amp;Format=Minutes&quot;);">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_38" class="MainScreenText RowDetails">Board of Commissioners - Special Called Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" style='border-bottom:0;' >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="WEDNESDAY, AUGUST 31, 2022  12:00 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Special Called Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1407" title="WEDNESDAY, AUGUST 31, 2022  12:00 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Special Called Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Aug 31, 2022 12:00 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_39" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=14&ID=1347&Inline=True' class='' target='_blank'>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='FileOpen.aspx?Type=1&ID=1347&Inline=True' class='' target='_blank'>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_39" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_39" class="MainScreenText RowDetails">Board of Commissioners - Special Called Meeting</div></div> 
+        </div>
+     
+
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_40" class="Row MonthHeader">September, 2022</div>
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, SEPTEMBER 6, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Pre-Agenda Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1399" title="TUESDAY, SEPTEMBER 6, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Pre-Agenda Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Sep 6, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_40" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_40" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_40" class="MainScreenText RowDetails">Board of Commissioners - Pre-Agenda Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, SEPTEMBER 6, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1376" title="TUESDAY, SEPTEMBER 6, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Sep 6, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_41" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_41" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_41" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, SEPTEMBER 13, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1377" title="TUESDAY, SEPTEMBER 13, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Sep 13, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_42" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_42" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_42" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" style='border-bottom:0;' >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, SEPTEMBER 20, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1378" title="TUESDAY, SEPTEMBER 20, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Sep 20, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_43" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_43" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_43" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_44" class="Row MonthHeader">October, 2022</div>
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, OCTOBER 4, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Pre-Agenda Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1400" title="TUESDAY, OCTOBER 4, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Pre-Agenda Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Oct 4, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_44" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_44" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_44" class="MainScreenText RowDetails">Board of Commissioners - Pre-Agenda Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, OCTOBER 4, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1380" title="TUESDAY, OCTOBER 4, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Oct 4, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_45" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_45" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_45" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, OCTOBER 11, 2022  5:00 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1381" title="TUESDAY, OCTOBER 11, 2022  5:00 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Oct 11, 2022 5:00 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_46" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_46" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_46" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" style='border-bottom:0;' >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, OCTOBER 18, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1382" title="TUESDAY, OCTOBER 18, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Oct 18, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_47" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_47" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_47" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_48" class="Row MonthHeader">November, 2022</div>
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, NOVEMBER 1, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Pre-Agenda Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1401" title="TUESDAY, NOVEMBER 1, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Pre-Agenda Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Nov 1, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_48" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_48" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_48" class="MainScreenText RowDetails">Board of Commissioners - Pre-Agenda Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, NOVEMBER 1, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1384" title="TUESDAY, NOVEMBER 1, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Nov 1, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_49" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_49" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_49" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, NOVEMBER 8, 2022  5:00 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1385" title="TUESDAY, NOVEMBER 8, 2022  5:00 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Nov 8, 2022 5:00 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_50" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_50" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_50" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" style='border-bottom:0;' >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, NOVEMBER 15, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1386" title="TUESDAY, NOVEMBER 15, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Nov 15, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_51" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_51" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_51" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_divMonthDivider_52" class="Row MonthHeader">December, 2022</div>
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, DECEMBER 6, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Pre-Agenda Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1402" title="TUESDAY, DECEMBER 6, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Pre-Agenda Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Dec 6, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_52" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_52" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_52" class="MainScreenText RowDetails">Board of Commissioners - Pre-Agenda Meeting</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, DECEMBER 6, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1388" title="TUESDAY, DECEMBER 6, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Dec 6, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_53" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_53" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_53" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+     
+
+        
+        <div class="Row MeetingRow"  id="divRow">        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, DECEMBER 13, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1389" title="TUESDAY, DECEMBER 13, 2022  5:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Work Session&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Dec 13, 2022 5:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_54" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_54" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>           
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_54" class="MainScreenText RowDetails">Board of Commissioners - Work Session</div></div>            
+        </div>
+    
+        
+       <div class="Row MeetingRow Alt" >        
+            <div class="RowTop">
+                <div class="RowIcon"><a href="javascript:void(0);"><img class='MeetingIcon' src='images/MeetingIcon.gif' style='cursor:help;' title="TUESDAY, DECEMBER 20, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" alt='info' /></a></div>                
+                <div class="RowLink"><a href="/Citizens/Detail_Meeting.aspx?ID=1390" title="TUESDAY, DECEMBER 20, 2022  6:30 PM&#13;&#13;Board:&#09;Board of Commissioners&#13;Type:&#09;Regular Business Meeting&#13;Status:&#09;Scheduled&#13;&#13;&#09;Commissioners' Board Room&#13;&#09;112 Smith Street, Jonesboro, GA  30236" >Dec 20, 2022 6:30 PM </a></div>                
+                                
+                <div id="ContentPlaceholder1_ctlMeetings_rptMeetings_DownloadLinks_55" class="RowRight MeetingLinks">
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Agenda Packet</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Summary</a>&nbsp;</div>
+                    <div>&nbsp;<a href='' class='HiddenDocumentLink' target=''>Minutes</a>&nbsp;</div>
+                    <div class="WithoutSeparator">&nbsp;<a href="#" id="ContentPlaceholder1_ctlMeetings_rptMeetings_lnkMeetingVideo_55" class="HiddenDocumentLink">Video</a>&nbsp;</div>                
+                </div>
+            </div>
+            <div class="RowBottom"><div class="RowIcon">&nbsp;</div><div id="ContentPlaceholder1_ctlMeetings_rptMeetings_lblMeetingText_55" class="MainScreenText RowDetails">Board of Commissioners - Regular Business Meeting</div></div> 
+        </div>
+    
+
+                    
+                    </div>     
+                    
+                                                    
+                </td>
+            </tr>
+        </table>
+    
+	</div>
+    
+    <br />
+
+    
+ 
+</div>
+    
+                            </div>
+                        </div>                                                           
+                    </td>
+                </tr>               
+            </table>                                
+        </div>
+        
+    <div id="Footer" role="contentinfo">
+        <br />
+        <span id="lblPoweredBy">
+            Powered by <a href="https://granicus.com/" target="_blank" >Granicus</a>
+        </span>
+    </div>
+
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script src='http://www.google-analytics.com/ga.js' type='text/javascript'></script>
+<script type='text/javascript'>
+     try {var pageTracker = _gat._getTracker('UA-87608301-1');
+     pageTracker._trackPageview();
+} catch(err) {}</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    <!-- Analytics Stuff (Start) *********************************** -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70364301-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- Analytics Stuff (End)   *********************************** -->
+    
+        <!-- Popup Menus -->
+        <div id="mnuBrowse" class="PopupMenu" dropdown="Browse">
+            <ul>
+                <li><a href="#">Legislative Files</a></li>
+                <li><a href="#">Legal Notices</a></li>
+                <li><a href="#">Some other Sort of Thing</a></li>
+            </ul>
+        </div>
+
+    
+
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){woopra.identify({ email:"", name:"Anonymous User", agency:"ClaytonCountyGA", userlogin:"Anonymous"}).push(); })//]]>
+</script>
+</form>
+</body>
+</html>

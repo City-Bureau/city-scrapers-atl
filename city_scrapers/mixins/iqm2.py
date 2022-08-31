@@ -4,15 +4,24 @@ import dateutil.parser
 from city_scrapers_core.constants import NOT_CLASSIFIED
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
+from scrapy.http import Request
 
 
 class IQM2Mixin(CityScrapersSpider):
+    board_name = None
+
+    def start_requests(self):
+        return [
+            Request(
+                f"https://{self.iqm2_slug}.iqm2.com/Citizens/Calendar.aspx?Frame=Yes&View=List&From=1/1/2021&To=12/31/2025"  # noqa
+            )
+        ]
+
     def parse(self, response):
         for item in response.css(".MeetingRow"):
             desc = self._parse_description(item)
             board = re.findall(r"Board:\t(.*?)\r", desc)[0]
-            # print(board)
-            if board != self.board_name:
+            if self.board_name and board != self.board_name:
                 continue
             meeting = Meeting(
                 title=self._parse_title(item),
@@ -54,7 +63,7 @@ class IQM2Mixin(CityScrapersSpider):
     def _parse_links(self, item):
         links = []
         for link in item.xpath(".//a[contains(@href, 'FileOpen')]"):
-            href = "https://atlantacityga.iqm2.com/" + link.xpath("@href").get()
+            href = f"https://{self.iqm2_slug}.iqm2.com/" + link.xpath("@href").get()
             title = link.css("::text").get()
             if href:
                 links.append({"href": href, "title": title})

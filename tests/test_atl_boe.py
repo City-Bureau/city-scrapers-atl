@@ -32,7 +32,6 @@ for request in requests:
         ]
     else:
         parsed_items.append(request.meta["meeting"])
-print(parsed_items)
 
 parsed_items.sort(key=lambda item: item["start"])
 

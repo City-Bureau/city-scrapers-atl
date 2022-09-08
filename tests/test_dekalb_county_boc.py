@@ -1,5 +1,6 @@
 from datetime import datetime
-from os.path import dirname, join
+from os import listdir
+from os.path import basename, dirname, join, splitext
 
 import pytest
 from city_scrapers_core.constants import CITY_COUNCIL
@@ -12,75 +13,93 @@ test_response = file_response(
     join(dirname(__file__), "files", "dekalb_county_boc.html"),
     url="https://www.dekalbcountyga.gov/meeting-calendar",
 )
+
 spider = DekalbCountyBocSpider()
 
-freezer = freeze_time("2022-08-29")
+freezer = freeze_time("2022-09-08")
 freezer.start()
 
-parsed_items = [item for item in spider.parse(test_response)]
+meeting_requests = [item for item in spider.parse(test_response)]
+
+requests_url_root = "https://www.dekalbcountyga.gov/event-popup"
+requests_dir_root = join(dirname(__file__), "files", "dekalb_county_boc_requests")
+meeting_responses = [
+    file_response(
+        join(requests_dir_root, item),
+        url=join(requests_url_root, splitext(basename(item))[0]),
+    )
+    for item in listdir(requests_dir_root)
+    if "html" in item
+]
+
+for response in meeting_responses:
+    for request in meeting_requests:
+        if response.url == request.url:
+            response.request = request
+            break
+
+parsed_items = [
+    item for response in meeting_responses for item in spider._parse_meeting(response)
+]
 
 freezer.stop()
 
 
-def test_tests():
-    print("Please write some tests for this spider or at least disable this one.")
-    assert False
+def test_item_len():
+    assert len(parsed_items) == 14
 
 
-"""
-Uncomment below
-"""
-
-# def test_title():
-#     assert parsed_items[0]["title"] == "EXPECTED TITLE"
+def test_title():
+    assert (
+        parsed_items[0]["title"] == "Board of Commissioner’s Committee of the Whole"
+    )  # noqa
 
 
-# def test_description():
-#     assert parsed_items[0]["description"] == "EXPECTED DESCRIPTION"
+def test_start():
+    assert parsed_items[0]["start"] == datetime(2022, 9, 6, 9, 0)
 
 
-# def test_start():
-#     assert parsed_items[0]["start"] == datetime(2019, 1, 1, 0, 0)
+def test_end():
+    assert parsed_items[0]["end"] == datetime(2022, 9, 6, 11, 30)
 
 
-# def test_end():
-#     assert parsed_items[0]["end"] == datetime(2019, 1, 1, 0, 0)
+def test_id():
+    assert (
+        parsed_items[0]["id"]
+        == "dekalb_county_boc/202209060900/x/board_of_commissioner_s_committee_of_the_whole"  # noqa
+    )
 
 
-# def test_time_notes():
-#     assert parsed_items[0]["time_notes"] == "EXPECTED TIME NOTES"
+def test_status():
+    assert parsed_items[0]["status"] == "passed"
+    assert parsed_items[1]["status"] == "tentative"
 
 
-# def test_id():
-#     assert parsed_items[0]["id"] == "EXPECTED ID"
+def test_source():
+    assert (
+        parsed_items[0]["source"]
+        == "https://www.dekalbcountyga.gov/event-popup/1207800"
+    )
 
 
-# def test_status():
-#     assert parsed_items[0]["status"] == "EXPECTED STATUS"
+def test_links():
+    assert parsed_items[0]["links"] == [
+        {"href": "https://video.ibm.com/channel/dctv-channel-23", "title": "DCTV"},
+        {
+            "href": "https://www.dekalbcountyga.gov/board-commissioners/committee-whole-cow",  # noqa
+            "title": "webpage",
+        },
+        {
+            "href": "https://www.dekalbcountyga.gov/board-commissioners/public-participation",  # noqa
+            "title": "Public Participation",
+        },
+    ]
 
 
-# def test_location():
-#     assert parsed_items[0]["location"] == {
-#         "name": "EXPECTED NAME",
-#         "address": "EXPECTED ADDRESS"
-#     }
+def test_classification():
+    assert parsed_items[0]["classification"] == CITY_COUNCIL
 
 
-# def test_source():
-#     assert parsed_items[0]["source"] == "EXPECTED URL"
-
-
-# def test_links():
-#     assert parsed_items[0]["links"] == [{
-#       "href": "EXPECTED HREF",
-#       "title": "EXPECTED TITLE"
-#     }]
-
-
-# def test_classification():
-#     assert parsed_items[0]["classification"] == NOT_CLASSIFIED
-
-
-# @pytest.mark.parametrize("item", parsed_items)
-# def test_all_day(item):
-#     assert item["all_day"] is False
+@pytest.mark.parametrize("item", parsed_items)
+def test_all_day(item):
+    assert item["all_day"] is False

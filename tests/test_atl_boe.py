@@ -12,12 +12,29 @@ test_response = file_response(
     join(dirname(__file__), "files", "atl_boe.html"),
     url="https://www.atlantapublicschools.us/apsboard",
 )
+
+meeting_response = file_response(
+    join(dirname(__file__), "files", "atl_boe_236419.html"),
+    url="https://www.atlantapublicschools.us/site/UserControls/Calendar//EventDetailWrapper.aspx?ModuleInstanceID=17299&EventDateID=236419&UserRegID=0&IsEdit=false",  # noqa
+)
 spider = AtlBoeSpider()
 
 freezer = freeze_time("2022-08-26")
 freezer.start()
 
-parsed_items = [item.meta["meeting"] for item in spider.parse(test_response)]
+requests = [item for item in spider.parse(test_response)]
+parsed_items = []
+for request in requests:
+    if "236419" in request.url:
+        meeting_response.request = request
+        parsed_items += [
+            item for item in spider._parse_meeting_details(meeting_response)
+        ]
+    else:
+        parsed_items.append(request.meta["meeting"])
+print(parsed_items)
+
+parsed_items.sort(key=lambda item: item["start"])
 
 freezer.stop()
 
@@ -65,7 +82,11 @@ def test_links():
         {
             "href": "https://www.atlantapublicschools.us/site/Default.aspx?PageID=17673&DomainID=3944#calendar17299/20220829/event/236419",  # noqa
             "title": "Meeting details",
-        }
+        },
+        {
+            "href": "https://www.atlantapublicschools.us/cms/lib/GA01000924/Centricity/Domain/3944/Meeting Notice - Accountability Commission Meeting 08292022.pdf",  # noqa
+            "title": "Meeting notice",
+        },
     ]
 
 

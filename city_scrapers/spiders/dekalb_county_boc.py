@@ -13,12 +13,6 @@ class DekalbCountyBocSpider(CityScrapersSpider):
     start_urls = ["https://www.dekalbcountyga.gov/meeting-calendar"]
 
     def parse(self, response):
-        """
-        `parse` should always `yield` Meeting items.
-
-        Change the `_parse_title`, `_parse_start`, etc methods to fit your scraping
-        needs.
-        """
         for item in response.css(
             "table.full > tbody > tr > td > .inner > .item > .view-item "
             "> .calendar.monthview > div:not([class^='cutoff'])"

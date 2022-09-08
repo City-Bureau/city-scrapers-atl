@@ -42,6 +42,8 @@ parsed_items = [
     item for response in meeting_responses for item in spider._parse_meeting(response)
 ]
 
+parsed_items.sort(key=lambda item: item["start"])
+
 freezer.stop()
 
 
@@ -53,14 +55,19 @@ def test_title():
     assert (
         parsed_items[0]["title"] == "Board of Commissioner’s Committee of the Whole"
     )  # noqa
+    assert (
+        parsed_items[7]["title"] == "Finance Audit and Budget Committee Committee"
+    )  # noqa
 
 
 def test_start():
     assert parsed_items[0]["start"] == datetime(2022, 9, 6, 9, 0)
+    assert parsed_items[7]["start"] == datetime(2022, 9, 13, 15, 30)
 
 
 def test_end():
     assert parsed_items[0]["end"] == datetime(2022, 9, 6, 11, 30)
+    assert parsed_items[7]["end"] == datetime(2022, 9, 13, 17, 0)
 
 
 def test_id():
@@ -68,17 +75,25 @@ def test_id():
         parsed_items[0]["id"]
         == "dekalb_county_boc/202209060900/x/board_of_commissioner_s_committee_of_the_whole"  # noqa
     )
+    assert (
+        parsed_items[7]["id"]
+        == "dekalb_county_boc/202209131530/x/finance_audit_and_budget_committee_committee"  # noqa
+    )
 
 
 def test_status():
     assert parsed_items[0]["status"] == "passed"
-    assert parsed_items[1]["status"] == "tentative"
+    assert parsed_items[7]["status"] == "tentative"
 
 
 def test_source():
     assert (
         parsed_items[0]["source"]
         == "https://www.dekalbcountyga.gov/event-popup/1207800"
+    )
+    assert (
+        parsed_items[7]["source"]
+        == "https://www.dekalbcountyga.gov/event-popup/1207827"
     )
 
 

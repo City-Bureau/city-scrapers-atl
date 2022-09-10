@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html  lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"53bca05978",applicationID:"251938847"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return s.recordSupportability("API/"+e+"/called"),o(t+e,[u.now()].concat(c(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(9),c=t(10),f=t("ee").get("tracer"),u=t("loader"),s=t(4),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",v=l+"ixn-";a(p,function(t,e){d[e]=i(l,e,!0,"api")}),d.addPageAction=i(l,"addPageAction",!0),d.setCurrentRouteName=i(l,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(v+"tracer",[u.now(),t,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw f.emit("fn-err",[arguments,this,t],n),t}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(v,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),s.recordSupportability("API/noticeError/called"),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],4:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[c,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",c="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:c},recordSupportability:r,recordCustom:i}},{}],5:[function(t,e,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=t(11);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],6:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?l("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&l("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(u&&u<r.startTime)return;var i=[r],o=a({});o&&i.push(o),l("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||l("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function c(t){if(t instanceof y&&!w){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=v.now()?n.fid=v.now()-e:e>v.offset&&e<=Date.now()?(e-=v.offset,n.fid=v.now()-e):e=v.now(),w=!0,l("timing",["fi",e,n])}}function f(t){"hidden"===t&&(u=v.now(),l("pageHide",[u]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var u,s,d,p,l=t("handle"),v=t("loader"),m=t(8),g=t(3),y=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){s=new PerformanceObserver(r);try{s.observe({entryTypes:["paint"]})}catch(h){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(h){}p=new PerformanceObserver(o);try{p.observe({type:"layout-shift",buffered:!0})}catch(h){}}if("addEventListener"in document){var w=!1,b=["click","keydown","mousedown","pointerdown","touchstart"];b.forEach(function(t){document.addEventListener(t,c,g(!1))})}m(f)}},{}],7:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}e.exports={agent:i,version:o,match:r}},{}],8:[function(t,e,n){function r(t){function e(){t(c&&document[c]?document[c]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(3);e.exports=r;var o,a,c;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",c="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",c="webkitVisibilityState")},{}],9:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],10:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],11:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var c=e(i),f=m(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[w[n]];return p&&p.push([b,n,r,c]),c}}function o(t,e){h[t]=m(t).concat(e)}function v(t,e){var n=h[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return h[t]||[]}function g(t){return p[t]=p[t]||i(n)}function y(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var h={},w={},b={on:o,addEventListener:o,removeEventListener:v,emit:n,get:g,listeners:m,context:e,buffer:y,abort:c,aborted:!1};return b}function o(t){return u(t,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=t("gos"),s=t(9),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!M++){var t=T.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(x,function(e,n){t[e]||(t[e]=n)});var n=a();c("mark",["onload",n+T.offset],null,"api"),c("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){c("mark",["domContent",a()+T.offset],null,"api")}var a=t(5),c=t("handle"),f=t(9),u=t("ee"),s=t(7),d=t(2),p=t(3),l=d.getConfiguration("ssl")===!1?"http":"https",v=window,m=v.document,g="addEventListener",y="attachEvent",h=v.XMLHttpRequest,w=h&&h.prototype,b=!1;NREUM.o={ST:setTimeout,SI:v.setImmediate,CT:clearTimeout,XHR:h,REQ:v.Request,EV:v.Event,PR:v.Promise,MO:v.MutationObserver};var E=""+location,x={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1216.min.js"},O=h&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),T=e.exports={offset:a.getLastTimestamp(),now:a,origin:E,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(6),m[g]?(m[g]("DOMContentLoaded",o,p(!1)),v[g]("load",r,p(!1))):(m[y]("onreadystatechange",i),v[y]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var M=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],t)}c(n+"start",[o,a,f],s,u);try{return p=e.apply(a,o)}catch(v){throw c(n+"err",[o,a,v],s,u),v}finally{c(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)f=e[u],c=t[f],a(c)||(t[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!v||e){var c=v;v=!0;try{t.emit(n,r,o,e,a)}catch(f){i([f,n,r,o],t)}v=c}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function c(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function f(t,e,n){var r=t[e];t[e]=c(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(10),p="nr@original",l=Object.prototype.hasOwnProperty,v=!1;e.exports=r,e.exports.wrapFunction=c,e.exports.wrapInPlace=f,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-74183382-1", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script>
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="/sites/default/files/dkc_0.ico" type="image/vnd.microsoft.icon" />
+<script>window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};</script>
+
+    <title>Event Popup | DeKalb County GA</title>
+    <link rel="stylesheet" media="all" href="/core/modules/system/css/components/ajax-progress.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/align.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/autocomplete-loading.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/fieldgroup.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/container-inline.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/clearfix.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/details.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/hidden.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/item-list.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/js.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/nowrap.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/position-container.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/progress.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/reset-appearance.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/resize.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/sticky-header.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/system-status-counter.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/system-status-report-counters.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/system-status-report-general-info.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/tabledrag.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/tablesort.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/system/css/components/tree-child.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/core/modules/views/css/views.module.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/modules/addtoany/css/addtoany.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/modules/calendar/css/calendar.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/modules/calendar/css/calendar_multiday.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/modules/ckeditor_indentblock/css/plugins/indentblock/ckeditor.indentblock.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/bootstrap/css/bootstrap.min.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/meanmenu.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/megamenu.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/megamenu-skins.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/settings.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/revslider.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/captions.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/rs-settings.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/overrides.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/custom.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/mainmenu.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/fonts.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/smoothmenu.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/main.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/dkc.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/style.css?rhwh0n" />
+<link rel="stylesheet" media="all" href="/themes/dkc/css/responsive.css?rhwh0n" />
+
+    
+  </head>
+  <body class="path-event-popup">
+    <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<!-- Fixed navbar -->
+<div class="main-menu-cls">
+    <nav class="navbar navbar-default dekalb-bg">
+        <div id="header-container" class="navbar-bg mean-container">
+            <div class="mean-bar">
+                <a href="#nav" class="meanmenu-reveal" style="right: 0px; left: auto; display: inline; text-align: center; text-indent: 0px; font-size: 18px;">
+                    <div>Menu</div><span></span><span></span><span></span></a>
+                <nav class="mean-nav">
+                                        <ul style="display: none;">
+                                            <li>
+                        <a href="">How Do I?</a>
+                                                    <ul style="display: none;">
+                                                                    <li>
+                                        <a href="https:">Apply For</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="/planning-and-sustainability/business-and-alcohol-license-0">Business &amp; Alcohol License</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="https://dekalbgis.maps.arcgis.com/apps/webappviewer/index.html?id=2c4edbedbc394a7eb8d9a107aecb0bc1">Film &amp; TV Permits</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="https://dekalbprobatega.com/">Firearm License</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="https://ertd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001">Jobs</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="https://dekalbprobatega.com/">Marriage License</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://www.dekalbcountymagistratecourt.org/civil/protective-orders-restraining-orders.asp">Restraining Order</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="https:">Locate</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="https://www.dekalbcountyga.gov/Covid-19/Response">COVID-19 Response</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://dekalblibrary.org/branches/find-my-branch">Library</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/medical-examiner/medical-examiners-office">Medical Examiners </a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/parks/park-maps">Parks</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://www.qpublic.net/ga/dekalb/">Properties /Parcel Map</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/public-works/transit-master-plan">Transit Master Plan</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/voter-registration-elections/applications-forms">Voter Information</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="https:">Find Info On</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="http://www.dekalbanimalservices.com/adopt-a-pet">Animal Services</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/purchasing-contracting/how-do-business">Becoming a Vendor</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/budget-office/budget-information">County Budget</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/dema/dekalb-emergency-management-agency">Emergency Preparedness</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://www.dekalbsheriff.org/web/public/indexV2.php#13">Jail and Inmate Information</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="https://www.dekalbcountyga.gov/information-technology/cv360-login">Log In to CV360</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="https://www.dekalbcountyga.gov/retirement/retirement-home-page-0">Retirement</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/splost/dekalb-county-splost">SPLOST Information</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="https:">Report</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="http://dfcs.dhs.georgia.gov/child-abuse-neglect">Child Abuse</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/police-services/domestic-violence-elder-abuse-unit">Elder Abuse</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/stormwater-utility/pollution-information">Illegal Dumping</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/roads-drainage-request-assistance">Road Maintenance Issues</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="https:">Request a Copy</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="http://dph.georgia.gov/VitalRecords">Birth/Death/Marriage Records</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/transparency-initiatives/open-records">Open Records</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://dekalbtax.org/property-information">Property Tax Bill</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                            </ul>
+                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                </li>
+                                            <li>
+                        <a href="http:">Government</a>
+                                                    <ul style="display: none;">
+                                                                    <li>
+                                        <a href="https:">Agencies</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="/chief-executive-officer/ceo-michael-l-thurmond">Chief Executive Officer</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/board-commissioners/board-commissioners">Board of Commissioners</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/property-appraisal/board-assessors">Board of Assessors</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://www.dksuperiorclerk.com/">Clerk of Superior Court</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/dekalb-county-judicial-system">Courts</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://dekalbda.org/">District Attorney</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://dekalbstatecourt.net/marshals-office/information-marshals-office/">Marshall’s Office</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://www.dekalbsheriff.org/web/home_message.php">Sheriff</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://dekalbsolicitorgeneral.com/">Solicitor-General</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://dekalbtax.org/">Tax Commissioner</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="/event-calendar">Calendar of Events &amp; Meetings</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="/dema/dekalb-emergency-management-agency">Emergency &amp; Preparedness</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="https:">Governance &amp; Policy</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="https://dekalbcountyga.granicus.com/boards/w/968f9572ef2211df">Boards &amp; Commissions</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Current Initiatives</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="https://www.municode.com/library/ga/dekalb_county/codes/code_of_ordinances?nodeId=ORAC">County Ordinances</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Past Initiatives</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://www.Dekalbcountyethics.org">Ethics</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/office-independent-internal-audit/office-independent-internal-audit">Office of Independent Internal Audit</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/title-vi/title-vi">Title VI</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/transparency-initiatives/transparency-initiatives">Transparency Initiatives</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="https:">Departments</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="/airport">Airport</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/beautification/beautification">Beautification</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/budget-office/about-us">Budget</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/child-advocacy-center/welcome">Child Advocacy Center</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/communications/communications">Communications</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/community-development/community-development">Community Development</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/dctv/dctv-home-page">DCTV, Comcast Channel 23</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/dema/dekalb-emergency-management-agency">Emergency Management</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/facilities-management/facilities-management">Facilities Management</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://dfcs.dhs.georgia.gov/">Family &amp; Children Services</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/finance/finance">Finance</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/fire-rescue/fire-rescue">Fire Rescue</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/gis/gis-department">GIS</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://dekalbhealth.net/">Health</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/human-resources/about-us">Human Resources</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/human-development/human-services">Human Services</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/information-technology/welcome">Innovation &amp; Technology</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/law-department/law-department">Law Department</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://dekalblibrary.org/">Library</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/planning-and-sustainability/planning">Planning &amp; Sustainability</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/police-services/welcome">Police Services</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/property-appraisal/welcome">Property Appraisal</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/law-office-public-defender">Public Defender</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/public-safety/public-safety">Public Safety</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/public-works/welcome-public-works-department">Public Works</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/purchasing-contracting/about-purchasing-and-contracting">Purchasing &amp; Contracting</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/parks/mission-statement">Recreation, Parks &amp; Cultural Affairs</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/sanitation/about-sanitation">Sanitation</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/human-development/senior-services-1">Senior Services</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://ugaextension.org/county-offices/dekalb.html">UGA Extension</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/voter-registration-elections/our-mission">Voter Registration &amp; Elections</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/watershed-management/watershed-management">Watershed Management</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/workforce-center/welcome-workforce-development">WorkSource DeKalb</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/youth-services/welcome">Youth Services</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="/senior-services/senior-services">Seniors</a>
+                                                                            </li>
+                                                            </ul>
+                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                </li>
+                                            <li>
+                        <a href="http:">VISITORS</a>
+                                                    <ul style="display: none;">
+                                                                    <li>
+                                        <a href="http://arabiaalliance.org/">Arabia Mountain National Heritage Area</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="http://callanwolde.org/">Callanwolde Fine Arts Center</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="http://visitatlantasdekalbcounty.com/">DeKalb Convention and Visitors Bureau</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="http://dekalblibrary.org/">Library</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="/parks/welcome-director">Parks &amp; Recreation</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="http://www.stonemountainpark.com/">Stone Mountain Park</a>
+                                                                            </li>
+                                                            </ul>
+                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                </li>
+                                            <li>
+                        <a href="http:">Business</a>
+                                                    <ul style="display: none;">
+                                                                    <li>
+                                        <a href="/">County Governance, Oprations, Policy</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="/">Awards &amp; Honors</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/revenue-enhancement-commission">Revenue Enhancement Commission</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Office of the CEO</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Board of Commissioners</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Cities in the County</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">County Information &amp; Maps</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">County Ordinances</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Get to Know the County</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Information &amp; Organization</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Maps</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Public Meetings</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="http://www.decidedekalb.com/what-we-do/services.stml">Doing Business in DeKalb</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="http://www.dekalbchamber.org/">DeKalb Chamber of Commerce</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://www.decidedekalb.com/what-we-do/services.stml">Start a Business in the County</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/planning-and-sustainability/business-and-alcohol-license-0">Business License</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="https://dekalbgis.maps.arcgis.com/apps/webappviewer/index.html?id=2c4edbedbc394a7eb8d9a107aecb0bc1">Film &amp; TV Permit</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://dekalbhealth.net/envhealth/food-safety/rules-and-regulations/">Food Safety Requirements &amp; Compliance</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/purchasing-contracting/about-purchasing-and-contracting">Purchasing &amp; Contracts</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/planning-and-sustainability/permits-plan-review-inspections">Building Permits &amp; Inspection</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="https:">Doing Business with DeKalb</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="/purchasing-contracting/general-information">Bids</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://www.decidedekalb.com/what-we-do/financing-incentives.stml">Business Incentives Program</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/purchasing-contracting/about-purchasing-and-contracting">Purchasing</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/purchasing-contracting/how-do-business">Vendor Registration</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="/">Residents</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="/airport">Airport</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Business and Consumer Protection</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/board-commissioners">Board of Commissioners</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/community-development">Community Development</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/chief-executive-officer/ceo-michael-l-thurmond">Chief Executive Officer</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/family-children-services/how-report-child-abuse-or-neglect">Child Advocate</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Elections and Governing</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/community-development/community-development">Community Development</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Environment</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Court</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Family and Children Services</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://www.decidedekalb.com/">Economic Development</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Health Services</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/facilities-management/facilities-management">Facilities Management</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Housing Authority</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/finance">Finance</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Law and Justice</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Health</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Utilities and Residential Services</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/human-development">Human Development</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/human-resources-merit-system">Human Resources</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Information Technology</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/law-department">Law Department</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://dekalblibrary.org/">Library</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/planning-and-sustainability">Planning And Sustainability</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/public-safety-0">Public Safety</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/public-works/welcome-public-works-department">Public Works</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/senior-services">Senior Services</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">UGA Extension</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/voter-registration-elections">Voter Registration &amp; Elections</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/watershed-management/watershed-management">Watershed Management</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/workforce-center/welcome-workforce-development">Workforce Center</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="https:">Media</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="/dctv/dctv-live-broadcast">Channel 23: DCTV</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/communications-request-form">Communication Request Form</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/communications/communications-team1">Media Contacts</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/communications/news-articles">News Articles</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="https://www.facebook.com/Its-In-DeKalb-1637015323181765/photos/?tab=albums">Photo Gallery</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/press-releases">Press Releases</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="https://www.youtube.com/user/DeKalbCountyGov">Video Gallery</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="https:">Calendar</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="/event-calendar">Calendar of County Events</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/meeting-calendar">Calendar of Public Meetings</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="/">Emergency &amp; Preparedness</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="/">FEMA Flood Map</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="http://www.decidedekalb.com/">Economic Development</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="/">Business</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="http://www.decidedekalb.com/">Decide DeKalb</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Personal &amp; Family</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="/">Employment and Volunteering</a>
+                                                                                    <ul style="float: none; width: auto; display: none;">
+                                                                                                    <li>
+                                                        <a href="/">Employment Information</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Volunteering</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">For Employees</a>
+                                                    </li>
+                                                                                                    <li>
+                                                        <a href="/">Search for Jobs</a>
+                                                    </li>
+                                                                                            </ul>
+                                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="/board-commissioners/board-commissioners">Who is My Commissioner?</a>
+                                                                            </li>
+                                                            </ul>
+                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                </li>
+                                            <li>
+                        <a href="http:">Payments</a>
+                                                    <ul style="display: none;">
+                                                                    <li>
+                                        <a href="http://dcss.dhs.georgia.gov/family-support-registry">Child Support</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="https://dekalbga-ws01.cloud.infor.com/IPSProdDP">Building Permit</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="http://golevel1.com/client/DeKalb/">FOG Bill</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="https://payments.myfivepoint.com/portal/modules/payment/payment.aspx?s=11&amp;t=62">Probation Fines and Fees</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="http://dekalbtax.org/property-information">Property Tax</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="http://web.dekalbcountyga.gov/cpak/Members/login.php">Sanitation</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="https://payments.myfivepoint.com/dekalb/web/">Traffic Fines</a>
+                                                                            </li>
+                                                                    <li>
+                                        <a href="http://golevel1.com/client/DeKalb/">Water/Sewer</a>
+                                                                            </li>
+                                                            </ul>
+                            <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+                                                </li>
+                                            <li>
+                        <a href="/departments-list">Contact</a>
+                                                </li>
+                                        </ul>                              
+                </nav>
+            </div> 
+                <div id="block-logonew" class="col-sm-2 logonew block block-block-content block-block-content2823a8eb-c574-4508-abd8-38b5c695f3e8">
+
+
+    <div class="content">
+    
+            <div><p><a href="/"><img alt="" class="img-responsive" src="/themes/dkc/images/logo-horw.png" /></a></p>
+</div>
+      
+    </div>
+</div><nav role="navigation" aria-labelledby="block-mainmenu-2-menu" id="block-mainmenu-2" class="col-sm-10 block-megamenu">
+            
+  <h2 class="visually-hidden" id="block-mainmenu-2-menu">Main menu</h2>
+  
+
+        
+                <ul class="megamenu-menu columnar megamenu-skin-friendly">
+                                              <li class="megamenu-parent" id="how-do-i">
+        <h2 class="megamenu-parent-title">
+            <a href="">How Do I?</a>
+        </h2>
+                                  <ul class="megamenu-bin megamenu-slots-columnar">
+                                              <li class="megamenu-slot" id="apply-for">
+        <h3 class="megamenu-slot-title">
+            <a href="https:" class="lable-mainmenu-link">Apply For</a>
+        </h3>
+                              
+        <ul class="megamenu-items ">
+                                              <li class="megamenu-item" id="business-o-alcohol-license">
+        
+            <a href="/planning-and-sustainability/business-and-alcohol-license-0" data-drupal-link-system-path="node/1204781">Business &amp; Alcohol License</a>
+        
+              </li>
+                  <li class="megamenu-item" id="film-o-tv-permits">
+        
+            <a href="https://dekalbgis.maps.arcgis.com/apps/webappviewer/index.html?id=2c4edbedbc394a7eb8d9a107aecb0bc1" target="_blank">Film &amp; TV Permits</a>
+        
+              </li>
+                  <li class="megamenu-item" id="firearm-license">
+        
+            <a href="https://dekalbprobatega.com/">Firearm License</a>
+        
+              </li>
+                  <li class="megamenu-item" id="jobs">
+        
+            <a href="https://ertd.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001">Jobs</a>
+        
+              </li>
+                  <li class="megamenu-item" id="marriage-license">
+        
+            <a href="https://dekalbprobatega.com/">Marriage License</a>
+        
+              </li>
+                  <li class="megamenu-item" id="restraining-order">
+        
+            <a href="http://www.dekalbcountymagistratecourt.org/civil/protective-orders-restraining-orders.asp" target="_blank">Restraining Order</a>
+        
+              </li>
+        </ul>
+  
+              </li>
+                  <li class="megamenu-slot" id="locate">
+        <h3 class="megamenu-slot-title">
+            <a href="https:" class="lable-mainmenu-link">Locate</a>
+        </h3>
+                              
+        <ul class="megamenu-items ">
+                                              <li class="megamenu-item" id="covid-19-response">
+        
+            <a href="https://www.dekalbcountyga.gov/Covid-19/Response">COVID-19 Response</a>
+        
+              </li>
+                  <li class="megamenu-item" id="library">
+        
+            <a href="http://dekalblibrary.org/branches/find-my-branch" target="_blank">Library</a>
+        
+              </li>
+                  <li class="megamenu-item" id="medical-examiners-">
+        
+            <a href="/medical-examiner/medical-examiners-office" data-drupal-link-system-path="node/3226">Medical Examiners </a>
+        
+              </li>
+                  <li class="megamenu-item" id="parks">
+        
+            <a href="/parks/park-maps" data-drupal-link-system-path="node/481">Parks</a>
+        
+              </li>
+                  <li class="megamenu-item" id="properties-/parcel-map">
+        
+            <a href="http://www.qpublic.net/ga/dekalb/" target="_blank">Properties /Parcel Map</a>
+        
+              </li>
+                  <li class="megamenu-item" id="transit-master-plan">
+        
+            <a href="/public-works/transit-master-plan" data-drupal-link-system-path="node/1202195">Transit Master Plan</a>
+        
+              </li>
+                  <li class="megamenu-item" id="voter-information">
+        
+            <a href="/voter-registration-elections/applications-forms" data-drupal-link-system-path="node/5390">Voter Information</a>
+        
+              </li>
+        </ul>
+  
+              </li>
+                  <li class="megamenu-slot" id="find-info-on">
+        <h3 class="megamenu-slot-title">
+            <a href="https:">Find Info On</a>
+        </h3>
+                              
+        <ul class="megamenu-items ">
+                                              <li class="megamenu-item" id="animal-services">
+        
+            <a href="http://www.dekalbanimalservices.com/adopt-a-pet" target="_blank">Animal Services</a>
+        
+              </li>
+                  <li class="megamenu-item" id="becoming-a-vendor">
+        
+            <a href="/purchasing-contracting/how-do-business" data-drupal-link-system-path="node/559">Becoming a Vendor</a>
+        
+              </li>
+                  <li class="megamenu-item" id="county-budget">
+        
+            <a href="/budget-office/budget-information" data-drupal-link-system-path="node/5696">County Budget</a>
+        
+              </li>
+                  <li class="megamenu-item" id="emergency-preparedness">
+        
+            <a href="/dema/dekalb-emergency-management-agency" data-drupal-link-system-path="node/3218">Emergency Preparedness</a>
+        
+              </li>
+                  <li class="megamenu-item" id="jail-and-inmate-information">
+        
+            <a href="http://www.dekalbsheriff.org/web/public/indexV2.php#13" target="_blank">Jail and Inmate Information</a>
+        
+              </li>
+                  <li class="megamenu-item" id="log-in-to-cv360">
+        
+            <a href="https://www.dekalbcountyga.gov/information-technology/cv360-login">Log In to CV360</a>
+        
+              </li>
+                  <li class="megamenu-item" id="retirement">
+        
+            <a href="https://www.dekalbcountyga.gov/retirement/retirement-home-page-0">Retirement</a>
+        
+              </li>
+                  <li class="megamenu-item" id="splost-information">
+        
+            <a href="/splost/dekalb-county-splost" data-drupal-link-system-path="node/1200283">SPLOST Information</a>
+        
+              </li>
+        </ul>
+  
+              </li>
+                  <li class="megamenu-slot" id="report">
+        <h3 class="megamenu-slot-title">
+            <a href="https:" class="lable-mainmenu-link">Report</a>
+        </h3>
+                              
+        <ul class="megamenu-items ">
+                                              <li class="megamenu-item" id="child-abuse">
+        
+            <a href="http://dfcs.dhs.georgia.gov/child-abuse-neglect" target="_blank">Child Abuse</a>
+        
+              </li>
+                  <li class="megamenu-item" id="elder-abuse">
+        
+            <a href="/police-services/domestic-violence-elder-abuse-unit" data-drupal-link-system-path="node/657">Elder Abuse</a>
+        
+              </li>
+                  <li class="megamenu-item" id="illegal-dumping">
+        
+            <a href="/stormwater-utility/pollution-information" data-drupal-link-system-path="node/314">Illegal Dumping</a>
+        
+              </li>
+                  <li class="megamenu-item" id="road-maintenance-issues">
+        
+            <a href="/roads-drainage-request-assistance" data-drupal-link-system-path="node/1199681">Road Maintenance Issues</a>
+        
+              </li>
+        </ul>
+  
+              </li>
+                  <li class="megamenu-slot" id="request-a-copy">
+        <h3 class="megamenu-slot-title">
+            <a href="https:" class="lable-mainmenu-link">Request a Copy</a>
+        </h3>
+                              
+        <ul class="megamenu-items ">
+                                              <li class="megamenu-item" id="birth/death/marriage-records">
+        
+            <a href="http://dph.georgia.gov/VitalRecords" target="_blank">Birth/Death/Marriage Records</a>
+        
+              </li>
+                  <li class="megamenu-item" id="open-records">
+        
+            <a href="/transparency-initiatives/open-records" data-drupal-link-system-path="node/10392">Open Records</a>
+        
+              </li>
+                  <li class="megamenu-item" id="property-tax-bill">
+        
+            <a href="http://dekalbtax.org/property-information" target="_blank">Property Tax Bill</a>
+        
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+              </li>
+                  <li class="megamenu-parent" id="government">
+        <h2 class="megamenu-parent-title">
+            <a href="http:">Government</a>
+        </h2>
+                                  <ul class="megamenu-bin megamenu-slots-columnar">
+                                              <li class="megamenu-slot" id="agencies">
+        <h3 class="megamenu-slot-title">
+            <a href="https:" class="lable-mainmenu-link">Agencies</a>
+        </h3>
+                              
+        <ul class="megamenu-items ">
+                                              <li class="megamenu-item" id="chief-executive-officer">
+        
+            <a href="/chief-executive-officer/ceo-michael-l-thurmond" data-drupal-link-system-path="node/248">Chief Executive Officer</a>
+        
+              </li>
+                  <li class="megamenu-item" id="board-of-commissioners">
+        
+            <a href="/board-commissioners/board-commissioners" data-drupal-link-system-path="node/529">Board of Commissioners</a>
+        
+              </li>
+                  <li class="megamenu-item" id="board-of-assessors">
+        
+            <a href="/property-appraisal/board-assessors" data-drupal-link-system-path="node/6042">Board of Assessors</a>
+        
+              </li>
+                  <li class="megamenu-item" id="clerk-of-superior-court">
+        
+            <a href="http://www.dksuperiorclerk.com/" target="_blank">Clerk of Superior Court</a>
+        
+              </li>
+                  <li class="megamenu-item" id="courts">
+        
+            <a href="/dekalb-county-judicial-system" data-drupal-link-system-path="node/16696">Courts</a>
+        
+              </li>
+                  <li class="megamenu-item" id="district-attorney">
+        
+            <a href="http://dekalbda.org/" target="_blank">District Attorney</a>
+        
+              </li>
+                  <li class="megamenu-item" id="marshall’s-office">
+        
+            <a href="http://dekalbstatecourt.net/marshals-office/information-marshals-office/" target="_blank">Marshall’s Office</a>
+        
+              </li>
+                  <li class="megamenu-item" id="sheriff">
+        
+            <a href="http://www.dekalbsheriff.org/web/home_message.php" target="_blank">Sheriff</a>
+        
+              </li>
+                  <li class="megamenu-item" id="solicitor-general">
+        
+            <a href="http://dekalbsolicitorgeneral.com/" target="_blank">Solicitor-General</a>
+        
+              </li>
+                  <li class="megamenu-item" id="tax-commissioner">
+        
+            <a href="http://dekalbtax.org/">Tax Commissioner</a>
+        
+              </li>
+        </ul>
+  
+              </li>
+                  <li class="megamenu-slot" id="governance-o-policy">
+        <h3 class="megamenu-slot-title">
+            <a href="https:" class="lable-mainmenu-link">Governance &amp; Policy</a>
+        </h3>
+                              
+        <ul class="megamenu-items ">
+                                              <li class="megamenu-item" id="boards-o-commissions">
+        
+            <a href="https://dekalbcountyga.granicus.com/boards/w/968f9572ef2211df" target="_blank">Boards &amp; Commissions</a>
+        
+              </li>
+                  <li class="megamenu-item" id="county-ordinances">
+        
+            <a href="https://www.municode.com/library/ga/dekalb_county/codes/code_of_ordinances?nodeId=ORAC" target="_blank">County Ordinances</a>
+        
+              </li>
+                  <li class="megamenu-item" id="ethics">
+        
+            <a href="http://www.Dekalbcountyethics.org">Ethics</a>
+        
+              </li>
+                  <li class="megamenu-item" id="office-of-independent-internal-audit">
+        
+            <a href="/office-independent-internal-audit/office-independent-internal-audit" data-drupal-link-system-path="node/6297">Office of Independent Internal Audit</a>
+        
+              </li>
+                  <li class="megamenu-item" id="title-vi">
+        
+            <a href="/title-vi/title-vi" data-drupal-link-system-path="node/88233">Title VI</a>
+        
+              </li>
+                  <li class="megamenu-item" id="transparency-initiatives">
+        
+            <a href="/transparency-initiatives/transparency-initiatives" data-drupal-link-system-path="node/7806">Transparency Initiatives</a>
+        
+              </li>
+        </ul>
+  
+              </li>
+                  <li class="megamenu-slot" id="departments">
+        <h3 class="megamenu-slot-title">
+            <a href="https:" class="lable-mainmenu-link">Departments</a>
+        </h3>
+                              
+        <ul class="megamenu-items ">
+                                              <li class="megamenu-item" id="airport">
+        
+            <a href="/airport" data-drupal-link-system-path="node/68">Airport</a>
+        
+              </li>
+                  <li class="megamenu-item" id="beautification">
+        
+            <a href="/beautification/beautification" data-drupal-link-system-path="node/1111613">Beautification</a>
+        
+              </li>
+                  <li class="megamenu-item" id="budget">
+        
+            <a href="/budget-office/about-us" data-drupal-link-system-path="node/7727">Budget</a>
+        
+              </li>
+                  <li class="megamenu-item" id="child-advocacy-center">
+        
+            <a href="/child-advocacy-center/welcome" data-drupal-link-system-path="node/606">Child Advocacy Center</a>
+        
+              </li>
+                  <li class="megamenu-item" id="communications">
+        
+            <a href="/communications/communications" data-drupal-link-system-path="node/17705">Communications</a>
+        
+              </li>
+                  <li class="megamenu-item" id="community-development">
+        
+            <a href="/community-development/community-development" data-drupal-link-system-path="node/516">Community Development</a>
+        
+              </li>
+                  <li class="megamenu-item" id="dctvo-comcast-channel-23">
+        
+            <a href="/dctv/dctv-home-page" data-drupal-link-system-path="node/1204815">DCTV, Comcast Channel 23</a>
+        
+              </li>
+                  <li class="megamenu-item" id="emergency-management">
+        
+            <a href="/dema/dekalb-emergency-management-agency" class="main-submenu-link" data-drupal-link-system-path="node/3218">Emergency Management</a>
+        
+              </li>
+                  <li class="megamenu-item" id="facilities-management">
+        
+            <a href="/facilities-management/facilities-management" data-drupal-link-system-path="node/6602">Facilities Management</a>
+        
+              </li>
+                  <li class="megamenu-item" id="family-o-children-services">
+        
+            <a href="http://dfcs.dhs.georgia.gov/" target="_blank">Family &amp; Children Services</a>
+        
+              </li>
+                  <li class="megamenu-item" id="finance">
+        
+            <a href="/finance/finance" data-drupal-link-system-path="node/5647">Finance</a>
+        
+              </li>
+                  <li class="megamenu-item" id="fire-rescue">
+        
+            <a href="/fire-rescue/fire-rescue" class="main-submenu-link" data-drupal-link-system-path="node/285">Fire Rescue</a>
+        
+              </li>
+                  <li class="megamenu-item" id="gis">
+        
+            <a href="/gis/gis-department" data-drupal-link-system-path="node/13520">GIS</a>
+        
+              </li>
+                  <li class="megamenu-item" id="health">
+        
+            <a href="http://dekalbhealth.net/" target="_blank">Health</a>
+        
+              </li>
+                  <li class="megamenu-item" id="human-resources">
+        
+            <a href="/human-resources/about-us" data-drupal-link-system-path="node/6877">Human Resources</a>
+        
+              </li>
+                  <li class="megamenu-item" id="human-services">
+        
+            <a href="/human-development/human-services" data-drupal-link-system-path="node/556">Human Services</a>
+        
+              </li>
+                  <li class="megamenu-item" id="innovation-o-technology">
+        
+            <a href="/information-technology/welcome" data-drupal-link-system-path="node/147">Innovation &amp; Technology</a>
+        
+              </li>
+                  <li class="megamenu-item" id="law-department">
+        
+            <a href="/law-department/law-department" data-drupal-link-system-path="node/385">Law Department</a>
+        
+              </li>
+                  <li class="megamenu-item" id="library">
+        
+            <a href="http://dekalblibrary.org/" target="_blank">Library</a>
+        
+              </li>
+                  <li class="megamenu-item" id="planning-o-sustainability">
+        
+            <a href="/planning-and-sustainability/planning" data-drupal-link-system-path="node/1204680">Planning &amp; Sustainability</a>
+        
+              </li>
+                  <li class="megamenu-item" id="police-services">
+        
+            <a href="/police-services/welcome" data-drupal-link-system-path="node/21558">Police Services</a>
+        
+              </li>
+                  <li class="megamenu-item" id="property-appraisal">
+        
+            <a href="/property-appraisal/welcome" data-drupal-link-system-path="node/6003">Property Appraisal</a>
+        
+              </li>
+                  <li class="megamenu-item" id="public-defender">
+        
+            <a href="/law-office-public-defender" data-drupal-link-system-path="node/10125">Public Defender</a>
+        
+              </li>
+                  <li class="megamenu-item" id="public-safety">
+        
+            <a href="/public-safety/public-safety" data-drupal-link-system-path="node/658">Public Safety</a>
+        
+              </li>
+                  <li class="megamenu-item" id="public-works">
+        
+            <a href="/public-works/welcome-public-works-department" data-drupal-link-system-path="node/315">Public Works</a>
+        
+              </li>
+                  <li class="megamenu-item" id="purchasing-o-contracting">
+        
+            <a href="/purchasing-contracting/about-purchasing-and-contracting" data-drupal-link-system-path="node/557">Purchasing &amp; Contracting</a>
+        
+              </li>
+                  <li class="megamenu-item" id="recreationo-parks-o-cultural-affairs">
+        
+            <a href="/parks/mission-statement" data-drupal-link-system-path="node/472">Recreation, Parks &amp; Cultural Affairs</a>
+        
+              </li>
+                  <li class="megamenu-item" id="sanitation">
+        
+            <a href="/sanitation/about-sanitation" data-drupal-link-system-path="node/590">Sanitation</a>
+        
+              </li>
+                  <li class="megamenu-item" id="senior-services">
+        
+            <a href="/human-development/senior-services-1" data-drupal-link-system-path="node/1114202">Senior Services</a>
+        
+              </li>
+                  <li class="megamenu-item" id="uga-extension">
+        
+            <a href="http://ugaextension.org/county-offices/dekalb.html" target="_blank">UGA Extension</a>
+        
+              </li>
+                  <li class="megamenu-item" id="voter-registration-o-elections">
+        
+            <a href="/voter-registration-elections/our-mission" data-drupal-link-system-path="node/3456">Voter Registration &amp; Elections</a>
+        
+              </li>
+                  <li class="megamenu-item" id="watershed-management">
+        
+            <a href="/watershed-management/watershed-management" data-drupal-link-system-path="node/342">Watershed Management</a>
+        
+              </li>
+                  <li class="megamenu-item" id="worksource-dekalb">
+        
+            <a href="/workforce-center/welcome-workforce-development" data-drupal-link-system-path="node/255">WorkSource DeKalb</a>
+        
+              </li>
+                  <li class="megamenu-item" id="youth-services">
+        
+            <a href="/youth-services/welcome" data-drupal-link-system-path="node/17244">Youth Services</a>
+        
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+              </li>
+                  <li class="megamenu-parent" id="visitors">
+        <h2 class="megamenu-parent-title">
+            <a href="http:">VISITORS</a>
+        </h2>
+                                  <ul class="megamenu-bin megamenu-slots-columnar">
+                                              <li class="megamenu-slot" id="arabia-mountain-national-heritage-area">
+        <h3 class="megamenu-slot-title">
+            <a href="http://arabiaalliance.org/" target="_blank">Arabia Mountain National Heritage Area</a>
+        </h3>
+              </li>
+                  <li class="megamenu-slot" id="callanwolde-fine-arts-center">
+        <h3 class="megamenu-slot-title">
+            <a href="http://callanwolde.org/" target="_blank">Callanwolde Fine Arts Center</a>
+        </h3>
+              </li>
+                  <li class="megamenu-slot" id="dekalb-convention-and-visitors-bureau">
+        <h3 class="megamenu-slot-title">
+            <a href="http://visitatlantasdekalbcounty.com/" target="_blank">DeKalb Convention and Visitors Bureau</a>
+        </h3>
+              </li>
+                  <li class="megamenu-slot" id="library">
+        <h3 class="megamenu-slot-title">
+            <a href="http://dekalblibrary.org/">Library</a>
+        </h3>
+              </li>
+                  <li class="megamenu-slot" id="parks-o-recreation">
+        <h3 class="megamenu-slot-title">
+            <a href="/parks/welcome-director" data-drupal-link-system-path="node/475">Parks &amp; Recreation</a>
+        </h3>
+              </li>
+                  <li class="megamenu-slot" id="stone-mountain-park">
+        <h3 class="megamenu-slot-title">
+            <a href="http://www.stonemountainpark.com/" target="_blank">Stone Mountain Park</a>
+        </h3>
+              </li>
+        </ul>
+  
+              </li>
+                  <li class="megamenu-parent" id="business">
+        <h2 class="megamenu-parent-title">
+            <a href="http:">Business</a>
+        </h2>
+                                  <ul class="megamenu-bin megamenu-slots-columnar">
+                                              <li class="megamenu-slot" id="doing-business-in-dekalb">
+        <h3 class="megamenu-slot-title">
+            <a href="http://www.decidedekalb.com/what-we-do/services.stml" class="lable-mainmenu-link" target="_blank">Doing Business in DeKalb</a>
+        </h3>
+                              
+        <ul class="megamenu-items ">
+                                              <li class="megamenu-item" id="dekalb-chamber-of-commerce">
+        
+            <a href="http://www.dekalbchamber.org/" target="_blank">DeKalb Chamber of Commerce</a>
+        
+              </li>
+                  <li class="megamenu-item" id="start-a-business-in-the-county">
+        
+            <a href="http://www.decidedekalb.com/what-we-do/services.stml" target="_blank">Start a Business in the County</a>
+        
+              </li>
+                  <li class="megamenu-item" id="business-license">
+        
+            <a href="/planning-and-sustainability/business-and-alcohol-license-0" data-drupal-link-system-path="node/1204781">Business License</a>
+        
+              </li>
+                  <li class="megamenu-item" id="film-o-tv-permit">
+        
+            <a href="https://dekalbgis.maps.arcgis.com/apps/webappviewer/index.html?id=2c4edbedbc394a7eb8d9a107aecb0bc1" target="_blank">Film &amp; TV Permit</a>
+        
+              </li>
+                  <li class="megamenu-item" id="food-safety-requirements-o-compliance">
+        
+            <a href="http://dekalbhealth.net/envhealth/food-safety/rules-and-regulations/" target="_blank">Food Safety Requirements &amp; Compliance</a>
+        
+              </li>
+                  <li class="megamenu-item" id="purchasing-o-contracts">
+        
+            <a href="/purchasing-contracting/about-purchasing-and-contracting" data-drupal-link-system-path="node/557">Purchasing &amp; Contracts</a>
+        
+              </li>
+                  <li class="megamenu-item" id="building-permits-o-inspection">
+        
+            <a href="/planning-and-sustainability/permits-plan-review-inspections" data-drupal-link-system-path="node/1204683">Building Permits &amp; Inspection</a>
+        
+              </li>
+        </ul>
+  
+              </li>
+                  <li class="megamenu-slot" id="doing-business-with-dekalb">
+        <h3 class="megamenu-slot-title">
+            <a href="https:" class="lable-mainmenu-link">Doing Business with DeKalb</a>
+        </h3>
+                              
+        <ul class="megamenu-items ">
+                                              <li class="megamenu-item" id="bids">
+        
+            <a href="/purchasing-contracting/general-information" data-drupal-link-system-path="node/563">Bids</a>
+        
+              </li>
+                  <li class="megamenu-item" id="business-incentives-program">
+        
+            <a href="http://www.decidedekalb.com/what-we-do/financing-incentives.stml" target="_blank">Business Incentives Program</a>
+        
+              </li>
+                  <li class="megamenu-item" id="purchasing">
+        
+            <a href="/purchasing-contracting/about-purchasing-and-contracting" data-drupal-link-system-path="node/557">Purchasing</a>
+        
+              </li>
+                  <li class="megamenu-item" id="vendor-registration">
+        
+            <a href="/purchasing-contracting/how-do-business" data-drupal-link-system-path="node/559">Vendor Registration</a>
+        
+              </li>
+        </ul>
+  
+              </li>
+                  <li class="megamenu-slot" id="economic-development">
+        <h3 class="megamenu-slot-title">
+            <a href="http://www.decidedekalb.com/" class="lable-mainmenu-link">Economic Development</a>
+        </h3>
+                              
+        <ul class="megamenu-items ">
+                                              <li class="megamenu-item" id="decide-dekalb">
+        
+            <a href="http://www.decidedekalb.com/" target="_blank">Decide DeKalb</a>
+        
+              </li>
+        </ul>
+  
+              </li>
+        </ul>
+  
+              </li>
+                  <li class="megamenu-parent" id="payments">
+        <h2 class="megamenu-parent-title">
+            <a href="http:">Payments</a>
+        </h2>
+                                  <ul class="megamenu-bin megamenu-slots-columnar">
+                                              <li class="megamenu-slot" id="child-support">
+        <h3 class="megamenu-slot-title">
+            <a href="http://dcss.dhs.georgia.gov/family-support-registry" target="_blank">Child Support</a>
+        </h3>
+              </li>
+                  <li class="megamenu-slot" id="building-permit">
+        <h3 class="megamenu-slot-title">
+            <a href="https://dekalbga-ws01.cloud.infor.com/IPSProdDP" target="_blank">Building Permit</a>
+        </h3>
+              </li>
+                  <li class="megamenu-slot" id="fog-bill">
+        <h3 class="megamenu-slot-title">
+            <a href="http://golevel1.com/client/DeKalb/" target="_blank">FOG Bill</a>
+        </h3>
+              </li>
+                  <li class="megamenu-slot" id="probation-fines-and-fees">
+        <h3 class="megamenu-slot-title">
+            <a href="https://payments.myfivepoint.com/portal/modules/payment/payment.aspx?s=11&amp;t=62">Probation Fines and Fees</a>
+        </h3>
+              </li>
+                  <li class="megamenu-slot" id="property-tax">
+        <h3 class="megamenu-slot-title">
+            <a href="http://dekalbtax.org/property-information" target="_blank">Property Tax</a>
+        </h3>
+              </li>
+                  <li class="megamenu-slot" id="sanitation">
+        <h3 class="megamenu-slot-title">
+            <a href="http://web.dekalbcountyga.gov/cpak/Members/login.php" target="_blank">Sanitation</a>
+        </h3>
+              </li>
+                  <li class="megamenu-slot" id="traffic-fines">
+        <h3 class="megamenu-slot-title">
+            <a href="https://payments.myfivepoint.com/dekalb/web/" target="_blank">Traffic Fines</a>
+        </h3>
+              </li>
+                  <li class="megamenu-slot" id="water/sewer">
+        <h3 class="megamenu-slot-title">
+            <a href="http://golevel1.com/client/DeKalb/" target="_blank">Water/Sewer</a>
+        </h3>
+              </li>
+        </ul>
+  
+              </li>
+                  <li class="megamenu-parent" id="contact">
+        <h2 class="megamenu-parent-title">
+            <a href="/departments-list" data-drupal-link-system-path="departments-list">Contact</a>
+        </h2>
+              </li>
+        </ul>
+  
+
+
+  </nav>
+<div id="block-searchformbelowslider" class="block block-block-content block-block-content6f5f47a5-f921-44b8-acf1-00f543e3147c">
+
+
+    <div class="content">
+    
+            <div><div class="col-sm-8">
+   <div class="dk-social stay-cnct pull-right">
+      <ul>
+         <li><a class="" href="https://public.coderedweb.com/cne/en-US/3BD32EC1739A" target="_blank"> <span class="code-red-cnct"></span> </a></li>
+         <li><a class="" href="https://www.facebook.com/Its-In-DeKalb-1637015323181765/" target="_blank"> <i class="facebook-cnct"></i> </a></li>
+         <li><a class="" href="https://twitter.com/ItsInDeKalb" target="_blank"> <i class="twiter-cnct"></i> </a></li>
+         <li><a class="" href="https://www.instagram.com/ItsInDeKalbGa/" target="_blank"> <i class="instagram-cnct"></i> </a></li>
+         <li><a class="" href="http://www.ustream.tv/channel/dctv-channel-23" target="_blank"> <i class="ustrim-cnct"></i> </a></li>
+         <li><a class="" href="https://www.youtube.com/user/DeKalbCountyGov" target="_blank"> <i class="youtube-cnct"></i> </a></li>
+      </ul>
+   </div>
+</div>
+<div class="col-sm-4 ">
+   <div class="searchinput-grp">
+      <div class="input-grp">
+<form class="search-block-form" data-drupal-selector="search-block-form" action="/search/site" method="get" id="search-block-form" accept-charset="UTF-8">
+  <div class="js-form-item form-item js-form-type-search form-item-keys js-form-item-keys form-no-label">
+      <label for="edit-keys" class="visually-hidden">Search</label>
+        <input title="Enter the terms you wish to search for." placeholder="Search" data-drupal-selector="edit-keys" type="search" id="edit-keys" name="keys" value="" size="15" maxlength="128" class="form-search" />
+
+        </div>
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit" type="submit" id="edit-submit" value="Search" class="button js-form-submit form-submit" />
+</div>
+
+</form>
+      </div>
+   </div>
+</div></div>
+      
+    </div>
+</div>
+
+            <div class="clearfix"></div>
+        </div>
+    </nav>
+</div>
+<!-- MENU MOBILE -->
+<div id="main-navigation">
+    <div class="region region-mobile-menu">
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="main-container Park-Holder not-banner-header  ">
+    <div class="container">
+        <div class="row">
+                            <div class="col-sm-3 hamburger-menu region-sidebar-first">
+                        <div id="block-eventcalendar" class="block block-block-content block-block-contentc9d250c2-a831-4347-a58e-30ddd8f6cb6c">
+
+    <h2>Event Calendar</h2>
+
+    <div class="content">
+    
+            <div><p><a class="btn btn-lg btn-green btn-block" href="/event-calendar/">Find Events</a></p>
+</div>
+      
+    </div>
+</div>
+
+                </div>  <!-- /#sidebar-first -->
+                        <section class="col-sm-9">
+                                                                    <div class="highlighted">    <div id="block-pagetitle" class="block block-core block-page-title-block">
+
+
+    <div class="content">
+    
+  <h1 class="page-title">Event Popup</h1>
+
+
+    </div>
+</div>
+</div>
+                                
+                                                
+                    <div data-drupal-messages-fallback class="hidden"></div><div id="block-dkc-content" class="block block-system block-system-main-block">
+
+
+    <div class="content">
+    <div class="views-element-container"><div class="js-view-dom-id-d4974c52d836c80197239c1824e730e2106158965a40a0be9a9c006ba493303a">
+  
+  
+  
+
+  
+  
+  
+
+      <div class="views-row"><div class="event-popup-all">
+    <h1 class="evTitle">County Operations Committee </h1>
+
+    <div class="row">
+        <div class="evDetails">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 boxpop ">
+                <div class="image">
+                    <img src="/themes/dkc/images/icon_calender.png">
+                </div>
+                <h2>Date/Time:</h2>
+                <h4>
+
+                 
+
+
+                </h4>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 boxpop ">
+                <div class="image"><img src="/themes/dkc/images/icon_category.png"></div>
+                <h2>Category:</h2>
+                <h4>BOC Meeting</h4>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 boxpop ">
+                <div class="image">
+                    <img src="/themes/dkc/images/icon_priority.png">
+                </div>
+                <h2>Priority:</h2>
+                <h4></h4>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 boxpop ">
+                <div class="image">
+                    <img src="/themes/dkc/images/icon_location.png">
+                </div>
+                <h2>Location:</h2>
+<h4>
+<a class="lk" target="_blank" href="http://maps.google.com/maps?q=  ,  &amp;hl=en">
+                United States
+                    </a>
+                <h4>
+            </div>
+        </div>
+    </div>
+    <div class="desc">
+        <h3>Description</h3>
+        <p>
+            <div><p>County Operations Committee (<a href="https://www.dekalbcountyga.gov/board-commissioners/county-operations-ops-committee">OPS</a>)</p>
+
+<p>Location - Virtual; Meeting can be viewed via&nbsp;<a href="https://video.ibm.com/channel/dctv-channel-23" title="DCTV">DCTV</a></p>
+</div>
+       </p>
+    </div>
+</div></div>
+
+    
+
+  
+  
+
+  
+  
+</div>
+</div>
+
+    </div>
+</div>
+
+                
+            </section>
+                            <div class="col-sm-4 sidebar_first_after_content">
+                        <div id="block-eventcalendar" class="block block-block-content block-block-contentc9d250c2-a831-4347-a58e-30ddd8f6cb6c">
+
+    <h2>Event Calendar</h2>
+
+    <div class="content">
+    
+            <div><p><a class="btn btn-lg btn-green btn-block" href="/event-calendar/">Find Events</a></p>
+</div>
+      
+    </div>
+</div>
+
+                </div>  <!-- /#sidebar-first -->
+                                </div>
+    </div>
+</div>
+<!-- FOOTER TOP -->
+<div class="footer-bg">
+    <div class="container">
+        <div class="row">
+            <div class="region region-footer-top">
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FOOTER BOTTOM -->
+<div class="footer-btm">
+    <div class="container">
+        <div class="row">
+            <div class="region region-footer-bottom">
+                
+            </div>
+        </div>
+    </div>
+</div>
+  </div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"event-popup\/1207804","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"ajaxTrustedUrl":{"\/search\/site":true},"user":{"uid":0,"permissionsHash":"ed24457254c221e361fd326b4eefe7eba8d3fe176d27f73c5b7a332a46dcf6d1"}}</script>
+<script src="/core/assets/vendor/jquery/jquery.min.js?v=3.6.0"></script>
+<script src="/core/misc/drupalSettingsLoader.js?v=9.3.9"></script>
+<script src="/core/misc/drupal.js?v=9.3.9"></script>
+<script src="/core/misc/drupal.init.js?v=9.3.9"></script>
+<script src="https://static.addtoany.com/menu/page.js" async></script>
+<script src="/modules/addtoany/js/addtoany.js?v=9.3.9"></script>
+<script src="/modules/custom/dkc_alerts/js/dkc_alerts.js?rhwh0n"></script>
+<script src="/modules/custom/dkc_alerts/js/dkc_alerts_form.js?rhwh0n"></script>
+<script src="/modules/google_analytics/js/google_analytics.js?v=9.3.9"></script>
+<script src="/modules/revslider/revslider/assets/public/js/custom.js?rhwh0n"></script>
+<script src="/themes/dkc/bootstrap/js/bootstrap.min.js?rhwh0n"></script>
+<script src="/themes/dkc/js/jquery.themepunch.tools.min.js?rhwh0n"></script>
+<script src="/themes/dkc/js/jquery.themepunch.revolution.js?rhwh0n"></script>
+<script src="/themes/dkc/js/jquery.meanmenu.js?rhwh0n"></script>
+<script src="/themes/dkc/js/dkc_new.js?rhwh0n"></script>
+<script src="/themes/dkc/js/main.js?rhwh0n"></script>
+
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"53bca05978","applicationID":"251938847","transactionName":"YVQEZhMCXRYHVBcLXFgeJ1EVClwLSXMRF0NXXTpECAZEFjplDBdHX18BbjcKVhI2VgQHcFlfEkAOD18AFBpdClJYVQpX","queueTime":0,"applicationTime":858,"atts":"TRMHEFsYThg=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+

@@ -27,8 +27,9 @@ def test_len():
 
 
 def test_title():
+    assert parsed_items[0]["title"] == "Development Authority of Fulton County Meeting"
     assert (
-        parsed_items[0]["title"]
+        parsed_items[33]["title"]
         == "Development Authority of Fulton County JDAMA Meeting"
     )
 
@@ -51,7 +52,11 @@ def test_time_notes():
 def test_id():
     assert (
         parsed_items[0]["id"]
-        == "dafc/202201141000/x/development_authority_of_fulton_county_jdama_meeting"
+        == "dafc/202201141000/x/development_authority_of_fulton_county_meeting"
+    )
+    assert (
+        parsed_items[33]["id"]
+        == "dafc/202201111130/x/development_authority_of_fulton_county_jdama_meeting"
     )
 
 

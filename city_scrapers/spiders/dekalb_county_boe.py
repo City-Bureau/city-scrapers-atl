@@ -42,11 +42,9 @@ class DekalbCountyBoeSpider(CityScrapersSpider):
         yield meeting
 
     def _parse_title(self, item):
-        """Parse or generate meeting title."""
         return item.css(".entry-title::text").get()
 
     def _parse_description(self, item):
-        """Parse or generate meeting description."""
         return "\n".join(item.css(".post-content > p").getall())
 
     def _parse_time(self, dt_duration):

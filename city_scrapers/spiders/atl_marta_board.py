@@ -9,7 +9,7 @@ from city_scrapers_core.spiders import CityScrapersSpider
 class AtlMartaBoardSpider(CityScrapersSpider):
     name = "atl_marta_board"
     agency = "MARTA Board of Directors"
-    timezone = "America/Chicago"
+    timezone = "America/New_York"
     start_urls = ["https://www.itsmarta.com/meeting-schedule.aspx"]
 
     def parse(self, response):

@@ -73,11 +73,11 @@ def test_end():
 def test_id():
     assert (
         parsed_items[0]["id"]
-        == "dekalb_county_boc/202209060900/x/board_of_commissioner_s_committee_of_the_whole"  # noqa
+        == "atl_dekalb_county_boc/202209060900/x/board_of_commissioner_s_committee_of_the_whole"  # noqa
     )
     assert (
         parsed_items[7]["id"]
-        == "dekalb_county_boc/202209131530/x/finance_audit_and_budget_committee_committee"  # noqa
+        == "atl_dekalb_county_boc/202209131530/x/finance_audit_and_budget_committee_committee"  # noqa
     )
 
 

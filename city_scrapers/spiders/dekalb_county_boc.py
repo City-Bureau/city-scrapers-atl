@@ -7,7 +7,7 @@ from dateutil.tz import gettz
 
 
 class DekalbCountyBocSpider(CityScrapersSpider):
-    name = "dekalb_county_boc"
+    name = "atl_dekalb_county_boc"
     agency = "DeKalb County Board of Commissioners"
     timezone = "America/New_York"
     start_urls = ["https://www.dekalbcountyga.gov/meeting-calendar"]

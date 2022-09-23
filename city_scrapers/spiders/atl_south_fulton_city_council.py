@@ -7,7 +7,7 @@ from city_scrapers_core.spiders import CityScrapersSpider
 class AtlSouthFultonCityCouncilSpider(CityScrapersSpider):
     name = "atl_south_fulton_city_council"
     agency = "South Fulton City Council"
-    timezone = "America/Chicago"
+    timezone = "America/New_York"
     start_urls = [
         "https://southfulton.novusagenda.com/agendapublic/meetingsresponsive.aspx"
     ]

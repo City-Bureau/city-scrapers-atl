@@ -5,7 +5,7 @@ from city_scrapers_core.spiders import EventsCalendarSpider
 class AtlRegionalCommissionSpider(EventsCalendarSpider):
     name = "atl_regional_commission"
     agency = "Atlanta Regional Commission"
-    timezone = "America/Chicago"
+    timezone = "America/New_York"
     start_urls = ["https://atlantaregional.org/wp-json/tribe/events/v1/events"]
     categories = {COMMITTEE: ["committees"]}
 

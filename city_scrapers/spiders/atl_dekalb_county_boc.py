@@ -6,7 +6,7 @@ from city_scrapers_core.spiders import CityScrapersSpider
 from dateutil.tz import gettz
 
 
-class DekalbCountyBocSpider(CityScrapersSpider):
+class AtlDekalbCountyBocSpider(CityScrapersSpider):
     name = "atl_dekalb_county_boc"
     agency = "DeKalb County Board of Commissioners"
     timezone = "America/New_York"

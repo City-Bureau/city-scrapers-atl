@@ -7,14 +7,14 @@ from city_scrapers_core.constants import CITY_COUNCIL
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
-from city_scrapers.spiders.dekalb_county_boc import DekalbCountyBocSpider
+from city_scrapers.spiders.atl_dekalb_county_boc import AtlDekalbCountyBocSpider
 
 test_response = file_response(
-    join(dirname(__file__), "files", "dekalb_county_boc.html"),
+    join(dirname(__file__), "files", "atl_dekalb_county_boc.html"),
     url="https://www.dekalbcountyga.gov/meeting-calendar",
 )
 
-spider = DekalbCountyBocSpider()
+spider = AtlDekalbCountyBocSpider()
 
 freezer = freeze_time("2022-09-08")
 freezer.start()
@@ -22,7 +22,7 @@ freezer.start()
 meeting_requests = [item for item in spider.parse(test_response)]
 
 requests_url_root = "https://www.dekalbcountyga.gov/event-popup"
-requests_dir_root = join(dirname(__file__), "files", "dekalb_county_boc_requests")
+requests_dir_root = join(dirname(__file__), "files", "atl_dekalb_county_boc_requests")
 meeting_responses = [
     file_response(
         join(requests_dir_root, item),

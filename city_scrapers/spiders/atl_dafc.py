@@ -5,8 +5,8 @@ from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
 
 
-class DafcSpider(CityScrapersSpider):
-    name = "dafc"
+class AtlDafcSpider(CityScrapersSpider):
+    name = "atl_dafc"
     agency = "Development Authority of Fulton County"
     timezone = "America/New_York"
     start_urls = ["https://www.developfultoncounty.com/meetings-and-minutes.php"]

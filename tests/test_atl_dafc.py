@@ -6,13 +6,13 @@ from city_scrapers_core.constants import NOT_CLASSIFIED
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
-from city_scrapers.spiders.dafc import DafcSpider
+from city_scrapers.spiders.atl_dafc import AtlDafcSpider
 
 test_response = file_response(
-    join(dirname(__file__), "files", "dafc.html"),
+    join(dirname(__file__), "files", "atl_dafc.html"),
     url="https://www.developfultoncounty.com/meetings-and-minutes.php",
 )
-spider = DafcSpider()
+spider = AtlDafcSpider()
 
 freezer = freeze_time("2022-09-09")
 freezer.start()
@@ -52,11 +52,11 @@ def test_time_notes():
 def test_id():
     assert (
         parsed_items[0]["id"]
-        == "dafc/202201141000/x/development_authority_of_fulton_county_meeting"
+        == "atl_dafc/202201141000/x/development_authority_of_fulton_county_meeting"
     )
     assert (
         parsed_items[33]["id"]
-        == "dafc/202201111130/x/development_authority_of_fulton_county_jdama_meeting"
+        == "atl_dafc/202201111130/x/development_authority_of_fulton_county_jdama_meeting"  # noqa
     )
 
 

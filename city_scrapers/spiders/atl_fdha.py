@@ -2,8 +2,8 @@ from city_scrapers_core.constants import BOARD
 from city_scrapers_core.spiders import EventsCalendarSpider
 
 
-class FdhaSpider(EventsCalendarSpider):
-    name = "fdha"
+class AtlFdhaSpider(EventsCalendarSpider):
+    name = "atl_fdha"
     agency = "Fulton-DeKalb Hospital Authority"
     timezone = "America/New_York"
     start_urls = ["https://thefdha.org/wp-json/tribe/events/v1/events"]

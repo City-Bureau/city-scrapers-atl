@@ -6,8 +6,8 @@ from city_scrapers_core.spiders import CityScrapersSpider
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
 
 
-class DekalbCountyBoeSpider(CityScrapersSpider):
-    name = "dekalb_county_boe"
+class AtlDekalbCountyBoeSpider(CityScrapersSpider):
+    name = "atl_dekalb_county_boe"
     agency = "DeKalb County Board of Education"
     timezone = "America/New_York"
     start_urls = ["https://www.dekalbschoolsga.org/board-of-education/board-meetings/"]

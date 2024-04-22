@@ -44,8 +44,14 @@ class CobbCountyDrupalMixin:
 
     def _parse_location(self, item):
         location_text = item.css(".event-location::text").get(default="").strip()
+        location_text_clean = location_text.replace("Location(s):", "").strip()
+        if not location_text_clean:
+            return {
+                "address": "",
+                "name": "TBD",
+            }
         return {
-            "address": location_text.replace("Location(s): ", ""),
+            "address": location_text_clean,
             "name": "",
         }
 

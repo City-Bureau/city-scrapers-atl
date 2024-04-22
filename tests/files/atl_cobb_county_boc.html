@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html  lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
   <head>
-      <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"NRJS-76d8248f92cdd52ee6e",applicationID:"958345017"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return s.recordSupportability("API/"+e+"/called"),o(t+e,[u.now()].concat(c(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(9),c=t(10),f=t("ee").get("tracer"),u=t("loader"),s=t(4),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",v=l+"ixn-";a(p,function(t,e){d[e]=i(l,e,!0,"api")}),d.addPageAction=i(l,"addPageAction",!0),d.setCurrentRouteName=i(l,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(v+"tracer",[u.now(),t,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw f.emit("fn-err",[arguments,this,t],n),t}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(v,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),s.recordSupportability("API/noticeError/called"),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],4:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[c,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",c="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:c},recordSupportability:r,recordCustom:i}},{}],5:[function(t,e,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=t(11);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],6:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?l("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&l("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(u&&u<r.startTime)return;var i=[r],o=a({});o&&i.push(o),l("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||l("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function c(t){if(t instanceof y&&!w){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=v.now()?n.fid=v.now()-e:e>v.offset&&e<=Date.now()?(e-=v.offset,n.fid=v.now()-e):e=v.now(),w=!0,l("timing",["fi",e,n])}}function f(t){"hidden"===t&&(u=v.now(),l("pageHide",[u]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var u,s,d,p,l=t("handle"),v=t("loader"),m=t(8),g=t(3),y=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){s=new PerformanceObserver(r);try{s.observe({entryTypes:["paint"]})}catch(h){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(h){}p=new PerformanceObserver(o);try{p.observe({type:"layout-shift",buffered:!0})}catch(h){}}if("addEventListener"in document){var w=!1,b=["click","keydown","mousedown","pointerdown","touchstart"];b.forEach(function(t){document.addEventListener(t,c,g(!1))})}m(f)}},{}],7:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}e.exports={agent:i,version:o,match:r}},{}],8:[function(t,e,n){function r(t){function e(){t(c&&document[c]?document[c]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(3);e.exports=r;var o,a,c;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",c="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",c="webkitVisibilityState")},{}],9:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],10:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],11:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var c=e(i),f=m(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[w[n]];return p&&p.push([b,n,r,c]),c}}function o(t,e){h[t]=m(t).concat(e)}function v(t,e){var n=h[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return h[t]||[]}function g(t){return p[t]=p[t]||i(n)}function y(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var h={},w={},b={on:o,addEventListener:o,removeEventListener:v,emit:n,get:g,listeners:m,context:e,buffer:y,abort:c,aborted:!1};return b}function o(t){return u(t,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=t("gos"),s=t(9),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!M++){var t=T.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(x,function(e,n){t[e]||(t[e]=n)});var n=a();c("mark",["onload",n+T.offset],null,"api"),c("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){c("mark",["domContent",a()+T.offset],null,"api")}var a=t(5),c=t("handle"),f=t(9),u=t("ee"),s=t(7),d=t(2),p=t(3),l=d.getConfiguration("ssl")===!1?"http":"https",v=window,m=v.document,g="addEventListener",y="attachEvent",h=v.XMLHttpRequest,w=h&&h.prototype,b=!1;NREUM.o={ST:setTimeout,SI:v.setImmediate,CT:clearTimeout,XHR:h,REQ:v.Request,EV:v.Event,PR:v.Promise,MO:v.MutationObserver};var E=""+location,x={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1216.min.js"},O=h&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),T=e.exports={offset:a.getLastTimestamp(),now:a,origin:E,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(6),m[g]?(m[g]("DOMContentLoaded",o,p(!1)),v[g]("load",r,p(!1))):(m[y]("onreadystatechange",i),v[y]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var M=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],t)}c(n+"start",[o,a,f],s,u);try{return p=e.apply(a,o)}catch(v){throw c(n+"err",[o,a,v],s,u),v}finally{c(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)f=e[u],c=t[f],a(c)||(t[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!v||e){var c=v;v=!0;try{t.emit(n,r,o,e,a)}catch(f){i([f,n,r,o],t)}v=c}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function c(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function f(t,e,n){var r=t[e];t[e]=c(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(10),p="nr@original",l=Object.prototype.hasOwnProperty,v=!1;e.exports=r,e.exports.wrapFunction=c,e.exports.wrapInPlace=f,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73497601-1"></script>
-<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments)};gtag("js", new Date());gtag("set", "developer_id.dMDhkMT", true);gtag("config", "UA-73497601-1", {"groups":"default","anonymize_ip":true,"page_placeholder":"PLACEHOLDER_page_path","allow_ad_personalization_signals":false});gtag("config", "G-YSS8HKRF4F", {"groups":"default","page_placeholder":"PLACEHOLDER_page_location","allow_ad_personalization_signals":false});</script>
-<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+      <meta charset="utf-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YSS8HKRF4F"></script>
+<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments)};gtag("js", new Date());gtag("set", "developer_id.dMDhkMT", true);gtag("config", "G-YSS8HKRF4F", {"groups":"default","page_placeholder":"PLACEHOLDER_page_location","allow_ad_personalization_signals":false});</script>
+<meta name="Generator" content="Drupal 10 (https://www.drupal.org)" />
 <meta name="MobileOptimized" content="width" />
 <meta name="HandheldFriendly" content="true" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="/themes/custom/if_zen/logo.png" type="image/png" />
 <script>window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};a2a_config.icon_color = "#00873e";</script>
 
-        <title>All Events | Cobb County Georgia</title>
+        <title>Events | Cobb County Georgia</title>
     
-  <link rel="stylesheet" media="all" href="https://s3.us-west-2.amazonaws.com/cobbcounty.org.if-us-west-2/prod/s3fs-public/css/css_fDV46Pt_cbl-1YvJQqha5abIj-mbvJqV-pETKxcfmbM.css" />
-<link rel="stylesheet" media="all" href="https://s3.us-west-2.amazonaws.com/cobbcounty.org.if-us-west-2/prod/s3fs-public/css/css_VkJjTqkB2ej82RDKDkTrAHf9IDptGjq5JzTuwsyWYZg.css" />
+  <link rel="stylesheet" media="all" href="/sites/default/files/css/css_Iil3jVzsc-hcWKo3qY_Y6A5rJibng9bBBm9QtnE4xjA.css?delta=0&amp;language=en&amp;theme=if_zen&amp;include=eJx9U1GWozAMu1ACR-IZYqi3ScyzAx16-nXpBujMm_0pluLUsgQcQe4t5YKTQCHODkIoDHlra9GMwrm40X7ggcoJ20vd6Dr976zRGyU3MU8RO8gQt0KDtt8JpzwQxC5hIOgi5bu2P6mm3DCh000LprYHRTdEUN0-6oSqMKG6gQXbzJIg0hMdjd0T87u11vxVS4gopQJFkOFW0cApYT4ObwgB5WwdXr5pxSvh4wA3CgFzRZRtC_T7Kt84pd6eU2VnsUh85nwoFdTZptCKfqWAXPkHCY4C6WiEpbAJniOWc80Iz-3cJkaYXwPRj4QxKB6rjWaWJzP3gyhgvac0nkyM-h7kB1duwn1_mmMkPV-3fcGvAoJQT_b_9EHg2DnD6s3m5YKvIyxROVXlcjiokYZ7BX_UD8x3OuQWtLhFP8YeaIAYfWEPe4TOJL6yaYMsM8TmH3QWPZWtw9RjsCvz3nso4WK69tDf0TeJw3LahatdVy84LCKXhHvzIgyypN69X7YOZuqu4bW_8O5lZbc7i-2lbt6POiDCxsvFpTvN-5vneiwmucOvmRVDN1I0aF8kZhSIvx0HKDib0Vb_BbgiohY" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_eb78WyscVdFSJ55pD82JF7MGftj6vv-EOdw0jaF3gI4.css?delta=1&amp;language=en&amp;theme=if_zen&amp;include=eJx9U1GWozAMu1ACR-IZYqi3ScyzAx16-nXpBujMm_0pluLUsgQcQe4t5YKTQCHODkIoDHlra9GMwrm40X7ggcoJ20vd6Dr976zRGyU3MU8RO8gQt0KDtt8JpzwQxC5hIOgi5bu2P6mm3DCh000LprYHRTdEUN0-6oSqMKG6gQXbzJIg0hMdjd0T87u11vxVS4gopQJFkOFW0cApYT4ObwgB5WwdXr5pxSvh4wA3CgFzRZRtC_T7Kt84pd6eU2VnsUh85nwoFdTZptCKfqWAXPkHCY4C6WiEpbAJniOWc80Iz-3cJkaYXwPRj4QxKB6rjWaWJzP3gyhgvac0nkyM-h7kB1duwn1_mmMkPV-3fcGvAoJQT_b_9EHg2DnD6s3m5YKvIyxROVXlcjiokYZ7BX_UD8x3OuQWtLhFP8YeaIAYfWEPe4TOJL6yaYMsM8TmH3QWPZWtw9RjsCvz3nso4WK69tDf0TeJw3LahatdVy84LCKXhHvzIgyypN69X7YOZuqu4bW_8O5lZbc7i-2lbt6POiDCxsvFpTvN-5vneiwmucOvmRVDN1I0aF8kZhSIvx0HKDib0Vb_BbgiohY" />
 <link rel="stylesheet" media="all" href="//fonts.googleapis.com/css?family=Lato|Oswald:300,400" />
 
-  <script src="https://kit.fontawesome.com/3dc7b5e47f.js" defer crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/00465780d8.js" defer crossorigin="anonymous"></script>
 <script src="https://use.fontawesome.com/releases/v5.0.1/js/v4-shims.js" defer crossorigin="anonymous"></script>
 
     <!-- include IF Vox before closing HEAD tag -->
@@ -31,7 +31,7 @@
       })();
       </script>
   </head>
-  <body  class="green path-events route-entity-eventinstance-collection is-path-events">
+  <body  class="path-events route-entity-eventinstance-collection is-path-events">
       
 <a href="#main-content" class="skip-link visually-hidden visually-hidden--focusable">
       Skip to main content
@@ -134,7 +134,7 @@
         <a href="#n">I want to...</a>
                                 <ul class="menu" aria-hidden="true">
                           <li class="menu-item adopt-a-pet">
-        <a href="/public-safety/animal-services/adoption" data-drupal-link-system-path="node/118">Adopt a Pet</a>
+        <a href="/animal-services/adoption" data-drupal-link-system-path="node/118">Adopt a Pet</a>
               </li>
                       <li class="menu-item adopt-a-stream">
         <a href="/watershed-stewardship/volunteer/adopt-stream" title="Adopt a Stream">Adopt a Stream</a>
@@ -145,9 +145,6 @@
                       <li class="menu-item apply-for-a-license">
         <a href="/i-want-to/apply-for-a-license" data-drupal-link-system-path="node/131">Apply for a License</a>
               </li>
-                      <li class="menu-item obtain-an-accident-report">
-        <a href="/public-safety/police/reports" data-drupal-link-system-path="node/103">Obtain an Accident Report</a>
-              </li>
                       <li class="menu-item register-for-activities">
         <a href="https://secure.rec1.com/GA/cobb-county-ga/catalog">Register for Activities</a>
               </li>
@@ -155,7 +152,7 @@
         <a href="/elections/voter-registration/register" data-drupal-link-system-path="node/4003">Register to Vote</a>
               </li>
                       <li class="menu-item report-a-lost-or-found-pet">
-        <a href="/public-safety/animal-services/lost-pets" data-drupal-link-system-path="node/1071">Report a Lost or Found Pet</a>
+        <a href="/animal-services/lost-pets" data-drupal-link-system-path="node/1071">Report a Lost or Found Pet</a>
               </li>
                       <li class="menu-item reserve-a-facility">
         <a href="https://secure.rec1.com/GA/cobb-county-ga/catalog">Reserve a Facility</a>
@@ -231,8 +228,7 @@
     
       
             <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="shortcuts">
-        <ul>
-            <li class="events">
+        <ul><li class="events">
                 <a href="/events">EVENTS</a>
             </li>
             <li class="news">
@@ -241,8 +237,7 @@
             <li class="icobb">
                 <a href="/icobb">iCOBB</a>
             </li>
-        </ul>
-    </div></div>
+        </ul></div></div>
       
   </div>
 
@@ -290,11 +285,14 @@
                       <li class="menu-item menu-item--expanded departments" aria-expanded="false">
                   <a href="#n">Departments<i class="fal fa-angle-right"></i></a>
                                                 <ul class="menu" aria-hidden="true">
-                          <li class="menu-item 911">
-                          <a href="https://www.cobbcounty.org/public-safety/911" class="child">911<i class="fal fa-angle-right"></i></a>
+                          <li class="menu-item menu-item--collapsed 911">
+                          <a href="/911" class="child">911<i class="fal fa-angle-right"></i></a>
                       </li>
-                      <li class="menu-item animal-services">
-                          <a href="https://www.cobbcounty.org/public-safety/animal-services" class="child">Animal Services<i class="fal fa-angle-right"></i></a>
+                      <li class="menu-item menu-item--collapsed animal-services">
+                          <a href="/animal-services" class="child">Animal Services<i class="fal fa-angle-right"></i></a>
+                      </li>
+                      <li class="menu-item menu-item--collapsed arts">
+                          <a href="/parks/arts" class="child">Arts<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item menu-item--collapsed cdbg-program-office">
                           <a href="/cdbg" class="child">CDBG Program Office<i class="fal fa-angle-right"></i></a>
@@ -314,14 +312,14 @@
                       <li class="menu-item menu-item--collapsed elections-and-voter-registration">
                           <a href="/elections" class="child">Elections and Voter Registration<i class="fal fa-angle-right"></i></a>
                       </li>
-                      <li class="menu-item emergency-management-agency">
-                          <a href="https://www.cobbcounty.org/public-safety/emergency-management" class="child">Emergency Management Agency<i class="fal fa-angle-right"></i></a>
+                      <li class="menu-item menu-item--collapsed emergency-management">
+                          <a href="/emergency-management" class="child">Emergency Management<i class="fal fa-angle-right"></i></a>
                       </li>
-                      <li class="menu-item menu-item--collapsed finance">
-                          <a href="/finance" class="child">Finance<i class="fal fa-angle-right"></i></a>
+                      <li class="menu-item menu-item--collapsed financial-management-services">
+                          <a href="/finance" class="child">Financial Management Services<i class="fal fa-angle-right"></i></a>
                       </li>
-                      <li class="menu-item fire-department">
-                          <a href="https://www.cobbcounty.org/public-safety/fire" class="child">Fire Department<i class="fal fa-angle-right"></i></a>
+                      <li class="menu-item menu-item--collapsed fire">
+                          <a href="/fire" class="child">Fire<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item maps-(gis)">
                           <a href="https://geo-cobbcountyga.hub.arcgis.com/" class="child">Maps (GIS)<i class="fal fa-angle-right"></i></a>
@@ -329,8 +327,8 @@
                       <li class="menu-item menu-item--collapsed human-resources">
                           <a href="/human-resources" class="child">Human Resources<i class="fal fa-angle-right"></i></a>
                       </li>
-                      <li class="menu-item menu-item--collapsed information-services">
-                          <a href="/information-services" class="child">Information Services<i class="fal fa-angle-right"></i></a>
+                      <li class="menu-item menu-item--collapsed information-technology-services">
+                          <a href="/information-technology-services" class="child">Information Technology Services<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item menu-item--collapsed internal-audit">
                           <a href="/internal-audit" class="child">Internal Audit<i class="fal fa-angle-right"></i></a>
@@ -344,26 +342,29 @@
                       <li class="menu-item menu-item--collapsed medical-examiner">
                           <a href="/medical-examiner" class="child">Medical Examiner<i class="fal fa-angle-right"></i></a>
                       </li>
+                      <li class="menu-item menu-item--collapsed neighborhood-safety">
+                          <a href="/neighborhood-safety-commission" class="child">Neighborhood Safety<i class="fal fa-angle-right"></i></a>
+                      </li>
                       <li class="menu-item menu-item--collapsed parks-and-recreation">
                           <a href="/parks" class="child">Parks and Recreation<i class="fal fa-angle-right"></i></a>
                       </li>
-                      <li class="menu-item menu-item--collapsed arts">
-                          <a href="/parks/arts" class="child">Arts<i class="fal fa-angle-right"></i></a>
+                      <li class="menu-item menu-item--collapsed police">
+                          <a href="/police" class="child">Police<i class="fal fa-angle-right"></i></a>
                       </li>
-                      <li class="menu-item menu-item--collapsed recreation">
-                          <a href="/parks/recreation" class="child">Recreation<i class="fal fa-angle-right"></i></a>
+                      <li class="menu-item menu-item--collapsed procurement-services">
+                          <a href="/procurement-services" class="child">Procurement Services<i class="fal fa-angle-right"></i></a>
                       </li>
-                      <li class="menu-item police-department">
-                          <a href="https://www.cobbcounty.org/public-safety/police" class="child">Police Department<i class="fal fa-angle-right"></i></a>
-                      </li>
-                      <li class="menu-item public-safety">
-                          <a href="https://www.cobbcounty.org/public-safety" class="child">Public Safety<i class="fal fa-angle-right"></i></a>
+                      <li class="menu-item menu-item--collapsed public-safety">
+                          <a href="/public-safety" class="child">Public Safety<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item menu-item--collapsed public-services">
                           <a href="/public-services" class="child">Public Services<i class="fal fa-angle-right"></i></a>
                       </li>
-                      <li class="menu-item menu-item--collapsed purchasing">
-                          <a href="/purchasing" class="child">Purchasing<i class="fal fa-angle-right"></i></a>
+                      <li class="menu-item menu-item--collapsed recreation">
+                          <a href="/parks/recreation" class="child">Recreation<i class="fal fa-angle-right"></i></a>
+                      </li>
+                      <li class="menu-item menu-item--collapsed safety-village">
+                          <a href="/safety-village" class="child">Safety Village<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item menu-item--collapsed senior-services">
                           <a href="/senior-services" class="child">Senior Services<i class="fal fa-angle-right"></i></a>
@@ -388,39 +389,6 @@
                       </li>
                       <li class="menu-item zoning">
                           <a href="https://www.cobbcounty.org/community-development/zoning" class="child">Zoning<i class="fal fa-angle-right"></i></a>
-                      </li>
-        </ul>
-  
-              </li>
-                      <li class="menu-item menu-item--expanded public-safety" aria-expanded="false">
-                  <a href="#n">Public Safety<i class="fal fa-angle-right"></i></a>
-                                                <ul class="menu" aria-hidden="true">
-                          <li class="menu-item public-safety">
-                          <a href="/public-safety" class="child">Public Safety<i class="fal fa-angle-right"></i></a>
-                      </li>
-                      <li class="menu-item sheriff">
-                          <a href="http://www.cobbsheriff.org/" class="child">Sheriff<i class="fal fa-angle-right"></i></a>
-                      </li>
-                      <li class="menu-item menu-item--collapsed 911">
-                          <a href="/public-safety/911" class="child">911<i class="fal fa-angle-right"></i></a>
-                      </li>
-                      <li class="menu-item menu-item--collapsed animal-services">
-                          <a href="/public-safety/animal-services" class="child">Animal Services<i class="fal fa-angle-right"></i></a>
-                      </li>
-                      <li class="menu-item menu-item--collapsed fire">
-                          <a href="/public-safety/fire" class="child">Fire<i class="fal fa-angle-right"></i></a>
-                      </li>
-                      <li class="menu-item menu-item--collapsed police">
-                          <a href="/public-safety/police" class="child">Police<i class="fal fa-angle-right"></i></a>
-                      </li>
-                      <li class="menu-item menu-item--collapsed emergency-management">
-                          <a href="/public-safety/emergency-management" class="child">Emergency Management<i class="fal fa-angle-right"></i></a>
-                      </li>
-                      <li class="menu-item menu-item--collapsed safety-village">
-                          <a href="/public-safety/safety-village" class="child">Safety Village<i class="fal fa-angle-right"></i></a>
-                      </li>
-                      <li class="menu-item menu-item--collapsed neighborhood-safety">
-                          <a href="/public-safety/neighborhood-safety-commission" class="child">Neighborhood Safety<i class="fal fa-angle-right"></i></a>
                       </li>
         </ul>
   
@@ -488,12 +456,6 @@
         </ul>
   
               </li>
-                      <li class="menu-item event-series">
-                  <a href="#n">Event Series<i class="fal fa-angle-right"></i></a>
-                              </li>
-                      <li class="menu-item magistrate-court-virtual-court-sessions">
-                  <a href="#n">Magistrate Court Virtual Court Sessions<i class="fal fa-angle-right"></i></a>
-                              </li>
         </ul>
   
 
@@ -561,10 +523,10 @@
                           <a href="http://www.cobbcat.org/" class="child">Libraries<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item neighborhood-safety">
-                          <a href="/public-safety/neighborhood-safety-commission" class="child">Neighborhood Safety<i class="fal fa-angle-right"></i></a>
+                          <a href="/neighborhood-safety-commission" class="child">Neighborhood Safety<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item make-a-wish-5k">
-                          <a href="/public-services/make-wish-5k" class="child">Make-a-Wish 5k<i class="fal fa-angle-right"></i></a>
+                          <a href="/public-safety/make-wish-5k" class="child">Make-a-Wish 5k<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item parks-and-trails">
                           <a href="/parks/parks-and-nature" class="child">Parks and Trails<i class="fal fa-angle-right"></i></a>
@@ -582,16 +544,16 @@
                   <a href="#n">Services<i class="fal fa-angle-right"></i></a>
                                                 <ul class="menu" aria-hidden="true">
                           <li class="menu-item animal-services">
-                          <a href="/public-safety/animal-services" class="child">Animal Services<i class="fal fa-angle-right"></i></a>
+                          <a href="/animal-services" class="child">Animal Services<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item cobblinc-bus-service">
                           <a href="/transportation/cobblinc" class="child">CobbLinc Bus Service<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item fire">
-                          <a href="/public-safety/fire" class="child">Fire<i class="fal fa-angle-right"></i></a>
+                          <a href="/fire" class="child">Fire<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item police">
-                          <a href="/public-safety/police" class="child">Police<i class="fal fa-angle-right"></i></a>
+                          <a href="/police" class="child">Police<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item recycling">
                           <a href="/keep-cobb-beautiful" class="child">Recycling<i class="fal fa-angle-right"></i></a>
@@ -615,19 +577,25 @@
                           <a href="/community-development/building-development/inspection-information" class="child">Building Inspections<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item building-permits-and-forms">
-                          <a href="/development" class="child">Building Permits and Forms<i class="fal fa-angle-right"></i></a>
+                          <a href="/community-development/building-development" class="child">Building Permits and Forms<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item business-licenses">
                           <a href="/community-development/business-license" class="child">Business Licenses<i class="fal fa-angle-right"></i></a>
                       </li>
+                      <li class="menu-item business-resources">
+                          <a href="/economic-development/business-resources" class="child">Business Resources<i class="fal fa-angle-right"></i></a>
+                      </li>
                       <li class="menu-item economic-development">
                           <a href="/economic-development" class="child">Economic Development<i class="fal fa-angle-right"></i></a>
+                      </li>
+                      <li class="menu-item incentives">
+                          <a href="/economic-development/incentives" class="child">Incentives<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item government-service-centers">
                           <a href="/public-services/government-service-centers" class="child">Government Service Centers<i class="fal fa-angle-right"></i></a>
                       </li>
-                      <li class="menu-item purchasing">
-                          <a href="/purchasing" class="child">Purchasing<i class="fal fa-angle-right"></i></a>
+                      <li class="menu-item procurement-services">
+                          <a href="/procurement-services" class="child">Procurement Services<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item tax-commissioner">
                           <a href="https://www.cobbtax.org/" class="child">Tax Commissioner<i class="fal fa-angle-right"></i></a>
@@ -642,7 +610,7 @@
                   <a href="#n">I want to...<i class="fal fa-angle-right"></i></a>
                                                 <ul class="menu" aria-hidden="true">
                           <li class="menu-item adopt-a-pet">
-                          <a href="/public-safety/animal-services/adoption" class="child">Adopt a Pet<i class="fal fa-angle-right"></i></a>
+                          <a href="/animal-services/adoption" class="child">Adopt a Pet<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item adopt-a-stream">
                           <a href="/watershed-stewardship/volunteer/adopt-stream" class="child">Adopt a Stream<i class="fal fa-angle-right"></i></a>
@@ -653,9 +621,6 @@
                       <li class="menu-item apply-for-a-license">
                           <a href="/i-want-to/apply-for-a-license" class="child">Apply for a License<i class="fal fa-angle-right"></i></a>
                       </li>
-                      <li class="menu-item obtain-an-accident-report">
-                          <a href="/public-safety/police/reports" class="child">Obtain an Accident Report<i class="fal fa-angle-right"></i></a>
-                      </li>
                       <li class="menu-item register-for-activities">
                           <a href="https://secure.rec1.com/GA/cobb-county-ga/catalog" class="child">Register for Activities<i class="fal fa-angle-right"></i></a>
                       </li>
@@ -663,7 +628,7 @@
                           <a href="/elections/voter-registration/register" class="child">Register to Vote<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item report-a-lost-or-found-pet">
-                          <a href="/public-safety/animal-services/lost-pets" class="child">Report a Lost or Found Pet<i class="fal fa-angle-right"></i></a>
+                          <a href="/animal-services/lost-pets" class="child">Report a Lost or Found Pet<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item reserve-a-facility">
                           <a href="https://secure.rec1.com/GA/cobb-county-ga/catalog" class="child">Reserve a Facility<i class="fal fa-angle-right"></i></a>
@@ -684,7 +649,7 @@
                   <a href="#n">Pay a Bill<i class="fal fa-angle-right"></i></a>
                                                 <ul class="menu" aria-hidden="true">
                           <li class="menu-item water-bill">
-                          <a href="/waterpay" class="child">Water Bill<i class="fal fa-angle-right"></i></a>
+                          <a href="/water/customer-service/bill-pay" class="child">Water Bill<i class="fal fa-angle-right"></i></a>
                       </li>
                       <li class="menu-item property-taxes">
                           <a href="https://www.cobbtax.org/property/index.php" class="child">Property Taxes<i class="fal fa-angle-right"></i></a>
@@ -709,7 +674,7 @@
             </div>
         </div>
     </div>
-        <div class="splash--wrapper b-lazy" data-src="https://s3.us-west-2.amazonaws.com/cobbcounty.org.if-us-west-2/prod/s3fs-public/styles/header_background/public/2018-05/Cobb-County-section-hdr.jpg?itok=mMmB1Ci3">
+        <div class="splash--wrapper b-lazy" data-src="https://s3.amazonaws.com/cobbcounty.org.if-us-east-1/s3fs-public/styles/header_background/public/2018-05/Cobb-County-section-hdr.jpg?itok=mMmB1Ci3">
         <div class="splash">
             <div class="top-utils">
                     
@@ -758,18 +723,18 @@
                     <button class="mobile-search-close"><i class="fas fa-times-circle"></i><span class="offscreen">Close search box</span></button>
                 </div>
             <div class="section-title">
-                <i class="fas fa-calendar-alt fa-3x icon"></i>
-                <h2>All Events</h2>
+                <i class=" fa-3x icon"></i>
+                <h2></h2>
             </div>
         </div>
     </div>
     <div class="landing-menu--wrapper">
       <div class="landing-menu">
-          <a href="/" class="section-home-link"><i class="fas fa-home"></i><span class="offscreen">All Events Home</span></a>
+          <a href="/" class="section-home-link"><i class="fas fa-home"></i><span class="offscreen"> Home</span></a>
           <a href="#" class="mobile-section-label cobb-skin-border">Section Menu</a>
           <hr class="mobile-divider" />
           <div class="mobile-section-header cobb-skin-bg">
-              <button>All Events</button>
+              <button></button>
               <i class="fas fa-chevron-down"></i>
           </div>
           
@@ -792,7 +757,7 @@
   
     
       
-  <h1 class="page-title">All Events</h1>
+  <h1 class="page-title">Events</h1>
 
 
   </div>
@@ -814,7 +779,7 @@
                   <a href="/">Home</a>
               </li>
           <li class="breadcrumb__item">
-                  All Events
+                  Events
               </li>
       </ol>
 </nav>
@@ -823,7 +788,7 @@
 <div id="block-addtoanybuttons" class="block block-addtoany block-addtoany-block">
   
     
-      <span class="a2a_kit a2a_kit_size_26 addtoany_list" data-a2a-url="https://www.cobbcounty.org/events" data-a2a-title="All Events"><a class="a2a_button_print"><i class="fas fa-print"></i><span class="offscreen">Print this page</span></a><a class="a2a_dd addtoany_share" href="https://www.addtoany.com/share#url=https%3A%2F%2Fwww.cobbcounty.org%2Fevents&amp;title=All%20Events"></a></span>
+      <span class="a2a_kit a2a_kit_size_26 addtoany_list" data-a2a-url="https://www.cobbcounty.org/events" data-a2a-title="Events"><a class="a2a_button_print"><i class="fas fa-print"></i><span class="offscreen">Print this page</span></a><a class="a2a_dd addtoany_share" href="https://www.addtoany.com/share#url=https%3A%2F%2Fwww.cobbcounty.org%2Fevents&amp;title=Events"></a></span>
   </div>
 
 
@@ -858,365 +823,305 @@
     
         <nav class="action-links"></nav>
   </div>
+<div class="views-exposed-form bef-exposed-form block block-views block-views-exposed-filter-blockevents-recurring-page-1" data-drupal-selector="views-exposed-form-events-recurring-page-1" id="block-exposedformevents-recurringpage-1">
   
     
-
-  <div class="views-element-container">
-
-
-<div class="events-grid view view-events view-id-events view-display-id-page_1 js-view-dom-id-91f30b4917592883c4489f6513173f2055005a57631f0409569d1ad107159f99">
-  
-    
-        <div class="view-filters">
-      <form class="views-exposed-form bef-exposed-form" data-drupal-selector="views-exposed-form-events-page-1" action="/events" method="get" id="views-exposed-form-events-page-1" accept-charset="UTF-8">
+      <form action="/events" method="get" id="views-exposed-form-events-recurring-page-1" accept-charset="UTF-8">
   <div class="form--inline clearfix">
-  <div class="event-field-wrap section"><div class="js-form-item form-item js-form-type-select form-type-select js-form-item-field-section-target-id form-item-field-section-target-id">
-      <label for="edit-field-section-target-id">Department</label>
-        <select class="event-field-input--section form-select" data-drupal-selector="edit-field-section-target-id" id="edit-field-section-target-id" name="field_section_target_id"><option value="All" selected="selected">Filter by Department</option><option value="2">911</option><option value="6">Animal Services</option><option value="231">Arts</option><option value="1">Board</option><option value="276">CDBG</option><option value="34">Cobb</option><option value="5">Communications</option><option value="7">Community Development</option><option value="8">Courts</option><option value="4">Departments</option><option value="9">Economic Development</option><option value="272">Elections</option><option value="3">Emergency Management</option><option value="25">Finance</option><option value="10">Fire</option><option value="11">Human Resources</option><option value="12">iCOBB</option><option value="13">Information Services</option><option value="14">Internal Audit</option><option value="26">Keep Cobb Beautiful</option><option value="245">Library</option><option value="15">Maps (GIS)</option><option value="16">Medical Examiner</option><option value="22">Neighborhood Safety</option><option value="17">Parks</option><option value="18">Police</option><option value="19">Property Management</option><option value="20">Public Safety</option><option value="23">Public Services</option><option value="24">Purchasing</option><option value="232">Recreation</option><option value="21">Safety Village</option><option value="319">Senior Services</option><option value="234">State Court</option><option value="235">Superior Court</option><option value="27">Support Services</option><option value="28">Tax Assessor</option><option value="29">Tax Commissioner</option><option value="30">Transportation</option><option value="31">Water</option><option value="233">Water Education</option></select>
-        </div>
-<i class="far fa-chevron-right"></i></div><div class="event-field-wrap category"><div class="js-form-item form-item js-form-type-select form-type-select js-form-item-field-event-category-target-id form-item-field-event-category-target-id">
-      <label for="edit-field-event-category-target-id">Category</label>
-        <select class="event-field-input--category form-select" data-drupal-selector="edit-field-event-category-target-id" id="edit-field-event-category-target-id" name="field_event_category_target_id"><option value="All">Filter by Category</option><option value="199">Animal Services</option><option value="269">Art Exhibits</option><option value="265">Arts Program</option><option value="253">Bids and RFPs</option><option value="186">Board of Commissioners</option><option value="189">Board of Zoning Appeals</option><option value="197">CERT</option><option value="211">Classes and Workshops</option><option value="205">Cobb 4-H</option><option value="193">Commissioner Town Halls</option><option value="192">Community Development</option><option value="270">Concerts</option><option value="185">County Closures</option><option value="275">County Holiday</option><option value="273">Elections</option><option value="209">Events Centers</option><option value="204">Extension Service</option><option value="251">Family Fun</option><option value="194">Feedback Sessions</option><option value="202">Fire</option><option value="247">Freeman Poole Senior Center</option><option value="206">Keep Cobb Beautiful</option><option value="212">Lessons</option><option value="208">Library</option><option value="267">Nature Program</option><option value="201">Neighborhood Safety Commission</option><option value="248">North Cobb Senior Center</option><option value="203">PAL</option><option value="187">Pension Board</option><option value="210">Performances</option><option value="191">Planning Commission</option><option value="190">Planning Commission Zoning</option><option value="198">Police</option><option value="271">Presentations</option><option value="195" selected="selected">Public Meetings</option><option value="254">Recreation Board</option><option value="266">Recreation Program</option><option value="242">Recycling</option><option value="200">Safety Village</option><option value="214">Senior Services</option><option value="249">Senior Wellness Center</option><option value="196">Sheriff</option><option value="213">Sports Programs</option><option value="188">Tax</option><option value="268">Therapeutics Program</option><option value="246">Tim D. Lee Senior Center</option><option value="264">Town Hall</option><option value="274">Travel Advisory</option><option value="207">Volunteer Events</option><option value="216">Water Education</option><option value="215">Water System</option><option value="250">West Cobb Senior Center</option><option value="244">Work for Cobb</option></select>
-        </div>
-<i class="far fa-chevron-right"></i></div><div class="event-field-wrap date date--start-date"><div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-field-event-date-recur-value-2 form-item-field-event-date-recur-value-2">
-      <label for="edit-field-event-date-recur-value-2">Date From</label>
-        <input placeholder="mm/dd/yyyy" class="event-field-input--date-from form-date" data-drupal-selector="edit-field-event-date-recur-value-2" type="date" id="edit-field-event-date-recur-value-2" name="field_event_date_recur_value_2" value="" size="30" />
+  <div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-title form-item-title">
+      <label for="edit-title--2">Keyword</label>
+        <input placeholder="Filter by keywords" data-drupal-selector="edit-title" type="text" id="edit-title--2" name="title" value="" size="30" maxlength="128" class="form-text" />
 
         </div>
-<i class="far fa-calendar-alt"></i></div><div class="event-field-wrap date date--end-date"><div class="js-form-item form-item js-form-type-textfield form-type-textfield js-form-item-field-event-date-recur-end-value form-item-field-event-date-recur-end-value">
-      <label for="edit-field-event-date-recur-end-value">Date To</label>
-        <input placeholder="mm/dd/yyyy" class="event-field-input--date-to form-date" data-drupal-selector="edit-field-event-date-recur-end-value" type="date" id="edit-field-event-date-recur-end-value" name="field_event_date_recur_end_value" value="" size="30" />
+<div class="js-form-item form-item js-form-type-select form-type-select js-form-item-field-event-section-target-id form-item-field-event-section-target-id">
+      <label for="edit-field-event-section-target-id--2">Department</label>
+        <select data-drupal-selector="edit-field-event-section-target-id" id="edit-field-event-section-target-id--2" name="field_event_section_target_id" class="form-select"><option value="All" selected="selected">Filter by department</option><option value="2">911</option><option value="6">Animal Services</option><option value="231">Arts</option><option value="1">Board</option><option value="276">CDBG</option><option value="34">Cobb</option><option value="5">Communications</option><option value="7">Community Development</option><option value="8">Courts</option><option value="4">Departments</option><option value="9">Economic Development</option><option value="272">Elections</option><option value="3">Emergency Management</option><option value="25">Financial Management Services</option><option value="10">Fire</option><option value="11">Human Resources</option><option value="12">iCOBB</option><option value="13">Information Technology Services</option><option value="14">Internal Audit</option><option value="26">Keep Cobb Beautiful</option><option value="245">Library</option><option value="15">Maps (GIS)</option><option value="16">Medical Examiner</option><option value="22">Neighborhood Safety</option><option value="17">Parks</option><option value="18">Police</option><option value="24">Procurement Services</option><option value="19">Property Management</option><option value="20">Public Safety</option><option value="23">Public Services</option><option value="232">Recreation</option><option value="21">Safety Village</option><option value="319">Senior Services</option><option value="234">State Court</option><option value="235">Superior Court</option><option value="27">Support Services</option><option value="28">Tax Assessor</option><option value="29">Tax Commissioner</option><option value="30">Transportation</option><option value="31">Water</option><option value="233">Water Education</option></select>
+        </div>
+<div class="js-form-item form-item js-form-type-select form-type-select js-form-item-field-location-reference-target-id form-item-field-location-reference-target-id">
+      <label for="edit-field-location-reference-target-id--2">Location</label>
+        <select data-drupal-selector="edit-field-location-reference-target-id" id="edit-field-location-reference-target-id--2" name="field_location_reference_target_id" class="form-select"><option value="All" selected="selected">- Any -</option><option value="10070">Al Bishop Softball Complex</option><option value="10072">Allatoona Creek Park</option><option value="12165">Austell Senior Center</option><option value="10086">Aviation Park</option><option value="10087">Big Shanty Park</option><option value="13413">Central Aquatic Center</option><option value="11797">Civic Center</option><option value="10090">Clarkdale Park</option><option value="13428">Cobb County Animal Services Shelter</option><option value="10093">Discovery Park at the River Line</option><option value="7022">East Cobb Library</option><option value="10094">East Cobb Park</option><option value="10095">Fair Oaks Park</option><option value="12455">Fair Oaks Recreation Center</option><option value="13392">Fair Oaks Tennis Center</option><option value="12166">Freeman Poole Senior Center</option><option value="10096">Fullers Park</option><option value="12460">Fullers Recreation Center</option><option value="10097">Green Meadows Preserve</option><option value="7023">Gritters Library</option><option value="10098">Harrison Park</option><option value="13393">Harrison Tennis Center</option><option value="10099">Heritage Park</option><option value="10100">Hubert Park</option><option value="10101">Hurt Road Park</option><option value="10102">Hyde Farm Park</option><option value="11798">Jennie T Anderson Theatre</option><option value="10103">Jim R. Miller Park</option><option value="7024">Kemp Memorial Library</option><option value="10104">Kennworth Park</option><option value="13394">Kennworth Tennis Center</option><option value="10105">Larry Bell Park</option><option value="10106">Leone Hall Price Park</option><option value="7025">Lewis A. Ray Library</option><option value="10107">Lions Park</option><option value="10108">Lost Mountain Park</option><option value="13395">Lost Mountain Tennis Center</option><option value="13401">Mable House Complex</option><option value="10112">Mableton Town Square Park</option><option value="10113">Mabry Park</option><option value="12167">Marietta Senior Center</option><option value="10114">Milford Park</option><option value="10122">Mount Bethel Park</option><option value="13414">Mountain View Aquatic Center</option><option value="11800">Mountain View Community Center</option><option value="7026">Mountain View Regional Library</option><option value="10123">Mud Creek Soccer Complex</option><option value="10126">Nickajack Park</option><option value="10128">Noonday Park</option><option value="7027">North Cobb Regional Library</option><option value="12168">North Cobb Senior Center</option><option value="11801">Northeast Cobb Community Center</option><option value="12308">Old Clarkdale Park</option><option value="10129">Oregon Park</option><option value="10130">Pitner Road Park</option><option value="7028">Powder Springs Library</option><option value="10131">Powder Springs Park</option><option value="10144">Rhyne Park</option><option value="11802">Ron Anderson Community Center</option><option value="12462">Ron Anderson Recreation Center</option><option value="10145">Sandy Plains Park</option><option value="12169">Senior Wellness Center</option><option value="13415">Seven Springs Water Park</option><option value="14136">Sewell Mill Cultural Center</option><option value="7029">Sewell Mill Library</option><option value="10146">Sewell Park</option><option value="13416">Sewell Park Pool</option><option value="10148">Shaw Park</option><option value="10150">Shoupade Park</option><option value="7031">Sibley Library</option><option value="10151">Silver Comet Trail</option><option value="10152">Skip Wells Park</option><option value="13417">South Cobb Aquatic Center</option><option value="11803">South Cobb Community Center</option><option value="12464">South Cobb Recreation Center</option><option value="7033">South Cobb Regional Library</option><option value="10155">Stout Park</option><option value="7034">Stratton Library</option><option value="10159">Sweat Mountain Park</option><option value="10160">Sweetwater Park</option><option value="13396">Sweetwater Tennis Center</option><option value="7035">Sweetwater Valley Library</option><option value="7040">Switzer Library</option><option value="10161">Terrell Mill Park</option><option value="13397">Terrell Mill Tennis Center</option><option value="13399">The Art Place at Mountain View</option><option value="13400">The Art Station - Big Shanty</option><option value="11779">The Bookmobile</option><option value="11871">Thompson Community Center</option><option value="10162">Thompson Park</option><option value="12170">Tim D. Lee Senior Center</option><option value="10163">Tramore Park</option><option value="10164">Trolley Line Park</option><option value="7041">Vinings Library</option><option value="10165">Wallace Park</option><option value="12484">Ward Recreation Center</option><option value="13418">West Cobb Aquatic Center</option><option value="7044">West Cobb Regional Library</option><option value="12171">West Cobb Senior Center</option><option value="10166">Wild Horse Creek Park</option><option value="11804">Windy Hill Community Center</option></select>
+        </div>
+<div class="js-form-item form-item js-form-type-select form-type-select js-form-item-field-category-target-id form-item-field-category-target-id">
+      <label for="edit-field-category-target-id--2">Category</label>
+        <select data-drupal-selector="edit-field-category-target-id" id="edit-field-category-target-id--2" name="field_category_target_id" class="form-select"><option value="All" selected="selected">- Any -</option><option value="354">AARP</option><option value="333">Adoption</option><option value="269">Art Exhibits</option><option value="331">Arts and Crafts</option><option value="344">Authors</option><option value="253">Bids and RFPs</option><option value="186">Board of Commissioners</option><option value="334">Board of Trustees</option><option value="189">Board of Zoning Appeals</option><option value="332">Boards and Authorities</option><option value="345">Book Discussion</option><option value="205">Cobb 4-H</option><option value="346">Computers and Technology</option><option value="270">Concert</option><option value="275">County Holiday</option><option value="347">Cultural Diversity</option><option value="348">Education</option><option value="273">Elections</option><option value="204">Extension Service</option><option value="194">Feedback Sessions</option><option value="343">Festival</option><option value="335">Games</option><option value="352">Gardening</option><option value="336">Genealogy</option><option value="349">Job and Career Development</option><option value="351">Legal</option><option value="337">Movie</option><option value="355">Music</option><option value="203">PAL</option><option value="187">Pension Board</option><option value="210">Performances</option><option value="191">Planning Commission</option><option value="190">Planning Commission Zoning</option><option value="195">Public Meetings</option><option value="200">Public Safety</option><option value="254">Recreation Board</option><option value="242">Recycling</option><option value="341">Road Closure</option><option value="357">Small Business</option><option value="350">Special Needs</option><option value="213">Sports</option><option value="338">STEM/STEAM</option><option value="342">Storytime</option><option value="353">Take and Make</option><option value="188">Tax</option><option value="268">Therapeutics</option><option value="215">Water System</option><option value="339">Weather Incident</option><option value="340">Wellness</option></select>
+        </div>
+<div class="js-form-item form-item js-form-type-select form-type-select js-form-item-field-audience-target-id form-item-field-audience-target-id">
+      <label for="edit-field-audience-target-id--2">Age</label>
+        <select data-drupal-selector="edit-field-audience-target-id" id="edit-field-audience-target-id--2" name="field_audience_target_id" class="form-select"><option value="All" selected="selected">- Any -</option><option value="312">Babies (birth to 18 months)</option><option value="313">Toddlers (18-36 months)</option><option value="314">Preschool (ages 3-5)</option><option value="315">Elementary Age (ages 5 to 9)</option><option value="316">Tweens (ages 9 to 12)</option><option value="317">Teens (ages 12 to 17)</option><option value="318">Adults (ages 18+)</option><option value="320">Seniors (ages 60+)</option></select>
+        </div>
+<div class="js-form-item form-item js-form-type-select form-type-select js-form-item-field-event-type-target-id form-item-field-event-type-target-id">
+      <label for="edit-field-event-type-target-id--2">Type</label>
+        <select data-drupal-selector="edit-field-event-type-target-id" id="edit-field-event-type-target-id--2" name="field_event_type_target_id" class="form-select"><option value="All">- Any -</option><option value="293">Arts Program</option><option value="311">Class or Workshop</option><option value="321">Community Engagement</option><option value="322">County Closure</option><option value="323">Entertainment</option><option value="301">Family</option><option value="302">Games</option><option value="304">Guest Speaker / Community Partner</option><option value="324">Nature Program</option><option value="325">Presentation</option><option value="326" selected="selected">Public Meeting</option><option value="327">Recreation Program</option><option value="356">Special Event</option><option value="328">Town Hall</option><option value="329">Travel Advisory</option><option value="330">Volunteering</option></select>
+        </div>
+<div class="js-form-item form-item js-form-type-date form-type-date js-form-item-date__value-1 form-item-date__value-1">
+      <label for="edit-date-value-1--2">Date From</label>
+        <input type="date" class="bef-datepicker form-date" autocomplete="off" data-drupal-selector="edit-date-value-1" id="edit-date-value-1--2" name="date__value_1" value="today" size="30" />
 
         </div>
-<i class="far fa-calendar-alt"></i></div><div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-drupal-selector="edit-submit-events" type="submit" id="edit-submit-events" value="Go" class="button js-form-submit form-submit" />
-<div class="reset-button"><span class="close-x">×</span><input data-drupal-selector="edit-reset" type="submit" id="edit-reset" name="op" value="Clear Filters" class="button js-form-submit form-submit" />
-</div></div>
+<div class="js-form-item form-item js-form-type-date form-type-date js-form-item-date__end-value form-item-date__end-value">
+      <label for="edit-date-end-value--2">Date To</label>
+        <input type="date" class="bef-datepicker form-date" autocomplete="off" data-drupal-selector="edit-date-end-value" id="edit-date-end-value--2" name="date__end_value" value="" size="30" />
+
+        </div>
+<div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions--3"><input data-drupal-selector="edit-submit-events-recurring-2" type="submit" id="edit-submit-events-recurring--2" value="Apply" class="button js-form-submit form-submit" />
+<input data-drupal-selector="edit-reset" type="submit" id="edit-reset--2" name="op" value="Reset" class="button js-form-submit form-submit" />
+</div>
 
 </div>
 
 </form>
 
-    </div>
+  </div>
+  
     
+
+  <div class="views-element-container"><div class="view view-events-recurring view-id-events_recurring view-display-id-page_1 js-view-dom-id-d9dacf226f299ffcd59466a9bf334d41971094a67fa0b3f04ce745f64467c222">
+  
+    
+      <div class="view-header">
+      Showing 1 - 10 of 118
+    </div>
+      
       <div class="view-content">
-          <div class="views-row event-row green">
+          <div class="views-row">
 
 
-<article class="event-teaser">
-    <a href="/board/events/board-commissioners-agenda-work-session-43">
-        <div class="date-box">
-            <span class="month-weekday">Aug</span>
-            <span class="day">22</span>
-            <span class="month-weekday">Mon</span>
+
+<article class="eventinstance-teaser event-teaser event-card-wrapper green" >
+  <a href="/events/23143">
+    <div class="event-card">
+      <div class="event-card__side">
+        <div class="event-date date-box">
+          <span class="month-weekday">Apr</span>
+          <span class="day">22</span>
+          <span class="month-weekday">Mon</span>
         </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">09:00 AM </span>
-        <h4><a href="/board/events/board-commissioners-agenda-work-session-43" hreflang="en">Board of Commissioners Agenda Work Session</a></h4>
-    </a>
+      </div>
+      <div class="event-card__content">
+        <h4>Board of Commissioners Agenda Work Session</h4>
+        <div class="event-time">09:00am - 09:00am</div>
+        <div class="event-location">Location(s): </div>
+        <div class="section-text"><i class="fas fa-users"></i><span class="section-taxonomy">Board</span></div>
+      </div>
+    </div>
+  </a>
 </article>
 </div>
-    <div class="views-row event-row green">
+    <div class="views-row">
 
 
-<article class="event-teaser">
-    <a href="/board/events/board-commissioners-work-session-22">
-        <div class="date-box">
-            <span class="month-weekday">Aug</span>
-            <span class="day">23</span>
-            <span class="month-weekday">Tue</span>
+
+<article class="eventinstance-teaser event-teaser event-card-wrapper green" >
+  <a href="/events/23121">
+    <div class="event-card">
+      <div class="event-card__side">
+        <div class="event-date date-box">
+          <span class="month-weekday">Apr</span>
+          <span class="day">22</span>
+          <span class="month-weekday">Mon</span>
         </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">01:30 PM </span>
-        <h4><a href="/board/events/board-commissioners-work-session-22" hreflang="en">Board of Commissioners Work Session</a></h4>
-    </a>
+      </div>
+      <div class="event-card__content">
+        <h4>Board of Commissioners Executive Session</h4>
+        <div class="event-time">09:30am - 09:30am</div>
+        <div class="event-location">Location(s): </div>
+        <div class="section-text"><i class="fas fa-users"></i><span class="section-taxonomy">Board</span></div>
+      </div>
+    </div>
+  </a>
 </article>
 </div>
-    <div class="views-row event-row green">
+    <div class="views-row">
 
 
-<article class="event-teaser">
-    <a href="/board/events/board-commissioners-regular-meeting-33">
-        <div class="date-box">
-            <span class="month-weekday">Aug</span>
-            <span class="day">23</span>
-            <span class="month-weekday">Tue</span>
+
+<article class="eventinstance-teaser event-teaser event-card-wrapper green" >
+  <a href="/events/23108">
+    <div class="event-card">
+      <div class="event-card__side">
+        <div class="event-date date-box">
+          <span class="month-weekday">Apr</span>
+          <span class="day">23</span>
+          <span class="month-weekday">Tue</span>
         </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">07:00 PM </span>
-        <h4><a href="/board/events/board-commissioners-regular-meeting-33" hreflang="en">Board of Commissioners Regular Meeting</a></h4>
-    </a>
+      </div>
+      <div class="event-card__content">
+        <h4>Board of Commissioners Agenda Work Session and Executive Session</h4>
+        <div class="event-time">01:30pm - 01:30pm</div>
+        <div class="event-location">Location(s): </div>
+        <div class="section-text"><i class="fas fa-users"></i><span class="section-taxonomy">Board</span></div>
+      </div>
+    </div>
+  </a>
 </article>
 </div>
-    <div class="views-row event-row green">
+    <div class="views-row">
 
 
-<article class="event-teaser">
-    <a href="/board/events/planning-commission-special-called-meetingwork-session-agenda-review-15">
-        <div class="date-box">
-            <span class="month-weekday">Aug</span>
-            <span class="day">29</span>
-            <span class="month-weekday">Mon</span>
+
+<article class="eventinstance-teaser event-teaser event-card-wrapper green" >
+  <a href="/events/23165">
+    <div class="event-card">
+      <div class="event-card__side">
+        <div class="event-date date-box">
+          <span class="month-weekday">Apr</span>
+          <span class="day">23</span>
+          <span class="month-weekday">Tue</span>
         </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">01:30 PM </span>
-        <h4><a href="/board/events/planning-commission-special-called-meetingwork-session-agenda-review-15" hreflang="en">Planning Commission Special Called Meeting/Work Session Agenda Review</a></h4>
-    </a>
+      </div>
+      <div class="event-card__content">
+        <h4>Board of Commissioners Regular Meeting</h4>
+        <div class="event-time">07:00pm - 07:00pm</div>
+        <div class="event-location">Location(s): </div>
+        <div class="section-text"><i class="fas fa-users"></i><span class="section-taxonomy">Board</span></div>
+      </div>
+    </div>
+  </a>
 </article>
 </div>
-    <div class="views-row event-row green">
+    <div class="views-row">
 
 
-<article class="event-teaser">
-    <a href="/board/events/planning-commission-zoning-hearing-28">
-        <div class="date-box">
-            <span class="month-weekday">Sep</span>
-            <span class="day">6</span>
-            <span class="month-weekday">Tue</span>
+
+<article class="eventinstance-teaser event-teaser event-card-wrapper green" >
+  <a href="/events/21712">
+    <div class="event-card">
+      <div class="event-card__side">
+        <div class="event-date date-box">
+          <span class="month-weekday">Apr</span>
+          <span class="day">29</span>
+          <span class="month-weekday">Mon</span>
         </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">09:00 AM </span>
-        <h4><a href="/board/events/planning-commission-zoning-hearing-28" hreflang="en">Planning Commission Zoning Hearing</a></h4>
-    </a>
+      </div>
+      <div class="event-card__content">
+        <h4>Planning Commission Agenda Review Work Session</h4>
+        <div class="event-time">01:30pm - 01:30pm</div>
+        <div class="event-location">Location(s): </div>
+        <div class="section-text"><i class="fas fa-users"></i><span class="section-taxonomy">Board</span></div>
+      </div>
+    </div>
+  </a>
 </article>
 </div>
-    <div class="views-row event-row green">
+    <div class="views-row">
 
 
-<article class="event-teaser">
-    <a href="/board/events/board-commissioners-agenda-work-session-44">
-        <div class="date-box">
-            <span class="month-weekday">Sep</span>
-            <span class="day">12</span>
-            <span class="month-weekday">Mon</span>
+
+<article class="eventinstance-teaser event-teaser event-card-wrapper green" >
+  <a href="/events/21689">
+    <div class="event-card">
+      <div class="event-card__side">
+        <div class="event-date date-box">
+          <span class="month-weekday">May</span>
+          <span class="day">07</span>
+          <span class="month-weekday">Tue</span>
         </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">09:00 AM </span>
-        <h4><a href="/board/events/board-commissioners-agenda-work-session-44" hreflang="en">Board of Commissioners Agenda Work Session</a></h4>
-    </a>
+      </div>
+      <div class="event-card__content">
+        <h4>Planning Commission Zoning Hearing</h4>
+        <div class="event-time">09:00am - 09:00am</div>
+        <div class="event-location">Location(s): </div>
+        <div class="section-text"><i class="fas fa-users"></i><span class="section-taxonomy">Board</span></div>
+      </div>
+    </div>
+  </a>
 </article>
 </div>
-    <div class="views-row event-row green">
+    <div class="views-row">
 
 
-<article class="event-teaser">
-    <a href="/board/events/board-zoning-appealsspecial-called-meetingwork-session-agenda-review-6">
-        <div class="date-box">
-            <span class="month-weekday">Sep</span>
-            <span class="day">12</span>
-            <span class="month-weekday">Mon</span>
+
+<article class="eventinstance-teaser event-teaser event-card-wrapper green" >
+  <a href="/events/23144">
+    <div class="event-card">
+      <div class="event-card__side">
+        <div class="event-date date-box">
+          <span class="month-weekday">May</span>
+          <span class="day">13</span>
+          <span class="month-weekday">Mon</span>
         </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">01:30 PM </span>
-        <h4><a href="/board/events/board-zoning-appealsspecial-called-meetingwork-session-agenda-review-6" hreflang="en">Board of Zoning Appeals/Special Called Meeting/Work Session Agenda Review</a></h4>
-    </a>
+      </div>
+      <div class="event-card__content">
+        <h4>Board of Commissioners Agenda Work Session</h4>
+        <div class="event-time">09:00am - 09:00am</div>
+        <div class="event-location">Location(s): </div>
+        <div class="section-text"><i class="fas fa-users"></i><span class="section-taxonomy">Board</span></div>
+      </div>
+    </div>
+  </a>
 </article>
 </div>
-    <div class="views-row event-row green">
+    <div class="views-row">
 
 
-<article class="event-teaser">
-    <a href="/community-development/events/historic-preservation-commission-meeting-3">
-        <div class="date-box">
-            <span class="month-weekday">Sep</span>
-            <span class="day">12</span>
-            <span class="month-weekday">Mon</span>
+
+<article class="eventinstance-teaser event-teaser event-card-wrapper green" >
+  <a href="/events/23122">
+    <div class="event-card">
+      <div class="event-card__side">
+        <div class="event-date date-box">
+          <span class="month-weekday">May</span>
+          <span class="day">13</span>
+          <span class="month-weekday">Mon</span>
         </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">06:00 PM  – 08:00 PM </span>
-        <h4><a href="/community-development/events/historic-preservation-commission-meeting-3" hreflang="en">Historic Preservation Commission Meeting</a></h4>
-    </a>
+      </div>
+      <div class="event-card__content">
+        <h4>Board of Commissioners Executive Session</h4>
+        <div class="event-time">09:30am - 09:30am</div>
+        <div class="event-location">Location(s): </div>
+        <div class="section-text"><i class="fas fa-users"></i><span class="section-taxonomy">Board</span></div>
+      </div>
+    </div>
+  </a>
 </article>
 </div>
-    <div class="views-row event-row green">
+    <div class="views-row">
 
 
-<article class="event-teaser">
-    <a href="/board/events/board-commissioners-regular-meeting-34">
-        <div class="date-box">
-            <span class="month-weekday">Sep</span>
-            <span class="day">13</span>
-            <span class="month-weekday">Tue</span>
+
+<article class="eventinstance-teaser event-teaser event-card-wrapper green" >
+  <a href="/events/21552">
+    <div class="event-card">
+      <div class="event-card__side">
+        <div class="event-date date-box">
+          <span class="month-weekday">May</span>
+          <span class="day">13</span>
+          <span class="month-weekday">Mon</span>
         </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">09:00 AM </span>
-        <h4><a href="/board/events/board-commissioners-regular-meeting-34" hreflang="en">Board of Commissioners Regular Meeting</a></h4>
-    </a>
+      </div>
+      <div class="event-card__content">
+        <h4>Board of Zoning Appeals Work Session</h4>
+        <div class="event-time">01:30pm - 01:30pm</div>
+        <div class="event-location">Location(s): </div>
+        <div class="section-text"><i class="fas fa-building"></i><span class="section-taxonomy">Community Development</span></div>
+      </div>
+    </div>
+  </a>
 </article>
 </div>
-    <div class="views-row event-row green">
+    <div class="views-row">
 
 
-<article class="event-teaser">
-    <a href="/board/events/board-commissioners-work-session-17">
-        <div class="date-box">
-            <span class="month-weekday">Sep</span>
-            <span class="day">13</span>
-            <span class="month-weekday">Tue</span>
+
+<article class="eventinstance-teaser event-teaser event-card-wrapper green" >
+  <a href="/board/events/15971/historic-preservation-commission-meeting">
+    <div class="event-card">
+      <div class="event-card__side">
+        <div class="event-date date-box">
+          <span class="month-weekday">May</span>
+          <span class="day">13</span>
+          <span class="month-weekday">Mon</span>
         </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">01:30 PM </span>
-        <h4><a href="/board/events/board-commissioners-work-session-17" hreflang="en">Board of Commissioners Work Session</a></h4>
-    </a>
-</article>
-</div>
-    <div class="views-row event-row green">
-
-
-<article class="event-teaser">
-    <a href="/board/events/board-zoning-appealsvariance-hearing-10">
-        <div class="date-box">
-            <span class="month-weekday">Sep</span>
-            <span class="day">14</span>
-            <span class="month-weekday">Wed</span>
-        </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">01:30 PM </span>
-        <h4><a href="/board/events/board-zoning-appealsvariance-hearing-10" hreflang="en">Board of Zoning Appeals/Variance Hearing</a></h4>
-    </a>
-</article>
-</div>
-    <div class="views-row event-row green">
-
-
-<article class="event-teaser">
-    <a href="/board/events/board-commissioners-zoning-hearing-26">
-        <div class="date-box">
-            <span class="month-weekday">Sep</span>
-            <span class="day">20</span>
-            <span class="month-weekday">Tue</span>
-        </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">09:00 AM </span>
-        <h4><a href="/board/events/board-commissioners-zoning-hearing-26" hreflang="en">Board of Commissioners Zoning Hearing</a></h4>
-    </a>
-</article>
-</div>
-    <div class="views-row event-row green">
-
-
-<article class="event-teaser">
-    <a href="/board/events/board-commissioners-agenda-work-session-45">
-        <div class="date-box">
-            <span class="month-weekday">Sep</span>
-            <span class="day">26</span>
-            <span class="month-weekday">Mon</span>
-        </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">09:00 AM </span>
-        <h4><a href="/board/events/board-commissioners-agenda-work-session-45" hreflang="en">Board of Commissioners Agenda Work Session</a></h4>
-    </a>
-</article>
-</div>
-    <div class="views-row event-row green">
-
-
-<article class="event-teaser">
-    <a href="/board/events/planning-commission-special-called-meetingwork-session-agenda-review-13">
-        <div class="date-box">
-            <span class="month-weekday">Sep</span>
-            <span class="day">26</span>
-            <span class="month-weekday">Mon</span>
-        </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">01:30 PM </span>
-        <h4><a href="/board/events/planning-commission-special-called-meetingwork-session-agenda-review-13" hreflang="en">Planning Commission Special Called Meeting/Work Session Agenda Review</a></h4>
-    </a>
-</article>
-</div>
-    <div class="views-row event-row green">
-
-
-<article class="event-teaser">
-    <a href="/board/events/board-commissioners-work-session-29">
-        <div class="date-box">
-            <span class="month-weekday">Sep</span>
-            <span class="day">27</span>
-            <span class="month-weekday">Tue</span>
-        </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">01:30 PM </span>
-        <h4><a href="/board/events/board-commissioners-work-session-29" hreflang="en">Board of Commissioners Work Session</a></h4>
-    </a>
-</article>
-</div>
-    <div class="views-row event-row green">
-
-
-<article class="event-teaser">
-    <a href="/board/events/board-commissioners-regular-meeting-35">
-        <div class="date-box">
-            <span class="month-weekday">Sep</span>
-            <span class="day">27</span>
-            <span class="month-weekday">Tue</span>
-        </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">07:00 PM </span>
-        <h4><a href="/board/events/board-commissioners-regular-meeting-35" hreflang="en">Board of Commissioners Regular Meeting</a></h4>
-    </a>
-</article>
-</div>
-    <div class="views-row event-row green">
-
-
-<article class="event-teaser">
-    <a href="/board/events/planning-commission-zoning-hearing-29">
-        <div class="date-box">
-            <span class="month-weekday">Oct</span>
-            <span class="day">4</span>
-            <span class="month-weekday">Tue</span>
-        </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">09:00 AM </span>
-        <h4><a href="/board/events/planning-commission-zoning-hearing-29" hreflang="en">Planning Commission Zoning Hearing</a></h4>
-    </a>
-</article>
-</div>
-    <div class="views-row event-row green">
-
-
-<article class="event-teaser">
-    <a href="/board/events/board-commissioners-agenda-work-session-56">
-        <div class="date-box">
-            <span class="month-weekday">Oct</span>
-            <span class="day">10</span>
-            <span class="month-weekday">Mon</span>
-        </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">09:00 AM </span>
-        <h4><a href="/board/events/board-commissioners-agenda-work-session-56" hreflang="en">Board of Commissioners Agenda Work Session</a></h4>
-    </a>
-</article>
-</div>
-    <div class="views-row event-row green">
-
-
-<article class="event-teaser">
-    <a href="/board/events/board-zoning-appealsspecial-called-meetingwork-session-agenda-review-7">
-        <div class="date-box">
-            <span class="month-weekday">Oct</span>
-            <span class="day">10</span>
-            <span class="month-weekday">Mon</span>
-        </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">01:30 PM </span>
-        <h4><a href="/board/events/board-zoning-appealsspecial-called-meetingwork-session-agenda-review-7" hreflang="en">Board of Zoning Appeals/Special Called Meeting/Work Session Agenda Review</a></h4>
-    </a>
-</article>
-</div>
-    <div class="views-row event-row green">
-
-
-<article class="event-teaser">
-    <a href="/community-development/events/historic-preservation-commission-meeting-4">
-        <div class="date-box">
-            <span class="month-weekday">Oct</span>
-            <span class="day">10</span>
-            <span class="month-weekday">Mon</span>
-        </div>
-        <span class="category">Public Meetings</span>
-        <span class="time">06:00 PM  – 08:00 PM </span>
-        <h4><a href="/community-development/events/historic-preservation-commission-meeting-4" hreflang="en">Historic Preservation Commission Meeting</a></h4>
-    </a>
+      </div>
+      <div class="event-card__content">
+        <h4>Historic Preservation Commission Meeting</h4>
+        <div class="event-time">06:00pm - 08:00am</div>
+        <div class="event-location">Location(s): </div>
+        <div class="section-text"><i class="fas fa-users"></i><span class="section-taxonomy">Board
+          Community Development</span></div>
+      </div>
+    </div>
+  </a>
 </article>
 </div>
 
@@ -1228,7 +1133,7 @@
                     <li class="pager__item is-active">
           Page 1        </li>
                     <li class="pager__item pager__item--next">
-          <a href="/events?field_section_target_id=All&amp;field_event_category_target_id=195&amp;field_event_date_recur_value_2=&amp;field_event_date_recur_end_value=&amp;page=1" title="Go to next page" rel="next">
+          <a href="/events?field_event_type_target_id=326&amp;page=1" title="Go to next page" rel="next">
             <span class="visually-hidden">Next page</span>
             <span aria-hidden="true">››</span>
           </a>
@@ -1251,7 +1156,7 @@
     <div class="footer__top--wrapper ">
         <div class="footer__top">
             
-            <a href="https://mailchi.mp/cobbcounty.org/subscribe" class="subscribe">Subscribe to County Newsletters</a>
+            <a href="https://cloud.communications.cobbcounty.org/optin" class="subscribe">Subscribe to County Newsletters</a>
         </div>
     </div>
     <div class="footer__middle--wrapper">
@@ -1273,32 +1178,17 @@
   
     
       
-            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div data-embed-button="image" data-entity-embed-display="view_mode:media.inline_image" data-entity-type="media" data-entity-uuid="c88a773b-1fd3-4db5-93a8-5a1871a915dc" data-langcode="en" class="embedded-entity align-left"><article class="media media--type-image media--view-mode-inline-image">
-  
-      
-  <div class="field field--name-field-media-image field--type-image field--label-visually_hidden">
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><article data-embed-button="image" data-entity-embed-display="view_mode:media.inline_image" data-entity-embed-display-settings="{&quot;link_url&quot;:&quot;&quot;,&quot;link_url_target&quot;:0}" data-entity-type="media" data-entity-uuid="c88a773b-1fd3-4db5-93a8-5a1871a915dc" data-langcode="en" class="embedded-entity align-left"><article class="media media--type-image media--view-mode-inline-image"><div class="field field--name-field-media-image field--type-image field--label-visually_hidden">
     <div class="field__label visually-hidden">Image</div>
-              <div class="field__item">  <img loading="lazy" src="/themes/custom/if_zen/default.gif" width="263" height="43" alt="Cobb County Government Logo" typeof="foaf:Image" class="image-style-inline-image-400px b-lazy" data-src="https://s3.us-west-2.amazonaws.com/cobbcounty.org.if-us-west-2/prod/s3fs-public/styles/inline_image_400px/public/2018-06/cobb-logo_footer.png?itok=LXm7nMht" />
-
-
-
-</div>
+              <div class="field__item">  <img loading="lazy" src="https://s3.amazonaws.com/cobbcounty.org.if-us-east-1/s3fs-public/styles/inline_image_400px/public/2018-06/cobb-logo_footer.png?itok=LXm7nMht" width="263" height="43" alt="Cobb County Government Logo" typeof="foaf:Image" class="image-style-inline-image-400px b-lazy" /></div>
           </div>
 
-  </article>
-</div>
-
-
-<ul class="quick-links">
-	<li><a href="/icobb">iCobb</a></li>
+  </article></article><ul class="quick-links"><li><a href="/icobb">iCobb</a></li>
 	<li><a href="/departments">Departments</a></li>
 	<li><a href="https://www.governmentjobs.com/careers/cobbcounty/">Jobs</a></li>
 	<li><a href="/communications/info-center/contact-directory">Contact</a></li>
 	<li><a data-entity-substitution="canonical" data-entity-type="node" data-entity-uuid="d3d25e5c-c9d3-405e-9be3-e144155cd787" href="/global-directory-alphabetical">Directory</a></li>
-</ul>
-
-<ul class="privacy-terms">
-	<li><a href="https://cobbcounty.seamlessdocs.com/f/newsite">Site Feedback</a></li>
+</ul><ul class="privacy-terms"><li><a href="https://cobbcounty.seamlessdocs.com/f/newsite">Site Feedback</a></li>
 	<li><a data-entity-substitution="canonical" data-entity-type="node" data-entity-uuid="97bcf90f-de32-401a-a4b5-1ec049242b54" href="/privacy-policy">Privacy</a></li>
 </ul></div>
       
@@ -1319,15 +1209,16 @@
   })();
   /*]]>*/
 </script>
+
   </div>
 
   <script type="text/javascript" async> ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.js");
 /* custom configuration goes here (www.olark.com/documentation) */
 olark.identify('1260-165-10-7685');</script>
-  <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"events","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","currentQuery":{"field_event_category_target_id":"195","field_event_date_recur_end_value":"","field_event_date_recur_value_2":"","field_section_target_id":"All"}},"pluralDelimiter":"\u0003","text_resize":{"text_resize_scope":"body","text_resize_minimum":10,"text_resize_maximum":24,"text_resize_line_height_allow":false,"text_resize_line_height_min":null,"text_resize_line_height_max":null},"suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"addtoany\/addtoany,better_exposed_filters\/general,classy\/base,classy\/messages,core\/normalize,entity_embed\/caption,extlink\/drupal.extlink,fontawesome\/fontawesome.svg,fontawesome\/fontawesome.svg.shim,google_analytics\/google_analytics,if_zen\/alert,if_zen\/autocomplete,if_zen\/base,if_zen\/blazy,if_zen\/box,if_zen\/breadcrumb,if_zen\/call-to-action,if_zen\/collapsible-fieldset,if_zen\/comment,if_zen\/events-helper,if_zen\/fonts,if_zen\/footer,if_zen\/form-item,if_zen\/form-table,if_zen\/header,if_zen\/hidden,if_zen\/inline-links,if_zen\/inline-sibling,if_zen\/js-cookie,if_zen\/layouts,if_zen\/nav-menu,if_zen\/navbar,if_zen\/pager,if_zen\/print-none,if_zen\/progress-bar,if_zen\/progress-throbber,if_zen\/resizable-textarea,if_zen\/responsive-video,if_zen\/search,if_zen\/sections,if_zen\/skip-link,if_zen\/slick,if_zen\/table-drag,if_zen\/tables,if_zen\/teasers,if_zen\/views,if_zen\/wireframe,olark\/integration,search_api_autocomplete\/search_api_autocomplete,social_media_links\/social_media_links.theme,system\/base,text_resize\/text_resize.resize,views\/views.module","theme":"if_zen","theme_token":null},"ajaxTrustedUrl":{"\/events":true,"\/search":true},"olark":{"disable_ios":false,"enabled":true},"google_analytics":{"account":{},"trackOutbound":true,"trackMailto":true,"trackTel":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"data":{"extlink":{"extTarget":true,"extTargetNoOverride":true,"extNofollow":false,"extNoreferrer":false,"extFollowNoOverride":false,"extClass":"0","extLabel":"(link is external)","extImgClass":false,"extSubdomains":true,"extExclude":"","extInclude":"","extCssExclude":"","extCssExplicit":"","extAlert":false,"extAlertText":"This link will take you to an external web site. We are not responsible for their content.","mailtoClass":"mailto","mailtoLabel":"(link sends email)","extUseFontAwesome":false,"extIconPlacement":"append","extFaLinkClasses":"fa fa-external-link","extFaMailtoClasses":"fa fa-envelope-o","whitelistedDomains":null}},"search_api_autocomplete":{"search_results_filtered":{"auto_submit":true}},"user":{"uid":0,"permissionsHash":"9c5aca7c62581bf5e806f1eaaeecea72257406276a55805e8c85c4b9d4afc81b"}}</script>
-<script src="https://s3.us-west-2.amazonaws.com/cobbcounty.org.if-us-west-2/prod/s3fs-public/js/js_CwrUc4ZoH4kJe6EQjDbU7AP46uhaBJpsA7aihpXCfUI.js"></script>
+  <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"events","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","currentQuery":{"field_event_type_target_id":"326"}},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"addtoany\/addtoany.front,better_exposed_filters\/datepickers,better_exposed_filters\/general,classy\/base,classy\/messages,core\/normalize,entity_embed\/caption,extlink\/drupal.extlink,fontawesome\/fontawesome.svg,fontawesome\/fontawesome.svg.shim,google_analytics\/google_analytics,if_zen\/alert,if_zen\/autocomplete,if_zen\/base,if_zen\/blazy,if_zen\/box,if_zen\/breadcrumb,if_zen\/call-to-action,if_zen\/collapsible-fieldset,if_zen\/comment,if_zen\/events-recurring,if_zen\/fonts,if_zen\/footer,if_zen\/form-item,if_zen\/form-table,if_zen\/header,if_zen\/hidden,if_zen\/inline-links,if_zen\/inline-sibling,if_zen\/js-cookie,if_zen\/layouts,if_zen\/nav-menu,if_zen\/navbar,if_zen\/pager,if_zen\/print-none,if_zen\/progress-bar,if_zen\/progress-throbber,if_zen\/resizable-textarea,if_zen\/responsive-video,if_zen\/search,if_zen\/sections,if_zen\/skip-link,if_zen\/slick,if_zen\/table-drag,if_zen\/tables,if_zen\/teasers,if_zen\/views,if_zen\/wireframe,olark\/integration,search_api_autocomplete\/search_api_autocomplete,social_media_links\/social_media_links.theme,system\/base,text_resize\/text_resize.resize,views\/views.module","theme":"if_zen","theme_token":null},"ajaxTrustedUrl":{"\/search":true,"\/events":true},"olark":{"disable_ios":false,"enabled":true},"google_analytics":{"account":"G-YSS8HKRF4F","trackOutbound":true,"trackMailto":true,"trackTel":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"data":{"extlink":{"extTarget":true,"extTargetNoOverride":true,"extNofollow":false,"extNoreferrer":false,"extFollowNoOverride":false,"extClass":"0","extLabel":"(link is external)","extImgClass":false,"extSubdomains":true,"extExclude":"","extInclude":"","extCssExclude":"","extCssExplicit":"","extAlert":false,"extAlertText":"This link will take you to an external web site. We are not responsible for their content.","mailtoClass":"mailto","mailtoLabel":"(link sends email)","extUseFontAwesome":false,"extIconPlacement":"append","extFaLinkClasses":"fa fa-external-link","extFaMailtoClasses":"fa fa-envelope-o","whitelistedDomains":null}},"search_api_autocomplete":{"search_results_filtered":{"auto_submit":true}},"text_resize":{"text_resize_scope":"body","text_resize_minimum":10,"text_resize_maximum":24,"text_resize_line_height_allow":false,"text_resize_line_height_min":null,"text_resize_line_height_max":null},"better_exposed_filters":{"datepicker":true,"datepicker_options":[]},"user":{"uid":0,"permissionsHash":"c8b895e4b88e40d674849eb7ca19594575471a7c4c8deae653fc5263de4527ff"}}</script>
+<script src="/sites/default/files/js/js_vx66-J5tj1q5t7zbXVQx8TF__Y0f-TWSv3NS2Qddkpg.js?scope=footer&amp;delta=0&amp;language=en&amp;theme=if_zen&amp;include=eJx9U1GWozAMu1ACR-IZYqi3ScyzAx16-nXpBujMm_0pluLUsgQcQe4t5YKTQCHODkIoDHlra9GMwrm40X7ggcoJ20vd6Dr976zRGyU3MU8RO8gQt0KDtt8JpzwQxC5hIOgi5bu2P6mm3DCh000LprYHRTdEUN0-6oSqMKG6gQXbzJIg0hMdjd0T87u11vxVS4gopQJFkOFW0cApYT4ObwgB5WwdXr5pxSvh4wA3CgFzRZRtC_T7Kt84pd6eU2VnsUh85nwoFdTZptCKfqWAXPkHCY4C6WiEpbAJniOWc80Iz-3cJkaYXwPRj4QxKB6rjWaWJzP3gyhgvac0nkyM-h7kB1duwn1_mmMkPV-3fcGvAoJQT_b_9EHg2DnD6s3m5YKvIyxROVXlcjiokYZ7BX_UD8x3OuQWtLhFP8YeaIAYfWEPe4TOJL6yaYMsM8TmH3QWPZWtw9RjsCvz3nso4WK69tDf0TeJw3LahatdVy84LCKXhHvzIgyypN69X7YOZuqu4bW_8O5lZbc7i-2lbt6POiDCxsvFpTvN-5vneiwmucOvmRVDN1I0aF8kZhSIvx0HKDib0Vb_BbgiohY"></script>
 <script src="https://static.addtoany.com/menu/page.js" async></script>
-<script src="https://s3.us-west-2.amazonaws.com/cobbcounty.org.if-us-west-2/prod/s3fs-public/js/js_uG8EL7g1ezV5_qPzmblidWaFxtOY2ZcdKvnqxyusHAk.js"></script>
+<script src="/sites/default/files/js/js_M10k9H7F1sjsMPnZHFKBn4bpHnA7ZNsypdYYTWSFO2o.js?scope=footer&amp;delta=2&amp;language=en&amp;theme=if_zen&amp;include=eJx9U1GWozAMu1ACR-IZYqi3ScyzAx16-nXpBujMm_0pluLUsgQcQe4t5YKTQCHODkIoDHlra9GMwrm40X7ggcoJ20vd6Dr976zRGyU3MU8RO8gQt0KDtt8JpzwQxC5hIOgi5bu2P6mm3DCh000LprYHRTdEUN0-6oSqMKG6gQXbzJIg0hMdjd0T87u11vxVS4gopQJFkOFW0cApYT4ObwgB5WwdXr5pxSvh4wA3CgFzRZRtC_T7Kt84pd6eU2VnsUh85nwoFdTZptCKfqWAXPkHCY4C6WiEpbAJniOWc80Iz-3cJkaYXwPRj4QxKB6rjWaWJzP3gyhgvac0nkyM-h7kB1duwn1_mmMkPV-3fcGvAoJQT_b_9EHg2DnD6s3m5YKvIyxROVXlcjiokYZ7BX_UD8x3OuQWtLhFP8YeaIAYfWEPe4TOJL6yaYMsM8TmH3QWPZWtw9RjsCvz3nso4WK69tDf0TeJw3LahatdVy84LCKXhHvzIgyypN69X7YOZuqu4bW_8O5lZbc7i-2lbt6POiDCxsvFpTvN-5vneiwmucOvmRVDN1I0aF8kZhSIvx0HKDib0Vb_BbgiohY"></script>
 
-  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"NRJS-76d8248f92cdd52ee6e","applicationID":"958345017","transactionName":"MVxTMUEEDUsDAkJcWAgWcAZHDAxWTSVEQEcHVW0TWgAUSz4zWUBDD1dWOWUMBk8yAFFQdAlXRRdcCQ9dEEwIXVYIXV0A","queueTime":0,"applicationTime":4148,"atts":"HRtQRwkeHkU=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+  </body>
 </html>

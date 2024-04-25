@@ -12,6 +12,7 @@ env:
   AUTOTHROTTLE_MAX_DELAY: 30.0
   AUTOTHROTTLE_START_DELAY: 1.5
   AUTOTHROTTLE_TARGET_CONCURRENCY: 3.0
+  PYTHON_VERSION: '3.9'
 
 jobs:
   crawl:
@@ -19,27 +20,27 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Python 3.8
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v1
         with:
-          python-version: 3.8
+          python-version: ${{ env.PYTHON_VERSION }}  # Use the constant here
 
       - name: Install Pipenv
-        uses: dschep/install-pipenv-action@v1
+        run: pip install --user pipenv
 
       - name: Cache Python dependencies
         uses: actions/cache@v1
         with:
           path: .venv
-          key: pip-3.8-${{ hashFiles('**/Pipfile.lock') }}
+          key: pip-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/Pipfile.lock') }}  # Use the constant here
           restore-keys: |
-            pip-3.8-
+            pip-${{ env.PYTHON_VERSION }}-
             pip-
 
       - name: Install dependencies
         run: pipenv sync
         env:
-          PIPENV_DEFAULT_PYTHON_VERSION: 3.8
+          PIPENV_DEFAULT_PYTHON_VERSION: ${{ env.PYTHON_VERSION }}  # Use the constant here
 
       - name: Run scrapers
         run: |

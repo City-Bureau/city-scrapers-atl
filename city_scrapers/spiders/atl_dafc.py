@@ -38,7 +38,7 @@ class AtlDafcSpider(CityScrapersSpider):
                         text = text.replace("\xa0", " ").strip() if text else ""
                         tds.append(text)
                 if tds:
-                    if not type(tds[0]) == str:
+                    if type(tds[0]) is not str:
                         continue
                     if "diem" not in tds[0].lower():
                         meeting = Meeting(
@@ -56,7 +56,7 @@ class AtlDafcSpider(CityScrapersSpider):
 
                         cancelled = False
                         for td in tds:
-                            search = td[0] if type(td) == tuple else td
+                            search = td[0] if type(td) is tuple else td
                             if "canceled" in search.lower():
                                 cancelled = True
                                 break
@@ -127,7 +127,7 @@ class AtlDafcSpider(CityScrapersSpider):
         ]
         zoom_already = False
         for i in range(len(item)):
-            if type(item[i]) == tuple:
+            if type(item[i]) is tuple:
                 if "zoom" in item[i][1]:
                     if not zoom_already:
                         title = "Zoom link"

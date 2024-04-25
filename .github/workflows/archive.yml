@@ -7,40 +7,40 @@ on:
 
 env:
   CI: true
+  PYTHON_VERSION: 3.9
   PIPENV_VENV_IN_PROJECT: true
   SCRAPY_SETTINGS_MODULE: city_scrapers.settings.archive
   AUTOTHROTTLE_MAX_DELAY: 30.0
   AUTOTHROTTLE_START_DELAY: 1.5
   AUTOTHROTTLE_TARGET_CONCURRENCY: 3.0
-  PYTHON_VERSION: '3.9'
 
 jobs:
   crawl:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v5
         with:
-          python-version: ${{ env.PYTHON_VERSION }}  # Use the constant here
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install Pipenv
         run: pip install --user pipenv
 
       - name: Cache Python dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: .venv
-          key: pip-${{ env.PYTHON_VERSION }}-${{ hashFiles('**/Pipfile.lock') }}  # Use the constant here
+          key: ${{ env.PYTHON_VERSION }}-${{ hashFiles('**/Pipfile.lock') }}
           restore-keys: |
-            pip-${{ env.PYTHON_VERSION }}-
+            ${{ env.PYTHON_VERSION }}-
             pip-
 
       - name: Install dependencies
         run: pipenv sync
         env:
-          PIPENV_DEFAULT_PYTHON_VERSION: ${{ env.PYTHON_VERSION }}  # Use the constant here
+          PIPENV_DEFAULT_PYTHON_VERSION: ${{ env.PYTHON_VERSION }}
 
       - name: Run scrapers
         run: |

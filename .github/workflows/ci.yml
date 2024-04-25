@@ -18,18 +18,18 @@ jobs:
         python-version: [3.9]
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
       - name: Install Pipenv
-        uses: dschep/install-pipenv-action@v1
+        run: pip install --user pipenv
 
       - name: Cache Python dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: .venv
           key: pip-${{ matrix.python-version }}-${{ hashFiles('**/Pipfile.lock') }}
@@ -55,6 +55,7 @@ jobs:
           pipenv run flake8 .
 
       - name: Test with pytest
+        # Ignores exit code 5 (no tests collected)
         run: |
           pipenv run pytest || [ $? -eq 5 ]
 
@@ -66,9 +67,3 @@ jobs:
           git diff-index --name-only --diff-filter=d $(git merge-base HEAD ${{ github.base_ref }}) | \
           grep -Pio '(?<=/spiders/).*(?=\.py)' | \
           xargs pipenv run scrapy validate
-
-      - name: Prevent workflow deactivation
-        uses: gautamkrishnar/keepalive-workflow@v1
-        with:
-          committer_username: "citybureau-bot"
-          committer_email: "documenters@citybureau.org"

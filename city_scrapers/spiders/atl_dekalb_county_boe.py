@@ -1,84 +1,84 @@
-from datetime import datetime
+import json
 
+import scrapy
 from city_scrapers_core.constants import BOARD
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
-from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
+from dateutil.parser import parse as parse_date
 
 
 class AtlDekalbCountyBoeSpider(CityScrapersSpider):
     name = "atl_dekalb_county_boe"
     agency = "DeKalb County Board of Education"
     timezone = "America/New_York"
-    start_urls = ["https://www.dekalbschoolsga.org/board-of-education/board-meetings/"]
-    link_extractor = LxmlLinkExtractor(restrict_css=".ai1ec-event-details")
+    source = "https://simbli.eboardsolutions.com/SB_Meetings/SB_MeetingListing.aspx?S=4054"  # noqa
 
-    def parse(self, response):
-        for item in response.css("a.ai1ec-read-more::attr(href)"):
-            print(item.get())
-            yield response.follow(
-                item.get(),
-                callback=self._parse_meeting_page,
-            )
-
-    def _parse_meeting_page(self, response):
-        start, end, all_day = self._parse_time(response.css(".dt-duration"))
-        meeting = Meeting(
-            title=self._parse_title(response),
-            description=self._parse_description(response),
-            classification=BOARD,
-            start=start,
-            end=end,
-            all_day=all_day,
-            time_notes="",
-            location=self._parse_location(response),
-            links=self._parse_links(response),
-            source=self._parse_source(response),
+    def start_requests(self):
+        url = (
+            "https://simbli.eboardsolutions.com/Services/api/GetMeetingListing"  # noqa
+        )
+        # Return 50 most recent meetings.
+        # ConnectionString and SecurityToken are required.
+        body = {
+            "ListingType": "0",
+            "TimeZone": "0",
+            "CustomSort": 0,
+            "SortColName": "DateTime",
+            "IsSortDesc": True,
+            "RecordStart": 0,
+            "RecordCount": 50,
+            "FilterExp": "",
+            "ParentGroup": None,
+            "IsUserLoggedIn": False,
+            "UserID": "",
+            "UserRole": None,
+            "EncUserId": None,
+            "Id": 0,
+            "SchoolID": "4054",
+            "ConnectionString": "Z6PDprZMNLXHjSBXkCx3nyYUcSP5M6UnadUK7cjlwACaJqjO6BIZp9WiwanwbY4ZVnjRygpzATee7Qu0w1S8HmAR37HwZBl63V1gla1aplusJUjsbp3RPOgYD8rKMge0DRnjghPLCYcGBvWfEYLDJCwhuND0gFm8zDEltMnSkGHH8U=",  # noqa
+            "SecurityToken": "ZekKE44z6voP8TArAiQr1KqQ7APJMDvo3Mr5tEPYHAow2XgYXKhCVFLu2pHhFaTMoGVOGKg8vFV2Yz70u3sDLEVU4nY7qDAdNvoAJgGmnzjBEfmMTseZAXEzpY4u1Boz",  # noqa
+            "CreatedOn": "0001-01-01T00:00:00",
+            "CreatedBy": None,
+            "ModifiedOn": "0001-01-01T00:00:00",
+            "ModifiedBy": None,
+            "DeletedBy": None,
+            "DeletedOnUTC": None,
+            "IsDeleted": False,
+        }
+        serialized_body = json.dumps(body)
+        yield scrapy.Request(
+            url,
+            method="POST",
+            body=serialized_body,
+            headers={
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            },
         )
 
-        meeting["status"] = self._get_status(meeting)
-        meeting["id"] = self._get_id(meeting)
-
-        yield meeting
-
-    def _parse_title(self, item):
-        return item.css(".entry-title::text").get()
-
-    def _parse_description(self, item):
-        return "\n".join(item.css(".post-content > p").getall())
-
-    def _parse_time(self, dt_duration):
-        start_str = dt_duration.css("::text").get().strip()
-        all_day = True if dt_duration.css(".ai1ec-allday-badge") else False
-        if all_day:
-            start = datetime.strptime(start_str, "%B %d, %Y")
-            end = None
-        else:
-            start_str, end_time = start_str.split("–")
-            start = datetime.strptime(start_str, "%B %d, %Y @ %I:%M %p")
-            end = datetime.strptime(end_time, "%I:%M %p")
-            end = start.replace(hour=end.hour, minute=end.minnute)
-        return start, end, all_day
-
-    def _parse_location(self, item):
-        address = [
-            a.strip() for a in item.css(".p-location::text").getall() if a.strip()
-        ]
-        return {
-            "address": ", ".join(address[1:]),
-            "name": address[0],
-        }
-
-    def _parse_links(self, item):
-        links = [
-            {
-                "href": "https://www.dekalbschoolsga.org/communications/dstv",
-                "title": "DSTV (Comcast channel 24)",
+    def parse(self, response):
+        data = response.json()
+        # write to file
+        with open("dekalb.json", "w") as f:
+            json.dump(data, f)
+        for item in data:
+            start = parse_date(item["MM_DateTime"])
+            location = {
+                "name": item["MM_Address1"],
+                "address": f"{item['MM_Address2']} {item['MM_Address3']}",
             }
-        ]
-        for link in self.link_extractor.extract_links(item):
-            links.append({"href": link.url, "title": link.text.strip()})
-        return links
-
-    def _parse_source(self, response):
-        return response.url
+            meeting = Meeting(
+                title=item["MM_MeetingTitle"],
+                description="",
+                classification=BOARD,
+                start=start,
+                end=None,
+                all_day=False,
+                time_notes="",
+                location=location,
+                links=[],
+                source=self.source,
+            )
+            meeting["status"] = self._get_status(meeting)
+            meeting["id"] = self._get_id(meeting)
+            yield meeting

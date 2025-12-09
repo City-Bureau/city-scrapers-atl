@@ -5,6 +5,7 @@ from city_scrapers_core.constants import BOARD, CITY_COUNCIL, COMMISSION, NOT_CL
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
 from scrapy import Request
+from scrapy_playwright.page import PageMethod
 
 # NOTE: This scraper requires scrapy-playwright for JavaScript rendering.
 # The Forest Park website migrated to CivicClerk platform in 2025.
@@ -52,16 +53,12 @@ class AtlForestparkCityCouncilSpider(CityScrapersSpider):
                 "playwright": True,
                 "playwright_include_page": True,
                 "playwright_page_methods": [
-                    # Wait for the event list to load
-                    {
-                        "method": "wait_for_selector",
-                        "args": ['[data-testid="eventList"]'],
-                        "kwargs": {"timeout": 30000},
-                    },
+                    # Wait for page to be fully loaded
+                    PageMethod("wait_for_load_state", "networkidle"),
                     # Scroll to load more events
-                    {"method": "evaluate", "args": ["window.scrollTo(0, 2000)"]},
+                    PageMethod("evaluate", "window.scrollTo(0, 2000)"),
                     # Wait a bit for dynamic content
-                    {"method": "wait_for_timeout", "args": [2000]},
+                    PageMethod("wait_for_timeout", 3000),
                 ],
             },
             callback=self.parse,
@@ -120,16 +117,21 @@ class AtlForestparkCityCouncilSpider(CityScrapersSpider):
 
         # Method 2: Fall back to regex for text-based content (live site)
         if not yielded:
+            # Get all text nodes and join with newlines to preserve structure
+            text_parts = response.xpath("//body//text()").getall()
+            text_content = "\n".join(t.strip() for t in text_parts if t.strip())
+
+            # Pattern for live site where date parts are on separate lines
             meeting_pattern = re.compile(
-                r"(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+"
-                r"([A-Z]{3})\s+(\d{1,2}),?\s*(\d{4})\s+"
-                r"(\d{1,2}:\d{2}\s*(?:AM|PM)\s*(?:EST|EDT)?)\s+"
-                r"([^\n]+?)(?=\s*(?:Agenda|Monday|Tuesday|Wednesday|Thursday|"
-                r"Friday|Saturday|Sunday|$))",
+                r"(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s*\n"
+                r"([A-Z]{3})\s+(\d{1,2}),?\s*\n"
+                r"(\d{4})\s*\n+\s*"
+                r"(\d{1,2}:\d{2}\s*(?:AM|PM)\s*(?:EST|EDT)?)\s*\n+\s*"
+                r"([^\n]+)",
                 re.IGNORECASE,
             )
 
-            for match in meeting_pattern.finditer(content):
+            for match in meeting_pattern.finditer(text_content):
                 day_name, month_abbr, day, year, time_str, title = match.groups()
 
                 title = title.strip()

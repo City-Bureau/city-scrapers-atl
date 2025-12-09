@@ -4,18 +4,11 @@ from datetime import datetime
 from city_scrapers_core.constants import BOARD, CITY_COUNCIL, COMMISSION, NOT_CLASSIFIED
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
+from scrapy import Request
 
 # NOTE: This scraper requires scrapy-playwright for JavaScript rendering.
 # The Forest Park website migrated to CivicClerk platform in 2025.
 # If scrapy-playwright is not available, this scraper will not work.
-#
-# To enable:
-# 1. Add to Pipfile: scrapy-playwright = "*"
-# 2. Run: pipenv install
-# 3. Add to settings: DOWNLOAD_HANDLERS = {
-#        "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
-#        "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
-#    }
 
 BASE_URL = "https://forestparkga.portal.civicclerk.com"
 
@@ -53,8 +46,6 @@ class AtlForestparkCityCouncilSpider(CityScrapersSpider):
 
     def start_requests(self):
         """Generate requests with Playwright for JavaScript rendering."""
-        from scrapy import Request
-
         yield Request(
             url=self.start_urls[0],
             meta={
@@ -135,7 +126,7 @@ class AtlForestparkCityCouncilSpider(CityScrapersSpider):
                 r"(\d{1,2}:\d{2}\s*(?:AM|PM)\s*(?:EST|EDT)?)\s+"
                 r"([^\n]+?)(?=\s*(?:Agenda|Monday|Tuesday|Wednesday|Thursday|"
                 r"Friday|Saturday|Sunday|$))",
-                re.IGNORECASE | re.DOTALL,
+                re.IGNORECASE,
             )
 
             for match in meeting_pattern.finditer(content):

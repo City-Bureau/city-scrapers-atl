@@ -1,4 +1,5 @@
 import re
+from datetime import datetime
 
 import dateutil.parser
 from city_scrapers_core.constants import NOT_CLASSIFIED
@@ -11,9 +12,12 @@ class IQM2Mixin(CityScrapersSpider):
     board_name = None
 
     def start_requests(self):
+        current_year = datetime.now().year
+        start_year = current_year - 3  # 3 years of history
+        end_year = current_year + 1  # Include next year's scheduled meetings
         return [
             Request(
-                f"https://{self.iqm2_slug}.iqm2.com/Citizens/Calendar.aspx?Frame=Yes&View=List&From=1/1/2021&To=12/31/2025"  # noqa
+                f"https://{self.iqm2_slug}.iqm2.com/Citizens/Calendar.aspx?Frame=Yes&View=List&From=1/1/{start_year}&To=12/31/{end_year}"  # noqa
             )
         ]
 

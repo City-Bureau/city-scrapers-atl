@@ -73,6 +73,10 @@ class ForestparkCityCouncilSpider(CityScrapersSpider):
             meeting["id"] = self._get_id(meeting)
             yield meeting
 
+        next_link = data.get("@odata.nextLink")
+        if next_link:
+            yield scrapy.Request(next_link, callback=self.parse)
+
     def _parse_datetime(self, dt_str):
         if not dt_str:
             return None

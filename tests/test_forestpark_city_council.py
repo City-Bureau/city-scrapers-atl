@@ -91,19 +91,19 @@ def test_location_default(parsed_items, spider):
     assert parsed_items[2]["location"] == spider.location
 
 
-def test_links_with_agenda_and_video(parsed_items):
+def test_links_with_files_and_video(parsed_items):
     links = parsed_items[0]["links"]
     assert len(links) == 3
 
-    details_links = [link for link in links if "Meeting Details" in link["title"]]
-    assert len(details_links) == 1
-    assert "event/569" in details_links[0]["href"]
-
-    agenda_links = [link for link in links if "Agenda" in link["title"]]
+    agenda_links = [link for link in links if link["title"] == "Agenda"]
     assert len(agenda_links) == 1
-    assert "agenda" in agenda_links[0]["href"]
+    assert "GetMeetingFile(fileId=100" in agenda_links[0]["href"]
 
-    video_links = [link for link in links if "Video" in link["title"]]
+    packet_links = [link for link in links if link["title"] == "Agenda Packet"]
+    assert len(packet_links) == 1
+    assert "GetMeetingFile(fileId=101" in packet_links[0]["href"]
+
+    video_links = [link for link in links if link["title"] == "Video"]
     assert len(video_links) == 1
     assert "youtube.com" in video_links[0]["href"]
     assert "abc123" in video_links[0]["href"]
@@ -111,16 +111,14 @@ def test_links_with_agenda_and_video(parsed_items):
 
 def test_links_with_agenda_only(parsed_items):
     links = parsed_items[3]["links"]
-    assert len(links) == 2
-    assert any("Meeting Details" in link["title"] for link in links)
-    assert any("Agenda" in link["title"] for link in links)
-
-
-def test_links_minimal(parsed_items):
-    links = parsed_items[1]["links"]
     assert len(links) == 1
-    assert "event/570" in links[0]["href"]
-    assert links[0]["title"] == "Meeting Details"
+    assert links[0]["title"] == "Agenda"
+    assert "GetMeetingFile(fileId=200" in links[0]["href"]
+
+
+def test_links_empty(parsed_items):
+    links = parsed_items[1]["links"]
+    assert len(links) == 0
 
 
 def test_source(parsed_items):
@@ -168,6 +166,7 @@ def test_unpublished_meetings_excluded(spider):
                 "hasAgenda": False,
                 "agendaId": None,
                 "youtubeVideoId": "",
+                "publishedFiles": [],
                 "eventLocation": None,
             }
         ]
@@ -284,54 +283,61 @@ class TestHelperMethods:
         result = spider._parse_location(event)
         assert result == spider.location
 
-    def test_parse_links_with_all_options(self, spider):
+    def test_parse_links_with_files(self, spider):
         event = {
-            "id": 123,
-            "hasAgenda": True,
-            "agendaId": 456,
+            "publishedFiles": [
+                {"fileId": 123, "type": "Agenda"},
+                {"fileId": 456, "type": "Minutes"},
+            ],
+            "youtubeVideoId": "",
+            "externalMediaUrl": "",
+        }
+        links = spider._parse_links(event)
+        assert len(links) == 2
+        assert links[0]["title"] == "Agenda"
+        assert "fileId=123" in links[0]["href"]
+        assert links[1]["title"] == "Minutes"
+        assert "fileId=456" in links[1]["href"]
+
+    def test_parse_links_with_video(self, spider):
+        event = {
+            "publishedFiles": [],
             "youtubeVideoId": "xyz789",
-            "externalMediaUrl": "https://example.com/video",
-        }
-        links = spider._parse_links(event)
-        assert len(links) == 4
-        assert any("event/123" in link["href"] for link in links)
-        assert any("agenda" in link["href"] for link in links)
-        assert any("youtube.com" in link["href"] for link in links)
-        assert any("example.com" in link["href"] for link in links)
-
-    def test_parse_links_minimal(self, spider):
-        event = {
-            "id": 123,
-            "hasAgenda": False,
-            "agendaId": None,
-            "youtubeVideoId": "",
             "externalMediaUrl": "",
         }
         links = spider._parse_links(event)
         assert len(links) == 1
-        assert "event/123" in links[0]["href"]
+        assert links[0]["title"] == "Video"
+        assert "youtube.com" in links[0]["href"]
+        assert "xyz789" in links[0]["href"]
 
-    def test_parse_links_no_event_id(self, spider):
+    def test_parse_links_with_external_video(self, spider):
         event = {
-            "id": None,
-            "hasAgenda": False,
-            "agendaId": None,
+            "publishedFiles": [],
+            "youtubeVideoId": "",
+            "externalMediaUrl": "https://example.com/video.mp4",
+        }
+        links = spider._parse_links(event)
+        assert len(links) == 1
+        assert links[0]["title"] == "Video"
+        assert links[0]["href"] == "https://example.com/video.mp4"
+
+    def test_parse_links_empty(self, spider):
+        event = {
+            "publishedFiles": [],
             "youtubeVideoId": "",
             "externalMediaUrl": "",
         }
         links = spider._parse_links(event)
-        assert len(links) == 1
-        assert "Meeting Portal" in links[0]["title"]
+        assert len(links) == 0
 
-    def test_parse_links_agenda_without_event_id(self, spider):
+    def test_parse_links_missing_file_id(self, spider):
         event = {
-            "id": None,
-            "hasAgenda": True,
-            "agendaId": 456,
+            "publishedFiles": [
+                {"type": "Agenda"},
+            ],
             "youtubeVideoId": "",
             "externalMediaUrl": "",
         }
         links = spider._parse_links(event)
-        assert len(links) == 1
-        assert "Meeting Portal" in links[0]["title"]
-        assert not any("agenda" in link["href"] for link in links)
+        assert len(links) == 0

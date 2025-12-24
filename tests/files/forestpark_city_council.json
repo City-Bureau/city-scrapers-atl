@@ -12,6 +12,20 @@
       "hasAgenda": true,
       "agendaId": 233,
       "youtubeVideoId": "abc123",
+      "publishedFiles": [
+        {
+          "fileId": 100,
+          "type": "Agenda",
+          "name": "City Council Agenda",
+          "url": "stream/FORESTPARKGA/agenda.pdf"
+        },
+        {
+          "fileId": 101,
+          "type": "Agenda Packet",
+          "name": "City Council Packet",
+          "url": "stream/FORESTPARKGA/packet.pdf"
+        }
+      ],
       "eventLocation": {
         "name": "City Hall",
         "address1": "745 Forest Pkwy",
@@ -32,6 +46,7 @@
       "hasAgenda": false,
       "agendaId": null,
       "youtubeVideoId": "",
+      "publishedFiles": [],
       "eventLocation": null
     },
     {
@@ -46,6 +61,7 @@
       "hasAgenda": false,
       "agendaId": null,
       "youtubeVideoId": "",
+      "publishedFiles": [],
       "eventLocation": null
     },
     {
@@ -60,6 +76,14 @@
       "hasAgenda": true,
       "agendaId": 250,
       "youtubeVideoId": "",
+      "publishedFiles": [
+        {
+          "fileId": 200,
+          "type": "Agenda",
+          "name": "Agency Agenda",
+          "url": "stream/FORESTPARKGA/agency_agenda.pdf"
+        }
+      ],
       "eventLocation": null
     },
     {
@@ -74,6 +98,7 @@
       "hasAgenda": false,
       "agendaId": null,
       "youtubeVideoId": "",
+      "publishedFiles": [],
       "eventLocation": null
     }
   ]

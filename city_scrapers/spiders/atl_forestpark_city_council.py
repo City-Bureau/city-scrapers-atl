@@ -12,6 +12,7 @@ class ForestparkCityCouncilSpider(CityScrapersSpider):
     timezone = "America/New_York"
 
     API_BASE = "https://forestparkga.api.civicclerk.com/v1/Events"
+    FILE_API_BASE = "https://forestparkga.api.civicclerk.com/v1/Meetings"
     PORTAL_BASE = "https://forestparkga.portal.civicclerk.com"
 
     location = {
@@ -110,30 +111,23 @@ class ForestparkCityCouncilSpider(CityScrapersSpider):
 
     def _parse_links(self, event):
         links = []
-        event_id = event.get("id")
 
-        if event_id:
-            links.append(
-                {
-                    "href": f"{self.PORTAL_BASE}/event/{event_id}",
-                    "title": "Meeting Details",
-                }
-            )
-
-        if event_id and event.get("hasAgenda") and event.get("agendaId"):
-            links.append(
-                {
-                    "href": f"{self.PORTAL_BASE}/event/{event_id}/agenda",
-                    "title": "Agenda",
-                }
-            )
+        for file in event.get("publishedFiles", []):
+            file_id = file.get("fileId")
+            file_type = file.get("type", "Document")
+            if file_id:
+                href = (
+                    f"{self.FILE_API_BASE}"
+                    f"/GetMeetingFile(fileId={file_id},plainText=false)"
+                )
+                links.append({"href": href, "title": file_type})
 
         youtube_id = event.get("youtubeVideoId")
         if youtube_id:
             links.append(
                 {
                     "href": f"https://www.youtube.com/watch?v={youtube_id}",
-                    "title": "Video Recording",
+                    "title": "Video",
                 }
             )
 
@@ -146,6 +140,4 @@ class ForestparkCityCouncilSpider(CityScrapersSpider):
                 }
             )
 
-        if not links:
-            return [{"href": self.PORTAL_BASE, "title": "Meeting Portal"}]
         return links

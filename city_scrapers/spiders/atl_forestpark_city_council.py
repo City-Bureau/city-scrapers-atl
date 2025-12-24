@@ -6,7 +6,7 @@ from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
 
 
-class AtlForestparkCityCouncilSpider(CityScrapersSpider):
+class ForestparkCityCouncilSpider(CityScrapersSpider):
     name = "atl_forestpark_city_council"
     agency = "Forest Park City Council"
     timezone = "America/New_York"

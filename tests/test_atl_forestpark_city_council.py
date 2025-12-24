@@ -5,7 +5,7 @@ from city_scrapers_core.constants import BOARD, CITY_COUNCIL, COMMISSION, NOT_CL
 from freezegun import freeze_time
 
 from city_scrapers.spiders.atl_forestpark_city_council import (
-    AtlForestparkCityCouncilSpider,
+    ForestparkCityCouncilSpider,
 )
 
 SAMPLE_API_RESPONSE = {
@@ -101,7 +101,7 @@ class MockResponse:
 
 @pytest.fixture
 def spider():
-    return AtlForestparkCityCouncilSpider()
+    return ForestparkCityCouncilSpider()
 
 
 @pytest.fixture

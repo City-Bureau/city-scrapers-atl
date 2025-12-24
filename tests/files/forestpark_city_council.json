@@ -1,0 +1,80 @@
+{
+  "value": [
+    {
+      "id": 569,
+      "eventName": "City Council Work Session",
+      "eventDescription": "Regular work session",
+      "startDateTime": "2024-12-02T18:00:00Z",
+      "meetingEndTime": "2024-12-02T20:00:00Z",
+      "isPublished": "Published",
+      "isDeleted": false,
+      "categoryName": "City Council",
+      "hasAgenda": true,
+      "agendaId": 233,
+      "youtubeVideoId": "abc123",
+      "eventLocation": {
+        "name": "City Hall",
+        "address1": "745 Forest Pkwy",
+        "city": "Forest Park",
+        "state": "GA",
+        "zip": "30297"
+      }
+    },
+    {
+      "id": 570,
+      "eventName": "Planning Commission Meeting",
+      "eventDescription": "",
+      "startDateTime": "2024-12-05T18:00:00Z",
+      "meetingEndTime": "1900-01-01T00:00:00Z",
+      "isPublished": "Published",
+      "isDeleted": false,
+      "categoryName": "Commission",
+      "hasAgenda": false,
+      "agendaId": null,
+      "youtubeVideoId": "",
+      "eventLocation": null
+    },
+    {
+      "id": 571,
+      "eventName": "Development Authority Meeting-- CANCELED",
+      "eventDescription": "",
+      "startDateTime": "2024-12-10T17:30:00Z",
+      "meetingEndTime": "1900-01-01T00:00:00Z",
+      "isPublished": "Published",
+      "isDeleted": false,
+      "categoryName": "Authority",
+      "hasAgenda": false,
+      "agendaId": null,
+      "youtubeVideoId": "",
+      "eventLocation": null
+    },
+    {
+      "id": 572,
+      "eventName": "Urban Redevelopment Agency Meeting",
+      "eventDescription": "Monthly agency meeting",
+      "startDateTime": "2024-12-15T17:30:00Z",
+      "meetingEndTime": "2024-12-15T19:30:00Z",
+      "isPublished": "Published",
+      "isDeleted": false,
+      "categoryName": "Agency",
+      "hasAgenda": true,
+      "agendaId": 250,
+      "youtubeVideoId": "",
+      "eventLocation": null
+    },
+    {
+      "id": 573,
+      "eventName": "Deleted Meeting",
+      "eventDescription": "",
+      "startDateTime": "2024-12-20T18:00:00Z",
+      "meetingEndTime": "1900-01-01T00:00:00Z",
+      "isPublished": "Published",
+      "isDeleted": true,
+      "categoryName": "City Council",
+      "hasAgenda": false,
+      "agendaId": null,
+      "youtubeVideoId": "",
+      "eventLocation": null
+    }
+  ]
+}

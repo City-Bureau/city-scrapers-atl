@@ -1,4 +1,6 @@
+import json
 from datetime import datetime
+from pathlib import Path
 
 import pytest
 from city_scrapers_core.constants import BOARD, CITY_COUNCIL, COMMISSION, NOT_CLASSIFIED
@@ -8,86 +10,7 @@ from city_scrapers.spiders.atl_forestpark_city_council import (
     ForestparkCityCouncilSpider,
 )
 
-SAMPLE_API_RESPONSE = {
-    "value": [
-        {
-            "id": 569,
-            "eventName": "City Council Work Session",
-            "eventDescription": "Regular work session",
-            "startDateTime": "2024-12-02T18:00:00Z",
-            "meetingEndTime": "2024-12-02T20:00:00Z",
-            "isPublished": "Published",
-            "isDeleted": False,
-            "categoryName": "City Council",
-            "hasAgenda": True,
-            "agendaId": 233,
-            "youtubeVideoId": "abc123",
-            "eventLocation": {
-                "name": "City Hall",
-                "address1": "745 Forest Pkwy",
-                "city": "Forest Park",
-                "state": "GA",
-                "zip": "30297",
-            },
-        },
-        {
-            "id": 570,
-            "eventName": "Planning Commission Meeting",
-            "eventDescription": "",
-            "startDateTime": "2024-12-05T18:00:00Z",
-            "meetingEndTime": "1900-01-01T00:00:00Z",
-            "isPublished": "Published",
-            "isDeleted": False,
-            "categoryName": "Commission",
-            "hasAgenda": False,
-            "agendaId": None,
-            "youtubeVideoId": "",
-            "eventLocation": None,
-        },
-        {
-            "id": 571,
-            "eventName": "Development Authority Meeting-- CANCELED",
-            "eventDescription": "",
-            "startDateTime": "2024-12-10T17:30:00Z",
-            "meetingEndTime": "1900-01-01T00:00:00Z",
-            "isPublished": "Published",
-            "isDeleted": False,
-            "categoryName": "Authority",
-            "hasAgenda": False,
-            "agendaId": None,
-            "youtubeVideoId": "",
-            "eventLocation": None,
-        },
-        {
-            "id": 572,
-            "eventName": "Urban Redevelopment Agency Meeting",
-            "eventDescription": "Monthly agency meeting",
-            "startDateTime": "2024-12-15T17:30:00Z",
-            "meetingEndTime": "2024-12-15T19:30:00Z",
-            "isPublished": "Published",
-            "isDeleted": False,
-            "categoryName": "Agency",
-            "hasAgenda": True,
-            "agendaId": 250,
-            "youtubeVideoId": "",
-            "eventLocation": None,
-        },
-        {
-            "id": 573,
-            "eventName": "Deleted Meeting",
-            "eventDescription": "",
-            "startDateTime": "2024-12-20T18:00:00Z",
-            "meetingEndTime": "1900-01-01T00:00:00Z",
-            "isPublished": "Published",
-            "isDeleted": True,
-            "categoryName": "City Council",
-            "hasAgenda": False,
-            "agendaId": None,
-            "youtubeVideoId": "",
-            "eventLocation": None,
-        },
-    ]
-}
+FIXTURE_PATH = Path(__file__).parent / "files" / "forestpark_city_council.json"
 
 
 class MockResponse:
@@ -107,7 +30,9 @@ def spider():
 @pytest.fixture
 def parsed_items(spider):
     with freeze_time("2024-12-03"):
-        response = MockResponse(SAMPLE_API_RESPONSE)
+        with open(FIXTURE_PATH) as f:
+            data = json.load(f)
+        response = MockResponse(data)
         return list(spider.parse(response))
 
 
@@ -219,7 +144,9 @@ def test_time_notes(parsed_items):
 
 def test_deleted_meetings_excluded(spider):
     with freeze_time("2024-12-03"):
-        response = MockResponse(SAMPLE_API_RESPONSE)
+        with open(FIXTURE_PATH) as f:
+            data = json.load(f)
+        response = MockResponse(data)
         items = list(spider.parse(response))
         titles = [item["title"] for item in items]
         assert "Deleted Meeting" not in titles

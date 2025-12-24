@@ -101,7 +101,7 @@ class ForestparkCityCouncilSpider(CityScrapersSpider):
                 event_location.get("address1", ""),
                 event_location.get("city", ""),
                 event_location.get("state", ""),
-                event_location.get("zip", ""),
+                event_location.get("zipCode") or event_location.get("zip", ""),
             ]
             address = ", ".join(p.strip() for p in address_parts if p and p.strip())
             if name or address:
@@ -120,7 +120,7 @@ class ForestparkCityCouncilSpider(CityScrapersSpider):
                 }
             )
 
-        if event.get("hasAgenda") and event.get("agendaId"):
+        if event_id and event.get("hasAgenda") and event.get("agendaId"):
             links.append(
                 {
                     "href": f"{self.PORTAL_BASE}/event/{event_id}/agenda",

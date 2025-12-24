@@ -83,6 +83,7 @@ def test_location_with_data(parsed_items):
     assert "745 Forest Pkwy" in parsed_items[0]["location"]["address"]
     assert "Forest Park" in parsed_items[0]["location"]["address"]
     assert "GA" in parsed_items[0]["location"]["address"]
+    assert "30297" in parsed_items[0]["location"]["address"]
 
 
 def test_location_default(parsed_items, spider):
@@ -229,7 +230,23 @@ class TestHelperMethods:
     def test_parse_classification_empty(self, spider):
         assert spider._parse_classification("") == NOT_CLASSIFIED
 
-    def test_parse_location_with_full_data(self, spider):
+    def test_parse_location_with_zipcode(self, spider):
+        event = {
+            "eventLocation": {
+                "name": "City Hall",
+                "address1": "123 Main St",
+                "city": "Forest Park",
+                "state": "GA",
+                "zipCode": "30297",
+            }
+        }
+        result = spider._parse_location(event)
+        assert result["name"] == "City Hall"
+        assert "123 Main St" in result["address"]
+        assert "Forest Park" in result["address"]
+        assert "30297" in result["address"]
+
+    def test_parse_location_with_zip_fallback(self, spider):
         event = {
             "eventLocation": {
                 "name": "City Hall",
@@ -241,8 +258,7 @@ class TestHelperMethods:
         }
         result = spider._parse_location(event)
         assert result["name"] == "City Hall"
-        assert "123 Main St" in result["address"]
-        assert "Forest Park" in result["address"]
+        assert "30297" in result["address"]
 
     def test_parse_location_without_name(self, spider):
         event = {
@@ -251,7 +267,7 @@ class TestHelperMethods:
                 "address1": "123 Main St",
                 "city": "Forest Park",
                 "state": "GA",
-                "zip": "30297",
+                "zipCode": "30297",
             }
         }
         result = spider._parse_location(event)
@@ -306,3 +322,16 @@ class TestHelperMethods:
         links = spider._parse_links(event)
         assert len(links) == 1
         assert "Meeting Portal" in links[0]["title"]
+
+    def test_parse_links_agenda_without_event_id(self, spider):
+        event = {
+            "id": None,
+            "hasAgenda": True,
+            "agendaId": 456,
+            "youtubeVideoId": "",
+            "externalMediaUrl": "",
+        }
+        links = spider._parse_links(event)
+        assert len(links) == 1
+        assert "Meeting Portal" in links[0]["title"]
+        assert not any("agenda" in link["href"] for link in links)

@@ -2,7 +2,7 @@ import re
 from datetime import datetime
 
 import dateutil.parser
-from city_scrapers_core.constants import NOT_CLASSIFIED
+from city_scrapers_core.constants import CITY_COUNCIL, COMMITTEE, NOT_CLASSIFIED
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
 from scrapy.http import Request
@@ -10,6 +10,7 @@ from scrapy.http import Request
 
 class IQM2Mixin(CityScrapersSpider):
     board_name = None
+    source_url = "https://citycouncil.atlantaga.gov/other/events/public-meetings"
 
     def start_requests(self):
         current_year = datetime.now().year
@@ -17,9 +18,13 @@ class IQM2Mixin(CityScrapersSpider):
         end_year = current_year + 1  # Include next year's scheduled meetings
         return [
             Request(
-                f"https://{self.iqm2_slug}.iqm2.com/Citizens/Calendar.aspx?Frame=Yes&View=List&From=1/1/{start_year}&To=12/31/{end_year}"  # noqa
+                f"https://{self.iqm2_slug}.iqm2.com/Citizens/calendar.aspx?View=List&From=1/1/{start_year}&To=12/31/{end_year}"  # noqa
             )
         ]
+    
+    custom_settings = {
+        "ROBOTSTXT_OBEY": False,
+    }
 
     def parse(self, response):
         for item in response.css(".MeetingRow"):
@@ -31,13 +36,13 @@ class IQM2Mixin(CityScrapersSpider):
                 title=self._parse_title(item),
                 description=self._parse_description(item),
                 start=self._parse_start(item),
-                classification=NOT_CLASSIFIED,
+                classification=self._parse_classification(item),
                 end=None,
                 all_day=False,
                 time_notes="",
                 location=self._parse_location(item),
                 links=self._parse_links(item),
-                source=self._parse_source(response),
+                source=self.source_url,
             )
 
             meeting["status"] = self._get_status(meeting)
@@ -51,6 +56,12 @@ class IQM2Mixin(CityScrapersSpider):
 
     def _parse_description(self, item):
         return item.css(".RowLink a").xpath("@title").get()
+
+    def _parse_classification(self, item):
+        """Parse or generate meeting classification."""
+        if "committee" in self.board_name.lower():
+             return COMMITTEE
+        return CITY_COUNCIL
 
     def _parse_start(self, item):
         """Parse start datetime as a naive datetime object."""
@@ -66,13 +77,22 @@ class IQM2Mixin(CityScrapersSpider):
 
     def _parse_links(self, item):
         links = []
+        
+        # Capture FileOpen links (Agenda, Minutes, etc.)
         for link in item.xpath(".//a[contains(@href, 'FileOpen')]"):
-            href = f"https://{self.iqm2_slug}.iqm2.com/" + link.xpath("@href").get()
+            href = f"https://{self.iqm2_slug}.iqm2.com/Citizens/" + link.xpath("@href").get()
             title = link.css("::text").get()
             if href:
                 links.append({"href": href, "title": title})
+        
+        # Capture Video link (URL is in onclick)
+        for link in item.xpath(".//a[contains(@onclick, 'SplitView.aspx')]"):
+            onclick = link.xpath("@onclick").get("")
+            # Extract the URL from OpenWindow("...")
+            match = re.search(r'OpenWindow\("([^"]+)"', onclick)
+            if match:
+                href = f"https://{self.iqm2_slug}.iqm2.com" + match.group(1)
+                title = link.css("::text").get()
+                links.append({"href": href, "title": title})
+        
         return links
-
-    def _parse_source(self, response):
-        """Parse or generate source."""
-        return response.url

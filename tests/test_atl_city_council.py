@@ -31,19 +31,29 @@ freezer.stop()
 
 
 def test_title():
-    assert (
-        parsed_items[0]["title"]
-        == "Atlanta City Council - Regular Meeting"
-    )
+    assert parsed_items[0]["title"] == "Atlanta City Council - Regular Meeting"
 
 
 def test_description():
-    assert "Status:\tClosed" in parsed_items[0]["description"]
-    assert "Board:\tAtlanta City Council" in parsed_items[0]["description"]
+    assert parsed_items[0]["description"] == ""
 
 
 def test_start():
     assert parsed_items[0]["start"] == datetime(2026, 1, 5, 13, 0)
+
+
+def test_classification():
+    from city_scrapers_core.constants import CITY_COUNCIL
+
+    assert parsed_items[0]["classification"] == CITY_COUNCIL
+
+
+def test_location():
+    assert (
+        parsed_items[0]["location"]["name"]
+        == "Marvin S. Arrington, Sr. Council Chamber"
+    )
+    assert "55 Trinity Avenue" in parsed_items[0]["location"]["address"]
 
 
 def test_links():
@@ -69,6 +79,7 @@ def test_links():
             "title": "Video",
         },
     ]
+
 
 # The number of meetings for 2026 year
 @pytest.mark.parametrize(

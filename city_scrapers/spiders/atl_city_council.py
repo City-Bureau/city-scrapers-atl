@@ -1,7 +1,3 @@
-from datetime import datetime
-import re
-from scrapy.http import Request
-
 from city_scrapers_core.spiders import CityScrapersSpider
 
 from ..mixins.iqm2 import IQM2Mixin
@@ -14,40 +10,9 @@ class AtlCityCouncilSpider(IQM2Mixin, CityScrapersSpider):
 
     iqm2_slug = "atlantacityga"
     board_name = "Atlanta City Council"
+    source_url = "https://citycouncil.atlantaga.gov/other/events/public-meetings"
 
-    def start_requests(self):
-        current_year = datetime.now().year
-        start_year = current_year - 3
-        end_year = current_year + 1
-        return [
-            Request(
-                f"https://{self.iqm2_slug}.iqm2.com/Citizens/calendar.aspx?View=List&From=1/1/{start_year}&To=12/31/{end_year}"
-            )
-        ]
-    
-    def _parse_links(self, item):
-        links = []
-        
-        for link in item.xpath(".//a[contains(@href, 'FileOpen')]"):
-            href = f"https://{self.iqm2_slug}.iqm2.com/Citizens/" + link.xpath("@href").get()
-            title = link.css("::text").get()
-            if href:
-                links.append({"href": href, "title": title})
-        
-        for link in item.xpath(".//a[contains(@onclick, 'SplitView.aspx')]"):
-            onclick = link.xpath("@onclick").get("")
-            match = re.search(r'OpenWindow\("([^"]+)"', onclick)
-            if match:
-                href = f"https://{self.iqm2_slug}.iqm2.com" + match.group(1)
-                title = link.css("::text").get()
-                links.append({"href": href, "title": title})
-        
-        return links
-    
-    def _parse_source(self, response):
-        """Parse or generate source."""
-        source_url = "https://citycouncil.atlantaga.gov/other/events/public-meetings"
-        return source_url
+    meeting_description = ""
 
 
 class AtlCityCouncilFinSpider(AtlCityCouncilSpider):

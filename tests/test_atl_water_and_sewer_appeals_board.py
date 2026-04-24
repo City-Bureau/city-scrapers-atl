@@ -11,6 +11,7 @@ from city_scrapers.spiders.atl_water_and_sewer_appeals_board import (
     AtlWaterAndSewerAppealsBoardSpider,
 )
 
+
 @pytest.fixture
 def spider():
     return AtlWaterAndSewerAppealsBoardSpider()
@@ -20,23 +21,25 @@ def spider():
 def listing_response():
     return file_response(
         join(dirname(__file__), "files", "atl_water_and_sewer_appeals_board.html"),
-        url="https://citycouncil.atlantaga.gov/other/events/public-meetings/-curm-6/-cury-2025",
+        url="https://citycouncil.atlantaga.gov/other/events/public-meetings/-curm-6/-cury-2025",  # noqa
     )
 
 
 @pytest.fixture
 def detail_response():
     with open(
-        join(dirname(__file__), "files", "atl_water_and_sewer_appeals_board_detail.html"),
+        join(
+            dirname(__file__), "files", "atl_water_and_sewer_appeals_board_detail.html"
+        ),  # noqa
         encoding="utf-8",
     ) as f:
         body = f.read()
     return HtmlResponse(
-        url="https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/11129/165?curm=6&cury=2025",
+        url="https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/11129/165?curm=6&cury=2025",  # noqa
         body=body.encode("utf-8"),
         encoding="utf-8",
         request=Request(
-            url="https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/11129/165?curm=6&cury=2025",
+            url="https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/11129/165?curm=6&cury=2025",  # noqa
             meta={"title": "Watershed Water and Sewer Appeals Board"},
         ),
     )
@@ -54,16 +57,20 @@ def parsed_items(spider, detail_response):
 @pytest.fixture
 def detail_response_2026():
     with open(
-        join(dirname(__file__), "files", "atl_water_and_sewer_appeals_board_detail_2026.html"),
+        join(
+            dirname(__file__),
+            "files",
+            "atl_water_and_sewer_appeals_board_detail_2026.html",
+        ),  # noqa
         encoding="utf-8",
     ) as f:
         body = f.read()
     return HtmlResponse(
-        url="https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/12243/165?curm=4&cury=2026",
+        url="https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/12243/165?curm=4&cury=2026",  # noqa
         body=body.encode("utf-8"),
         encoding="utf-8",
         request=Request(
-            url="https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/12243/165?curm=4&cury=2026",
+            url="https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/12243/165?curm=4&cury=2026",  # noqa
             meta={"title": "Water and Sewer Appeals Board"},
         ),
     )
@@ -125,12 +132,18 @@ def test_location(parsed_items):
 
 
 def test_source(parsed_items):
-    assert parsed_items[0]["source"] == "https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/11129/165?curm=6&cury=2025"
+    assert (
+        parsed_items[0]["source"]
+        == "https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/11129/165?curm=6&cury=2025"  # noqa
+    )
 
 
 def test_links(parsed_items):
     assert parsed_items[0]["links"] == [
-        {"href": "https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/11129/165?curm=6&cury=2025", "title": "Agenda"}
+        {
+            "href": "https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/11129/165?curm=6&cury=2025",  # noqa
+            "title": "Agenda",
+        }
     ]
 
 
@@ -166,12 +179,18 @@ def test_2026_location(parsed_items_2026):
 
 
 def test_2026_source(parsed_items_2026):
-    assert parsed_items_2026[0]["source"] == "https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/12243/165?curm=4&cury=2026"
+    assert (
+        parsed_items_2026[0]["source"]
+        == "https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/12243/165?curm=4&cury=2026"  # noqa
+    )
 
 
 def test_2026_links(parsed_items_2026):
     assert parsed_items_2026[0]["links"] == [
-        {"href": "https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/12243/165?curm=4&cury=2026", "title": "Agenda"}
+        {
+            "href": "https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/12243/165?curm=4&cury=2026",  # noqa
+            "title": "Agenda",
+        }
     ]
 
 

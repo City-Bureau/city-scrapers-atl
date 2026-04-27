@@ -47,7 +47,6 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                 headers=self.headers,
                 callback=self.parse,
             )
-            break
 
     def parse(self, response):
         data = response.json().get("Row", [])

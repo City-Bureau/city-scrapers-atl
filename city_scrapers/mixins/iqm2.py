@@ -1,8 +1,8 @@
-from datetime import datetime
 import re
+from datetime import datetime
 
 import dateutil.parser
-from city_scrapers_core.constants import COMMITTEE, CITY_COUNCIL, NOT_CLASSIFIED
+from city_scrapers_core.constants import CITY_COUNCIL, COMMITTEE, NOT_CLASSIFIED
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
 from scrapy.http import Request
@@ -31,7 +31,11 @@ class IQM2Mixin(CityScrapersSpider):
                 continue
             meeting = Meeting(
                 title=self._parse_title(item),
-                description=self.meeting_description if self.meeting_description is not None else self._parse_description(item),  # noqa
+                description=(
+                    self.meeting_description
+                    if self.meeting_description is not None
+                    else self._parse_description(item)
+                ),  # noqa
                 start=self._parse_start(item),
                 classification=self._parse_classification(item),
                 end=None,
@@ -39,7 +43,7 @@ class IQM2Mixin(CityScrapersSpider):
                 time_notes="",
                 location=self._parse_location(item),
                 links=self._parse_links(item),
-                source=self.source_url or self._parse_source(response)
+                source=self.source_url or response.url,
             )
 
             meeting["status"] = self._get_status(meeting)
@@ -82,7 +86,10 @@ class IQM2Mixin(CityScrapersSpider):
         links = []
 
         for link in item.xpath(".//a[contains(@href, 'FileOpen')]"):
-            href = f"https://{self.iqm2_slug}.iqm2.com/Citizens/" + link.xpath("@href").get()  # noqa
+            href = (
+                f"https://{self.iqm2_slug}.iqm2.com/Citizens/"
+                + link.xpath("@href").get()
+            )  # noqa
             title = link.css("::text").get()
             if href:
                 links.append({"href": href, "title": title})
@@ -96,7 +103,3 @@ class IQM2Mixin(CityScrapersSpider):
                 links.append({"href": href, "title": title})
 
         return links
-
-    def _parse_source(self, response):
-        """Parse or generate source."""
-        return response.url

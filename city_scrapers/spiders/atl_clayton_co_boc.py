@@ -35,40 +35,44 @@ class AtlClaytonCoBocSpider(CityScrapersSpider):
     }
 
     def start_requests(self):
-        yield scrapy.Request(url=self.upcoming_url, callback=self.archived_requests)
+        yield scrapy.Request(url=self.upcoming_url, callback=self._parse_upcoming_meetings)
 
-    def archived_requests(self, response):
+    def _parse_upcoming_meetings(self, response):
+        meetings = response.json()
+        for item in meetings:
+            yield self._parse_meeting(item)
+        
         current_year = datetime.now(ZoneInfo(self.timezone)).year
         for year in range(current_year - 3, current_year + 1):
             yield scrapy.Request(
                 url=self.archived_url.format(year=year),
-                callback=self.parse,
-                meta={"upcoming_meetings": response},
+                callback=self._parse_archived_meetings,
             )
 
-    def parse(self, response):
-        upcoming_meetings = response.meta.get("upcoming_meetings", [])
-        response = response.json() + upcoming_meetings.json()
+    def _parse_archived_meetings(self, response):
+        meetings = response.json()
+        for item in meetings:
+            yield self._parse_meeting(item)
 
-        for item in response:
-            title = item.get("title", "")
-            meeting = Meeting(
-                title=title,
-                description="",
-                classification=BOARD,
-                start=self._parse_start(item),
-                end=None,
-                all_day=False,
-                time_notes=self.time_notes,
-                location=self.meeting_address,
-                links=self._parse_links(item),
-                source=self.source_url,
-            )
+    def _parse_meeting(self, item):
+        title = item.get("title", "")
+        meeting = Meeting(
+            title=title,
+            description="",
+            classification=BOARD,
+            start=self._parse_start(item),
+            end=None,
+            all_day=False,
+            time_notes=self.time_notes,
+            location=self.meeting_address,
+            links=self._parse_links(item),
+            source=self.source_url,
+        )
 
-            meeting["status"] = self._get_status(meeting)
-            meeting["id"] = self._get_id(meeting)
+        meeting["status"] = self._get_status(meeting)
+        meeting["id"] = self._get_id(meeting)
 
-            yield meeting
+        return meeting
 
     def _parse_start(self, item):
         """Parse start datetime as a naive datetime object."""

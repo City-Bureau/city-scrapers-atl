@@ -11,7 +11,7 @@ env:
   PIPENV_VENV_IN_PROJECT: true
   AIRTABLE_PAT: ${{ secrets.AIRTABLE_PAT }}
   AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
-  AIRTABLE_TABLE: ${{ secrets.AIRTABLE_TABLE_ID }} 
+  AIRTABLE_TABLE_ID: ${{ secrets.AIRTABLE_TABLE_ID }} 
 
 jobs:
   sync-airtable:
@@ -66,5 +66,5 @@ jobs:
         env:
           AIRTABLE_PAT: ${{ secrets.AIRTABLE_PAT }}
           AIRTABLE_BASE_ID: ${{ secrets.AIRTABLE_BASE_ID }}
-          AIRTABLE_TABLE: ${{ secrets.AIRTABLE_TABLE_ID }}
+          AIRTABLE_TABLE_ID: ${{ secrets.AIRTABLE_TABLE_ID }}
         run: python .github/scripts/sync_spiders.py ${{ steps.changed.outputs.all_changed_files }}

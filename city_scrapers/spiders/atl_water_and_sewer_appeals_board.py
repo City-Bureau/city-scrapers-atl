@@ -57,7 +57,7 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                     )
 
         next_url = response.css("a.next::attr(href)").get()
-        if next_url and next_url.startswith("/"):
+        if next_url and not next_url.startswith("javascript:"):
             yield response.follow(next_url, self.parse)
 
     def _parse_detail(self, response):
@@ -86,23 +86,19 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         yield meeting
 
     def _parse_start(self, response):
-        iso = response.css("time[itemprop='startDate']::attr(datetime)").get()
-        if iso:
-            return (
-                datetime.fromisoformat(iso)
-                .astimezone(ZoneInfo(self.timezone))
-                .replace(tzinfo=None)
-            )  # noqa
-        return None
+        return self._parse_datetime(response, "startDate")
 
     def _parse_end(self, response):
-        iso = response.css("time[itemprop='endDate']::attr(datetime)").get()
+        return self._parse_datetime(response, "endDate")
+
+    def _parse_datetime(self, response, itemprop):
+        iso = response.css(f"time[itemprop='{itemprop}']::attr(datetime)").get()
         if iso:
             return (
                 datetime.fromisoformat(iso)
                 .astimezone(ZoneInfo(self.timezone))
                 .replace(tzinfo=None)
-            )  # noqa
+            )
         return None
 
     def _parse_location(self):

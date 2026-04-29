@@ -2,7 +2,6 @@ from datetime import datetime
 from os.path import dirname, join
 
 import pytest
-import scrapy
 from city_scrapers_core.constants import BOARD
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
@@ -16,53 +15,28 @@ def spider():
 
 
 @pytest.fixture(scope="module")
-def upcoming_meetings_data():
+def archived_meetings_data():
     response = file_response(
         join(
             dirname(__file__),
             "files",
-            "atl_clayton_co_boc_upcoming_meetings.json",
+            "atl_clayton_co_boc_meetings.json",
         ),
-        url="https://claytoncountyga.primegov.com/api/v2/PublicPortal/ListUpcomingMeetings",  # noqa
+        url="https://claytoncountyga.primegov.com/api/v2/PublicPortal/ListArchivedMeetings?year=2026",  # noqa
     )
-    return response
-
-
-@pytest.fixture(scope="module")
-def archived_meetings_data(upcoming_meetings_data):
-    url = "https://claytoncountyga.primegov.com/api/v2/PublicPortal/ListArchivedMeetings?year=2026"  # noqa
-
-    request = scrapy.Request(
-        url=url,
-        meta={
-            "upcoming_meetings": upcoming_meetings_data,
-        },
-    )
-
-    response = file_response(
-        join(
-            dirname(__file__),
-            "files",
-            "atl_clayton_co_boc_archived_meetings.json",
-        ),
-        url=url,
-    )
-
-    response.request = request
-
     return response
 
 
 @pytest.fixture(scope="module")
 def parsed_items(spider, archived_meetings_data):
     with freeze_time("2026-04-27"):
-        items = list(spider.parse(archived_meetings_data))
+        items = list(spider._parse_archived_meetings(archived_meetings_data))
 
     return items
 
 
 def test_count(parsed_items):
-    assert len(parsed_items) == 20
+    assert len(parsed_items) == 18
 
 
 def test_title(parsed_items):
@@ -125,7 +99,7 @@ def test_links(parsed_items):
         },
         {
             "title": "Video",
-            "href": "http://claytoncountyga.granicus.com/MediaPlayer.php?clip_id=34",
+            "href": "https://claytoncountyga.granicus.com/MediaPlayer.php?clip_id=34",
         },
     ]
 

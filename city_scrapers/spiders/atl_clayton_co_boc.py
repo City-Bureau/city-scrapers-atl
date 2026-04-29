@@ -42,7 +42,7 @@ class AtlClaytonCoBocSpider(CityScrapersSpider):
     def _parse_upcoming_meetings(self, response):
         meetings = response.json()
         for item in meetings:
-            yield self._parse_meeting(item)
+            yield self.parse(item)
 
         current_year = datetime.now(ZoneInfo(self.timezone)).year
         for year in range(current_year - 3, current_year + 1):
@@ -54,9 +54,9 @@ class AtlClaytonCoBocSpider(CityScrapersSpider):
     def _parse_archived_meetings(self, response):
         meetings = response.json()
         for item in meetings:
-            yield self._parse_meeting(item)
+            yield self.parse(item)
 
-    def _parse_meeting(self, item):
+    def parse(self, item):
         title = item.get("title", "")
         meeting = Meeting(
             title=title,

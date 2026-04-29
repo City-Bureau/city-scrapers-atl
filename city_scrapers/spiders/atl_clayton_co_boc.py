@@ -113,7 +113,7 @@ class AtlClaytonCoBocSpider(CityScrapersSpider):
                 {
                     "title": "Video",
                     "href": (
-                        "http:" + parsed_video_link
+                        "https:" + parsed_video_link
                         if parsed_video_link.startswith("//")
                         else parsed_video_link
                     ),

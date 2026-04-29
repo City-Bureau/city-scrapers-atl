@@ -10,6 +10,7 @@ city-scrapers-core = {ref = "main", git = "https://github.com/City-Bureau/city-s
 scrapy-wayback-middleware = "*"
 python-dateutil = "*"
 importlib-resources = "*"
+tzdata = "*"
 
 [dev-packages]
 freezegun = "*"

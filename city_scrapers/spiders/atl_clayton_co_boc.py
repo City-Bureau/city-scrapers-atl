@@ -35,13 +35,15 @@ class AtlClaytonCoBocSpider(CityScrapersSpider):
     }
 
     def start_requests(self):
-        yield scrapy.Request(url=self.upcoming_url, callback=self._parse_upcoming_meetings)
+        yield scrapy.Request(
+            url=self.upcoming_url, callback=self._parse_upcoming_meetings
+        )
 
     def _parse_upcoming_meetings(self, response):
         meetings = response.json()
         for item in meetings:
             yield self._parse_meeting(item)
-        
+
         current_year = datetime.now(ZoneInfo(self.timezone)).year
         for year in range(current_year - 3, current_year + 1):
             yield scrapy.Request(

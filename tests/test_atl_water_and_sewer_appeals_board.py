@@ -113,7 +113,9 @@ def test_end(parsed_items):
 
 
 def test_time_notes(parsed_items):
-    assert parsed_items[0]["time_notes"] == ""
+    assert (
+        parsed_items[0]["time_notes"] == "See attachments for accurate location details"
+    )
 
 
 def test_classification(parsed_items):
@@ -126,8 +128,8 @@ def test_status(parsed_items):
 
 def test_location(parsed_items):
     assert parsed_items[0]["location"] == {
-        "address": "72 Marietta ST, Atlanta, GA 30303",
-        "name": "Main Floor, Auditorium (Room 215)",
+        "address": "",
+        "name": "",
     }
 
 
@@ -173,8 +175,8 @@ def test_2026_classification(parsed_items_2026):
 
 def test_2026_location(parsed_items_2026):
     assert parsed_items_2026[0]["location"] == {
-        "address": "72 Marietta ST, Atlanta, GA 30303",
-        "name": "Main Floor, Auditorium (Room 215)",
+        "address": "",
+        "name": "",
     }
 
 

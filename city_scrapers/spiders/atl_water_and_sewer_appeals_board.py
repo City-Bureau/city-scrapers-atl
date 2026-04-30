@@ -32,19 +32,21 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         "AUTOTHROTTLE_ENABLED": True,
         "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
     }
-    calendar_url = "https://citycouncil.atlantaga.gov/other/events/public-meetings/-curm-{month}/-cury-{year}"
+    calendar_url = "https://citycouncil.atlantaga.gov/other/events/public-meetings/-curm-{month}/-cury-{year}"  # noqa
+    tz = ZoneInfo(timezone)
+    past_year_range = 4
 
     sharepoint_base_url = "https://cityofatlanta-my.sharepoint.com"
     folders_endpoint = "https://cityofatlanta-my.sharepoint.com/personal/appeals_atlantaga_gov/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments%27&RootFolder=%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments%2FWater%20and%20Sewer%20Appeals%20Board&TryNewExperienceSingle=TRUE"  # noqa
     items_endpoint = "https://cityofatlanta-my.sharepoint.com/personal/appeals_atlantaga_gov/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments%27&RootFolder={root_folder}"  # noqa
-    sharepoint_url = "https://cityofatlanta-my.sharepoint.com/:f:/g/personal/appeals_atlantaga_gov/En0FGmWTfENHtqM7cf2A3W0BwBybjiODvcP1ngdKdYBiQg?e=jKmZdu"
+    sharepoint_url = "https://cityofatlanta-my.sharepoint.com/:f:/g/personal/appeals_atlantaga_gov/En0FGmWTfENHtqM7cf2A3W0BwBybjiODvcP1ngdKdYBiQg?e=jKmZdu"  # noqa
     sharepoint_headers = {
         "CollectSPPerfMetrics": "SPSQLQueryCount",
         "Referer": "https://cityofatlanta-my.sharepoint.com/personal/appeals_atlantaga_gov/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments%2FWater%20and%20Sewer%20Appeals%20Board&ga=1",  # noqa
         "Origin": "https://cityofatlanta-my.sharepoint.com",
         "X-ServiceWorker-Strategy": "CacheFirst",
         "X-Service-Worker-Prefetch-And-Coalesce": "true",
-        "X-SP-REQUESTRESOURCES": "listUrl=%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments",
+        "X-SP-REQUESTRESOURCES": "listUrl=%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments",  # noqa
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",  # noqa
         "Accept": "application/json;odata=verbose",
         "Content-Type": "application/json;odata=verbose",
@@ -63,14 +65,15 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
             url=self.sharepoint_url,
             callback=self._sharepoint_request,
         )
-        
+
     def _sharepoint_request(self, response):
-        cookie = response.headers.getlist("Set-Cookie")
         try:
             cookie = response.headers.getlist("Set-Cookie")
             self.sharepoint_headers["Cookie"] = cookie
         except Exception as e:
-            self.logger.error("Failed to extract cookies from SharePoint response: %s", e)
+            self.logger.error(
+                "Failed to extract cookies from SharePoint response: %s", e
+            )  # noqa
             return
         self._pending_sharepoint_requests += 1
         yield scrapy.Request(
@@ -79,7 +82,6 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
             headers=self.sharepoint_headers,
             callback=self._parse_folders,
             dont_filter=True,
-            meta={"dont_merge_cookies": True},
         )
 
     def _parse_folders(self, response):
@@ -87,13 +89,15 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
             data = response.json()
         except Exception as e:
             self.logger.error(
-                "SharePoint folders response was not JSON: %s %s", e, response.text[:500]
+                "SharePoint folders response was not JSON: %s %s",
+                e,
+                response.text[:500],  # noqa
             )
             self._pending_sharepoint_requests -= 1
             yield from self._start_calendar()
             return
 
-        now = datetime.now(ZoneInfo(self.timezone))
+        now = datetime.now(self.tz)
         end_year = now.year + 1
 
         for item in data.get("Row", []):
@@ -116,7 +120,7 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                 method="POST",
                 headers=self.sharepoint_headers,
                 callback=self._parse_folder_items,
-                meta={"folder_name": item.get("FileLeafRef", ""), "dont_merge_cookies": True},
+                meta={"folder_name": item.get("FileLeafRef", "")},
                 dont_filter=True,
             )
 
@@ -129,7 +133,6 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                 headers=self.sharepoint_headers,
                 callback=self._parse_folders,
                 dont_filter=True,
-                meta={"dont_merge_cookies": True},
             )
 
         self._pending_sharepoint_requests -= 1
@@ -164,7 +167,7 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                 method="POST",
                 headers=self.sharepoint_headers,
                 callback=self._parse_folder_items,
-                meta={**response.meta, "dont_merge_cookies": True},
+                meta={**response.meta},
                 dont_filter=True,
             )
 
@@ -177,8 +180,8 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
 
         self._calendar_started = True
 
-        now = datetime.now(ZoneInfo(self.timezone))
-        year = now.year - 4
+        now = datetime.now(self.tz)
+        year = now.year - self.past_year_range
         month = now.month
 
         while (year, month) <= (now.year, now.month):
@@ -213,8 +216,7 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         if next_href.startswith("?"):
             base_url = response.url.split("?")[0]
             decoded_url = (
-                "@a1=%27%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov"
-                "%2FDocuments%27"
+                "@a1=%27%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov" "%2FDocuments%27"
             )
             return f"{base_url}?{decoded_url}&{next_href.lstrip('?')}"
         if next_href.startswith("/"):
@@ -288,10 +290,9 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
 
     def _parse_datetime(self, response, itemprop):
         iso = response.css(f"time[itemprop='{itemprop}']::attr(datetime)").get()
-        if iso:
-            return (
-                datetime.fromisoformat(iso)
-                .astimezone(ZoneInfo(self.timezone))
-                .replace(tzinfo=None)
-            )
-        return None
+        if not iso:
+            return None
+        dt = datetime.fromisoformat(iso)
+        if dt.tzinfo is not None:
+            dt = dt.astimezone(self.tz).replace(tzinfo=None)
+        return dt

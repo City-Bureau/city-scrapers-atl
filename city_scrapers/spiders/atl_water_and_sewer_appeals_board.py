@@ -28,11 +28,16 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         },
         "ROBOTSTXT_OBEY": False,
         "FEED_EXPORT_ENCODING": "utf-8",
+        "DOWNLOAD_DELAY": 1,
+        "AUTOTHROTTLE_ENABLED": True,
+        "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
     }
+    calendar_url = "https://citycouncil.atlantaga.gov/other/events/public-meetings/-curm-{month}/-cury-{year}"
 
+    sharepoint_base_url = "https://cityofatlanta-my.sharepoint.com"
     folders_endpoint = "https://cityofatlanta-my.sharepoint.com/personal/appeals_atlantaga_gov/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments%27&RootFolder=%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments%2FWater%20and%20Sewer%20Appeals%20Board&TryNewExperienceSingle=TRUE"  # noqa
     items_endpoint = "https://cityofatlanta-my.sharepoint.com/personal/appeals_atlantaga_gov/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments%27&RootFolder={root_folder}"  # noqa
-
+    sharepoint_url = "https://cityofatlanta-my.sharepoint.com/:f:/g/personal/appeals_atlantaga_gov/En0FGmWTfENHtqM7cf2A3W0BwBybjiODvcP1ngdKdYBiQg?e=jKmZdu"
     sharepoint_headers = {
         "CollectSPPerfMetrics": "SPSQLQueryCount",
         "Referer": "https://cityofatlanta-my.sharepoint.com/personal/appeals_atlantaga_gov/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments%2FWater%20and%20Sewer%20Appeals%20Board&ga=1",  # noqa
@@ -43,8 +48,8 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",  # noqa
         "Accept": "application/json;odata=verbose",
         "Content-Type": "application/json;odata=verbose",
-        "Cookie": "FeatureOverrides_experiments=[]; msal.cache.encryption=%7B%22id%22%3A%22019d90ba-7921-79f8-a9fb-c08fe6114c74%22%2C%22key%22%3A%22OrlBukcfy2yB9YnoU6S9NuMUXyI5X76kTfV8HblHce8%22%7D; SPHomeWeb:NGSP/experienceActive=false; ScaleCompatibilityDeviceId=8ae86ad4-72c9-481a-bc52-af8b082b1771; FedAuth=77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48U1A+VjE1LDBoLmZ8bWVtYmVyc2hpcHx1cm4lM2FzcG8lM2F0ZW5hbnRhbm9uIzAzMWE1NTBhLWYxZjMtNGI2Mi05YzY0LTNlZjAyYzc3OThhNSwwIy5mfG1lbWJlcnNoaXB8dXJuJTNhc3BvJTNhdGVuYW50YW5vbiMwMzFhNTUwYS1mMWYzLTRiNjItOWM2NC0zZWYwMmM3Nzk4YTUsMTM0MjE5NTAyNzkwMDAwMDAwLDAsMTM0MjIwMzYzNzk2NzE4NTY2LDAuMC4wLjAsMjU4LDAzMWE1NTBhLWYxZjMtNGI2Mi05YzY0LTNlZjAyYzc3OThhNSwsLDVmYzAwZWEyLTAwYWItZDAwMC0wMDg3LTAzNTVlNGZmZjQwZSw1ZmMwMGVhMi0wMGFiLWQwMDAtMDA4Ny0wMzU1ZTRmZmY0MGUsaWVjRHhSODBzRXljbWdQNzlKVXhDUSwwLDAsMCwsLCwyNjUwNDY3NzQzOTk5OTk5OTk5LDAsLCwsLCwsMCwsMTkyMzQ3LGZaVkYyQ2EzQjVhX2RDSnZzaTgwcEgyeUl1WSwsMCwsWG9ScmpJWFRkZ1ZEb08xMGZpMmh2K0VacXh4dEI1T3d2OHYvRjJlWnFHMDR3MmxGMjNxNmdzSm03cHNKWTZQZGNwSlBHbHhTV2I2cWk1WnpNTVhvSG56VWtYeVQ2aWU5RmVDdHBZajEyTDFUTk9CM0RJMGdScEtKV2F5dUhkMWhTbXF5VERRclplUmlyZU1UR0lVelVrS3ZuRXhIOXZTOXZwOVZlbWdSaGNzNHFQRGxrdktHOWJ6bURmZzdUMHllQjd6enl3MGZwWnB4YWFTSU0xc3RnNnROVWkyYmcvZTFRMDNzWWRRcDFIY01VdmVzNklINXFtZXJReGhEbmUzakxzWTJnQjExb3VUODhlMjNmQ1MyVTIzQnRNZ1FLcFEvYXY0NDYwN01zbkFtMmNCRWtLZVdzOUE3aVR4Nms1YUd6dGVZTE1jSjc0ekxiaEQ5RHRwYTl3PT08L1NQPg==",  # noqa
     }
+    time_notes = "See attachments for accurate location details"
 
     def __init__(self, *args, **kwargs):
         self._sharepoint_links = {}
@@ -54,13 +59,25 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         super().__init__(*args, **kwargs)
 
     def start_requests(self):
+        yield scrapy.Request(
+            url=self.sharepoint_url,
+            callback=self._sharepoint_request,
+        )
+        
+    def _sharepoint_request(self, response):
+        cookie = response.headers.getlist("Set-Cookie")
+        try:
+            cookie = response.headers.getlist("Set-Cookie")
+            self.sharepoint_headers["Cookie"] = cookie
+        except Exception as e:
+            self.logger.error("Failed to extract cookies from SharePoint response: %s", e)
+            return
         self._pending_sharepoint_requests += 1
         yield scrapy.Request(
             url=self.folders_endpoint,
             method="POST",
             headers=self.sharepoint_headers,
             callback=self._parse_folders,
-            errback=self._sharepoint_errback,
             dont_filter=True,
             meta={"dont_merge_cookies": True},
         )
@@ -68,12 +85,12 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
     def _parse_folders(self, response):
         try:
             data = response.json()
-        except Exception:
+        except Exception as e:
             self.logger.error(
-                "SharePoint folders response was not JSON: %s", response.text[:500]
+                "SharePoint folders response was not JSON: %s %s", e, response.text[:500]
             )
             self._pending_sharepoint_requests -= 1
-            yield from self._maybe_start_calendar()
+            yield from self._start_calendar()
             return
 
         now = datetime.now(ZoneInfo(self.timezone))
@@ -99,7 +116,6 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                 method="POST",
                 headers=self.sharepoint_headers,
                 callback=self._parse_folder_items,
-                errback=self._sharepoint_errback,
                 meta={"folder_name": item.get("FileLeafRef", ""), "dont_merge_cookies": True},
                 dont_filter=True,
             )
@@ -112,27 +128,27 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                 method="POST",
                 headers=self.sharepoint_headers,
                 callback=self._parse_folders,
-                errback=self._sharepoint_errback,
                 dont_filter=True,
                 meta={"dont_merge_cookies": True},
             )
 
         self._pending_sharepoint_requests -= 1
-        yield from self._maybe_start_calendar()
+        yield from self._start_calendar()
 
     def _parse_folder_items(self, response):
         folder_name = response.meta.get("folder_name", "")
 
         try:
             data = response.json()
-        except Exception:
+        except Exception as e:
             self.logger.error(
-                "SharePoint folder items not JSON for %s: %s",
+                "SharePoint folder items not JSON for %s: %s %s",
                 folder_name,
+                e,
                 response.text[:500],
             )
             self._pending_sharepoint_requests -= 1
-            yield from self._maybe_start_calendar()
+            yield from self._start_calendar()
             return
 
         links = self._parse_links(data.get("Row", []))
@@ -148,20 +164,14 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                 method="POST",
                 headers=self.sharepoint_headers,
                 callback=self._parse_folder_items,
-                errback=self._sharepoint_errback,
                 meta={**response.meta, "dont_merge_cookies": True},
                 dont_filter=True,
             )
 
         self._pending_sharepoint_requests -= 1
-        yield from self._maybe_start_calendar()
+        yield from self._start_calendar()
 
-    def _sharepoint_errback(self, failure):
-        self.logger.error("SharePoint request failed: %s", failure)
-        self._pending_sharepoint_requests -= 1
-        yield from self._maybe_start_calendar()
-
-    def _maybe_start_calendar(self):
+    def _start_calendar(self):
         if self._pending_sharepoint_requests > 0 or self._calendar_started:
             return
 
@@ -172,11 +182,11 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         month = now.month
 
         while (year, month) <= (now.year, now.month):
-            url = (
-                "https://citycouncil.atlantaga.gov/other/events/public-meetings"
-                f"/-curm-{month}/-cury-{year}"
+            yield scrapy.Request(
+                self.calendar_url.format(month=month, year=year),
+                callback=self.parse,
+                meta={"referrer_policy": "no-referrer"},
             )
-            yield scrapy.Request(url, callback=self.parse)
             month += 1
             if month > 12:
                 month = 1
@@ -208,25 +218,27 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
             )
             return f"{base_url}?{decoded_url}&{next_href.lstrip('?')}"
         if next_href.startswith("/"):
-            return "https://cityofatlanta-my.sharepoint.com" + next_href
+            return self.sharepoint_base_url + next_href
         return response.urljoin(next_href)
 
     def _parse_links(self, rows):
         links = []
         for item in rows:
             raw_title = item.get("FileLeafRef", "")
+            if not raw_title.lower().endswith(".pdf"):
+                continue
             href = item.get("ServerRedirectedEmbedUrl") or item.get("FileRef", "")
             if not href:
                 continue
             if href.startswith("/"):
-                href = "https://cityofatlanta-my.sharepoint.com" + href
+                href = self.sharepoint_base_url + href
             title = self._clean_link_title(raw_title)
             links.append({"href": href, "title": title})
         return links
 
     def _clean_link_title(self, filename):
         name = re.sub(r"\.[^.]+$", "", filename)
-        cleaned = re.sub(r"^.*-WSAB\s+", "", name)
+        cleaned = re.sub(r"^.*WSAB\s+", "", name)
         return cleaned if cleaned != name else name
 
     def _parse_folder_date(self, folder_name):
@@ -242,10 +254,12 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
             return
         end = self._parse_end(response)
 
-        links = [{"href": response.url, "title": "Agenda"}]
         date_key = start.strftime("%Y-%m-%d")
         sharepoint_links = self._sharepoint_links.get(date_key, [])
-        links.extend(sharepoint_links)
+        if sharepoint_links:
+            links = sharepoint_links
+        else:
+            links = [{"href": response.url, "title": "Agenda"}]
 
         meeting = Meeting(
             title=title,
@@ -254,8 +268,11 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
             start=start,
             end=end,
             all_day=False,
-            time_notes="",
-            location=self._parse_location(),
+            time_notes=self.time_notes,
+            location={
+                "name": "",
+                "address": "",
+            },
             links=links,
             source=response.url,
         )
@@ -278,9 +295,3 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                 .replace(tzinfo=None)
             )
         return None
-
-    def _parse_location(self):
-        return {
-            "address": "72 Marietta ST, Atlanta, GA 30303",
-            "name": "Main Floor, Auditorium (Room 215)",
-        }

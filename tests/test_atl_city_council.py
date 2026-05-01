@@ -22,7 +22,7 @@ test_response = file_response(
 )
 spider = AtlCityCouncilSpider()
 
-freezer = freeze_time("2022-08-01")
+freezer = freeze_time("2026-01-01")
 freezer.start()
 
 parsed_items = [item for item in spider.parse(test_response)]
@@ -31,53 +31,68 @@ freezer.stop()
 
 
 def test_title():
-    assert (
-        parsed_items[0]["title"]
-        == "Atlanta City Council - First Organizational Meeting"
-    )
+    assert parsed_items[0]["title"] == "Atlanta City Council - Regular Meeting"
 
 
 def test_description():
-    assert "Status:\tClosed" in parsed_items[0]["description"]
-    assert "Board:\tAtlanta City Council" in parsed_items[0]["description"]
+    assert parsed_items[0]["description"] == ""
 
 
 def test_start():
-    assert parsed_items[0]["start"] == datetime(2022, 1, 3, 13, 0)
+    assert parsed_items[0]["start"] == datetime(2026, 1, 5, 13, 0)
+
+
+def test_classification():
+    from city_scrapers_core.constants import CITY_COUNCIL
+
+    assert parsed_items[0]["classification"] == CITY_COUNCIL
+
+
+def test_location():
+    assert (
+        parsed_items[0]["location"]["name"]
+        == "Marvin S. Arrington, Sr. Council Chamber"
+    )
+    assert "55 Trinity Avenue" in parsed_items[0]["location"]["address"]
 
 
 def test_links():
     assert parsed_items[0]["links"] == [
         {
-            "href": "https://atlantacityga.iqm2.com/FileOpen.aspx?Type=14&ID=3126&Inline=True",  # noqa
+            "href": "https://atlantacityga.iqm2.com/Citizens/FileOpen.aspx?Type=14&ID=3810&Inline=True",  # noqa
             "title": "Agenda",
         },
         {
-            "href": "https://atlantacityga.iqm2.com/FileOpen.aspx?Type=1&ID=3126&Inline=True",  # noqa
+            "href": "https://atlantacityga.iqm2.com/Citizens/FileOpen.aspx?Type=1&ID=3810&Inline=True",  # noqa
             "title": "Agenda Packet",
         },
         {
-            "href": "https://atlantacityga.iqm2.com/FileOpen.aspx?Type=15&ID=3322&Inline=True",  # noqa
+            "href": "https://atlantacityga.iqm2.com/Citizens/FileOpen.aspx?Type=15&ID=4011&Inline=True",  # noqa
             "title": "Minutes",
         },
         {
-            "href": "https://atlantacityga.iqm2.com/FileOpen.aspx?Type=12&ID=3322&Inline=True",  # noqa
+            "href": "https://atlantacityga.iqm2.com/Citizens/FileOpen.aspx?Type=12&ID=4011&Inline=True",  # noqa
             "title": "Minutes Packet",
+        },
+        {
+            "href": "https://atlantacityga.iqm2.com/Citizens/SplitView.aspx?Mode=Video&MeetingID=4098&Format=Minutes",  # noqa
+            "title": "Video",
         },
     ]
 
 
+# The number of meetings for 2026 year
 @pytest.mark.parametrize(
     "cls,expected",
     [
-        (AtlCityCouncilSpider, 23),
-        (AtlCityCouncilFinSpider, 15),
-        (AtlCityCouncilUtilSpider, 15),
-        (AtlCityCouncilCOCSpider, 14),
-        (AtlCityCouncilCDHSpider, 17),
-        (AtlCityCouncilSafetySpider, 15),
-        (AtlCityCouncilTransportationSpider, 15),
-        (AtlCityCouncilZoningSpider, 16),
+        (AtlCityCouncilSpider, 22),
+        (AtlCityCouncilFinSpider, 21),
+        (AtlCityCouncilUtilSpider, 21),
+        (AtlCityCouncilCOCSpider, 20),
+        (AtlCityCouncilCDHSpider, 21),
+        (AtlCityCouncilSafetySpider, 20),
+        (AtlCityCouncilTransportationSpider, 18),
+        (AtlCityCouncilZoningSpider, 21),
     ],
 )
 def test_sub_spider(cls, expected):

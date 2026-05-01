@@ -11,6 +11,8 @@ scrapy-wayback-middleware = "*"
 python-dateutil = "*"
 importlib-resources = "*"
 tzdata = "*"
+python-decouple = "*"
+pyairtable = "*"
 
 [dev-packages]
 freezegun = "*"

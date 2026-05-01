@@ -1,0 +1,68 @@
+name: Playwright smoke test
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - playwright-smoke
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Playwright
+        run: |
+          pip install playwright
+          playwright install --with-deps chromium
+
+      - name: Probe citycouncil calendar URL
+        run: |
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+
+          targets = [
+              "https://citycouncil.atlantaga.gov/other/events/public-meetings/-curm-5/-cury-2026",
+              "https://citycouncil.atlantaga.gov/other/events/public-meetings/-curm-4/-cury-2026",
+          ]
+
+          with sync_playwright() as p:
+              browser = p.chromium.launch(headless=True)
+              ctx = browser.new_context(
+                  user_agent=(
+                      "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                      "(KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+                  )
+              )
+              page = ctx.new_page()
+              for url in targets:
+                  resp = page.goto(url, wait_until="domcontentloaded", timeout=30000)
+                  status = resp.status if resp else "no response"
+                  body_len = len(page.content())
+                  print(f"{url} -> status={status} body_len={body_len}")
+                  has_calendar = page.locator("td.calendar_day_with_items").count()
+                  print(f"  calendar_day_with_items count: {has_calendar}")
+              browser.close()
+          PY
+
+      - name: Probe with plain requests for comparison
+        run: |
+          pip install requests
+          python - <<'PY'
+          import requests
+          url = "https://citycouncil.atlantaga.gov/other/events/public-meetings/-curm-5/-cury-2026"
+          headers = {
+              "User-Agent": (
+                  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+              ),
+              "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+              "Accept-Language": "en-US,en;q=0.9",
+          }
+          r = requests.get(url, headers=headers, timeout=30)
+          print(f"requests baseline: status={r.status_code} body_len={len(r.text)}")
+          PY

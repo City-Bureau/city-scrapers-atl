@@ -292,4 +292,7 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         iso = response.css(f"time[itemprop='{itemprop}']::attr(datetime)").get()
         if not iso:
             return None
-        return datetime.fromisoformat(iso).replace(tzinfo=None)
+        dt = datetime.fromisoformat(iso)
+        if dt.tzinfo is not None:
+            dt = dt.astimezone(self.tz).replace(tzinfo=None)
+        return dt

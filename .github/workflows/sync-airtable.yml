@@ -1,0 +1,17 @@
+name: Sync spiders to Airtable
+ 
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'city_scrapers/spiders/**.py'
+ 
+jobs:
+  sync:
+    uses: City-Bureau/city-scrapers-core/.github/workflows/sync-airtable.yml@main
+    with:
+      CS_AIRTABLE_BASE_ID: ${{ vars.CS_AIRTABLE_BASE_ID }}
+      CS_SLUGS_TABLE_ID: ${{ vars.CS_SLUGS_TABLE_ID }}
+      CS_BACKLOG_TABLE_ID: ${{ vars.CS_BACKLOG_TABLE_ID }}
+    secrets:
+      CS_AIRTABLE_PAT: ${{ secrets.CS_AIRTABLE_PAT }}

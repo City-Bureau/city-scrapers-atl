@@ -1,8 +1,11 @@
 from datetime import datetime
+from os.path import dirname, join
 
 import pytest
 from city_scrapers_core.constants import BOARD
+from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
+from scrapy.http import HtmlResponse, Request
 
 from city_scrapers.spiders.atl_water_and_sewer_appeals_board import (
     AtlWaterAndSewerAppealsBoardSpider,
@@ -14,103 +17,184 @@ def spider():
     return AtlWaterAndSewerAppealsBoardSpider()
 
 
-@freeze_time("2026-04-15")
-def test_build_meeting_with_links(spider):
-    folder_name = "2025-06-30-Hearing Schedules, Agendas, Summaries, Minutes"
-    links = [
+@pytest.fixture
+def listing_response():
+    return file_response(
+        join(dirname(__file__), "files", "atl_water_and_sewer_appeals_board.html"),
+        url="https://citycouncil.atlantaga.gov/other/events/public-meetings/-curm-6/-cury-2025",  # noqa
+    )
+
+
+@pytest.fixture
+def detail_response():
+    with open(
+        join(
+            dirname(__file__), "files", "atl_water_and_sewer_appeals_board_detail.html"
+        ),  # noqa
+        encoding="utf-8",
+    ) as f:
+        body = f.read()
+    return HtmlResponse(
+        url="https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/11129/165?curm=6&cury=2025",  # noqa
+        body=body.encode("utf-8"),
+        encoding="utf-8",
+        request=Request(
+            url="https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/11129/165?curm=6&cury=2025",  # noqa
+            meta={"title": "Watershed Water and Sewer Appeals Board"},
+        ),
+    )
+
+
+@pytest.fixture
+def parsed_items(spider, detail_response):
+    freezer = freeze_time("2026-04-15")
+    freezer.start()
+    items = list(spider._parse_detail(detail_response))
+    freezer.stop()
+    return items
+
+
+@pytest.fixture
+def detail_response_2026():
+    with open(
+        join(
+            dirname(__file__),
+            "files",
+            "atl_water_and_sewer_appeals_board_detail_2026.html",
+        ),  # noqa
+        encoding="utf-8",
+    ) as f:
+        body = f.read()
+    return HtmlResponse(
+        url="https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/12243/165?curm=4&cury=2026",  # noqa
+        body=body.encode("utf-8"),
+        encoding="utf-8",
+        request=Request(
+            url="https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/12243/165?curm=4&cury=2026",  # noqa
+            meta={"title": "Water and Sewer Appeals Board"},
+        ),
+    )
+
+
+@pytest.fixture
+def parsed_items_2026(spider, detail_response_2026):
+    freezer = freeze_time("2026-04-15")
+    freezer.start()
+    items = list(spider._parse_detail(detail_response_2026))
+    freezer.stop()
+    return items
+
+
+def test_listing_yields_two_requests(spider, listing_response):
+    requests = list(spider.parse(listing_response))
+    assert len(requests) == 2
+    assert "11129/165" in requests[0].url
+    assert "12243/165" in requests[1].url
+
+
+def test_count(parsed_items):
+    assert len(parsed_items) == 1
+
+
+def test_title(parsed_items):
+    assert parsed_items[0]["title"] == "Watershed Water and Sewer Appeals Board"
+
+
+def test_description(parsed_items):
+    assert parsed_items[0]["description"] == ""
+
+
+def test_start(parsed_items):
+    assert parsed_items[0]["start"] == datetime(2025, 6, 30, 16, 0)
+
+
+def test_end(parsed_items):
+    assert parsed_items[0]["end"] == datetime(2025, 6, 30, 18, 30)
+
+
+def test_time_notes(parsed_items):
+    assert (
+        parsed_items[0]["time_notes"] == "See attachments for accurate location details"
+    )
+
+
+def test_classification(parsed_items):
+    assert parsed_items[0]["classification"] == BOARD
+
+
+def test_status(parsed_items):
+    assert parsed_items[0]["status"] == "passed"
+
+
+def test_location(parsed_items):
+    assert parsed_items[0]["location"] == {
+        "address": "",
+        "name": "",
+    }
+
+
+def test_source(parsed_items):
+    assert (
+        parsed_items[0]["source"]
+        == "https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/11129/165?curm=6&cury=2025"  # noqa
+    )
+
+
+def test_links(parsed_items):
+    assert parsed_items[0]["links"] == [
         {
-            "href": "https://cityofatlanta-my.sharepoint.com/agenda.pdf",
+            "href": "https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/11129/165?curm=6&cury=2025",  # noqa
             "title": "Agenda",
         }
     ]
-    meeting = spider._build_meeting(folder_name, links)
-    assert meeting["title"] == "Water and Sewer Appeals Board"
-    assert meeting["description"] == ""
-    assert meeting["classification"] == BOARD
-    assert meeting["start"] == datetime(2025, 6, 30, 9, 0)
-    assert meeting["end"] is None
-    assert meeting["all_day"] is False
-    assert meeting["status"] == "passed"
-    assert meeting["location"] == {"name": "", "address": ""}
-    assert meeting["links"] == links
-    assert meeting["source"] == spider.sharepoint_url
-    assert meeting["time_notes"] == "See attachments for meeting time and location"
-    assert meeting["id"].startswith("atl_water_and_sewer_appeals_board/")
 
 
-@freeze_time("2026-04-15")
-def test_build_meeting_falls_back_to_sharepoint_link(spider):
-    folder_name = "2026-05-15-Hearing Schedules, Agendas, Summaries, Minutes"
-    meeting = spider._build_meeting(folder_name, [])
-    assert meeting["status"] == "tentative"
-    assert meeting["links"] == [
-        {"href": spider.sharepoint_url, "title": "SharePoint Folder"}
-    ]
+def test_all_day(parsed_items):
+    assert parsed_items[0]["all_day"] is False
 
 
-def test_build_meeting_returns_none_for_invalid_name(spider):
-    assert spider._build_meeting("README.pdf", []) is None
-    assert spider._build_meeting("", []) is None
-    assert spider._build_meeting("2025-13-99-Bad Date", []) is None
+def test_2026_title(parsed_items_2026):
+    assert parsed_items_2026[0]["title"] == "Water and Sewer Appeals Board"
 
 
-def test_parse_links_filters_pdfs_only(spider):
-    rows = [
-        {
-            "FileLeafRef": "WSAB Agenda.pdf",
-            "ServerRedirectedEmbedUrl": "https://example.com/agenda.pdf",
-        },
-        {
-            "FileLeafRef": "thumbnail.jpg",
-            "ServerRedirectedEmbedUrl": "https://example.com/thumb.jpg",
-        },
-        {
-            "FileLeafRef": "Summary.PDF",
-            "FileRef": "/personal/.../summary.pdf",
-        },
-    ]
-    links = spider._parse_links(rows)
-    assert len(links) == 2
-    assert links[0] == {
-        "href": "https://example.com/agenda.pdf",
-        "title": "Agenda",
+def test_2026_start(parsed_items_2026):
+    assert parsed_items_2026[0]["start"] == datetime(2026, 4, 21, 15, 0)
+
+
+def test_2026_end(parsed_items_2026):
+    assert parsed_items_2026[0]["end"] == datetime(2026, 4, 21, 18, 30)
+
+
+def test_2026_status(parsed_items_2026):
+    assert parsed_items_2026[0]["status"] == "tentative"
+
+
+def test_2026_classification(parsed_items_2026):
+    assert parsed_items_2026[0]["classification"] == BOARD
+
+
+def test_2026_location(parsed_items_2026):
+    assert parsed_items_2026[0]["location"] == {
+        "address": "",
+        "name": "",
     }
-    assert links[1]["href"].startswith("https://cityofatlanta-my.sharepoint.com/")
 
 
-def test_clean_link_title_strips_extension_and_wsab_prefix(spider):
-    assert spider._clean_link_title("WSAB Agenda.pdf") == "Agenda"
-    assert spider._clean_link_title("Hearing Summary.pdf") == "Hearing Summary"
-
-
-def test_clean_link_title_non_greedy_on_repeated_wsab(spider):
-    # Non-greedy match — strips only the first WSAB prefix
-    assert spider._clean_link_title("WSAB Agenda WSAB June.pdf") == "Agenda WSAB June"
-
-
-def test_decrement_and_maybe_yield_yields_when_counter_hits_zero(spider):
-    folder_name = "2025-06-30-Hearing Schedules, Agendas, Summaries, Minutes"
-    spider._folder_pending[folder_name] = 1
-    spider._folder_links[folder_name] = [
-        {"href": "https://example.com/a.pdf", "title": "Agenda"}
-    ]
-    yielded = list(spider._decrement_and_maybe_yield(folder_name))
-    assert len(yielded) == 1
-    assert yielded[0]["title"] == "Water and Sewer Appeals Board"
-    assert yielded[0]["start"].date() == datetime(2025, 6, 30).date()
-
-
-def test_decrement_and_maybe_yield_waits_for_pagination(spider):
-    folder_name = "2025-06-30-Hearing Schedules, Agendas, Summaries, Minutes"
-    spider._folder_pending[folder_name] = 2
-    yielded = list(spider._decrement_and_maybe_yield(folder_name))
-    assert yielded == []
-    assert spider._folder_pending[folder_name] == 1
-
-
-def test_min_year_filter_constants(spider):
-    assert spider.MIN_YEAR == 2022
-    assert spider.FOLDER_NAME_RE.match(
-        "2024-03-12-Hearing Schedules, Agendas, Summaries, Minutes"
+def test_2026_source(parsed_items_2026):
+    assert (
+        parsed_items_2026[0]["source"]
+        == "https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/12243/165?curm=4&cury=2026"  # noqa
     )
-    assert not spider.FOLDER_NAME_RE.match("Reports Archive")
+
+
+def test_2026_links(parsed_items_2026):
+    assert parsed_items_2026[0]["links"] == [
+        {
+            "href": "https://citycouncil.atlantaga.gov/Home/Components/Calendar/Event/12243/165?curm=4&cury=2026",  # noqa
+            "title": "Agenda",
+        }
+    ]
+
+
+def test_2026_all_day(parsed_items_2026):
+    assert parsed_items_2026[0]["all_day"] is False

@@ -1,62 +1,113 @@
 from datetime import datetime
 from os.path import dirname, join
 
+import pytest
+from city_scrapers_core.constants import BOARD
 from city_scrapers_core.utils import file_response
 from freezegun import freeze_time
 
 from city_scrapers.spiders.atl_clayton_co_boc import AtlClaytonCoBocSpider
 
-test_response = file_response(
-    join(dirname(__file__), "files", "atl_clayton_co_boc.html"),
-    url="http://claytoncountyga.iqm2.com/Citizens/Calendar.aspx",
-)
-spider = AtlClaytonCoBocSpider()
 
-freezer = freeze_time("2022-08-30")
-freezer.start()
-
-parsed_items = [item for item in spider.parse(test_response)]
-
-freezer.stop()
+@pytest.fixture(scope="module")
+def spider():
+    return AtlClaytonCoBocSpider()
 
 
-def test_title():
+@pytest.fixture(scope="module")
+def archived_meetings_data():
+    response = file_response(
+        join(
+            dirname(__file__),
+            "files",
+            "atl_clayton_co_boc_meetings.json",
+        ),
+        url="https://claytoncountyga.primegov.com/api/v2/PublicPortal/ListArchivedMeetings?year=2026",  # noqa
+    )
+    return response
+
+
+@pytest.fixture(scope="module")
+def parsed_items(spider, archived_meetings_data):
+    with freeze_time("2026-04-27"):
+        items = list(spider._parse_archived_meetings(archived_meetings_data))
+
+    return items
+
+
+def test_count(parsed_items):
+    assert len(parsed_items) == 18
+
+
+def test_title(parsed_items):
+    assert parsed_items[0]["title"] == "Regular Business Meeting"
+
+
+def test_description(parsed_items):
+    assert parsed_items[0]["description"] == ""
+
+
+def test_start(parsed_items):
+    assert parsed_items[0]["start"] == datetime(2026, 1, 6, 18, 0)
+
+
+def test_end(parsed_items):
+    assert parsed_items[0]["end"] is None
+
+
+def test_time_notes(parsed_items):
     assert (
-        parsed_items[0]["title"] == "Board of Commissioners - Regular Business Meeting"
+        parsed_items[0]["time_notes"]
+        == "For meeting's details, please refer to the source URL."
     )
 
 
-def test_description():
-    assert "Regular Business Meeting" in parsed_items[0]["description"]
+def test_id(parsed_items):
+    assert (
+        parsed_items[0]["id"]
+        == "atl_clayton_co_boc/202601061800/x/regular_business_meeting"
+    )
 
 
-def test_start():
-    assert parsed_items[0]["start"] == datetime(2022, 1, 4, 18, 30)
+def test_status(parsed_items):
+    assert parsed_items[0]["status"] == "passed"
 
 
-def test_source():
+def test_location(parsed_items):
+    assert parsed_items[0]["location"] == {
+        "name": "",
+        "address": "",
+    }
+
+
+def test_source(parsed_items):
     assert (
         parsed_items[0]["source"]
-        == "http://claytoncountyga.iqm2.com/Citizens/Calendar.aspx"
+        == "https://claytoncountyga.primegov.com/public/portal?fromiframe=true"
     )
 
 
-def test_links():
+def test_links(parsed_items):
     assert parsed_items[0]["links"] == [
         {
-            "href": "https://claytoncountyga.iqm2.com/FileOpen.aspx?Type=14&ID=1303&Inline=True",  # noqa
-            "title": "Agenda",
+            "title": "Summary Minutes",
+            "href": "https://claytoncountyga.primegov.com/Public/CompiledDocument?meetingTemplateId=4414&compileOutputType=1",  # noqa
         },
         {
-            "href": "https://claytoncountyga.iqm2.com/FileOpen.aspx?Type=1&ID=1303&Inline=True",  # noqa
-            "title": "Agenda Packet",
-        },
-        {
-            "href": "https://claytoncountyga.iqm2.com/FileOpen.aspx?Type=15&ID=1302&Inline=True",  # noqa
-            "title": "Summary",
-        },
-        {
-            "href": "https://claytoncountyga.iqm2.com/FileOpen.aspx?Type=12&ID=1302&Inline=True",  # noqa
             "title": "Minutes",
+            "href": "https://claytoncountyga.primegov.com/Public/CompiledDocument?meetingTemplateId=4410&compileOutputType=1",  # noqa
+        },
+        {
+            "title": "Video",
+            "href": "https://claytoncountyga.granicus.com/MediaPlayer.php?clip_id=34",
         },
     ]
+
+
+def test_classification(parsed_items):
+    assert parsed_items[0]["classification"] == BOARD
+
+
+def test_all_day(parsed_items):
+    for item in parsed_items:
+        assert item["all_day"] is False

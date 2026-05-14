@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 scrapy = "==2.11.2"
+twisted = "<26"
 scrapy-sentry-errors = "1.0.0"
 city-scrapers-core = {ref = "main", git = "https://github.com/City-Bureau/city-scrapers-core.git", extras = ["azure"]}
 scrapy-wayback-middleware = "*"

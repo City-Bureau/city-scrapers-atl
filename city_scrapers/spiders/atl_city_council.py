@@ -10,6 +10,9 @@ class AtlCityCouncilSpider(IQM2Mixin, CityScrapersSpider):
 
     iqm2_slug = "atlantacityga"
     board_name = "Atlanta City Council"
+    source_url = "https://citycouncil.atlantaga.gov/other/events/public-meetings"
+
+    meeting_description = ""
 
 
 class AtlCityCouncilFinSpider(AtlCityCouncilSpider):

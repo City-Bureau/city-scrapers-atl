@@ -39,6 +39,14 @@ jobs:
           sudo openvpn --config /etc/openvpn/ovpn.conf --daemon
           sleep 120
 
+      - name: Verify VPN egress IP
+        run: |
+          echo "Public IPv4 seen by external services:"
+          curl -s --max-time 10 https://ifconfig.me || true
+          echo
+          echo "tun interface status:"
+          ip -brief addr show tun0 || echo "no tun0 interface"
+
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
         with:

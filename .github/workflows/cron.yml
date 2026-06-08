@@ -36,8 +36,12 @@ jobs:
           echo "$OPENVPN_USER" | sudo tee -a /etc/openvpn/client/auth
           echo "$OPENVPN_PASS" | sudo tee -a /etc/openvpn/client/auth
           echo "$OPENVPN_CONFIG" | sudo tee -a /etc/openvpn/ovpn.conf
-          sudo openvpn --config /etc/openvpn/ovpn.conf --daemon
-          sleep 120
+          # Strip Windows-only directives that the Linux OpenVPN client rejects
+          sudo sed -i '/^block-outside-dns/d' /etc/openvpn/ovpn.conf
+          sudo openvpn --config /etc/openvpn/ovpn.conf --daemon --log /tmp/openvpn.log
+          sleep 30
+          echo "--- /tmp/openvpn.log (tail) ---"
+          sudo tail -50 /tmp/openvpn.log || true
 
       - name: Verify VPN egress IP
         run: |

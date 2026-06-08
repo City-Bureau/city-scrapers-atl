@@ -31,17 +31,29 @@ jobs:
 
       - name: Connect to OpenVPN
         run: |
+          echo "=== OpenVPN connect step v4 ==="
           sudo apt-get update
           sudo apt-get install -y openvpn
-          echo "$OPENVPN_USER" | sudo tee -a /etc/openvpn/client/auth
-          echo "$OPENVPN_PASS" | sudo tee -a /etc/openvpn/client/auth
-          echo "$OPENVPN_CONFIG" | sudo tee -a /etc/openvpn/ovpn.conf
-          # Strip Windows-only directives that the Linux OpenVPN client rejects
-          sudo sed -i '/^block-outside-dns/d' /etc/openvpn/ovpn.conf
+          echo "$OPENVPN_USER" | sudo tee /etc/openvpn/client/auth >/dev/null
+          echo "$OPENVPN_PASS" | sudo tee -a /etc/openvpn/client/auth >/dev/null
+          echo "$OPENVPN_CONFIG" > /tmp/raw.ovpn
+
+          # Strip Windows-only directives + tolerate any future unknown options
+          sed -E '/(^|[[:space:]])(block-outside-dns|register-dns)([[:space:]]|$)/d' /tmp/raw.ovpn > /tmp/clean.ovpn
+          {
+            echo "ignore-unknown-option block-outside-dns register-dns"
+            cat /tmp/clean.ovpn
+          } | sudo tee /etc/openvpn/ovpn.conf >/dev/null
+
+          echo "--- config lines that mention 'outside-dns' (should be empty) ---"
+          sudo grep -n "outside-dns" /etc/openvpn/ovpn.conf || echo "(none)"
+
           sudo openvpn --config /etc/openvpn/ovpn.conf --daemon --log /tmp/openvpn.log
-          sleep 30
+          sleep 20
           echo "--- /tmp/openvpn.log (tail) ---"
-          sudo tail -50 /tmp/openvpn.log || true
+          sudo tail -80 /tmp/openvpn.log || true
+          echo "--- ip addr show tun0 ---"
+          ip -brief addr show tun0 || echo "(no tun0)"
 
       - name: Verify VPN egress IP
         run: |

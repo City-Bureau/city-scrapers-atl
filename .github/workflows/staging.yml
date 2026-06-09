@@ -81,6 +81,34 @@ jobs:
       - name: Install Playwright browser
         run: pipenv run playwright install --with-deps chromium
 
+      - name: Akamai bypass smoke test (citycouncil.atlantaga.gov)
+        # Fail fast if curl-cffi can't reach the Akamai-protected calendar.
+        # Saves ~25 min of full crawl when bypass is broken. Runs through the
+        # OpenVPN egress, so this reflects the real production egress IP.
+        run: |
+          pipenv run python - <<'PY'
+          import sys
+          from curl_cffi import requests
+          urls = [
+              f"https://citycouncil.atlantaga.gov/other/events/public-meetings/-curm-{m}/-cury-2026"
+              for m in (6, 5, 4)
+          ]
+          failures = []
+          for u in urls:
+              try:
+                  r = requests.get(u, impersonate="chrome131", timeout=30)
+                  print(f"  {r.status_code}  size={len(r.text):>7}  {u[-30:]}")
+                  if r.status_code != 200:
+                      failures.append((u, r.status_code))
+              except Exception as e:
+                  print(f"  ERR                {u[-30:]}  {e}")
+                  failures.append((u, str(e)))
+          if failures:
+              print(f"::error::Akamai bypass failed for {len(failures)}/{len(urls)} URLs")
+              sys.exit(1)
+          print("Akamai bypass OK — proceeding to full crawl")
+          PY
+
       - name: Run scrapers
         run: |
           export PYTHONPATH=$(pwd):$PYTHONPATH

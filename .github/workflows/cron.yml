@@ -19,12 +19,25 @@ env:
   AZURE_CONTAINER: ${{ secrets.AZURE_CONTAINER }}
   AZURE_STATUS_CONTAINER: ${{ secrets.AZURE_STATUS_CONTAINER }}
   SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+  OPENVPN_USER: ${{ secrets.OPENVPN_USER }}
+  OPENVPN_PASS: ${{ secrets.OPENVPN_PASS }}
+  OPENVPN_CONFIG: ${{ secrets.OPENVPN_CONFIG }}
 
 jobs:
   crawl:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Connect to OpenVPN
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openvpn
+          echo "$OPENVPN_USER" | sudo tee -a /etc/openvpn/client/auth
+          echo "$OPENVPN_PASS" | sudo tee -a /etc/openvpn/client/auth
+          echo "$OPENVPN_CONFIG" | sudo tee -a /etc/openvpn/ovpn.conf
+          sudo openvpn --config /etc/openvpn/ovpn.conf --daemon
+          sleep 120
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
@@ -60,6 +73,9 @@ jobs:
         run: pipenv sync
         env:
           PIPENV_DEFAULT_PYTHON_VERSION: ${{ env.PYTHON_VERSION }}
+
+      - name: Install Playwright browser
+        run: pipenv run playwright install --with-deps chromium
 
       - name: Run scrapers
         run: |

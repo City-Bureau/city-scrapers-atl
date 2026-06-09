@@ -52,3 +52,8 @@ EXTENSIONS = {
 }
 
 CLOSESPIDER_ERRORCOUNT = 5
+
+# Required for scrapy-playwright (Akamai bypass on atl_water_and_sewer_appeals_board).
+# Reactor must be set at project level — Scrapy initializes it before reading
+# spider custom_settings. Safe for non-Playwright spiders.
+TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"

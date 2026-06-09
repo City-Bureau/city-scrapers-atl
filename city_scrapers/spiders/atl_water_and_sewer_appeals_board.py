@@ -7,6 +7,19 @@ import scrapy
 from city_scrapers_core.constants import BOARD
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
+from curl_cffi import requests as cffi_requests
+from scrapy.http import HtmlResponse
+
+# Akamai Bot Manager on citycouncil.atlantaga.gov inspects the TLS JA3/JA4
+# + HTTP/2 fingerprint. Plain Scrapy and Playwright-Chromium both fail;
+# curl-cffi with `impersonate="chrome131"` matches Chrome's real handshake
+# and pulls 200 responses from the calendar listing tier.
+IMPERSONATE = "chrome131"
+AKAMAI_TIMEOUT = 30
+REAL_UA = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+)
 
 
 class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
@@ -185,15 +198,27 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         month = now.month
 
         while (year, month) <= (now.year, now.month):
-            yield scrapy.Request(
-                self.calendar_url.format(month=month, year=year),
-                callback=self.parse,
-                meta={"referrer_policy": "no-referrer"},
-            )
+            yield from self._fetch_calendar_page(year, month)
             month += 1
             if month > 12:
                 month = 1
                 year += 1
+
+    def _fetch_calendar_page(self, year, month):
+        """Fetch one Akamai-protected calendar listing via curl-cffi (sync),
+        then consume the parse() output here so the detail-page follow goes
+        through curl-cffi too."""
+        url = self.calendar_url.format(month=month, year=year)
+        response = self._akamai_get(url)
+        if response is None:
+            return
+        for request in self.parse(response):
+            detail_response = self._akamai_get(request.url)
+            if detail_response is None:
+                continue
+            yield from self._parse_detail(
+                detail_response, title=request.meta.get("title")
+            )
 
     def parse(self, response):
         for cell in response.css("td.calendar_day_with_items"):
@@ -209,6 +234,32 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                         callback=self._parse_detail,
                         meta={"title": title},
                     )
+
+    def _akamai_get(self, url):
+        """GET an Akamai-protected URL with curl-cffi/Chrome131 fingerprint.
+
+        Returns a Scrapy HtmlResponse so the existing CSS callbacks work
+        unchanged, or None on non-200/exception. Blocks the Twisted reactor
+        for the duration of the request — fine for this single-purpose
+        spider; the callers run sequentially.
+        """
+        self.logger.info("akamai_get → %s", url)
+        try:
+            r = cffi_requests.get(
+                url,
+                impersonate=IMPERSONATE,
+                timeout=AKAMAI_TIMEOUT,
+                headers={"User-Agent": REAL_UA},
+            )
+        except Exception as e:
+            self.logger.warning("Akamai fetch error for %s: %s", url, e)
+            return None
+        self.logger.info(
+            "akamai_get ← %s %s (%d bytes)", r.status_code, url, len(r.content)
+        )
+        if r.status_code != 200:
+            return None
+        return HtmlResponse(url=url, body=r.content, encoding="utf-8")
 
     def _build_next_url(self, response, next_href):
         if next_href.startswith("http"):
@@ -249,8 +300,9 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
             return match.group(1)
         return folder_name
 
-    def _parse_detail(self, response):
-        title = response.meta["title"]
+    def _parse_detail(self, response, title=None):
+        if title is None:
+            title = response.meta["title"]
         start = self._parse_start(response)
         if not start:
             return

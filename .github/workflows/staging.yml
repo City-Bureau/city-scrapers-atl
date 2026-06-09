@@ -78,8 +78,48 @@ jobs:
         env:
           PIPENV_DEFAULT_PYTHON_VERSION: ${{ env.PYTHON_VERSION }}
 
-      - name: Install Playwright browser
-        run: pipenv run playwright install --with-deps chromium
+      - name: Akamai bypass smoke test (citycouncil.atlantaga.gov)
+        # Fail fast if curl-cffi can't reach the Akamai-protected calendar.
+        run: |
+          pipenv run python - <<'PY'
+          import sys
+          from curl_cffi import requests
+          urls = [
+              f"https://citycouncil.atlantaga.gov/other/events/public-meetings/-curm-{m}/-cury-2026"
+              for m in (6, 5, 4)
+          ]
+          failures = []
+          for u in urls:
+              try:
+                  r = requests.get(u, impersonate="chrome131", timeout=30)
+                  print(f"  {r.status_code}  size={len(r.text):>7}  {u[-30:]}")
+                  if r.status_code != 200:
+                      failures.append((u, r.status_code))
+              except Exception as e:
+                  print(f"  ERR                {u[-30:]}  {e}")
+                  failures.append((u, str(e)))
+          if failures:
+              print(f"::error::Akamai bypass failed for {len(failures)}/{len(urls)} URLs")
+              sys.exit(1)
+          print("Akamai bypass OK — proceeding to full crawl")
+          PY
+
+      - name: Smoke crawl atl_water_and_sewer_appeals_board
+        # Non-blocking while we iterate on the Akamai bypass.
+        continue-on-error: true
+        timeout-minutes: 6
+        run: |
+          export PYTHONPATH=$(pwd):$PYTHONPATH
+          script -qefc "pipenv run scrapy crawl atl_water_and_sewer_appeals_board \
+            -O /tmp/atl_water.jsonl:jsonlines \
+            -s LOG_ENABLED=True -s LOG_LEVEL=INFO \
+            -s CLOSESPIDER_TIMEOUT=240" /dev/null
+          items=$(wc -l < /tmp/atl_water.jsonl 2>/dev/null || echo 0)
+          echo "::notice::atl_water scraped ${items} items"
+          if [ "${items}" -eq 0 ]; then
+            echo "::error::atl_water spider produced 0 items"
+            exit 1
+          fi
 
       - name: Run scrapers
         run: |

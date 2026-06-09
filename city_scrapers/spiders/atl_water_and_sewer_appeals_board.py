@@ -7,6 +7,24 @@ import scrapy
 from city_scrapers_core.constants import BOARD
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
+from tf_playwright_stealth import Stealth
+
+REAL_UA = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+)
+
+# Akamai-protected citycouncil.atlantaga.gov requests opt in via this meta.
+# SharePoint requests omit it and go through the default Scrapy downloader.
+PLAYWRIGHT_META = {
+    "playwright": True,
+    "playwright_context": "default",
+}
+
+
+async def _apply_stealth(page):
+    """Hook fired for every new Playwright page; applies Akamai-bypass patches."""
+    await Stealth().apply_stealth_async(page)
 
 
 class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
@@ -14,7 +32,7 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
     agency = "Atlanta City Council: Atlanta Water and Sewer Appeals Board"
     timezone = "America/New_York"
     custom_settings = {
-        "USER_AGENT": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",  # noqa
+        "USER_AGENT": REAL_UA,
         "COOKIES_ENABLED": True,
         "DEFAULT_REQUEST_HEADERS": {
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",  # noqa
@@ -31,6 +49,29 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         "DOWNLOAD_DELAY": 1,
         "AUTOTHROTTLE_ENABLED": True,
         "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
+        # Playwright stack — required for Akamai bm-verify challenge on citycouncil
+        "DOWNLOAD_HANDLERS": {
+            "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+            "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+        },
+        "PLAYWRIGHT_BROWSER_TYPE": "chromium",
+        "PLAYWRIGHT_LAUNCH_OPTIONS": {
+            "headless": True,
+            "args": [
+                "--disable-blink-features=AutomationControlled",
+                "--no-sandbox",
+            ],
+        },
+        "PLAYWRIGHT_CONTEXTS": {
+            "default": {
+                "user_agent": REAL_UA,
+                "locale": "en-US",
+                "timezone_id": "America/New_York",
+                "viewport": {"width": 1366, "height": 768},
+            },
+        },
+        "PLAYWRIGHT_DEFAULT_NAVIGATION_TIMEOUT": 60000,
+        "PLAYWRIGHT_INIT_PAGE_CALLBACKS": [_apply_stealth],
     }
     calendar_url = "https://citycouncil.atlantaga.gov/other/events/public-meetings/-curm-{month}/-cury-{year}"  # noqa
     tz = ZoneInfo(timezone)
@@ -188,7 +229,7 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
             yield scrapy.Request(
                 self.calendar_url.format(month=month, year=year),
                 callback=self.parse,
-                meta={"referrer_policy": "no-referrer"},
+                meta={"referrer_policy": "no-referrer", **PLAYWRIGHT_META},
             )
             month += 1
             if month > 12:
@@ -207,7 +248,7 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                     yield response.follow(
                         calendar_link,
                         callback=self._parse_detail,
-                        meta={"title": title},
+                        meta={"title": title, **PLAYWRIGHT_META},
                     )
 
     def _build_next_url(self, response, next_href):

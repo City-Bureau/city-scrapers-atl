@@ -40,8 +40,27 @@ jobs:
           echo "$OPENVPN_USER" | sudo tee -a /etc/openvpn/client/auth
           echo "$OPENVPN_PASS" | sudo tee -a /etc/openvpn/client/auth
           echo "$OPENVPN_CONFIG" | sudo tee -a /etc/openvpn/ovpn.conf
+          # Capture egress IP BEFORE starting the tunnel so we can compare.
+          echo "Pre-VPN egress IP:"
+          curl -s --max-time 10 https://api.ipify.org || echo "(unreachable)"
+          echo ""
           sudo openvpn --config /etc/openvpn/ovpn.conf --daemon
           sleep 120
+
+      - name: Verify OpenVPN egress
+        # Prove the tunnel is actually routing traffic. If the egress IP /
+        # ASN looks like the GitHub Actions Azure datacenter range, the
+        # tunnel never came up and every downstream Akamai request is going
+        # to fail for the wrong reason.
+        run: |
+          echo "Post-VPN egress IP:"
+          ip=$(curl -s --max-time 15 https://api.ipify.org)
+          echo "  $ip"
+          echo "ASN / geo:"
+          curl -s --max-time 15 "https://ipinfo.io/${ip}/json" || true
+          echo ""
+          echo "Route to citycouncil.atlantaga.gov:"
+          getent hosts citycouncil.atlantaga.gov || true
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
@@ -123,9 +142,7 @@ jobs:
           script -qefc "pipenv run scrapy crawl atl_water_and_sewer_appeals_board \
             -O /tmp/atl_water.jsonl:jsonlines \
             -s LOG_ENABLED=True -s LOG_LEVEL=INFO \
-            -s CLOSESPIDER_TIMEOUT=240 \
-            -a skip_sharepoint=1 \
-            -a past_year_range=0" /dev/null
+            -s CLOSESPIDER_TIMEOUT=240" /dev/null
           echo "=== Smoke crawl end: $(date -u) ==="
           items=$(wc -l < /tmp/atl_water.jsonl 2>/dev/null || echo 0)
           echo "::notice::atl_water scraped ${items} items"

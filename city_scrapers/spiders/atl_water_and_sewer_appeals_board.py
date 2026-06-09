@@ -67,14 +67,26 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
     }
     time_notes = "See attachments for accurate location details"
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, past_year_range=None, skip_sharepoint="0", **kwargs):
         self._sharepoint_links = {}
         self._pending_sharepoint_requests = 0
         self._calendar_started = False
 
+        # Allow CI smoke runs to scope the spider down: `past_year_range=0`
+        # restricts the calendar to the current year only, `skip_sharepoint=1`
+        # bypasses the multi-page SharePoint enumeration that the smoke step
+        # doesn't need.
+        if past_year_range is not None:
+            self.past_year_range = int(past_year_range)
+        self.skip_sharepoint = str(skip_sharepoint).lower() in ("1", "true", "yes")
+
         super().__init__(*args, **kwargs)
 
     def start_requests(self):
+        if self.skip_sharepoint:
+            self.logger.info("skip_sharepoint=1 — going straight to calendar")
+            yield from self._start_calendar()
+            return
         yield scrapy.Request(
             url=self.sharepoint_url,
             callback=self._sharepoint_request,

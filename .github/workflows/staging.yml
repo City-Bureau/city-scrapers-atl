@@ -123,7 +123,9 @@ jobs:
           script -qefc "pipenv run scrapy crawl atl_water_and_sewer_appeals_board \
             -O /tmp/atl_water.jsonl:jsonlines \
             -s LOG_ENABLED=True -s LOG_LEVEL=INFO \
-            -s CLOSESPIDER_TIMEOUT=240" /dev/null
+            -s CLOSESPIDER_TIMEOUT=240 \
+            -a skip_sharepoint=1 \
+            -a past_year_range=0" /dev/null
           echo "=== Smoke crawl end: $(date -u) ==="
           items=$(wc -l < /tmp/atl_water.jsonl 2>/dev/null || echo 0)
           echo "::notice::atl_water scraped ${items} items"

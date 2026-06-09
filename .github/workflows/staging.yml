@@ -109,6 +109,22 @@ jobs:
           print("Akamai bypass OK — proceeding to full crawl")
           PY
 
+      - name: Smoke crawl atl_water_and_sewer_appeals_board
+        # Run only the Akamai-protected spider before the full crawl. If it
+        # produces 0 items, fail fast — saves ~25 min on the rest when this
+        # one spider is broken (Akamai 403, SharePoint cookie expiry, etc.).
+        # Output goes to /tmp (not Azure) so the smoke is side-effect free.
+        run: |
+          export PYTHONPATH=$(pwd):$PYTHONPATH
+          pipenv run scrapy crawl atl_water_and_sewer_appeals_board \
+            -O /tmp/atl_water.jsonl:jsonlines -L INFO
+          items=$(wc -l < /tmp/atl_water.jsonl 2>/dev/null || echo 0)
+          echo "::notice::atl_water scraped ${items} items"
+          if [ "${items}" -eq 0 ]; then
+            echo "::error::atl_water spider produced 0 items"
+            exit 1
+          fi
+
       - name: Run scrapers
         run: |
           export PYTHONPATH=$(pwd):$PYTHONPATH

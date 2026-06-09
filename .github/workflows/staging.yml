@@ -114,13 +114,17 @@ jobs:
         # Output goes to /tmp (not Azure) so the smoke is side-effect free.
         timeout-minutes: 6
         env:
+          # Force line-buffered output at every layer so each scrapy log
+          # line surfaces in the Actions UI as the spider runs. Without
+          # this, pipenv + the bash heredoc both buffer until the step
+          # ends and the smoke step appears to "hang silent".
           PYTHONUNBUFFERED: "1"
         run: |
           export PYTHONPATH=$(pwd):$PYTHONPATH
-          pipenv run scrapy crawl atl_water_and_sewer_appeals_board \
+          stdbuf -oL -eL pipenv run scrapy crawl atl_water_and_sewer_appeals_board \
             -O /tmp/atl_water.jsonl:jsonlines -L INFO \
             -s CLOSESPIDER_TIMEOUT=240 \
-            -s LOG_STDOUT=False
+            -s LOG_STDOUT=True 2>&1 | tee /tmp/smoke.log
           items=$(wc -l < /tmp/atl_water.jsonl 2>/dev/null || echo 0)
           echo "::notice::atl_water scraped ${items} items"
           if [ "${items}" -eq 0 ]; then

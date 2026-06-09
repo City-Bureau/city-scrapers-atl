@@ -248,6 +248,7 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         Blocks the Twisted reactor for the duration of the request — fine
         for this single-purpose spider; callers run sequentially anyway.
         """
+        self.logger.info("akamai_get → %s", url)
         try:
             r = cffi_requests.get(
                 url,
@@ -258,8 +259,10 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         except Exception as e:
             self.logger.warning("Akamai fetch error for %s: %s", url, e)
             return None
+        self.logger.info(
+            "akamai_get ← %s %s (%d bytes)", r.status_code, url, len(r.content)
+        )
         if r.status_code != 200:
-            self.logger.warning("Akamai %s for %s", r.status_code, url)
             return None
         return HtmlResponse(url=url, body=r.content, encoding="utf-8")
 

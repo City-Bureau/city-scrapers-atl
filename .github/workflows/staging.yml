@@ -78,9 +78,6 @@ jobs:
         env:
           PIPENV_DEFAULT_PYTHON_VERSION: ${{ env.PYTHON_VERSION }}
 
-      - name: Install Playwright browser
-        run: pipenv run playwright install --with-deps chromium
-
       - name: Akamai bypass smoke test (citycouncil.atlantaga.gov)
         # Fail fast if curl-cffi can't reach the Akamai-protected calendar.
         # Saves ~25 min of full crawl when bypass is broken. Runs through the

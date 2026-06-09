@@ -14,8 +14,7 @@ importlib-resources = "*"
 tzdata = "*"
 python-decouple = "*"
 pyairtable = "*"
-scrapy-playwright = "*"
-tf-playwright-stealth = "*"
+scrapy-impersonate = "*"
 curl-cffi = "*"
 
 [dev-packages]

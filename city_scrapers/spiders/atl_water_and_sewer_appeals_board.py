@@ -206,12 +206,23 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                 year += 1
 
     def _fetch_calendar_page(self, year, month):
-        """Fetch one Akamai-protected calendar page via curl-cffi (sync)."""
+        """Fetch one Akamai-protected calendar page via curl-cffi (sync),
+        then resolve each meeting detail page the same way."""
         url = self.calendar_url.format(month=month, year=year)
         response = self._akamai_get(url)
         if response is None:
             return
-        yield from self.parse(response)
+        # ``parse`` returns ``scrapy.Request`` candidates (kept that way so
+        # the existing unit test can assert two listing requests without
+        # hitting the network). Consume them here via curl-cffi instead of
+        # yielding to Scrapy, whose default downloader would 403.
+        for request in self.parse(response):
+            detail_response = self._akamai_get(request.url)
+            if detail_response is None:
+                continue
+            yield from self._parse_detail(
+                detail_response, title=request.meta.get("title")
+            )
 
     def parse(self, response):
         for cell in response.css("td.calendar_day_with_items"):
@@ -223,15 +234,11 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                 calendar_link = item.css("a.calendar_eventlink::attr(href)").get("")
                 if not calendar_link:
                     continue
-                detail_url = urllib.parse.urljoin(response.url, calendar_link)
-                yield from self._fetch_detail_page(detail_url, title)
-
-    def _fetch_detail_page(self, url, title):
-        """Fetch one Akamai-protected meeting detail page via curl-cffi."""
-        response = self._akamai_get(url)
-        if response is None:
-            return
-        yield from self._parse_detail(response, title=title)
+                yield response.follow(
+                    calendar_link,
+                    callback=self._parse_detail,
+                    meta={"title": title},
+                )
 
     def _akamai_get(self, url):
         """GET an Akamai-protected URL with curl-cffi/Chrome fingerprint.

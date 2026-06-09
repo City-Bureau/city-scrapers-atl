@@ -7,7 +7,7 @@ import scrapy
 from city_scrapers_core.constants import BOARD
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
-from tf_playwright_stealth import Stealth
+from playwright_stealth import stealth_async
 
 REAL_UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -24,7 +24,7 @@ PLAYWRIGHT_META = {
 
 async def _apply_stealth(page):
     """Hook fired for every new Playwright page; applies Akamai-bypass patches."""
-    await Stealth().apply_stealth_async(page)
+    await stealth_async(page)
 
 
 class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):

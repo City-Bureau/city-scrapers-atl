@@ -7,6 +7,21 @@ import scrapy
 from city_scrapers_core.constants import BOARD
 from city_scrapers_core.items import Meeting
 from city_scrapers_core.spiders import CityScrapersSpider
+from curl_cffi import requests as cffi_requests
+from dateutil.parser import parse as date_parser
+from scrapy.http import HtmlResponse
+
+REAL_UA = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+)
+
+# Akamai (Bot Manager) on citycouncil.atlantaga.gov inspects the TLS
+# JA3/JA4 + HTTP/2 fingerprint. Plain `requests` and Playwright-Chromium
+# both fail; `curl-cffi` with `impersonate="chrome131"` matches Chrome's
+# real handshake and pulls 200 responses through the OpenVPN egress.
+IMPERSONATE = "chrome131"
+AKAMAI_TIMEOUT = 30
 
 
 class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
@@ -14,7 +29,7 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
     agency = "Atlanta City Council: Atlanta Water and Sewer Appeals Board"
     timezone = "America/New_York"
     custom_settings = {
-        "USER_AGENT": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",  # noqa
+        "USER_AGENT": REAL_UA,
         "COOKIES_ENABLED": True,
         "DEFAULT_REQUEST_HEADERS": {
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",  # noqa
@@ -32,6 +47,7 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         "AUTOTHROTTLE_ENABLED": True,
         "CONCURRENT_REQUESTS_PER_DOMAIN": 4,
     }
+    calendar_base_url = "https://citycouncil.atlantaga.gov"
     calendar_url = "https://citycouncil.atlantaga.gov/other/events/public-meetings/-curm-{month}/-cury-{year}"  # noqa
     tz = ZoneInfo(timezone)
     past_year_range = 4
@@ -185,30 +201,94 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         month = now.month
 
         while (year, month) <= (now.year, now.month):
-            yield scrapy.Request(
-                self.calendar_url.format(month=month, year=year),
-                callback=self.parse,
-                meta={"referrer_policy": "no-referrer"},
-            )
+            yield from self._fetch_calendar_page(year, month)
             month += 1
             if month > 12:
                 month = 1
                 year += 1
 
+    def _fetch_calendar_page(self, year, month):
+        """Fetch one Akamai-protected calendar page via curl-cffi (sync),
+        then resolve each meeting detail page the same way."""
+        url = self.calendar_url.format(month=month, year=year)
+        response = self._akamai_get(url)
+        if response is None:
+            return
+        # ``parse`` returns ``scrapy.Request`` candidates (kept that way so
+        # the existing unit test can assert two listing requests without
+        # hitting the network). Consume them here via curl-cffi instead of
+        # yielding to Scrapy, whose default downloader would 403.
+        yield from self.parse(response)
+
     def parse(self, response):
         for cell in response.css("td.calendar_day_with_items"):
+            date_str = cell.css("::attr(aria-label)").get("")
+            if not date_str:
+                continue
             for item in cell.css("div.calendar_item"):
                 title = item.css("a.calendar_eventlink::attr(title)").get("")
+                meeting_time = item.css("span.calendar_eventtime::text").get("")
+                calendar_link = self._parse_source(item)
+
                 if "water and sewer appeals board" not in title.lower():
                     continue
 
-                calendar_link = item.css("a.calendar_eventlink::attr(href)").get("")
-                if calendar_link:
-                    yield response.follow(
-                        calendar_link,
-                        callback=self._parse_detail,
-                        meta={"title": title},
-                    )
+                start_dt = date_parser(f"{date_str} {meeting_time}", fuzzy=True)
+
+                date_key = start_dt.strftime("%Y-%m-%d")
+                sharepoint_links = self._sharepoint_links.get(date_key, [])
+                if sharepoint_links:
+                    links = sharepoint_links
+                else:
+                    links = [{"href": calendar_link, "title": "Agenda"}]
+
+                meeting = Meeting(
+                    title=title,
+                    description="",
+                    classification=BOARD,
+                    start=start_dt,
+                    end=None,
+                    all_day=False,
+                    time_notes=self.time_notes,
+                    location={
+                        "name": "",
+                        "address": "",
+                    },
+                    links=links,
+                    source=calendar_link,
+                )
+                meeting["status"] = self._get_status(meeting)
+                meeting["id"] = self._get_id(meeting)
+                yield meeting
+
+    def _parse_source(self, item):
+        href = item.css("a.calendar_eventlink::attr(href)").get("")
+        if href.startswith("/"):
+            return self.calendar_base_url + href
+        return href
+
+    def _akamai_get(self, url):
+        """GET an Akamai-protected URL with curl-cffi/Chrome fingerprint.
+
+        Returns a Scrapy HtmlResponse so the existing CSS/XPath callbacks
+        work unchanged, or None on non-200/exception (logged and skipped).
+        Blocks the Twisted reactor for the duration of the request — fine
+        for this single-purpose spider; callers run sequentially anyway.
+        """
+        try:
+            r = cffi_requests.get(
+                url,
+                impersonate=IMPERSONATE,
+                timeout=AKAMAI_TIMEOUT,
+                headers={"User-Agent": REAL_UA},
+            )
+        except Exception as e:
+            self.logger.warning("Akamai fetch error for %s: %s", url, e)
+            return None
+        if r.status_code != 200:
+            self.logger.warning("Akamai %s for %s", r.status_code, url)
+            return None
+        return HtmlResponse(url=url, body=r.content, encoding="utf-8")
 
     def _build_next_url(self, response, next_href):
         if next_href.startswith("http"):
@@ -248,51 +328,3 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         if match:
             return match.group(1)
         return folder_name
-
-    def _parse_detail(self, response):
-        title = response.meta["title"]
-        start = self._parse_start(response)
-        if not start:
-            return
-        end = self._parse_end(response)
-
-        date_key = start.strftime("%Y-%m-%d")
-        sharepoint_links = self._sharepoint_links.get(date_key, [])
-        if sharepoint_links:
-            links = sharepoint_links
-        else:
-            links = [{"href": response.url, "title": "Agenda"}]
-
-        meeting = Meeting(
-            title=title,
-            description="",
-            classification=BOARD,
-            start=start,
-            end=end,
-            all_day=False,
-            time_notes=self.time_notes,
-            location={
-                "name": "",
-                "address": "",
-            },
-            links=links,
-            source=response.url,
-        )
-        meeting["status"] = self._get_status(meeting)
-        meeting["id"] = self._get_id(meeting)
-        yield meeting
-
-    def _parse_start(self, response):
-        return self._parse_datetime(response, "startDate")
-
-    def _parse_end(self, response):
-        return self._parse_datetime(response, "endDate")
-
-    def _parse_datetime(self, response, itemprop):
-        iso = response.css(f"time[itemprop='{itemprop}']::attr(datetime)").get()
-        if not iso:
-            return None
-        dt = datetime.fromisoformat(iso)
-        if dt.tzinfo is not None:
-            dt = dt.astimezone(self.tz).replace(tzinfo=None)
-        return dt

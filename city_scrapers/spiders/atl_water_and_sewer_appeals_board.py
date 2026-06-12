@@ -221,6 +221,8 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
         yield from self.parse(response)
 
     def parse(self, response):
+        candidates = {}
+
         for cell in response.css("td.calendar_day_with_items"):
             date_str = cell.css("::attr(aria-label)").get("")
             if not date_str:
@@ -259,13 +261,23 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                 )
                 meeting["status"] = self._get_status(meeting)
                 meeting["id"] = self._get_id(meeting)
-                yield meeting
+                candidates.setdefault(meeting["id"], []).append(meeting)
+
+        for group in candidates.values():
+            if len(group) == 1:
+                yield group[0]
+            else:
+                yield max(group, key=lambda m: self._extract_event_id(m["source"]))
 
     def _parse_source(self, item):
         href = item.css("a.calendar_eventlink::attr(href)").get("")
         if href.startswith("/"):
             return self.calendar_base_url + href
         return href
+
+    def _extract_event_id(self, url):
+        match = re.search(r"/Event/(\d+)/", url)
+        return int(match.group(1)) if match else 0
 
     def _akamai_get(self, url):
         """GET an Akamai-protected URL with curl-cffi/Chrome fingerprint.

@@ -56,6 +56,7 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
     folders_endpoint = "https://cityofatlanta-my.sharepoint.com/personal/appeals_atlantaga_gov/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments%27&RootFolder=%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments%2FWater%20and%20Sewer%20Appeals%20Board&TryNewExperienceSingle=TRUE"  # noqa
     items_endpoint = "https://cityofatlanta-my.sharepoint.com/personal/appeals_atlantaga_gov/_api/web/GetListUsingPath(DecodedUrl=@a1)/RenderListDataAsStream?@a1=%27%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments%27&RootFolder={root_folder}"  # noqa
     sharepoint_url = "https://cityofatlanta-my.sharepoint.com/:f:/g/personal/appeals_atlantaga_gov/En0FGmWTfENHtqM7cf2A3W0BwBybjiODvcP1ngdKdYBiQg?e=jKmZdu"  # noqa
+    description = f"To be able to access the meeting attachments, please visit the following SharePoint link once (visiting this link will provide your browser with the appropriate access cookies): {sharepoint_url}"  # noqa
     sharepoint_headers = {
         "CollectSPPerfMetrics": "SPSQLQueryCount",
         "Referer": "https://cityofatlanta-my.sharepoint.com/personal/appeals_atlantaga_gov/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fappeals%5Fatlantaga%5Fgov%2FDocuments%2FWater%20and%20Sewer%20Appeals%20Board&ga=1",  # noqa
@@ -241,12 +242,14 @@ class AtlWaterAndSewerAppealsBoardSpider(CityScrapersSpider):
                 sharepoint_links = self._sharepoint_links.get(date_key, [])
                 if sharepoint_links:
                     links = sharepoint_links
+                    desc = self.description
                 else:
                     links = [{"href": calendar_link, "title": "Agenda"}]
+                    desc = ""
 
                 meeting = Meeting(
                     title=title,
-                    description="",
+                    description=desc,
                     classification=BOARD,
                     start=start_dt,
                     end=None,

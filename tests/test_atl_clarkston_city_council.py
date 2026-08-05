@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 from os.path import dirname, join
 
@@ -16,6 +17,16 @@ atl_clarkston_city_council = file_response(
 )
 
 
+def _strip_next_link(response):
+    """
+    parse() defers yielding Meetings until self._pending_requests hits 0, which only
+    happens once there's no further pagination to follow.
+    """
+    data = json.loads(response.text)
+    data.pop("@odata.nextLink", None)
+    return response.replace(body=json.dumps(data).encode("utf-8"))
+
+
 @pytest.fixture
 def spider():
     return AtlClarkstonCityCouncilSpider()
@@ -23,12 +34,19 @@ def spider():
 
 @pytest.fixture
 def parsed_items(spider):
+    spider._raw_events = []
+    spider._pending_requests = 1
+
+    response = _strip_next_link(atl_clarkston_city_council)
+
     with freeze_time("2026-04-28"):
-        return [item for item in spider.parse(atl_clarkston_city_council)]
+        results = list(spider.parse(response))
+
+    return results
 
 
 def test_count(parsed_items):
-    assert len(parsed_items) == 16
+    assert len(parsed_items) == 15
 
 
 def test_title(parsed_items):
@@ -39,16 +57,19 @@ def test_description(parsed_items):
     assert parsed_items[0]["description"] == ""
 
 
+def test_time_notes(parsed_items):
+    assert (
+        parsed_items[0]["time_notes"]
+        == "Please refer to the meeting attachments for more accurate meeting time and location."  # noqa
+    )
+
+
 def test_start(parsed_items):
     assert parsed_items[0]["start"] == datetime(2026, 4, 28, 19, 0)
 
 
 def test_end(parsed_items):
     assert parsed_items[0]["end"] is None
-
-
-def test_time_notes(parsed_items):
-    assert parsed_items[0]["time_notes"] == ""
 
 
 def test_id(parsed_items):
@@ -78,6 +99,10 @@ def test_source(parsed_items):
 
 def test_links(parsed_items):
     assert parsed_items[0]["links"] == [
+        {
+            "title": "Video",
+            "href": "https://clarkstonga.portal.civicclerk.com/event/1089/media",
+        },
         {
             "title": "Agenda",
             "href": "https://clarkstonga.portal.civicclerk.com/event/1089/files/agenda/3533",  # noqa

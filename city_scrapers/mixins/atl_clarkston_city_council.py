@@ -48,7 +48,6 @@ class AtlClarkstonCityCouncilSpiderMixin(
     agency_name = None
     id = None
     location_name = "City Hall Municipal Building, Suite 120"
-    default_address = "736 Park North Blvd, Clarkston, GA 30021"
     timezone = "America/New_York"
 
     api_base_url = "https://clarkstonga.api.civicclerk.com"
@@ -64,7 +63,6 @@ class AtlClarkstonCityCouncilSpiderMixin(
         """Generate API requests for past and upcoming events."""
 
         today = datetime.now(tz=ZoneInfo(self.timezone))
-
         start_date = date.fromisoformat(self.start_date_str)
         end_date = today + relativedelta(months=self.months_ahead)
 
@@ -79,6 +77,9 @@ class AtlClarkstonCityCouncilSpiderMixin(
             ids_str = str(category_id)
         category_filter = f"categoryId+in+({ids_str})"
 
+        self._raw_events = []
+        self._pending_requests = 0
+
         urls = [
             # Past events (from start_date to today)
             f"{self.api_base_url}/v1/Events?$filter=startDateTime+ge+{start_date_str}+and+startDateTime+lt+{today_str}+and+{category_filter}",  # noqa
@@ -86,38 +87,83 @@ class AtlClarkstonCityCouncilSpiderMixin(
             f"{self.api_base_url}/v1/Events?$filter=startDateTime+ge+{today_str}+and+startDateTime+le+{end_date_str}+and+{category_filter}",  # noqa
         ]
         for url in urls:
+            self._pending_requests += 1
             yield scrapy.Request(url, callback=self.parse)
 
     def parse(self, response):
         """
         Parse JSON response from CivicClerk API and yield Meeting items.
+        Collect raw events; only yield Meetings once all requests finish.
         """
         data = response.json()
         events = data.get("value", [])
+        self._raw_events.extend(events)
 
-        for raw_event in events:
+        # Handle pagination
+        next_link = data.get("@odata.nextLink")
+        if next_link:
+            self._pending_requests += 1
+            yield scrapy.Request(next_link, callback=self.parse)
+
+        # This request (and any of its pagination chain) is now done.
+        self._pending_requests -= 1
+        if self._pending_requests == 0:
+            yield from self._yield_deduped_meetings()
+
+    def _yield_deduped_meetings(self):
+        """
+        Dedupe raw events by (title, start) and build/yield Meeting items.
+
+        When two events share the same title and start time, prefer the
+        one that actually has links (agenda/video/etc) attached.
+        """
+        best_by_key = {}
+
+        for raw_event in self._raw_events:
             event_id = raw_event.get("id")
             if not event_id:
                 continue
 
             raw_title = raw_event.get("eventName") or self.agency
+            title = self._parse_title(raw_title)
+            start = self._parse_start(raw_event)
+            links = self._parse_links(raw_event)
 
+            key = (title, start)
+            existing = best_by_key.get(key)
+
+            if existing is None:
+                # First time seeing this (title, start) combo
+                best_by_key[key] = {
+                    "raw_event": raw_event,
+                    "raw_title": raw_title,
+                    "links": links,
+                }
+            elif not existing["links"] and links:
+                # Existing copy has no links but this duplicate does —
+                # upgrade to the one with links.
+                best_by_key[key] = {
+                    "raw_event": raw_event,
+                    "raw_title": raw_title,
+                    "links": links,
+                }
+            # else: keep existing (either it already has links, or
+            # neither does — keep first seen)
+
+        for entry in best_by_key.values():
+            raw_event = entry["raw_event"]
+            event_id = raw_event.get("id")
             yield self._build_meeting(
-                title=self._parse_title(raw_title),
+                title=self._parse_title(entry["raw_title"]),
                 description=raw_event.get("eventDescription") or "",
                 start=self._parse_start(raw_event),
                 end=self._parse_end(raw_event),
                 location=self._parse_location(raw_event),
-                links=self._parse_links(raw_event),
+                links=entry["links"],
                 source=f"{self.portal_base_url}/event/{event_id}",
-                raw_title=raw_title,
+                raw_title=entry["raw_title"],
                 category_name=raw_event.get("categoryName"),
             )
-
-        # # Handle pagination
-        next_link = data.get("@odata.nextLink")
-        if next_link:
-            yield scrapy.Request(next_link, callback=self.parse)
 
     def _build_meeting(
         self,
@@ -139,7 +185,7 @@ class AtlClarkstonCityCouncilSpiderMixin(
             start=start,
             end=end,
             all_day=False,
-            time_notes="",
+            time_notes="Please refer to the meeting attachments for more accurate meeting time and location.",  # noqa
             location=location,
             links=links,
             source=source,
@@ -173,14 +219,18 @@ class AtlClarkstonCityCouncilSpiderMixin(
 
         title = raw_title.strip()
 
-        trailing_date_pattern = (
-            r"\s*[,.]?\s*(?:"
+        date_regex = (
+            r"(?:"
             r"\d{1,2}[./]\d{1,2}[./]\d{2,4}|"
             r"\d{1,2}\s+[A-Za-z]{3,9}\s+\d{2,4}|"
             r"[A-Za-z]{3,9}\s*\d{1,2}\s*[.,]?\s*\d{2,4}"
-            r")\s*$"
+            r")"
         )
 
+        leading_date_pattern = rf"^\s*{date_regex}\s*[,.]?\s*"
+        trailing_date_pattern = rf"\s*[,.]?\s*{date_regex}\s*$"
+
+        title = re.sub(leading_date_pattern, "", title)
         title = re.sub(trailing_date_pattern, "", title)
         title = re.sub(r"[,.\s]+$", "", title)
         title = re.sub(r"\s+", " ", title).strip()
@@ -235,7 +285,10 @@ class AtlClarkstonCityCouncilSpiderMixin(
 
         # Default address if none provided in the event
         if not address:
-            address = self.default_address
+            return {
+                "name": "",
+                "address": "",
+            }
 
         return {
             "name": self.location_name,
@@ -243,13 +296,24 @@ class AtlClarkstonCityCouncilSpiderMixin(
         }
 
     def _parse_links(self, raw_event):
-        """Parse published files into meeting links."""
+        """Parse published files and media into meeting links."""
         event_id = raw_event.get("id")
         if not event_id:
             return []
 
         links = []
         seen = set()
+
+        # Video link (if this event has media attached)
+        if raw_event.get("hasMedia"):
+            link = {
+                "title": "Video",
+                "href": f"{self.portal_base_url}/event/{event_id}/media",
+            }
+            key = (link["title"], link["href"])
+            if key not in seen:
+                seen.add(key)
+                links.append(link)
 
         for file_info in raw_event.get("publishedFiles", []):
             file_id = file_info.get("fileId")

@@ -21,6 +21,9 @@ env:
   AZURE_ACCOUNT_NAME: ${{ secrets.AZURE_ACCOUNT_NAME }}
   AZURE_STAGING_CONTAINER: ${{ secrets.AZURE_STAGING_CONTAINER }}
   SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+  OPENVPN_USER: ${{ secrets.OPENVPN_USER }}
+  OPENVPN_PASS: ${{ secrets.OPENVPN_PASS }}
+  OPENVPN_CONFIG: ${{ secrets.OPENVPN_CONFIG }}
 
 jobs:
   crawl:
@@ -29,6 +32,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: staging
+
+      - name: Connect to OpenVPN
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openvpn
+          echo "$OPENVPN_USER" | sudo tee -a /etc/openvpn/client/auth
+          echo "$OPENVPN_PASS" | sudo tee -a /etc/openvpn/client/auth
+          echo "$OPENVPN_CONFIG" | sudo tee -a /etc/openvpn/ovpn.conf
+          sudo openvpn --config /etc/openvpn/ovpn.conf --daemon
+          sleep 120
 
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
